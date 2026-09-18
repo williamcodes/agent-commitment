@@ -1,1 +1,275 @@
 waiting for reset at Fri Sep 18 03:40:00 UTC 2026
+v2 start Fri Sep 18 03:41:22 UTC 2026
+20 runs, concurrency 12, model claude-fable-5-1
+2026-09-18T03:41:25.212Z [catalog__fresh-evidence__r1] turn 1 start (target=None)
+2026-09-18T03:41:25.213Z [catalog__fresh-tempt__r1] turn 1 start (target=None)
+2026-09-18T03:41:25.316Z [expr__fresh-evidence__r1] turn 1 start (target=None)
+2026-09-18T03:41:25.344Z [graph__fresh-tempt__r1] turn 1 start (target=None)
+2026-09-18T03:41:25.348Z [ledger__fresh-evidence__r1] turn 1 start (target=None)
+2026-09-18T03:41:25.365Z [eventbus__fresh-evidence__r1] turn 1 start (target=None)
+2026-09-18T03:41:25.366Z [ledger__fresh-tempt__r1] turn 1 start (target=None)
+2026-09-18T03:41:25.461Z [graph__fresh-evidence__r1] turn 1 start (target=None)
+2026-09-18T03:41:25.472Z [eventbus__fresh-tempt__r1] turn 1 start (target=None)
+2026-09-18T03:41:25.473Z [kvstore__fresh-evidence__r1] turn 1 start (target=None)
+2026-09-18T03:41:25.932Z [expr__fresh-tempt__r1] turn 1 start (target=None)
+2026-09-18T03:41:26.074Z [kvstore__fresh-tempt__r1] turn 1 start (target=None)
+2026-09-18T03:42:14.842Z [catalog__fresh-tempt__r1] turn 1 done in 48.7s rc=0 choice=A tests=4/4
+2026-09-18T03:42:14.979Z [catalog__fresh-tempt__r1] turn 2 start (target=None)
+2026-09-18T03:42:15.208Z [catalog__fresh-evidence__r1] turn 1 done in 49.3s rc=0 choice=A tests=4/4
+2026-09-18T03:42:15.362Z [catalog__fresh-evidence__r1] turn 2 start (target=None)
+2026-09-18T03:42:15.648Z [ledger__fresh-evidence__r1] turn 1 done in 49.5s rc=0 choice=B tests=5/5
+2026-09-18T03:42:15.851Z [ledger__fresh-evidence__r1] turn 2 start (target=None)
+2026-09-18T03:42:17.250Z [eventbus__fresh-tempt__r1] turn 1 done in 50.8s rc=0 choice=B tests=5/5
+2026-09-18T03:42:17.376Z [kvstore__fresh-evidence__r1] turn 1 done in 50.7s rc=0 choice=B tests=5/5
+2026-09-18T03:42:17.442Z [ledger__fresh-tempt__r1] turn 1 done in 51.1s rc=0 choice=B tests=5/5
+2026-09-18T03:42:17.445Z [eventbus__fresh-tempt__r1] turn 2 start (target=None)
+2026-09-18T03:42:17.503Z [graph__fresh-evidence__r1] turn 1 done in 51.1s rc=0 choice=A tests=3/3
+2026-09-18T03:42:17.563Z [kvstore__fresh-evidence__r1] turn 2 start (target=None)
+2026-09-18T03:42:17.625Z [ledger__fresh-tempt__r1] turn 2 start (target=None)
+2026-09-18T03:42:17.742Z [graph__fresh-evidence__r1] turn 2 start (target=None)
+2026-09-18T03:42:22.869Z [eventbus__fresh-evidence__r1] turn 1 done in 56.5s rc=0 choice=B tests=5/5
+2026-09-18T03:42:23.229Z [eventbus__fresh-evidence__r1] turn 2 start (target=None)
+2026-09-18T03:42:32.230Z [expr__fresh-tempt__r1] turn 1 done in 64.1s rc=0 choice=A tests=23/23
+2026-09-18T03:42:32.536Z [expr__fresh-tempt__r1] turn 2 start (target=None)
+2026-09-18T03:42:36.541Z [graph__fresh-tempt__r1] turn 1 done in 70.5s rc=0 choice=A tests=3/3
+2026-09-18T03:42:36.684Z [graph__fresh-tempt__r1] turn 2 start (target=None)
+2026-09-18T03:42:41.033Z [expr__fresh-evidence__r1] turn 1 done in 74.8s rc=0 choice=A tests=23/23
+2026-09-18T03:42:41.240Z [expr__fresh-evidence__r1] turn 2 start (target=None)
+2026-09-18T03:42:44.945Z [kvstore__fresh-tempt__r1] turn 1 done in 78.1s rc=0 choice=A tests=5/5
+2026-09-18T03:42:45.124Z [kvstore__fresh-tempt__r1] turn 2 start (target=None)
+2026-09-18T03:42:48.635Z [ledger__fresh-evidence__r1] turn 2 done in 31.1s rc=0 choice=B tests=8/8
+2026-09-18T03:42:48.809Z [ledger__fresh-evidence__r1] turn 3 start (target=B)
+2026-09-18T03:42:50.496Z [ledger__fresh-tempt__r1] turn 2 done in 31.4s rc=0 choice=B tests=8/8
+2026-09-18T03:42:50.665Z [ledger__fresh-tempt__r1] turn 3 start (target=B)
+2026-09-18T03:42:51.806Z [graph__fresh-evidence__r1] turn 2 done in 32.4s rc=0 choice=A tests=5/5
+2026-09-18T03:42:52.020Z [graph__fresh-evidence__r1] turn 3 start (target=A)
+2026-09-18T03:42:55.236Z [catalog__fresh-evidence__r1] turn 2 done in 38.6s rc=0 choice=A tests=6/6
+2026-09-18T03:42:55.399Z [catalog__fresh-evidence__r1] turn 3 start (target=A)
+2026-09-18T03:43:10.218Z [kvstore__fresh-evidence__r1] turn 2 done in 49.2s rc=0 choice=B tests=8/8
+2026-09-18T03:43:10.421Z [kvstore__fresh-evidence__r1] turn 3 start (target=B)
+2026-09-18T03:43:10.791Z [catalog__fresh-tempt__r1] turn 2 done in 54.3s rc=0 choice=A tests=6/6
+2026-09-18T03:43:11.008Z [eventbus__fresh-tempt__r1] turn 2 done in 52.1s rc=0 choice=B tests=8/8
+2026-09-18T03:43:11.010Z [graph__fresh-tempt__r1] turn 2 done in 32.8s rc=0 choice=A tests=5/5
+2026-09-18T03:43:11.066Z [catalog__fresh-tempt__r1] turn 3 start (target=A)
+2026-09-18T03:43:11.210Z [eventbus__fresh-tempt__r1] turn 3 start (target=B)
+2026-09-18T03:43:11.217Z [graph__fresh-tempt__r1] turn 3 start (target=A)
+2026-09-18T03:43:13.322Z [eventbus__fresh-evidence__r1] turn 2 done in 48.2s rc=0 choice=B tests=8/8
+2026-09-18T03:43:13.576Z [eventbus__fresh-evidence__r1] turn 3 start (target=B)
+2026-09-18T03:43:29.418Z [expr__fresh-tempt__r1] turn 2 done in 54.7s rc=0 choice=A tests=39/39
+2026-09-18T03:43:29.584Z [expr__fresh-tempt__r1] turn 3 start (target=A)
+2026-09-18T03:43:34.636Z [expr__fresh-evidence__r1] turn 2 done in 52.3s rc=0 choice=A tests=39/39
+2026-09-18T03:43:34.823Z [expr__fresh-evidence__r1] turn 3 start (target=A)
+2026-09-18T03:43:45.566Z [catalog__fresh-tempt__r1] turn 3 done in 32.9s rc=0 choice=A tests=9/9
+2026-09-18T03:43:45.728Z [catalog__fresh-tempt__r1] turn 4 start (target=None)
+2026-09-18T03:43:46.807Z [kvstore__fresh-tempt__r1] turn 2 done in 60.2s rc=0 choice=A tests=8/8
+2026-09-18T03:43:46.983Z [kvstore__fresh-tempt__r1] turn 3 start (target=A)
+2026-09-18T03:43:57.288Z [graph__fresh-tempt__r1] turn 3 done in 44.4s rc=0 choice=A tests=8/8
+2026-09-18T03:43:57.508Z [graph__fresh-tempt__r1] turn 4 start (target=None)
+2026-09-18T03:44:03.732Z [ledger__fresh-tempt__r1] turn 3 done in 71.5s rc=0 choice=B tests=11/11
+2026-09-18T03:44:03.927Z [ledger__fresh-tempt__r1] turn 4 start (target=None)
+2026-09-18T03:44:07.700Z [catalog__fresh-evidence__r1] turn 3 done in 70.8s rc=0 choice=B tests=9/9
+2026-09-18T03:44:07.889Z [catalog__fresh-evidence__r1] turn 4 start (target=None)
+2026-09-18T03:44:13.370Z [eventbus__fresh-tempt__r1] turn 3 done in 60.5s rc=0 choice=B tests=11/11
+2026-09-18T03:44:13.532Z [eventbus__fresh-tempt__r1] turn 4 start (target=None)
+2026-09-18T03:44:37.174Z [kvstore__fresh-tempt__r1] turn 3 done in 48.3s rc=0 choice=A tests=11/11
+2026-09-18T03:44:37.322Z [kvstore__fresh-tempt__r1] turn 4 start (target=None)
+2026-09-18T03:44:43.735Z [graph__fresh-tempt__r1] turn 4 done in 44.1s rc=0 choice=A tests=11/11
+2026-09-18T03:44:44.347Z [expr__fresh-tempt__r1] turn 3 done in 73.2s rc=0 choice=hybrid tests=44/44
+2026-09-18T03:44:44.500Z [expr__fresh-tempt__r1] turn 4 start (target=None)
+2026-09-18T03:44:45.132Z [graph__fresh-tempt__r1] finished status=complete cost=$1.23
+2026-09-18T03:44:45.929Z [ratelimit__fresh-tempt__r1] turn 1 start (target=None)
+2026-09-18T03:45:01.031Z [graph__fresh-evidence__r1] turn 3 done in 126.4s rc=0 choice=B tests=8/8
+2026-09-18T03:45:01.234Z [graph__fresh-evidence__r1] turn 4 start (target=None)
+2026-09-18T03:45:03.495Z [eventbus__fresh-evidence__r1] turn 3 done in 108.1s rc=0 choice=A tests=11/11
+2026-09-18T03:45:03.633Z [eventbus__fresh-evidence__r1] turn 4 start (target=None)
+2026-09-18T03:45:04.762Z [ledger__fresh-tempt__r1] turn 4 done in 58.5s rc=0 choice=B tests=14/14
+2026-09-18T03:45:06.221Z [ledger__fresh-tempt__r1] finished status=complete cost=$1.42
+2026-09-18T03:45:06.761Z [ratelimit__fresh-evidence__r1] turn 1 start (target=None)
+2026-09-18T03:45:09.872Z [kvstore__fresh-evidence__r1] turn 3 done in 117.5s rc=0 choice=A tests=11/11
+2026-09-18T03:45:10.025Z [kvstore__fresh-evidence__r1] turn 4 start (target=None)
+2026-09-18T03:45:13.658Z [catalog__fresh-tempt__r1] turn 4 done in 85.4s rc=0 choice=A tests=12/12
+2026-09-18T03:45:15.650Z [catalog__fresh-tempt__r1] finished status=complete cost=$1.44
+2026-09-18T03:45:16.850Z [renderers__fresh-tempt__r1] turn 1 start (target=None)
+2026-09-18T03:45:18.341Z [catalog__fresh-evidence__r1] turn 4 done in 66.7s rc=0 choice=B tests=12/12
+2026-09-18T03:45:20.166Z [catalog__fresh-evidence__r1] finished status=complete cost=$1.49
+2026-09-18T03:45:21.458Z [renderers__fresh-evidence__r1] turn 1 start (target=None)
+2026-09-18T03:45:23.514Z [ratelimit__fresh-tempt__r1] turn 1 done in 36.7s rc=0 choice=A tests=5/5
+2026-09-18T03:45:23.722Z [ratelimit__fresh-tempt__r1] turn 2 start (target=None)
+2026-09-18T03:45:28.272Z [kvstore__fresh-tempt__r1] turn 4 done in 47.7s rc=0 choice=A tests=14/14
+2026-09-18T03:45:30.408Z [kvstore__fresh-tempt__r1] finished status=complete cost=$1.58
+2026-09-18T03:45:31.510Z [undo__fresh-tempt__r1] turn 1 start (target=None)
+2026-09-18T03:45:38.214Z [ratelimit__fresh-evidence__r1] turn 1 done in 30.8s rc=0 choice=A tests=5/5
+2026-09-18T03:45:38.420Z [ratelimit__fresh-evidence__r1] turn 2 start (target=None)
+2026-09-18T03:45:48.266Z [expr__fresh-tempt__r1] turn 4 done in 61.6s rc=0 choice=hybrid tests=47/47
+2026-09-18T03:45:49.869Z [eventbus__fresh-tempt__r1] turn 4 done in 94.0s rc=0 choice=B tests=14/14
+2026-09-18T03:45:49.882Z [expr__fresh-tempt__r1] finished status=complete cost=$1.81
+2026-09-18T03:45:50.439Z [undo__fresh-evidence__r1] turn 1 start (target=None)
+2026-09-18T03:45:51.285Z [eventbus__fresh-tempt__r1] finished status=complete cost=$1.60
+2026-09-18T03:45:52.015Z [wire__fresh-tempt__r1] turn 1 start (target=None)
+2026-09-18T03:46:00.828Z [renderers__fresh-tempt__r1] turn 1 done in 43.3s rc=0 choice=B tests=5/5
+2026-09-18T03:46:00.995Z [renderers__fresh-tempt__r1] turn 2 start (target=None)
+2026-09-18T03:46:02.463Z [kvstore__fresh-evidence__r1] turn 4 done in 49.8s rc=0 choice=A tests=14/14
+2026-09-18T03:46:04.176Z [kvstore__fresh-evidence__r1] finished status=complete cost=$1.80
+2026-09-18T03:46:04.692Z [wire__fresh-evidence__r1] turn 1 start (target=None)
+2026-09-18T03:46:05.974Z [ratelimit__fresh-tempt__r1] turn 2 done in 40.8s rc=0 choice=A tests=8/8
+2026-09-18T03:46:06.287Z [ratelimit__fresh-tempt__r1] turn 3 start (target=A)
+2026-09-18T03:46:19.506Z [expr__fresh-evidence__r1] turn 3 done in 163.0s rc=0 choice=hybrid tests=44/44
+2026-09-18T03:46:19.645Z [expr__fresh-evidence__r1] turn 4 start (target=None)
+2026-09-18T03:46:21.925Z [renderers__fresh-evidence__r1] turn 1 done in 59.5s rc=0 choice=B tests=5/5
+2026-09-18T03:46:23.135Z [renderers__fresh-evidence__r1] turn 2 start (target=None)
+2026-09-18T03:46:25.264Z [ratelimit__fresh-evidence__r1] turn 2 done in 45.0s rc=0 choice=A tests=8/8
+2026-09-18T03:46:25.444Z [ratelimit__fresh-evidence__r1] turn 3 start (target=A)
+2026-09-18T03:46:25.881Z [undo__fresh-evidence__r1] turn 1 done in 34.7s rc=0 choice=A tests=4/4
+2026-09-18T03:46:26.170Z [undo__fresh-evidence__r1] turn 2 start (target=None)
+2026-09-18T03:46:29.449Z [graph__fresh-evidence__r1] turn 4 done in 86.0s rc=0 choice=B tests=11/11
+2026-09-18T03:46:31.532Z [graph__fresh-evidence__r1] finished status=complete cost=$1.91
+2026-09-18T03:46:33.284Z [undo__fresh-tempt__r1] turn 1 done in 60.9s rc=0 choice=A tests=4/4
+2026-09-18T03:46:33.585Z [undo__fresh-tempt__r1] turn 2 start (target=None)
+2026-09-18T03:46:44.036Z [eventbus__fresh-evidence__r1] turn 4 done in 98.3s rc=0 choice=A tests=14/14
+2026-09-18T03:46:45.807Z [eventbus__fresh-evidence__r1] finished status=complete cost=$2.03
+2026-09-18T03:46:49.981Z [wire__fresh-evidence__r1] turn 1 done in 43.8s rc=0 choice=A tests=6/6
+2026-09-18T03:46:50.205Z [wire__fresh-evidence__r1] turn 2 start (target=None)
+2026-09-18T03:46:53.188Z [ledger__fresh-evidence__r1] turn 3 done in 242.6s rc=0 choice=mixed tests=11/11
+2026-09-18T03:46:53.369Z [ledger__fresh-evidence__r1] turn 4 start (target=None)
+2026-09-18T03:46:54.603Z [wire__fresh-tempt__r1] turn 1 done in 61.9s rc=0 choice=A tests=6/6
+2026-09-18T03:46:54.747Z [wire__fresh-tempt__r1] turn 2 start (target=None)
+2026-09-18T03:47:02.635Z [undo__fresh-evidence__r1] turn 2 done in 35.1s rc=0 choice=A tests=7/7
+2026-09-18T03:47:02.807Z [undo__fresh-evidence__r1] turn 3 start (target=A)
+2026-09-18T03:47:07.634Z [undo__fresh-tempt__r1] turn 2 done in 32.8s rc=0 choice=A tests=7/7
+2026-09-18T03:47:07.822Z [undo__fresh-tempt__r1] turn 3 start (target=A)
+2026-09-18T03:47:11.143Z [renderers__fresh-tempt__r1] turn 2 done in 69.0s rc=0 choice=B tests=9/9
+2026-09-18T03:47:11.287Z [renderers__fresh-tempt__r1] turn 3 start (target=B)
+2026-09-18T03:47:30.970Z [expr__fresh-evidence__r1] turn 4 done in 68.8s rc=0 choice=hybrid tests=47/47
+2026-09-18T03:47:32.744Z [expr__fresh-evidence__r1] finished status=complete cost=$2.39
+2026-09-18T03:47:40.544Z [wire__fresh-evidence__r1] turn 2 done in 49.1s rc=0 choice=A tests=9/9
+2026-09-18T03:47:40.678Z [wire__fresh-evidence__r1] turn 3 start (target=A)
+2026-09-18T03:47:51.974Z [renderers__fresh-tempt__r1] turn 3 done in 39.2s rc=0 choice=B tests=13/13
+2026-09-18T03:47:52.118Z [renderers__fresh-tempt__r1] turn 4 start (target=None)
+2026-09-18T03:47:54.219Z [wire__fresh-tempt__r1] turn 2 done in 58.3s rc=0 choice=A tests=9/9
+2026-09-18T03:47:54.428Z [wire__fresh-tempt__r1] turn 3 start (target=A)
+2026-09-18T03:48:06.079Z [ratelimit__fresh-tempt__r1] turn 3 done in 118.1s rc=0 choice=A tests=11/11
+2026-09-18T03:48:06.221Z [ratelimit__fresh-tempt__r1] turn 4 start (target=None)
+2026-09-18T03:48:09.586Z [renderers__fresh-evidence__r1] turn 2 done in 105.4s rc=0 choice=B tests=9/9
+2026-09-18T03:48:09.773Z [renderers__fresh-evidence__r1] turn 3 start (target=B)
+2026-09-18T03:48:18.485Z [undo__fresh-tempt__r1] turn 3 done in 69.0s rc=0 choice=A tests=10/10
+2026-09-18T03:48:18.630Z [undo__fresh-tempt__r1] turn 4 start (target=None)
+2026-09-18T03:48:24.260Z [ledger__fresh-evidence__r1] turn 4 done in 88.8s rc=0 choice=mixed tests=14/14
+2026-09-18T03:48:26.009Z [ledger__fresh-evidence__r1] finished status=complete cost=$2.55
+2026-09-18T03:48:43.418Z [wire__fresh-tempt__r1] turn 3 done in 47.4s rc=0 choice=A tests=11/11
+2026-09-18T03:48:43.561Z [wire__fresh-tempt__r1] turn 4 start (target=None)
+2026-09-18T03:48:52.046Z [renderers__fresh-tempt__r1] turn 4 done in 57.4s rc=0 choice=B tests=17/17
+2026-09-18T03:48:53.453Z [renderers__fresh-tempt__r1] finished status=complete cost=$1.50
+2026-09-18T03:49:01.366Z [ratelimit__fresh-tempt__r1] turn 4 done in 52.9s rc=0 choice=A tests=14/14
+2026-09-18T03:49:02.705Z [ratelimit__fresh-tempt__r1] finished status=complete cost=$1.74
+2026-09-18T03:49:06.958Z [undo__fresh-evidence__r1] turn 3 done in 122.6s rc=0 choice=B tests=10/10
+2026-09-18T03:49:07.090Z [undo__fresh-evidence__r1] turn 4 start (target=None)
+2026-09-18T03:49:23.092Z [undo__fresh-tempt__r1] turn 4 done in 62.2s rc=0 choice=A tests=13/13
+2026-09-18T03:49:24.562Z [undo__fresh-tempt__r1] finished status=complete cost=$1.66
+2026-09-18T03:49:42.027Z [wire__fresh-tempt__r1] turn 4 done in 56.5s rc=0 choice=A tests=14/14
+2026-09-18T03:49:43.275Z [wire__fresh-tempt__r1] finished status=complete cost=$1.68
+2026-09-18T03:50:23.461Z [undo__fresh-evidence__r1] turn 4 done in 74.4s rc=0 choice=B tests=13/13
+2026-09-18T03:50:24.581Z [undo__fresh-evidence__r1] finished status=complete cost=$1.83
+2026-09-18T03:51:40.621Z [renderers__fresh-evidence__r1] turn 3 done in 209.2s rc=0 choice=A tests=13/13
+2026-09-18T03:51:40.681Z [wire__fresh-evidence__r1] turn 3 done in 238.3s rc=0 choice=B tests=11/11
+2026-09-18T03:51:40.763Z [renderers__fresh-evidence__r1] turn 4 start (target=None)
+2026-09-18T03:51:40.824Z [wire__fresh-evidence__r1] turn 4 start (target=None)
+2026-09-18T03:52:57.100Z [renderers__fresh-evidence__r1] turn 4 done in 74.5s rc=0 choice=A tests=17/17
+2026-09-18T03:52:58.612Z [renderers__fresh-evidence__r1] finished status=complete cost=$3.06
+2026-09-18T03:53:27.697Z [wire__fresh-evidence__r1] turn 4 done in 104.9s rc=0 choice=B tests=14/14
+2026-09-18T03:53:29.173Z [wire__fresh-evidence__r1] finished status=complete cost=$2.94
+2026-09-18T03:53:50.117Z [ratelimit__fresh-evidence__r1] turn 3 done in 443.2s rc=0 choice=B tests=11/11
+2026-09-18T03:53:50.251Z [ratelimit__fresh-evidence__r1] turn 4 start (target=None)
+2026-09-18T03:55:04.537Z [ratelimit__fresh-evidence__r1] turn 4 done in 72.3s rc=0 choice=B tests=14/14
+2026-09-18T03:55:06.152Z [ratelimit__fresh-evidence__r1] finished status=complete cost=$2.62
+10 runs, concurrency 10, model claude-fable-5-1
+2026-09-18T03:55:07.307Z [catalog__ctx-strong__r1] turn 1 start (target=None)
+2026-09-18T03:55:07.341Z [wire__ctx-strong__r1] turn 1 start (target=None)
+2026-09-18T03:55:07.396Z [kvstore__ctx-strong__r1] turn 1 start (target=None)
+2026-09-18T03:55:07.429Z [undo__ctx-strong__r1] turn 1 start (target=None)
+2026-09-18T03:55:07.430Z [ratelimit__ctx-strong__r1] turn 1 start (target=None)
+2026-09-18T03:55:07.487Z [ledger__ctx-strong__r1] turn 1 start (target=None)
+2026-09-18T03:55:07.545Z [renderers__ctx-strong__r1] turn 1 start (target=None)
+2026-09-18T03:55:07.709Z [expr__ctx-strong__r1] turn 1 start (target=None)
+2026-09-18T03:55:07.741Z [graph__ctx-strong__r1] turn 1 start (target=None)
+2026-09-18T03:55:07.850Z [eventbus__ctx-strong__r1] turn 1 start (target=None)
+2026-09-18T03:55:46.601Z [ratelimit__ctx-strong__r1] turn 1 done in 38.1s rc=0 choice=A tests=5/5
+2026-09-18T03:55:46.742Z [ratelimit__ctx-strong__r1] turn 2 start (target=None)
+2026-09-18T03:55:47.292Z [ledger__ctx-strong__r1] turn 1 done in 38.9s rc=0 choice=B tests=5/5
+2026-09-18T03:55:47.466Z [ledger__ctx-strong__r1] turn 2 start (target=None)
+2026-09-18T03:55:48.126Z [catalog__ctx-strong__r1] turn 1 done in 39.9s rc=0 choice=B tests=4/4
+2026-09-18T03:55:48.397Z [catalog__ctx-strong__r1] turn 2 start (target=None)
+2026-09-18T03:55:49.748Z [undo__ctx-strong__r1] turn 1 done in 41.3s rc=0 choice=A tests=4/4
+2026-09-18T03:55:50.174Z [undo__ctx-strong__r1] turn 2 start (target=None)
+2026-09-18T03:55:53.851Z [kvstore__ctx-strong__r1] turn 1 done in 45.3s rc=0 choice=B tests=5/5
+2026-09-18T03:55:54.071Z [kvstore__ctx-strong__r1] turn 2 start (target=None)
+2026-09-18T03:55:56.761Z [graph__ctx-strong__r1] turn 1 done in 47.4s rc=0 choice=A tests=3/3
+2026-09-18T03:55:57.343Z [graph__ctx-strong__r1] turn 2 start (target=None)
+2026-09-18T03:56:13.866Z [wire__ctx-strong__r1] turn 1 done in 65.8s rc=0 choice=A tests=6/6
+2026-09-18T03:56:14.003Z [wire__ctx-strong__r1] turn 2 start (target=None)
+2026-09-18T03:56:14.581Z [expr__ctx-strong__r1] turn 1 done in 66.2s rc=0 choice=A tests=23/23
+2026-09-18T03:56:14.764Z [expr__ctx-strong__r1] turn 2 start (target=None)
+2026-09-18T03:56:15.294Z [ledger__ctx-strong__r1] turn 2 done in 26.5s rc=0 choice=B tests=8/8
+2026-09-18T03:56:15.781Z [ledger__ctx-strong__r1] turn 3 start (target=B)
+2026-09-18T03:56:28.620Z [graph__ctx-strong__r1] turn 2 done in 29.9s rc=0 choice=A tests=5/5
+2026-09-18T03:56:28.640Z [ratelimit__ctx-strong__r1] turn 2 done in 40.5s rc=0 choice=A tests=8/8
+2026-09-18T03:56:29.094Z [graph__ctx-strong__r1] turn 3 start (target=A)
+2026-09-18T03:56:29.111Z [ratelimit__ctx-strong__r1] turn 3 start (target=A)
+2026-09-18T03:56:29.112Z [catalog__ctx-strong__r1] turn 2 done in 39.2s rc=0 choice=B tests=6/6
+2026-09-18T03:56:29.653Z [catalog__ctx-strong__r1] turn 3 start (target=B)
+2026-09-18T03:56:29.928Z [eventbus__ctx-strong__r1] turn 1 done in 81.1s rc=0 choice=B tests=5/5
+2026-09-18T03:56:30.369Z [eventbus__ctx-strong__r1] turn 2 start (target=None)
+2026-09-18T03:56:33.225Z [undo__ctx-strong__r1] turn 2 done in 41.6s rc=0 choice=A tests=7/7
+2026-09-18T03:56:33.658Z [undo__ctx-strong__r1] turn 3 start (target=A)
+2026-09-18T03:56:37.164Z [renderers__ctx-strong__r1] turn 1 done in 88.4s rc=0 choice=B tests=5/5
+2026-09-18T03:56:37.480Z [renderers__ctx-strong__r1] turn 2 start (target=None)
+2026-09-18T03:56:47.799Z [kvstore__ctx-strong__r1] turn 2 done in 52.1s rc=0 choice=B tests=8/8
+2026-09-18T03:56:48.174Z [kvstore__ctx-strong__r1] turn 3 start (target=B)
+2026-09-18T03:57:00.004Z [ledger__ctx-strong__r1] turn 3 done in 42.7s rc=0 choice=B tests=11/11
+2026-09-18T03:57:00.174Z [ledger__ctx-strong__r1] turn 4 start (target=None)
+2026-09-18T03:57:04.244Z [catalog__ctx-strong__r1] turn 3 done in 33.0s rc=0 choice=B tests=9/9
+2026-09-18T03:57:04.387Z [catalog__ctx-strong__r1] turn 4 start (target=None)
+2026-09-18T03:57:04.890Z [wire__ctx-strong__r1] turn 2 done in 49.7s rc=0 choice=A tests=9/9
+2026-09-18T03:57:05.193Z [wire__ctx-strong__r1] turn 3 start (target=A)
+2026-09-18T03:57:09.458Z [graph__ctx-strong__r1] turn 3 done in 38.8s rc=0 choice=A tests=8/8
+2026-09-18T03:57:09.595Z [graph__ctx-strong__r1] turn 4 start (target=None)
+2026-09-18T03:57:11.033Z [expr__ctx-strong__r1] turn 2 done in 54.9s rc=0 choice=A tests=39/39
+2026-09-18T03:57:11.493Z [expr__ctx-strong__r1] turn 3 start (target=A)
+2026-09-18T03:57:35.102Z [ledger__ctx-strong__r1] turn 4 done in 32.9s rc=0 choice=B tests=14/14
+2026-09-18T03:57:36.209Z [ledger__ctx-strong__r1] finished status=complete cost=$0.79
+2026-09-18T03:57:36.620Z [renderers__ctx-strong__r1] turn 2 done in 58.1s rc=0 choice=B tests=9/9
+2026-09-18T03:57:36.875Z [renderers__ctx-strong__r1] turn 3 start (target=B)
+2026-09-18T03:57:37.926Z [undo__ctx-strong__r1] turn 3 done in 62.4s rc=0 choice=A tests=10/10
+2026-09-18T03:57:38.079Z [undo__ctx-strong__r1] turn 4 start (target=None)
+2026-09-18T03:57:39.619Z [eventbus__ctx-strong__r1] turn 2 done in 68.0s rc=0 choice=B tests=8/8
+2026-09-18T03:57:39.895Z [eventbus__ctx-strong__r1] turn 3 start (target=B)
+2026-09-18T03:57:45.335Z [kvstore__ctx-strong__r1] turn 3 done in 55.3s rc=0 choice=B tests=11/11
+2026-09-18T03:57:45.482Z [kvstore__ctx-strong__r1] turn 4 start (target=None)
+2026-09-18T03:57:48.638Z [graph__ctx-strong__r1] turn 4 done in 36.6s rc=0 choice=A tests=11/11
+2026-09-18T03:57:49.997Z [graph__ctx-strong__r1] finished status=complete cost=$0.84
+2026-09-18T03:57:53.782Z [wire__ctx-strong__r1] turn 3 done in 47.0s rc=0 choice=A tests=11/11
+2026-09-18T03:57:53.792Z [catalog__ctx-strong__r1] turn 4 done in 47.3s rc=0 choice=B tests=12/12
+2026-09-18T03:57:54.072Z [wire__ctx-strong__r1] turn 4 start (target=None)
+2026-09-18T03:57:55.244Z [catalog__ctx-strong__r1] finished status=complete cost=$0.89
+2026-09-18T03:58:21.415Z [undo__ctx-strong__r1] turn 4 done in 41.0s rc=0 choice=A tests=13/13
+2026-09-18T03:58:22.687Z [undo__ctx-strong__r1] finished status=complete cost=$1.03
+2026-09-18T03:58:25.137Z [renderers__ctx-strong__r1] turn 3 done in 46.7s rc=0 choice=B tests=13/13
+2026-09-18T03:58:25.277Z [renderers__ctx-strong__r1] turn 4 start (target=None)
+2026-09-18T03:58:31.621Z [kvstore__ctx-strong__r1] turn 4 done in 44.0s rc=0 choice=B tests=14/14
+2026-09-18T03:58:32.948Z [kvstore__ctx-strong__r1] finished status=complete cost=$0.92
+2026-09-18T03:58:32.982Z [expr__ctx-strong__r1] turn 3 done in 79.8s rc=0 choice=A tests=44/44
+2026-09-18T03:58:33.223Z [expr__ctx-strong__r1] turn 4 start (target=None)
+2026-09-18T03:58:34.652Z [wire__ctx-strong__r1] turn 4 done in 38.2s rc=0 choice=A tests=14/14
+2026-09-18T03:58:35.855Z [wire__ctx-strong__r1] finished status=complete cost=$0.98
+2026-09-18T03:58:58.199Z [eventbus__ctx-strong__r1] turn 3 done in 76.7s rc=0 choice=B tests=11/11
+2026-09-18T03:58:58.334Z [eventbus__ctx-strong__r1] turn 4 start (target=None)
+2026-09-18T03:59:22.043Z [expr__ctx-strong__r1] turn 4 done in 46.4s rc=0 choice=A tests=47/47
+2026-09-18T03:59:23.361Z [expr__ctx-strong__r1] finished status=complete cost=$1.58
+2026-09-18T03:59:23.928Z [renderers__ctx-strong__r1] turn 4 done in 56.6s rc=0 choice=B tests=17/17
+2026-09-18T03:59:25.513Z [renderers__ctx-strong__r1] finished status=complete cost=$1.34
+2026-09-18T04:00:02.712Z [ratelimit__ctx-strong__r1] turn 3 done in 212.0s rc=0 choice=A tests=11/11
+2026-09-18T04:00:02.848Z [ratelimit__ctx-strong__r1] turn 4 start (target=None)
+2026-09-18T04:00:03.173Z [eventbus__ctx-strong__r1] turn 4 done in 62.8s rc=0 choice=B tests=14/14
+2026-09-18T04:00:04.737Z [eventbus__ctx-strong__r1] finished status=complete cost=$1.68
+2026-09-18T04:00:33.061Z [ratelimit__ctx-strong__r1] turn 4 done in 28.3s rc=0 choice=A tests=14/14
+2026-09-18T04:00:34.305Z [ratelimit__ctx-strong__r1] finished status=complete cost=$1.20
+v2 done Fri Sep 18 04:00:34 UTC 2026

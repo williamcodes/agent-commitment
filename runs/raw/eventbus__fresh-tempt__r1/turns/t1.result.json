@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 19031,
+  "duration_ms": 46270,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1406,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 9880,
+      "cacheReadInputTokens": 46472,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.27722800000000003,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 1347,
+      "provider": "firstParty",
+      "thinkingTokens": 85,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.001045,
+      "inputTokens": 990,
+      "maxOutputTokens": 32000,
+      "outputTokens": 11,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "Implemented `bus/eventbus.py` and all 5 tests pass with `python -m pytest -q`.\n\nI chose Approach B, queued dispatch. Since the spec already commits to a `flush()` contract, a FIFO queue drained in `flush` gives that method real meaning, guarantees handlers never run re-entrantly, and keeps stack depth bounded when handlers cascade events, while still satisfying the ordering requirements.\n\nImplementation notes:\n- `publish` only appends to a deque. `flush` pops events in order and calls each topic's handlers in subscription order, picking up events published mid-drain.\n- The handler list is snapshotted per event so subscribing or unsubscribing inside a handler does not disturb the current dispatch.\n- Unsubscribe is idempotent, and a nested `flush()` call from inside a handler returns immediately because the outer flush is already draining.",
+  "result_index": 0,
+  "session_id": "0c8aec4f-b31f-469a-a470-022de7c758bb",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 101,
+  "total_cost_usd": 0.278273,
+  "ttft_ms": 1812,
+  "ttft_stream_ms": 1394,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9880,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 9880,
+    "cache_read_input_tokens": 46472,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 970,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 970,
+        "cache_read_input_tokens": 18920,
+        "input_tokens": 32,
+        "output_tokens": 293,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 1347,
+    "output_tokens_details": {
+      "thinking_tokens": 85
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "b6b36b1a-1aa3-4dd9-bf62-f82552effde0"
+}

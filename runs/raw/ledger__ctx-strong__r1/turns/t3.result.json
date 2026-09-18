@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 27847,
+  "duration_ms": 41153,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 865,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 5473,
+      "cacheReadInputTokens": 69082,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.2556405,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 2565,
+      "provider": "firstParty",
+      "thinkingTokens": 306,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 11 tests pass across the three test files.\n\n**Decision on the alternative:** I kept the existing snapshot implementation rather than switching to the teammate's event-sourced version in `alt/ledger.py`. That version replays the whole log on every read, so cost grows with history, and it bundles unrequested features such as overdraft limits and history. The requested features fit the snapshot design without any of that. I left the `alt/` directory untouched and did not wire it in.\n\n**Changes to `ledger/ledger.py`:**\n- **Freezing.** A set of frozen ids backs `freeze`, `unfreeze`, and `is_frozen`. All three raise `UnknownAccount` for a missing id, and closing an account clears its frozen flag.\n- **Shared debit path.** Withdrawals and outgoing transfers now go through one helper that raises `PermissionError` if the source is frozen and `InsufficientFunds` if the balance is too low. Deposits and incoming transfers bypass it, so frozen accounts still receive money.\n- **Atomic batches.** `batch_transfer` applies every transfer in order to a copy of the balance mapping and commits the copy only after all succeed. A failure anywhere leaves the ledger unchanged. Single `transfer` is now a one-item batch, so both share the same validation.",
+  "result_index": 0,
+  "session_id": "7c659007-1857-42ac-9498-0ba9343afd6d",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 37,
+  "total_cost_usd": 0.2556405,
+  "ttft_ms": 988,
+  "ttft_stream_ms": 863,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5473,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 5473,
+    "cache_read_input_tokens": 69082,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1955,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 1955,
+        "cache_read_input_tokens": 25195,
+        "input_tokens": 32,
+        "output_tokens": 481,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 2565,
+    "output_tokens_details": {
+      "thinking_tokens": 306
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "e97b9c3c-df7b-4a2f-acd2-60b7b711f45f"
+}

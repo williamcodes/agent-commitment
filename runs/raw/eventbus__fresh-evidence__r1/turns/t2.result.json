@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 32090,
+  "duration_ms": 45547,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1359,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 8304,
+      "cacheReadInputTokens": 50891,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.31516275,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 2714,
+      "provider": "firstParty",
+      "thinkingTokens": 553,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.001106,
+      "inputTokens": 1016,
+      "maxOutputTokens": 32000,
+      "outputTokens": 18,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 8 tests pass, including the three new ones in tests/test_t2.py.\n\nWhat I changed in `bus/eventbus.py`:\n\n- **Wildcard subscriptions.** A subscription topic ending in `.*` now matches any published topic that starts with the prefix plus a dot. Matching is done at dispatch time, so `orders.*` also matches deeper topics like `orders.created.retry`. The spec only gives the single-segment example, so I chose the broader prefix match and documented it in the module docstring.\n- **Exact and wildcard both receive.** Dispatch gathers handlers from the exact topic and every matching wildcard pattern. Tokens are now increasing integers instead of anonymous objects, so the combined handler list is sorted by subscription order rather than exact-first.\n- **One-shot handlers.** The new `once(topic, handler)` wraps the handler so it unsubscribes itself on first invocation, guarded by a flag so it can never fire twice. It returns an unsubscribe function like `subscribe`, so a pending one-shot can be cancelled. It works with wildcard topics too.\n\nNothing under `tests/` was modified, and the bus remains standard-library only.",
+  "result_index": 0,
+  "session_id": "bfe90484-f4c3-4bba-8454-d2759f49179a",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 400,
+  "total_cost_usd": 0.31626875,
+  "ttft_ms": 2028,
+  "ttft_stream_ms": 1359,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 8304,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 8304,
+    "cache_read_input_tokens": 50891,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 2152,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 2152,
+        "cache_read_input_tokens": 19702,
+        "input_tokens": 32,
+        "output_tokens": 392,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 2714,
+    "output_tokens_details": {
+      "thinking_tokens": 553
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "216c98e1-cc55-4fee-94e8-485a43bdd3e2"
+}

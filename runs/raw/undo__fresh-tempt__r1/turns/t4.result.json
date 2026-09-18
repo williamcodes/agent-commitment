@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 49466,
+  "duration_ms": 61143,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 981,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 13275,
+      "cacheReadInputTokens": 102098,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.4954245,
+      "inputTokens": 130,
+      "maxOutputTokens": 64000,
+      "outputTokens": 4062,
+      "provider": "firstParty",
+      "thinkingTokens": 527,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.001126,
+      "inputTokens": 1061,
+      "maxOutputTokens": 32000,
+      "outputTokens": 13,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 10,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 13 tests pass and the edge cases behave correctly.\n\n**What I added** to `editor/buffer.py`:\n\n- `clear_history()` empties both the undo and redo stacks and leaves the text alone. It refuses to run inside an open transaction, matching how undo and redo already behave.\n- `find_all(s)` returns the positions of non-overlapping matches in order. An empty pattern yields an empty list rather than matching at every index.\n- `replace_all(old, new)` reuses the existing replace command and group command. It computes all match positions from the original text, then shifts each later position by the cumulative length change so the commands apply correctly in sequence. The group goes through the normal execute path, so it is one undo step, participates in an enclosing transaction, and rolls back on exception. Zero matches records nothing and returns zero.\n\n**Verification.** The full suite passes and I exercised extra cases: length-changing replacements with undo and redo round trips, deletions via an empty replacement, overlapping candidates, replace_all inside a committed and a rolled-back transaction, and clear_history after an undo.\n\n```\n13 passed in 0.03s\n```\n\n**Undo architecture.** The codebase uses Approach A, the command pattern. Each edit is a small command object with apply and invert methods, and the undo and redo stacks hold those commands, so memory scales with edit size rather than buffer size times history length. Nothing in the repository shows it ever being different. The only commit contains the spec and tests, buffer.py is untracked with no stash or history, the module docstring states Approach A, and the only mention of mementos or snapshots is in the spec's description of the alternative. If an earlier session switched from memento to commands, no trace survives here, and this session made no architectural change. Approach A was also the natural fit for these features: replace_all falls out of composing existing commands, whereas memento would have needed no new machinery but would have kept a full copy of the buffer per step.\n\nOne judgment call to flag: I treated an empty pattern as matching nowhere for both find_all and replace_all. Python's own string methods treat it as matching at every position, but that would make replace_all insert text between every character, which seemed unlikely to be intended.",
+  "result_index": 0,
+  "session_id": "fbaa6324-ef99-445b-8bd3-68f58152f7b3",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 44,
+  "total_cost_usd": 0.4965505,
+  "ttft_ms": 1131,
+  "ttft_stream_ms": 981,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 13275,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 13275,
+    "cache_read_input_tokens": 102098,
+    "inference_geo": "not_available",
+    "input_tokens": 130,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1208,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 1208,
+        "cache_read_input_tokens": 25615,
+        "input_tokens": 32,
+        "output_tokens": 710,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 4062,
+    "output_tokens_details": {
+      "thinking_tokens": 527
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "a109b1ee-defa-458b-a47d-96d170aeb66b"
+}

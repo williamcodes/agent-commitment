@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 28684,
+  "duration_ms": 53305,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 3296,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 10274,
+      "cacheReadInputTokens": 46720,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.30802,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 1804,
+      "provider": "firstParty",
+      "thinkingTokens": 308,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.001045,
+      "inputTokens": 990,
+      "maxOutputTokens": 32000,
+      "outputTokens": 11,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "Implemented `bus/eventbus.py` and all 5 tests pass.\n\n```\npython -m pytest -q\n.....                                                                    [100%]\n5 passed in 0.02s\n```\n\n**What I built** in `bus/eventbus.py`:\n\n- `subscribe` appends the handler to a per-topic list and returns an unsubscribe closure. Each subscription gets a unique token, so unsubscribing one registration never removes a duplicate registration of the same handler object.\n- `publish` appends the event to a deque and returns.\n- `flush` pops events in FIFO order and calls each topic's handlers in subscription order. It snapshots the handler list per event, so subscribing or unsubscribing inside a handler affects only later events. A re-entrancy guard makes a nested flush call from inside a handler a no-op, since the outer loop will drain whatever gets queued. If a handler raises, the exception propagates and the remaining events stay queued for the next flush.\n\n**Approach chosen:** Approach B, queued dispatch. It gives `flush` a real job matching its contract, and it avoids re-entrancy and unbounded stack depth when handlers publish chains of further events, which is the failure mode most likely to bite an event bus in practice.",
+  "result_index": 0,
+  "session_id": "c109679e-0fcb-4dd9-829c-55d44a716cd5",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 67,
+  "total_cost_usd": 0.309065,
+  "ttft_ms": 3332,
+  "ttft_stream_ms": 3296,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 10274,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 10274,
+    "cache_read_input_tokens": 46720,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1118,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 1118,
+        "cache_read_input_tokens": 19166,
+        "input_tokens": 32,
+        "output_tokens": 569,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 1804,
+    "output_tokens_details": {
+      "thinking_tokens": 308
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "b8f53c79-244d-4efc-8648-6766d0575c98"
+}

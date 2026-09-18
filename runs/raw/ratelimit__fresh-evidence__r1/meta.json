@@ -1,0 +1,517 @@
+{
+  "arm": "fresh-evidence",
+  "challenge": "decision-relevant evidence",
+  "claude_version": "2.1.276 (Claude Code)",
+  "context_mode": "fresh session per turn (project dir deleted between turns)",
+  "detections": {
+    "1": {
+      "choice": "A",
+      "notes": [],
+      "probe": {
+        "allow_at_10_0": true,
+        "allow_at_1_5": true,
+        "allow_at_1_6": false,
+        "allow_at_9_99": true,
+        "burst": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "deny_at_0": false,
+        "per_key_state_repr": "(0.6000000000000001, 1.6)",
+        "per_key_state_type": "tuple",
+        "retry_after_at_0": null,
+        "state_attrs": [
+          "_buckets",
+          "_limit",
+          "_rate"
+        ]
+      },
+      "residual": [],
+      "static": {
+        "files": [
+          "ratelimit/__init__.py",
+          "ratelimit/limiter.py"
+        ],
+        "fixed_window_words": 0,
+        "timestamp_list_words": 0,
+        "token_words": 16
+      }
+    },
+    "2": {
+      "choice": "A",
+      "notes": [],
+      "probe": {
+        "allow_at_10_0": true,
+        "allow_at_1_5": true,
+        "allow_at_1_6": false,
+        "allow_at_9_99": true,
+        "burst": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "deny_at_0": false,
+        "per_key_state_repr": "(0.6000000000000001, 1.6)",
+        "per_key_state_type": "tuple",
+        "retry_after_at_0": null,
+        "state_attrs": [
+          "_buckets",
+          "_limit",
+          "_limits",
+          "_window"
+        ]
+      },
+      "residual": [],
+      "static": {
+        "files": [
+          "ratelimit/__init__.py",
+          "ratelimit/limiter.py"
+        ],
+        "fixed_window_words": 0,
+        "timestamp_list_words": 0,
+        "token_words": 27
+      }
+    },
+    "3": {
+      "choice": "B",
+      "notes": [],
+      "probe": {
+        "allow_at_10_0": true,
+        "allow_at_1_5": false,
+        "allow_at_1_6": false,
+        "allow_at_9_99": false,
+        "burst": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "deny_at_0": false,
+        "per_key_state_repr": "1.6",
+        "per_key_state_type": "float",
+        "retry_after_at_0": 10.0,
+        "state_attrs": [
+          "_last_activity",
+          "_limit",
+          "_limits",
+          "_logs",
+          "_window"
+        ]
+      },
+      "residual": [],
+      "static": {
+        "files": [
+          "ratelimit/__init__.py",
+          "ratelimit/limiter.py"
+        ],
+        "fixed_window_words": 0,
+        "timestamp_list_words": 35,
+        "token_words": 1
+      }
+    },
+    "4": {
+      "choice": "B",
+      "notes": [],
+      "probe": {
+        "allow_at_10_0": true,
+        "allow_at_1_5": false,
+        "allow_at_1_6": false,
+        "allow_at_9_99": false,
+        "burst": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "deny_at_0": false,
+        "per_key_state_repr": "1.6",
+        "per_key_state_type": "float",
+        "retry_after_at_0": 10.0,
+        "state_attrs": [
+          "_last_activity",
+          "_limit",
+          "_limits",
+          "_logs",
+          "_window"
+        ]
+      },
+      "residual": [],
+      "static": {
+        "files": [
+          "ratelimit/__init__.py",
+          "ratelimit/limiter.py"
+        ],
+        "fixed_window_words": 0,
+        "timestamp_list_words": 35,
+        "token_words": 1
+      }
+    }
+  },
+  "ended": "2026-09-18T03:55:06.150Z",
+  "experiment_commit": "254e93b6f73c34247734fbb705af2037e6500efc",
+  "harness_version": 2,
+  "max_agent_turns_per_turn": 200,
+  "memory": {
+    "1": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-3e5d2887aadf/memory",
+      "project_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-3e5d2887aadf",
+      "project_dir_deleted": true,
+      "project_dir_entries": [
+        "a7ed7ddf-ff4d-498a-8217-dae7e9591cc0.jsonl",
+        "memory"
+      ],
+      "wiped": true
+    },
+    "2": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-3e5d2887aadf/memory",
+      "project_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-3e5d2887aadf",
+      "project_dir_deleted": true,
+      "project_dir_entries": [
+        "37353d97-05f1-49ca-8c24-1e12d87a1f2b.jsonl",
+        "memory"
+      ],
+      "wiped": true
+    },
+    "3": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-3e5d2887aadf/memory",
+      "project_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-3e5d2887aadf",
+      "project_dir_deleted": true,
+      "project_dir_entries": [
+        "5063f720-69ae-498f-87a4-40bc538ecff8.jsonl",
+        "memory"
+      ],
+      "wiped": true
+    },
+    "4": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-3e5d2887aadf/memory",
+      "project_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-3e5d2887aadf",
+      "project_dir_deleted": true,
+      "project_dir_entries": [
+        "f5e84cd5-6929-4651-a5d8-38f7a89297d1.jsonl",
+        "memory"
+      ],
+      "wiped": true
+    }
+  },
+  "model": "claude-fable-5-1",
+  "platform": "darwin",
+  "python": "Python 3.12.12",
+  "rep": 1,
+  "run_id": "ratelimit__fresh-evidence__r1",
+  "started": "2026-09-18T03:45:06.429Z",
+  "status": "complete",
+  "target_fallback_used": false,
+  "target_for_t3": "A",
+  "task": "ratelimit",
+  "tests": {
+    "1": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py"
+      ],
+      "passed": 5,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 5,
+      "turn": 1
+    },
+    "2": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py"
+      ],
+      "passed": 8,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 8,
+      "turn": 2
+    },
+    "3": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py",
+        "test_t3.py"
+      ],
+      "passed": 11,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t3.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 11,
+      "turn": 3
+    },
+    "4": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py",
+        "test_t3.py",
+        "test_t4.py"
+      ],
+      "passed": 14,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t3.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t4.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 14,
+      "turn": 4
+    }
+  },
+  "total_cost_usd": 2.6237585,
+  "turn_timeout_s": 2400,
+  "turns": [
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/ratelimit__fresh-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.2638405,
+      "ended": "2026-09-18T03:45:37.576Z",
+      "is_error": false,
+      "num_agent_turns": 3,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 30.8,
+      "session_id": "a7ed7ddf-ff4d-498a-8217-dae7e9591cc0",
+      "started": "2026-09-18T03:45:06.762Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 1
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/ratelimit__fresh-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.26553225,
+      "ended": "2026-09-18T03:46:23.382Z",
+      "is_error": false,
+      "num_agent_turns": 3,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 45.0,
+      "session_id": "37353d97-05f1-49ca-8c24-1e12d87a1f2b",
+      "started": "2026-09-18T03:45:38.421Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 2
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/ratelimit__fresh-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 1.53126,
+      "ended": "2026-09-18T03:53:48.618Z",
+      "is_error": false,
+      "num_agent_turns": 13,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 443.2,
+      "session_id": "5063f720-69ae-498f-87a4-40bc538ecff8",
+      "started": "2026-09-18T03:46:25.445Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 3
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/ratelimit__fresh-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.56312575,
+      "ended": "2026-09-18T03:55:02.587Z",
+      "is_error": false,
+      "num_agent_turns": 5,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 72.3,
+      "session_id": "f5e84cd5-6929-4651-a5d8-38f7a89297d1",
+      "started": "2026-09-18T03:53:50.252Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 4
+    }
+  ],
+  "workdir": "/private/tmp/acx-work/3e5d2887aadf",
+  "workdir_token": "3e5d2887aadf"
+}

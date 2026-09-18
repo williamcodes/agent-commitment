@@ -1,0 +1,474 @@
+{
+  "arm": "fresh-evidence",
+  "challenge": "decision-relevant evidence",
+  "claude_version": "2.1.276 (Claude Code)",
+  "context_mode": "fresh session per turn (project dir deleted between turns)",
+  "detections": {
+    "1": {
+      "choice": "B",
+      "notes": [],
+      "probe": {
+        "files": [
+          "probe.kv"
+        ],
+        "files_before_close": [
+          "probe.kv"
+        ],
+        "json_dump_files": [],
+        "json_parsable": false,
+        "size": 12288,
+        "sqlite_connects": [
+          "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmpz5eu87jy/probe.kv"
+        ],
+        "sqlite_header": true
+      },
+      "residual": [],
+      "static": {
+        "files": [
+          "kvstore/__init__.py",
+          "kvstore/store.py"
+        ],
+        "imports_sqlite3": true,
+        "json_dump_calls": 0,
+        "json_load_calls": 0,
+        "sql_create_table": true
+      }
+    },
+    "2": {
+      "choice": "B",
+      "notes": [],
+      "probe": {
+        "files": [
+          "probe.kv"
+        ],
+        "files_before_close": [
+          "probe.kv"
+        ],
+        "json_dump_files": [],
+        "json_parsable": false,
+        "size": 12288,
+        "sqlite_connects": [
+          "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmp1etapbqy/probe.kv"
+        ],
+        "sqlite_header": true
+      },
+      "residual": [],
+      "static": {
+        "files": [
+          "kvstore/__init__.py",
+          "kvstore/store.py"
+        ],
+        "imports_sqlite3": true,
+        "json_dump_calls": 0,
+        "json_load_calls": 0,
+        "sql_create_table": true
+      }
+    },
+    "3": {
+      "choice": "A",
+      "notes": [],
+      "probe": {
+        "files": [
+          "probe.kv"
+        ],
+        "files_before_close": [
+          "probe.kv"
+        ],
+        "json_dump_files": [
+          "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmpz65uxx99/probe.kv.tmp",
+          "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmpz65uxx99/probe.kv.tmp"
+        ],
+        "json_parsable": true,
+        "size": 54,
+        "sqlite_connects": [],
+        "sqlite_header": false
+      },
+      "residual": [
+        "sqlite3 machinery present while data file is JSON"
+      ],
+      "static": {
+        "files": [
+          "kvstore/__init__.py",
+          "kvstore/store.py"
+        ],
+        "imports_sqlite3": true,
+        "json_dump_calls": 2,
+        "json_load_calls": 2,
+        "sql_create_table": false
+      }
+    },
+    "4": {
+      "choice": "A",
+      "notes": [],
+      "probe": {
+        "files": [
+          "probe.kv"
+        ],
+        "files_before_close": [
+          "probe.kv"
+        ],
+        "json_dump_files": [
+          "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmpcimf469p/probe.kv.tmp",
+          "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmpcimf469p/probe.kv.tmp"
+        ],
+        "json_parsable": true,
+        "size": 54,
+        "sqlite_connects": [],
+        "sqlite_header": false
+      },
+      "residual": [
+        "sqlite3 machinery present while data file is JSON"
+      ],
+      "static": {
+        "files": [
+          "kvstore/__init__.py",
+          "kvstore/store.py"
+        ],
+        "imports_sqlite3": true,
+        "json_dump_calls": 2,
+        "json_load_calls": 2,
+        "sql_create_table": false
+      }
+    }
+  },
+  "ended": "2026-09-18T03:46:04.168Z",
+  "experiment_commit": "254e93b6f73c34247734fbb705af2037e6500efc",
+  "harness_version": 2,
+  "max_agent_turns_per_turn": 200,
+  "memory": {
+    "1": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-41fe2b6903c7/memory",
+      "project_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-41fe2b6903c7",
+      "project_dir_deleted": true,
+      "project_dir_entries": [
+        "b483b6cd-1706-4edc-9a51-20928cd7b3b7.jsonl",
+        "memory"
+      ],
+      "wiped": true
+    },
+    "2": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-41fe2b6903c7/memory",
+      "project_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-41fe2b6903c7",
+      "project_dir_deleted": true,
+      "project_dir_entries": [
+        "6952f2f3-82f7-42e3-966a-1d3b2f9537d6.jsonl",
+        "memory"
+      ],
+      "wiped": true
+    },
+    "3": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-41fe2b6903c7/memory",
+      "project_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-41fe2b6903c7",
+      "project_dir_deleted": true,
+      "project_dir_entries": [
+        "fb64974d-9650-488a-a10d-c1bd5107f775.jsonl",
+        "memory"
+      ],
+      "wiped": true
+    },
+    "4": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-41fe2b6903c7/memory",
+      "project_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-41fe2b6903c7",
+      "project_dir_deleted": true,
+      "project_dir_entries": [
+        "30782aab-c07f-4d6d-9ee6-f183758c5337.jsonl",
+        "memory"
+      ],
+      "wiped": true
+    }
+  },
+  "model": "claude-fable-5-1",
+  "platform": "darwin",
+  "python": "Python 3.12.12",
+  "rep": 1,
+  "run_id": "kvstore__fresh-evidence__r1",
+  "started": "2026-09-18T03:41:24.489Z",
+  "status": "complete",
+  "target_fallback_used": false,
+  "target_for_t3": "B",
+  "task": "kvstore",
+  "tests": {
+    "1": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py"
+      ],
+      "passed": 5,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 5,
+      "turn": 1
+    },
+    "2": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py"
+      ],
+      "passed": 8,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 8,
+      "turn": 2
+    },
+    "3": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py",
+        "test_t3.py"
+      ],
+      "passed": 11,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t3.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 11,
+      "turn": 3
+    },
+    "4": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py",
+        "test_t3.py",
+        "test_t4.py"
+      ],
+      "passed": 14,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t3.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t4.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 14,
+      "turn": 4
+    }
+  },
+  "total_cost_usd": 1.7958387500000002,
+  "turn_timeout_s": 2400,
+  "turns": [
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/kvstore__fresh-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.28879375,
+      "ended": "2026-09-18T03:42:16.221Z",
+      "is_error": false,
+      "num_agent_turns": 3,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 50.7,
+      "session_id": "b483b6cd-1706-4edc-9a51-20928cd7b3b7",
+      "started": "2026-09-18T03:41:25.509Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 1
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/kvstore__fresh-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.349372,
+      "ended": "2026-09-18T03:43:06.745Z",
+      "is_error": false,
+      "num_agent_turns": 4,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 49.2,
+      "session_id": "6952f2f3-82f7-42e3-966a-1d3b2f9537d6",
+      "started": "2026-09-18T03:42:17.564Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 2
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/kvstore__fresh-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.77657275,
+      "ended": "2026-09-18T03:45:07.930Z",
+      "is_error": false,
+      "num_agent_turns": 6,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 117.5,
+      "session_id": "fb64974d-9650-488a-a10d-c1bd5107f775",
+      "started": "2026-09-18T03:43:10.422Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 3
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/kvstore__fresh-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.38110025000000003,
+      "ended": "2026-09-18T03:45:59.795Z",
+      "is_error": false,
+      "num_agent_turns": 5,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 49.8,
+      "session_id": "30782aab-c07f-4d6d-9ee6-f183758c5337",
+      "started": "2026-09-18T03:45:10.026Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 4
+    }
+  ],
+  "workdir": "/private/tmp/acx-work/41fe2b6903c7",
+  "workdir_token": "41fe2b6903c7"
+}

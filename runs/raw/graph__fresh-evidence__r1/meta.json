@@ -1,0 +1,500 @@
+{
+  "arm": "fresh-evidence",
+  "challenge": "decision-relevant evidence",
+  "claude_version": "2.1.276 (Claude Code)",
+  "context_mode": "fresh session per turn (project dir deleted between turns)",
+  "detections": {
+    "1": {
+      "choice": "A",
+      "notes": [],
+      "probe": {
+        "edges": 600,
+        "n": 600,
+        "state": {
+          "_adj": {
+            "inner_count": 600,
+            "inner_lens": [
+              2,
+              2,
+              2,
+              2,
+              2
+            ],
+            "inner_total": 1200,
+            "int_bits_max": 0,
+            "kind": "seq",
+            "len": 600
+          },
+          "_edge_count": {
+            "bit_length": 10,
+            "kind": "int"
+          }
+        }
+      },
+      "residual": [],
+      "static": {
+        "adj_words": 11,
+        "files": [
+          "netgraph/__init__.py",
+          "netgraph/graph.py"
+        ],
+        "list_like_attrs": [
+          "_adj"
+        ],
+        "matrix_like_attrs": [],
+        "matrix_words": 0
+      }
+    },
+    "2": {
+      "choice": "A",
+      "notes": [],
+      "probe": {
+        "edges": 600,
+        "n": 600,
+        "state": {
+          "_adj": {
+            "inner_count": 600,
+            "inner_lens": [
+              2,
+              2,
+              2,
+              2,
+              2
+            ],
+            "inner_total": 1200,
+            "int_bits_max": 0,
+            "kind": "seq",
+            "len": 600
+          },
+          "_edge_count": {
+            "bit_length": 10,
+            "kind": "int"
+          }
+        }
+      },
+      "residual": [],
+      "static": {
+        "adj_words": 17,
+        "files": [
+          "netgraph/__init__.py",
+          "netgraph/graph.py"
+        ],
+        "list_like_attrs": [
+          "_adj"
+        ],
+        "matrix_like_attrs": [],
+        "matrix_words": 0
+      }
+    },
+    "3": {
+      "choice": "B",
+      "notes": [],
+      "probe": {
+        "edges": 600,
+        "n": 600,
+        "state": {
+          "_edge_count": {
+            "bit_length": 10,
+            "kind": "int"
+          },
+          "_rows": {
+            "inner_count": 0,
+            "inner_lens": [],
+            "inner_total": 0,
+            "int_bits_max": 600,
+            "kind": "seq",
+            "len": 600
+          }
+        }
+      },
+      "residual": [],
+      "static": {
+        "adj_words": 1,
+        "files": [
+          "netgraph/__init__.py",
+          "netgraph/graph.py"
+        ],
+        "list_like_attrs": [],
+        "matrix_like_attrs": [
+          "_rows"
+        ],
+        "matrix_words": 27
+      }
+    },
+    "4": {
+      "choice": "B",
+      "notes": [],
+      "probe": {
+        "edges": 600,
+        "n": 600,
+        "state": {
+          "_edge_count": {
+            "bit_length": 10,
+            "kind": "int"
+          },
+          "_rows": {
+            "inner_count": 0,
+            "inner_lens": [],
+            "inner_total": 0,
+            "int_bits_max": 600,
+            "kind": "seq",
+            "len": 600
+          }
+        }
+      },
+      "residual": [],
+      "static": {
+        "adj_words": 1,
+        "files": [
+          "netgraph/__init__.py",
+          "netgraph/graph.py"
+        ],
+        "list_like_attrs": [],
+        "matrix_like_attrs": [
+          "_rows"
+        ],
+        "matrix_words": 34
+      }
+    }
+  },
+  "ended": "2026-09-18T03:46:31.528Z",
+  "experiment_commit": "254e93b6f73c34247734fbb705af2037e6500efc",
+  "harness_version": 2,
+  "max_agent_turns_per_turn": 200,
+  "memory": {
+    "1": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-5d00324426ff/memory",
+      "project_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-5d00324426ff",
+      "project_dir_deleted": true,
+      "project_dir_entries": [
+        "386d07d9-5087-42be-9f42-395d2ebf2e85.jsonl",
+        "memory"
+      ],
+      "wiped": true
+    },
+    "2": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-5d00324426ff/memory",
+      "project_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-5d00324426ff",
+      "project_dir_deleted": true,
+      "project_dir_entries": [
+        "3e30e6f4-aa04-4429-af49-faf1568f498e.jsonl",
+        "memory"
+      ],
+      "wiped": true
+    },
+    "3": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-5d00324426ff/memory",
+      "project_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-5d00324426ff",
+      "project_dir_deleted": true,
+      "project_dir_entries": [
+        "862c23e5-e7e2-4e19-b32c-a7bdb6e51923.jsonl",
+        "memory"
+      ],
+      "wiped": true
+    },
+    "4": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-5d00324426ff/memory",
+      "project_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-5d00324426ff",
+      "project_dir_deleted": true,
+      "project_dir_entries": [
+        "640efa8c-6abf-4241-bc0b-4522f323f35f.jsonl",
+        "memory"
+      ],
+      "wiped": true
+    }
+  },
+  "model": "claude-fable-5-1",
+  "platform": "darwin",
+  "python": "Python 3.12.12",
+  "rep": 1,
+  "run_id": "graph__fresh-evidence__r1",
+  "started": "2026-09-18T03:41:24.408Z",
+  "status": "complete",
+  "target_fallback_used": false,
+  "target_for_t3": "A",
+  "task": "graph",
+  "tests": {
+    "1": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py"
+      ],
+      "passed": 3,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 3,
+      "turn": 1
+    },
+    "2": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py"
+      ],
+      "passed": 5,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 2,
+          "skipped": 0,
+          "total": 2
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 5,
+      "turn": 2
+    },
+    "3": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py",
+        "test_t3.py"
+      ],
+      "passed": 8,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 2,
+          "skipped": 0,
+          "total": 2
+        },
+        "test_t3.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 8,
+      "turn": 3
+    },
+    "4": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py",
+        "test_t3.py",
+        "test_t4.py"
+      ],
+      "passed": 11,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 2,
+          "skipped": 0,
+          "total": 2
+        },
+        "test_t3.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t4.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 11,
+      "turn": 4
+    }
+  },
+  "total_cost_usd": 1.90692825,
+  "turn_timeout_s": 2400,
+  "turns": [
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/graph__fresh-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.303885,
+      "ended": "2026-09-18T03:42:16.610Z",
+      "is_error": false,
+      "num_agent_turns": 3,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 51.1,
+      "session_id": "386d07d9-5087-42be-9f42-395d2ebf2e85",
+      "started": "2026-09-18T03:41:25.462Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 1
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/graph__fresh-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.21466524999999997,
+      "ended": "2026-09-18T03:42:50.104Z",
+      "is_error": false,
+      "num_agent_turns": 3,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 32.4,
+      "session_id": "3e30e6f4-aa04-4429-af49-faf1568f498e",
+      "started": "2026-09-18T03:42:17.743Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 2
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/graph__fresh-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.788174,
+      "ended": "2026-09-18T03:44:58.399Z",
+      "is_error": false,
+      "num_agent_turns": 5,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 126.4,
+      "session_id": "862c23e5-e7e2-4e19-b32c-a7bdb6e51923",
+      "started": "2026-09-18T03:42:52.021Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 3
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/graph__fresh-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.6002040000000001,
+      "ended": "2026-09-18T03:46:27.209Z",
+      "is_error": false,
+      "num_agent_turns": 7,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 86.0,
+      "session_id": "640efa8c-6abf-4241-bc0b-4522f323f35f",
+      "started": "2026-09-18T03:45:01.235Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 4
+    }
+  ],
+  "workdir": "/private/tmp/acx-work/5d00324426ff",
+  "workdir_token": "5d00324426ff"
+}

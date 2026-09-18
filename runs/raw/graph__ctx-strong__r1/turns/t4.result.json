@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 22543,
+  "duration_ms": 35313,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 970,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 2537,
+      "cacheReadInputTokens": 112410,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.1747725,
+      "inputTokens": 98,
+      "maxOutputTokens": 64000,
+      "outputTokens": 1899,
+      "provider": "firstParty",
+      "thinkingTokens": 198,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 4,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All eleven tests pass across the four test files, and I separately checked self-loop and empty-graph edge cases by hand.\n\nChanges in `netgraph/graph.py`:\n- **`is_bipartite()`** runs a breadth-first 2-colouring over every component. It returns False when an edge joins two same-coloured nodes, which also catches self-loops.\n- **`subgraph(nodes)`** builds a mapping from old ids to their position in the given list, creates a fresh graph of that size, and copies each edge whose endpoints are both in the list. Duplicate ids in the list raise `ValueError`, and out-of-range ids raise `IndexError` like the rest of the API.\n- **`common_neighbors(u, v)`** intersects the two neighbour sets and sorts the result.\n\n**Representation answer.** The codebase uses Approach A, adjacency lists, implemented as one Python `set` of neighbours per node. This never changed during the project. I chose it at the start because the spec's core operations, neighbour listing and breadth-first search, are degree-driven, and I kept it when the teammate's Approach B matrix file appeared because the dynamic node features added in the third round cost O(n) for `add_node` and O(n\u00b2) for `remove_node` on a matrix, versus time proportional to the graph's actual size with sets. The `alt/graph.py` file was never wired in and remains untouched outside the package.",
+  "result_index": 0,
+  "session_id": "9acf9c43-ce51-43b4-a28a-90aa4f234f74",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 42,
+  "total_cost_usd": 0.1747725,
+  "ttft_ms": 2238,
+  "ttft_stream_ms": 970,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2537,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 2537,
+    "cache_read_input_tokens": 112410,
+    "inference_geo": "not_available",
+    "input_tokens": 98,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 423,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 423,
+        "cache_read_input_tokens": 29256,
+        "input_tokens": 32,
+        "output_tokens": 459,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 1899,
+    "output_tokens_details": {
+      "thinking_tokens": 198
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "5532f160-481a-4d44-bbb8-31ae00e9cf2f"
+}

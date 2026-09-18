@@ -1,0 +1,1 @@
+- [Wire format history](wire-format-history.md) — codec is JSON lines (B); switch from binary (A) inferred from spec rewrite, not provable from git

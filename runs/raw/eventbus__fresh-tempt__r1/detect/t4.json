@@ -1,0 +1,27 @@
+{
+  "choice": "B",
+  "notes": [],
+  "probe": {
+    "handled_after_flush": [
+      1
+    ],
+    "handled_before_flush": [],
+    "kind_timing": {
+      "once": "queued",
+      "wildcard": "queued"
+    },
+    "nested_order": [
+      "a-done",
+      "b"
+    ]
+  },
+  "residual": [],
+  "static": {
+    "deque_or_queue": true,
+    "files": [
+      "bus/__init__.py",
+      "bus/eventbus.py"
+    ],
+    "queue_words": 9
+  }
+}

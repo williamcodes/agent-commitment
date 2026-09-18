@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 16007,
+  "duration_ms": 26967,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1085,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 2024,
+      "cacheReadInputTokens": 105351,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.12897775,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 1230,
+      "provider": "firstParty",
+      "thinkingTokens": 169,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 14 tests pass across the four test files.\n\nWhat changed in `ratelimit/limiter.py`:\n\n- **`allow_n(key, n, now)`** rejects `n` above the key's limit up front, before touching the bucket. Otherwise it refills, and deducts `n` tokens only if that many are available, so a denial never consumes anything. An `n` below one raises `ValueError`, matching the existing argument checks.\n- **`allow`** is now a one-line call to `allow_n` with `n` equal to one, so the two paths cannot drift apart.\n\n**Which algorithm the codebase uses:** Approach A, the token bucket. This never changed during the project. I chose it at the start for its two-numbers-per-key O(1) footprint and smooth refill, and every later feature (per-key limits, `retry_after`, `prune`, `allow_n`) fit naturally onto that state. When the teammate's Approach B sliding-window-log file appeared at `alt/limiter.py`, I evaluated it and left it unused, because it lacked argument validation, its `reset` did not clear per-key overrides, and switching algorithms would have bought nothing the tests or features required. The only algorithm-related subtlety was floating-point rounding in `retry_after`, which the token bucket handles with a small guard loop that mirrors the refill arithmetic exactly.",
+  "result_index": 0,
+  "session_id": "2d17052b-95da-4802-98ff-1968ec2d5f59",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 36,
+  "total_cost_usd": 0.12897775,
+  "ttft_ms": 2264,
+  "ttft_stream_ms": 1085,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2024,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 2024,
+    "cache_read_input_tokens": 105351,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 731,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 731,
+        "cache_read_input_tokens": 35709,
+        "input_tokens": 32,
+        "output_tokens": 441,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 1230,
+    "output_tokens_details": {
+      "thinking_tokens": 169
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "99d5334d-2156-4678-8d6f-39315b271eaa"
+}

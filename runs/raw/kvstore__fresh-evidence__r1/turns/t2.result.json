@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 31388,
+  "duration_ms": 46378,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1079,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 9317,
+      "cacheReadInputTokens": 71832,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.348278,
+      "inputTokens": 98,
+      "maxOutputTokens": 64000,
+      "outputTokens": 2860,
+      "provider": "firstParty",
+      "thinkingTokens": 95,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.001094,
+      "inputTokens": 1029,
+      "maxOutputTokens": 32000,
+      "outputTokens": 13,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 4,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 8 tests pass, including the three new namespace tests in tests/test_t2.py.\n\n**What I changed** in `kvstore/store.py`:\n\n- **Schema:** the `kv` table now has columns `(ns, key, value)` with a composite primary key on `(ns, key)`. Data still lives in the single SQLite file, and the rollback-journal mode is unchanged, so no side files appear.\n- **Existing methods:** `set`, `get`, `delete`, and `keys` take a keyword argument `ns` defaulting to `\"default\"`. Every query filters on the namespace, so identical keys in different namespaces are fully isolated.\n- **New methods:** `count(ns=\"default\")` returns the number of keys in a namespace. `namespaces()` returns the sorted distinct namespaces that currently hold at least one key, so a namespace disappears once its last key is deleted.\n- **Legacy migration:** on open, if the file has the old two-column `kv` table, it is renamed, recreated with the new schema, and its rows are copied into the `\"default\"` namespace inside one transaction. I verified this path with a hand-built old-format file, which upgraded correctly and left only the single data file on disk.\n\nNothing under `tests/` was touched.",
+  "result_index": 0,
+  "session_id": "6952f2f3-82f7-42e3-966a-1d3b2f9537d6",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 208,
+  "total_cost_usd": 0.349372,
+  "ttft_ms": 1147,
+  "ttft_stream_ms": 1079,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9317,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 9317,
+    "cache_read_input_tokens": 71832,
+    "inference_geo": "not_available",
+    "input_tokens": 98,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 2053,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 2053,
+        "cache_read_input_tokens": 20815,
+        "input_tokens": 32,
+        "output_tokens": 406,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 2860,
+    "output_tokens_details": {
+      "thinking_tokens": 95
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "cf56e89b-295e-47c5-ab81-fa140a00a34f"
+}

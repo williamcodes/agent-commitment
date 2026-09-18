@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 217801,
+  "duration_ms": 237171,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 893,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 28400,
+      "cacheReadInputTokens": 248218,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 1.5245845,
+      "inputTokens": 258,
+      "maxOutputTokens": 64000,
+      "outputTokens": 17839,
+      "provider": "firstParty",
+      "thinkingTokens": 9727,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.0011819999999999999,
+      "inputTokens": 1102,
+      "maxOutputTokens": 32000,
+      "outputTokens": 16,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 9,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "Done. All 11 tests pass on the venv's Python 3.12, and I switched the wire format from compact binary to JSON lines while adding the two features.\n\n**The big call: I replaced the format, not just added functions.** The product owner's update is not compatible with the existing binary codec. A file that technicians open in a text editor and patch with sed must be UTF-8 text with one record per line, and the spec's \"Approach B\" is exactly that. The old format's header count and CRC32 footer would also be invalidated by every hand edit, so they had to go, not just the packing. The reason the spec gave for choosing binary, compactness, is explicitly gone. Keeping the old format and bolting on a text exporter would have left the on-disk files unreadable, which was the actual requirement.\n\n**What the new format looks like.** One JSON object per line, fields always in the order ts, sensor_id, value, flags, newline-terminated, no header:\n\n```\n{\"ts\": 1700000000, \"sensor_id\": 7, \"value\": 21.5, \"flags\": 0}\n{\"ts\": 4294967295, \"sensor_id\": 12, \"value\": NaN, \"flags\": 128}\n```\n\nDesign points that follow from \"technicians edit this by hand\":\n\n- **Lenient reading.** Blank lines are skipped, CRLF endings and a missing final newline are accepted, and an integer written where a float belongs is coerced. A file that has been through Notepad or vim still decodes.\n- **Strict validation with line numbers.** Every non-blank line must be a JSON object with exactly the four fields in range. Errors read like `line 2: sensor_id must be an int in [0, 65535], got 70000`, so a technician knows which line to fix.\n- **No header line.** A magic or version line would be dropped by any grep into a new file, making grep output invalid. An empty file is a valid encoding of zero records.\n- **Exact round trip preserved.** Floats are written with Python's shortest repr, so they round-trip with equality. NaN and infinities use the JSON extensions Python's json module reads back.\n- **The public interface is unchanged.** The function names and types are the same, and the T1 and T2 tests pass with no modification.\n\n**The two new functions.** `dump_text` renders one `key=value` line per record, for example `ts=1700000000 sensor_id=7 value=21.5 flags=0`. `filter_sensor` decodes, keeps matching records in order, and re-encodes, so its output is always a valid file and it rejects a boolean sensor id. Streaming decode now iterates the file line by line rather than reading it all at once.\n\n**Trade-off you should know about.** With no count or checksum, truncation that cuts a record is still caught, since the line is not valid JSON, but a file cut exactly at a line boundary is indistinguishable from a shorter file. Record offsets are no longer computable, and files are roughly three times larger. I documented this in SPEC.md, which I rewrote so it records the new requirement and the concrete format instead of a stale \"pick one\" section.\n\n**Other changes.** I added a .gitignore for the pycache and pytest cache directories that were cluttering git status. Nothing is committed. The working tree holds the new codec, the spec update, the .gitignore, and the two untracked test files that were already present.",
+  "result_index": 0,
+  "session_id": "fa92eeae-c128-429a-b836-79a6dbdd83a1",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 31,
+  "total_cost_usd": 1.5257665,
+  "ttft_ms": 1093,
+  "ttft_stream_ms": 893,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 28400,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 28400,
+    "cache_read_input_tokens": 248218,
+    "inference_geo": "not_available",
+    "input_tokens": 258,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1710,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 1710,
+        "cache_read_input_tokens": 40239,
+        "input_tokens": 32,
+        "output_tokens": 1065,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 17839,
+    "output_tokens_details": {
+      "thinking_tokens": 9727
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "0fdc46d6-4ed3-465f-b0fb-b4ef33fa6014"
+}

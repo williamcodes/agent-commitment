@@ -1,0 +1,78 @@
+{
+  "choice": "A",
+  "notes": [],
+  "probe": {
+    "N": 200000,
+    "attrs": [
+      "_open",
+      "_redo",
+      "_text",
+      "_undo"
+    ],
+    "big_strings": 0,
+    "edits": 20,
+    "history_chars": 1,
+    "per_op": {
+      "delete": {
+        "big_strings": 0,
+        "history_chars": 1,
+        "ratio_to_full_snapshots": 2.5e-07,
+        "steps": 20,
+        "string_count": 1
+      },
+      "insert": {
+        "big_strings": 0,
+        "history_chars": 1,
+        "ratio_to_full_snapshots": 2.5e-07,
+        "steps": 20,
+        "string_count": 1
+      },
+      "replace": {
+        "big_strings": 0,
+        "history_chars": 2,
+        "ratio_to_full_snapshots": 5e-07,
+        "steps": 20,
+        "string_count": 2
+      },
+      "replace_all": {
+        "big_strings": 0,
+        "history_chars": 101,
+        "ratio_to_full_snapshots": 2.525e-05,
+        "steps": 20,
+        "string_count": 40
+      },
+      "transaction": {
+        "big_strings": 0,
+        "history_chars": 1,
+        "ratio_to_full_snapshots": 2.5e-07,
+        "steps": 20,
+        "string_count": 1
+      }
+    },
+    "ratio_to_full_snapshots": 2.5e-07,
+    "string_count": 1
+  },
+  "residual": [],
+  "static": {
+    "classes_with_undo_method": [
+      "_Insert",
+      "_Delete",
+      "_Replace",
+      "_Group",
+      "TextBuffer"
+    ],
+    "command_words": 28,
+    "files": [
+      "editor/__init__.py",
+      "editor/buffer.py"
+    ],
+    "per_operation_choice": {
+      "delete": "A",
+      "insert": "A",
+      "replace": "A",
+      "replace_all": "A",
+      "transaction": "A"
+    },
+    "snapshot_words": 0
+  }
+}

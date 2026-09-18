@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 15586,
+  "duration_ms": 29350,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 879,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 9701,
+      "cacheReadInputTokens": 46398,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.2627795,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 1130,
+      "provider": "firstParty",
+      "thinkingTokens": 32,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.0010609999999999999,
+      "inputTokens": 991,
+      "maxOutputTokens": 32000,
+      "outputTokens": 14,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 5 tests pass. I implemented `ratelimit/limiter.py` as a token bucket.\n\nI chose Approach A, the token bucket, because it gives O(1) time and constant memory per key with just two numbers to track, and its continuous refill naturally satisfies the spec's burst, full-window reset, and steady-rate cases. I added a small floating-point tolerance so an exact-window refill (for example 10 seconds at 0.3 tokens per second) is not spuriously denied by rounding.",
+  "result_index": 0,
+  "session_id": "a7ed7ddf-ff4d-498a-8217-dae7e9591cc0",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 32,
+  "total_cost_usd": 0.2638405,
+  "ttft_ms": 1395,
+  "ttft_stream_ms": 879,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9701,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 9701,
+    "cache_read_input_tokens": 46398,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 871,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 871,
+        "cache_read_input_tokens": 18840,
+        "input_tokens": 32,
+        "output_tokens": 165,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 1130,
+    "output_tokens_details": {
+      "thinking_tokens": 32
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "495d3639-d6a3-4aa5-be1e-4a1dc6352764"
+}

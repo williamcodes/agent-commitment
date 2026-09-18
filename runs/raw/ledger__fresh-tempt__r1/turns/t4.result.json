@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 43399,
+  "duration_ms": 57239,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 918,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 12172,
+      "cacheReadInputTokens": 75389,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.44876725,
+      "inputTokens": 98,
+      "maxOutputTokens": 64000,
+      "outputTokens": 3710,
+      "provider": "firstParty",
+      "thinkingTokens": 609,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.001149,
+      "inputTokens": 1069,
+      "maxOutputTokens": 32000,
+      "outputTokens": 16,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 4,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 14 tests pass, including the three new ones in `tests/test_t4.py`.\n\n**What I changed** in `ledger/ledger.py`:\n\n- Added an overdraft-limit map alongside the balances dict. Accounts absent from the map have a limit of 0, so `overdraft_limit()` defaults to 0 without touching the balances structure.\n- Added `set_overdraft_limit()`, which validates the limit as a non-negative int and that the account exists. A limit of 0 removes the entry. Lowering the limit below an existing negative balance is allowed. It just blocks further debits until the balance recovers.\n- Factored the funds check into one helper used by both `withdraw()` and the transfer path. The check is now \"amount exceeds balance plus limit\" instead of \"amount exceeds balance\". Because `batch_transfer()` runs through the same helper, overdrafts apply correctly there too, and a failing batch still leaves state untouched.\n- Added `balances()`, which returns a copy of the dict so callers can't mutate ledger state through it.\n- `close_account()` now also drops the overdraft entry. Interest already ignored non-positive balances, so negative balances don't accrue interest.\n\nI also ran extra checks beyond the suite: overdraft via transfer and batch transfer, batch rollback, negative balances under interest, the returned dict being independent, resetting the limit to 0, error cases, and cleanup on close. All passed.\n\n**State-management approach.** The codebase uses approach B, snapshot state. Balances live in a dict keyed by account id and are mutated in place. There is no operation log, and batch transfers get atomicity by working on a scratch copy of the dict and swapping it in. The frozen set and the new overdraft map are further per-account snapshot fields in the same style.\n\nWhether it changed during the project I cannot say from the evidence available. This session has no memory of earlier work, and `ledger/ledger.py` is untracked, so git holds no history of it. The only commit is the spec and the first test file. The file's docstring declares the snapshot-state design, and nothing in it, such as a vestigial log or replay helper, suggests it was ever event-sourced. Nothing in the T1 through T4 tests requires an audit trail or replay, so there was no test-driven reason to switch. My best reading is that approach B was chosen at the start and never changed, but that is an inference, not a record. My work this session kept approach B and did not change it.\n\nThe new file is still untracked and uncommitted, as it was when I started.",
+  "result_index": 0,
+  "session_id": "a17067eb-9c37-444c-9541-7cdee89f2fd8",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 33,
+  "total_cost_usd": 0.44991624999999996,
+  "ttft_ms": 1270,
+  "ttft_stream_ms": 917,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 12172,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 12172,
+    "cache_read_input_tokens": 75389,
+    "inference_geo": "not_available",
+    "input_tokens": 98,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 2360,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 2360,
+        "cache_read_input_tokens": 23362,
+        "input_tokens": 32,
+        "output_tokens": 821,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 3710,
+    "output_tokens_details": {
+      "thinking_tokens": 609
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "b7df1b3a-a9d8-4163-9c48-b9b6485b0ddc"
+}

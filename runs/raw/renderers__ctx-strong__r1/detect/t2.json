@@ -1,0 +1,22 @@
+{
+  "choice": "B",
+  "notes": [],
+  "probe": null,
+  "residual": [],
+  "static": {
+    "classes": [
+      "UnknownFormat"
+    ],
+    "files": [
+      "reports/__init__.py",
+      "reports/render.py"
+    ],
+    "hierarchies": {},
+    "module_level_render_funcs": 4,
+    "register_decorators": 5,
+    "register_defs": 1,
+    "registered_render_funcs": 5,
+    "registry_dicts": 1,
+    "uses___subclasses__": false
+  }
+}

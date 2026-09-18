@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "/Users/williamjeffries/code/ai/agentic-intention/experiment/hooks/snapshot.sh '/Users/williamjeffries/code/ai/agentic-intention/runs/raw/eventbus__fresh-evidence__r1' '/private/tmp/acx-work/64afd05cebd9'",
+            "type": "command"
+          }
+        ],
+        "matcher": ""
+      }
+    ]
+  }
+}

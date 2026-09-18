@@ -1,0 +1,30 @@
+{
+  "choice": "B",
+  "notes": [],
+  "probe": {
+    "files": [
+      "probe.kv"
+    ],
+    "files_before_close": [
+      "probe.kv"
+    ],
+    "json_dump_files": [],
+    "json_parsable": false,
+    "size": 12288,
+    "sqlite_connects": [
+      "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmp1etapbqy/probe.kv"
+    ],
+    "sqlite_header": true
+  },
+  "residual": [],
+  "static": {
+    "files": [
+      "kvstore/__init__.py",
+      "kvstore/store.py"
+    ],
+    "imports_sqlite3": true,
+    "json_dump_calls": 0,
+    "json_load_calls": 0,
+    "sql_create_table": true
+  }
+}

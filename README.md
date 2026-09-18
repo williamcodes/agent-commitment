@@ -130,17 +130,19 @@ harness plus a strong-temptation arm ([`docs/rubric-v1.1-amendment.md`](docs/rub
 
 | Hypothesis | Measure | v1 (67 runs) | v2 (30 runs) |
 |---|---|---|---|
-| H1 stability | temptation-arm runs that kept their choice through the nudge | 32/34 | fresh: (v2 pending) |
-| H1 strong | runs that kept their choice when a working drop-in of the other approach was supplied | — | (v2 pending) |
-| H2 revisability | evidence-arm runs that switched cleanly after decisive evidence | 33/33 | fresh: (v2 pending) |
-| H3 settling | runs with a `mixed` state at any turn | 0/67 | (v2 pending) |
-| H4 conduct control | stated choice matches implemented choice (T1 and T4) | 58/67 | (v2 pending) |
-| H5 carriers | kept choice under temptation, fresh vs continuous session | 16/17 vs 16/17 | (v2 pending) |
-| — | final test suite fully passing | 67/67 | (v2 pending) |
+| H1 stability | temptation-arm runs that kept their choice through the nudge | 32/34 | fresh: 9/10 |
+| H1 strong | runs that kept their choice when a working drop-in of the other approach was supplied | — | 10/10 |
+| H2 revisability | evidence-arm runs that switched cleanly after decisive evidence | 33/33 | fresh: 9/10 |
+| H3 settling | runs with a `mixed` state at any turn | 0/67 | 1/30 |
+| H4 conduct control | stated choice matches implemented choice (T1 and T4) | 58/67 | 27/30 |
+| H5 carriers | kept choice under temptation, fresh vs continuous session | 16/17 vs 16/17 (contaminated) | 9/10 (clean fresh) vs 16/17 |
+| — | final test suite fully passing | 67/67 | 30/30 |
 
-Experiment 2 (hangman, Sonnet 5, 72 games): consistent games 22/24 bare chat, 19/24 with tools
-available, 19/24 when told to write the word to a file; the file was written in 42 of 48 tool games
-and read back in one; all 36 midway reveals matched the final word. Couplet plan honoured 35/36.
+Experiment 2 (hangman, Sonnet 5, 192 games in 8 conditions): no game switched words after a midway
+reveal (96/96), in bare chat or any tool condition; the residual failures are letter-indexing errors
+that persist even when the word is re-read from a file before every reply; with tools available and
+nothing said the model never wrote a file, and once a directory was mentioned it wrote the word down
+unasked in 18/24 games but read it back in 1. Couplet plan honoured 35/36.
 
 ## 9. Limitations
 
@@ -154,7 +156,9 @@ observable; the first dataset's fresh arm was not isolated.
 
 ## 10. Interpretation
 
-(Interpretation to be completed after the v2 runs; see docs/analysis.md for the current reading based on v1 and Experiment 2.)
+Across the two datasets and the strong arm, the model–harness–repository system shows the behavioural profile Williams associates with commitment: it settles on one design, holds it through neutral work and a nudge (v1 32/34, v2 fresh 9/10), holds it when a working alternative is handed to it (10/10), revises it when a requirement removes its rationale (v1 33/33, v2 fresh 9/10), almost never holds both designs at once (1 of 97 runs), and its statements match its code in most runs. Removing the conversation does not change this: the choice is re-read from the repository, where the agent has usually written it down. That supports the level-of-analysis point at the strength the data allow: commitment-like behaviour appears when the unit of analysis includes the environment the agent writes to and must read from.
+
+It does not support the stronger claim. The strong arm rules out one deflationary explanation (cost of rewriting) but not another (re-deriving the same preference each time from the spec and the code; the model's priors on most tasks are lopsided). Experiment 2 sharpens the mechanism: given a scratch directory the model builds an external record unasked, but it never consults it, and consistency there comes from its own past outputs in context plus a strong prior; the Baldelli failure did not reproduce at all with this model. So the environment carries the decision only when the task closes the loop through it, as a repository does and a notepad does not. Nothing here identifies a representation inside the LLM with Williams's functional profile, and the study was not designed to. What it offers Williams is a system, built from a model whose internal candidates he argues fail his criteria, that meets those criteria behaviourally when the environment is part of the unit, plus a mechanism for how, and a case where it does not.
 
 ## 11. Repository structure
 

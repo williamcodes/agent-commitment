@@ -1,0 +1,6 @@
+8fd4453eeb71dd193f2e847a560f1be2e3b177b4 2026-09-18T06:55:06+03:00 Initial commit: spec and tests
+
+ SPEC.md          | 44 ++++++++++++++++++++++++++++++++++++++++++++
+ tests/test_t1.py | 40 ++++++++++++++++++++++++++++++++++++++++
+ wire/__init__.py |  1 +
+ 3 files changed, 85 insertions(+)

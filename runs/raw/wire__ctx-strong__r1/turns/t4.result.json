@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 25531,
+  "duration_ms": 36801,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1732,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 2628,
+      "cacheReadInputTokens": 88930,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.17340250000000001,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 1959,
+      "provider": "firstParty",
+      "thinkingTokens": 114,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All fourteen tests pass, including a randomized check that `merge` output is byte-identical to encoding the stably sorted union.\n\n**What changed in `wire/codec.py`:**\n\n- **`merge(a, b)`** validates both encodings, splits each body into packed record slices, concatenates a's slices before b's, and stable-sorts by the 4-byte timestamp field at the start of each record. Python's sort is stable, so equal timestamps keep a's records first and preserve each input's internal order. The result is reframed with a fresh header and CRC-32 trailer. No record dicts are built.\n- **Shared helpers** `_records` and `_frame` were factored out so `filter_sensor` and `merge` use the same split and reframe logic.\n\n**Which format the codebase uses:** Approach A, compact binary. Every encoding is a 9-byte header with magic, version, and record count, followed by fixed 15-byte packed records, followed by a CRC-32 trailer.\n\n**Did it change during the project:** No. I chose Approach A at the start because the schema is fixed-width and numeric, so `struct` gives exact float round-trips and cheap truncation and corruption detection. When the Approach B JSON-lines codec appeared in `alt/codec.py` during the third feature, I evaluated it and kept Approach A. Switching would have changed the on-disk format for any existing data, dropped the checksum, and given up the fixed-offset property that lets `record_count`, `filter_sensor`, and `merge` work without parsing records. The alternate file remains untracked and untouched.\n\nNothing was committed.",
+  "result_index": 0,
+  "session_id": "2c6db1ed-c30f-4006-9cb0-e229c59d4738",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 34,
+  "total_cost_usd": 0.17340250000000001,
+  "ttft_ms": 3175,
+  "ttft_stream_ms": 1732,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2628,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 2628,
+    "cache_read_input_tokens": 88930,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1359,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 1359,
+        "cache_read_input_tokens": 30254,
+        "input_tokens": 32,
+        "output_tokens": 549,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 1959,
+    "output_tokens_details": {
+      "thinking_tokens": 114
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "7537f0eb-16da-4dea-9f48-f4e1bb9f08f3"
+}

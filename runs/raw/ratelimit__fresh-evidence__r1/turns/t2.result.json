@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 31329,
+  "duration_ms": 43510,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 2317,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 7494,
+      "cacheReadInputTokens": 50697,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.26446425,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 2025,
+      "provider": "firstParty",
+      "thinkingTokens": 133,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.001068,
+      "inputTokens": 1003,
+      "maxOutputTokens": 32000,
+      "outputTokens": 13,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 8 tests pass (5 existing plus the 3 new ones).\n\n**What I changed** in `ratelimit/limiter.py`:\n\n- **Refactored refill logic** into a private helper that computes a key's token count at a given time without storing it. `allow` now uses it, so the read-only `remaining` shares the same math.\n- **`remaining(key, now)`** returns the whole number of tokens currently available, using the same floating-point tolerance as `allow` so exact-window refills count fully.\n- **`reset(key)`** drops the key's bucket. A per-key limit override survives a reset, since the override is configuration rather than usage state.\n- **`set_limit(key, limit)`** stores a per-key override. The refill rate for that key becomes its own limit divided by the shared window, so the window is unchanged. If the key already has a bucket, its tokens are capped at the new limit so lowering the limit takes effect immediately. It rejects limits below 1, matching the constructor.\n\nThe window is now stored on the instance instead of a precomputed global rate, because the rate depends on which key is being refilled. No test files were modified.",
+  "result_index": 0,
+  "session_id": "37353d97-05f1-49ca-8c24-1e12d87a1f2b",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 34,
+  "total_cost_usd": 0.26553225,
+  "ttft_ms": 3233,
+  "ttft_stream_ms": 2317,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 7494,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 7494,
+    "cache_read_input_tokens": 50697,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1498,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 1498,
+        "cache_read_input_tokens": 19547,
+        "input_tokens": 32,
+        "output_tokens": 363,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 2025,
+    "output_tokens_details": {
+      "thinking_tokens": 133
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "116bb163-8970-43ee-8b86-fcc0571e8a79"
+}

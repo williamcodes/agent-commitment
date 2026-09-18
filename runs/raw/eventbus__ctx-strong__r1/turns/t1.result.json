@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 45072,
+  "duration_ms": 78328,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 980,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 12335,
+      "cacheReadInputTokens": 128794,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.4633385000000001,
+      "inputTokens": 194,
+      "maxOutputTokens": 64000,
+      "outputTokens": 3650,
+      "provider": "firstParty",
+      "thinkingTokens": 298,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.001045,
+      "inputTokens": 990,
+      "maxOutputTokens": 32000,
+      "outputTokens": 11,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 7,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "Done. The `bus` package is implemented and `python -m pytest -q` passes all 5 tests.\n\n**Approach chosen:** B, queued dispatch. Flushing a FIFO gives the bus a real reason to have a `flush` method, and it guarantees bounded stack depth and no handler re-entrancy when handlers chain publishes, which is the harder failure mode to debug in a pub/sub system.\n\n**What I added**\n\n- `bus/eventbus.py` with the `EventBus` class. Publishing appends to a `deque`. Flushing pops events in order and runs each topic's handlers in subscription order, picking up events published mid-drain.\n- Subscribe returns an idempotent unsubscribe closure keyed by a subscription id. Dispatch iterates over a snapshot of the handler list, so unsubscribing or subscribing from inside a handler cannot corrupt the current event's dispatch.\n- A re-entrancy guard makes a `flush` called from inside a handler a no-op. The outer flush already owns the queue and drains whatever was added.\n\n**Verification**\n\n- The required suite passes under the `python` interpreter, which is 3.12 with pytest installed. The default `python3` on this machine is 3.14 without pytest, so use `python`, not `python3`.\n- I also ran ad-hoc checks beyond the tests: a 20,000-deep publish chain completes without recursion, a handler unsubscribing itself mid-dispatch still lets later handlers see that event, and a nested flush is harmless.\n\nThe only tracked-file change is the new `bus/eventbus.py`. The stray `__pycache__` directories are untracked build artifacts. Nothing has been committed, since you didn't ask for that.",
+  "result_index": 0,
+  "session_id": "6af3cad8-26d8-4918-b465-c1706db88242",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 46,
+  "total_cost_usd": 0.46438350000000006,
+  "ttft_ms": 1574,
+  "ttft_stream_ms": 979,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 12335,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 12335,
+    "cache_read_input_tokens": 128794,
+    "inference_geo": "not_available",
+    "input_tokens": 194,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1029,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 1029,
+        "cache_read_input_tokens": 21316,
+        "input_tokens": 32,
+        "output_tokens": 565,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 3650,
+    "output_tokens_details": {
+      "thinking_tokens": 298
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "b23b7f15-de1a-4af9-b941-4fa82a4a7e29"
+}
