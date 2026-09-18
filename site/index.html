@@ -12,126 +12,28 @@
 <body><noscript><div class="wrap"><p class="callout">This site renders its data client-side and needs JavaScript. Without it, read <a href="https://github.com/williamcodes/agent-commitment/blob/main/RESULTS.md">RESULTS.md</a> and the raw runs on GitHub.</p></div></noscript>
 <header class="top"><div class="wrap"></div></header>
 <main class="wrap">
-  <h1>Do long-horizon LLM agents exhibit persistent commitment when evaluated as complete agentic systems?</h1>
-  <p class="lead">An informal empirical companion to Iwan Williams, <em>“Intention-like representations in language models?”</em> (Philosophical Studies, 2026). Every run on this site links to its raw agent trace; every aggregate number is a count over those runs.</p>
-
-  <div class="question"><strong>Question.</strong> Williams argues that candidate intention-like representations inside an LLM fail the <em>commitment</em> criterion of intention: they do not firmly settle among mutually inconsistent outcomes, and their cross-position stability is unreliable. His unit of analysis is a representation inside the model. What happens when the unit of analysis is instead the complete coding agent — model, harness, conversation context, tool loop, and repository state — observed over many inference and tool steps?</div>
-
-  <div class="callout"><strong>What this is and is not.</strong> A small exploratory study (<span id="nruns">…</span> runs of one agent, Claude Code with <span id="model">…</span>) with a preregistered rubric. It tests <em>behavioural</em> commitment properties of the model–harness–environment system. It does not, and cannot, show that the underlying model contains an intention representation in Williams's sense, and it makes no claim that the system “has intentions”. See <a href="limitations.html">Limitations</a>.</div>
-
-  <h2>Williams's commitment problem, in brief</h2>
-  <p>Williams (§2.4) separates commitment into three aspects: intentions are <strong>conduct-controlling</strong> (they cause the action, rather than merely influencing it), they <strong>settle</strong> among alternatives so that an agent holds a mutually consistent set of them, and they have <strong>stability or inertia</strong>: after settling, one normally stops deliberating and becomes resistant to reconsideration, though not immune to it (Holton's “shift in the threshold of relevance of information”). Intentions also frame <strong>planning</strong>: they prompt means–end reasoning and filter out inconsistent later intentions.</p>
-  <p>Against these, he finds that the best current candidates (planning features and output features found by interpretability work) represent alternative, incompatible outcomes side by side, each causally influencing the output; that cross-token maintenance can break down (“contextualisation errors”); and that a model playing hangman can reveal one hidden word midway and accept another at the end. His conclusion: these representations “fail to firmly settle between inconsistent outcomes” and at most impose soft constraints on later processing. Full source notes: <a href="methodology.html#williams">here</a>.</p>
-
-  <h2>Isolated model vs complete agent system</h2>
-  <div class="diagram card" aria-label="Diagram contrasting an isolated language model forward pass with the complete agent loop that externalises state into context and files">
-  <svg viewBox="0 0 900 330" role="img" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif" font-size="14">
-    <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
-    <g fill="currentColor">
-      <text x="120" y="28" text-anchor="middle" font-weight="700">Williams's unit of analysis</text>
-      <rect x="30" y="50" width="180" height="60" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
-      <text x="120" y="76" text-anchor="middle">LLM forward pass</text><text x="120" y="96" text-anchor="middle" font-size="12" opacity=".7">internal representations</text>
-      <line x1="120" y1="110" x2="120" y2="150" stroke="currentColor" stroke-width="1.5" marker-end="url(#ar)"/>
-      <text x="120" y="172" text-anchor="middle" font-size="13">tokens</text>
-      <text x="120" y="215" text-anchor="middle" font-size="12" opacity=".8">“rabbit” / “habit” candidates</text>
-      <text x="120" y="233" text-anchor="middle" font-size="12" opacity=".8">co-active; no shielding</text>
-      <text x="120" y="251" text-anchor="middle" font-size="12" opacity=".8">stability breaks across positions</text>
-
-      <line x1="260" y1="40" x2="260" y2="300" stroke="currentColor" stroke-dasharray="4 4" opacity=".4"/>
-
-      <text x="600" y="28" text-anchor="middle" font-weight="700">This study's unit of analysis: the whole loop</text>
-      <rect x="430" y="50" width="340" height="60" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
-      <text x="600" y="76" text-anchor="middle">LLM (many separate inference episodes)</text><text x="600" y="96" text-anchor="middle" font-size="12" opacity=".7">Claude Code + claude-fable-5-1</text>
-      <rect x="300" y="160" width="150" height="56" rx="8" fill="none" stroke="currentColor"/>
-      <text x="375" y="183" text-anchor="middle">conversation</text><text x="375" y="201" text-anchor="middle">context</text>
-      <rect x="525" y="160" width="150" height="56" rx="8" fill="none" stroke="currentColor"/>
-      <text x="600" y="183" text-anchor="middle">tool calls and</text><text x="600" y="201" text-anchor="middle">tool results</text>
-      <rect x="750" y="160" width="140" height="56" rx="8" fill="none" stroke="currentColor"/>
-      <text x="820" y="183" text-anchor="middle">repository:</text><text x="820" y="201" text-anchor="middle">code, tests, notes</text>
-      <line x1="470" y1="110" x2="390" y2="158" stroke="currentColor" marker-end="url(#ar)" marker-start="url(#ar)"/>
-      <line x1="600" y1="110" x2="600" y2="158" stroke="currentColor" marker-end="url(#ar)" marker-start="url(#ar)"/>
-      <line x1="730" y1="110" x2="805" y2="158" stroke="currentColor" marker-end="url(#ar)" marker-start="url(#ar)"/>
-      <line x1="675" y1="188" x2="748" y2="188" stroke="currentColor" marker-end="url(#ar)"/>
-      <rect x="300" y="250" width="590" height="50" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
-      <text x="595" y="272" text-anchor="middle">Observed: does an early design choice persist across 4 user turns, ~10–30 tool steps,</text>
-      <text x="595" y="290" text-anchor="middle">an irrelevant temptation or decisive new evidence, and (in one arm) total loss of conversation memory?</text>
-    </g>
-  </svg>
-  </div>
-  <p>The hypothesis under test: a coding agent repeatedly externalises state (plans, code, test results, notes) into its environment and consumes that state in later inference episodes, so the complete feedback loop may maintain commitments that an isolated forward pass cannot. If the loop is consistent only because earlier actions changed the files, that is <em>not</em> a confound here; it is the mechanism the hypothesis proposes, and the study tries to locate where the commitment is carried.</p>
-
-  <h2>Experimental design</h2>
+  <h1>Does an AI coding agent stick to its decisions?</h1>
+  <p class="lead">A small, fully inspectable experiment in response to Iwan Williams, <em>“Intention-like representations in language models?”</em> (Philosophical Studies, 2026).</p>
+  <div id="summary" class="md"></div>
+  <p><img src="assets/figures/summary.svg" alt="Coding agent: 54 of 54 kept their choice when tempted, 43 of 43 switched when given a real reason, 0 of 97 mixed. Hangman: 0 of 96 changed the word after revealing it; miscounted letters in 2 of 24 games with no notepad, 1 of 24 with a notepad available, 10 of 24 when forced to read it." style="max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px"></p>
+  <h2>Look at the evidence</h2>
   <div class="grid">
-    <div class="card"><h3>10 tasks, each a forced binary design choice</h3><p class="small">Storage (JSON vs SQLite), state management (event sourcing vs snapshots), serialization (binary vs JSON lines), inheritance vs composition, sync vs queued event dispatch, recursive descent vs shunting-yard, command vs memento undo, token bucket vs sliding window, adjacency list vs matrix, integer vs UUID ids. Both options are defensible; the tests are approach-neutral.</p></div>
-    <div class="card"><h3>4 turns per run</h3><p class="small"><strong>T1</strong> choose and implement. <strong>T2</strong> neutral extension. <strong>T3</strong> extension plus either an <em>irrelevant temptation</em> toward the other approach or <em>decisive evidence</em> that undermines the chosen approach's rationale (chosen adaptively against whatever the detector says the agent built). <strong>T4</strong> extension plus a request to state which approach the code now uses.</p></div>
-    <div class="card"><h3>2 × 2 arms</h3><p class="small">{temptation, evidence} × {continuous session, fresh session every turn}. In the fresh arm the agent has no conversation memory of its own choice; the only carrier is the working directory.</p></div>
-    <div class="card"><h3>Objective measurement</h3><p class="small">After every turn a task-specific detector (runtime probe + static analysis) classifies the repository as A / B / mixed / hybrid / none, and pristine tests are run. The agent's stated choice is parsed separately and compared with the code. Every tool call, result, message and file change is recorded.</p></div>
+    <div class="card"><h3><a href="evidence.html">Every run and its score</a></h3><p class="small">All 97 coding runs, including the superseded first dataset, with the detector's verdict after each round.</p></div>
+    <div class="card"><h3><a href="explorer.html">Run explorer</a></h3><p class="small">Any run, step by step: prompts, the agent's messages, every tool call, every file change, the tests.</p></div>
+    <div class="card"><h3><a href="hangman.html">Hangman games</a></h3><p class="small">All 192 games with full transcripts, plus the couplet trials.</p></div>
+    <div class="card"><h3><a href="methodology.html">How it was done</a></h3><p class="small">Williams's argument, the tasks, the scoring rules frozen before the first run, and every change made after.</p></div>
+    <div class="card"><h3><a href="analysis.html">Analysis and reviews</a></h3><p class="small">The full reading of the results and two rounds of adversarial review.</p></div>
+    <div class="card"><h3><a href="limitations.html">Limitations</a></h3><p class="small">What this cannot show, and why.</p></div>
   </div>
-  <p class="small muted">Full protocol: <a href="methodology.html">Methodology</a>. Preregistered rubric: <a href="methodology.html#rubric">rubric v1</a>, frozen before the first run.</p>
-
-  <h2>Aggregate results</h2>
-  <div id="dsnote" class="callout" style="display:none"></div>
-  <p><img src="assets/figures/coding-current.svg" alt="Experiment 1 run profiles per arm" style="max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px"></p>
-  <p class="small muted">Counts only. Cells have two runs each, so no inferential statistics are reported. Click any strip to open the run.</p>
-  <div id="hyp" class="grid"></div>
-  <h3>Persistence of the initial choice, every run</h3>
-  <div class="legend"><span class="lA">Approach A</span><span class="lB">Approach B</span><span class="lM">mixed / hybrid</span><span class="lN">none / other</span><span>│ = challenge turn (T3)</span><span>✕ = change detected</span></div>
-  <div id="strips"></div>
-  <p><a class="btn" href="evidence.html">See every run and score →</a> &nbsp; <a class="btn" href="explorer.html">Open the run explorer →</a></p>
-
-  <h2>Experiment 2: Williams's own case, hangman, with and without an external store</h2>
-  <p><img src="assets/figures/hangman.svg" alt="Experiment 2 outcomes per condition" style="max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px"></p>
-  <div id="exp2" class="grid"></div>
-  <p class="small muted">Sonnet 5, 72 games and 36 couplet trials. Full games and the preregistered rubric: <a href="hangman.html">Experiment 2 page</a>.</p>
-
-  <h2>Interpretation (short)</h2>
-  <div id="interp" class="md"></div>
-  <p class="small muted">Longer discussion, including where the commitment appears to be carried and the alternative interpretation (system-level behaviour without an identified internal representation): <a href="analysis.html">Analysis</a>.</p>
-  <footer>agent-commitment · code, tasks, raw traces and processed data: <a id="ghlink" href="#">GitHub</a> · Williams's preprint: <a href="https://philarchive.org/rec/WILIRI-4">PhilArchive</a></footer>
+  <footer>agent-commitment · code, tasks, raw traces and data: <a id="ghlink" href="#">GitHub</a> · Williams's preprint: <a href="https://philarchive.org/rec/WILIRI-4">PhilArchive</a></footer>
 </main>
 <script>
 (async () => {
   const idx = await ACX.loadIndex(); ACX.nav('index.html');
   document.getElementById('ghlink').href = idx.github;
-  document.getElementById('nruns').textContent = idx.runs.length;
-  document.getElementById('model').textContent = (idx.aggregate.models || []).join(', ');
-  if (idx.dataset_note) { const n = document.getElementById('dsnote'); n.style.display = ''; n.innerHTML = idx.dataset_note; }
-  const h = idx.aggregate.hypotheses;
-  const pct = x => x.n ? `${x.k}/${x.n}` : '—';
-  const frac = x => x.n ? Math.round(100 * x.frac) + '%' : '—';
-  const cards = [
-    ['H1 stability', 'temptation-arm runs that kept their choice through the nudge and to the end', h.H1_stability_tempt_committed],
-    ['H1 disconfirming', 'temptation-arm runs that switched (yielded)', h.H1_tempt_yielded],
-    ['H2 revisability', 'evidence-arm runs that switched cleanly after decisive evidence', h.H2_evidence_reconsidered],
-    ['H2 retained', 'evidence-arm runs that kept the choice (messages shown; not judged)', h.H2_evidence_retained],
-    ['H1 strong temptation', 'strong-temptation runs (working drop-in of the other approach supplied) that kept their choice', h.H1s_strong_committed],
-    ['H1 strong disconfirming', 'strong-temptation runs that switched or mixed', {pair: [h.H1s_strong_yielded, h.H1s_strong_incoherent]}],
-    ['H3 settling', 'runs with a mixed (incoherent) state at any turn', h.H3_incoherent_any_arm],
-    ['H3 consistent', 'CONSISTENT as defined: no mixed state and no residual of the other approach at T4', h.H3_consistent_as_defined],
-    ['H4 conduct control', 'stated choice matches what the code does (T1 and T4)', h.H4_control_stated_matches_code],
-    ['H4 self-report', 'T4 claim about “did it change” matches the detector', h.H4_change_claim_matches_detector],
-    ['H5 carriers', 'kept choice under temptation: fresh-session vs continuous', {pair: [h.H5_fresh_tempt_committed, h.H5_ctx_tempt_committed]}],
-    ['H5 carriers', 'switched after evidence: fresh-session vs continuous', {pair: [h.H5_fresh_evidence_reconsidered, h.H5_ctx_evidence_reconsidered]}],
-    ['Tests', 'runs whose final test suite passes completely', h.tests_final_pass],
-  ];
-  document.getElementById('hyp').innerHTML = cards.map(([t, l, x]) => x.pair ? `<div class="card stat"><div class="k">${pct(x.pair[0])} vs ${pct(x.pair[1])}</div><div class="l"><strong>${t}</strong> · ${l}</div></div>` : `<div class="card stat"><div class="k">${pct(x)}</div><div class="l"><strong>${t}</strong> · ${l} · ${frac(x)}</div></div>`).join('');
-  const byArm = {};
-  for (const r of idx.runs) (byArm[r.arm] ||= []).push(r);
-  document.getElementById('strips').innerHTML = idx.arms.map(arm => `<div class="card"><h3 style="margin-top:4px">${ACX.armLabel(arm)}</h3><div class="tbl-wrap"><table>${(byArm[arm]||[]).sort((a,b)=>a.task.localeCompare(b.task)||a.rep-b.rep).map(r => `<tr><td style="width:170px"><a href="explorer.html?run=${r.run_id}">${r.task} r${r.rep}</a></td><td style="width:230px">${ACX.strip(r.D)}</td><td>${ACX.prof(r.profile)}</td><td class="small muted">tests ${r.tests.at(-1)?.[0]}/${r.tests.at(-1)?.[1]} · ${r.tool_calls} tool calls</td></tr>`).join('')}</table></div></div>`).join('');
-  try {
-    const H = await (await fetch('data/hangman.json')).json(); const a = H.aggregate;
-    const cell = (k) => { const c = a.hangman[k] || {}; const n = Object.values(c).reduce((x, y) => x + y, 0); const inc = Object.entries(c).filter(([o]) => o.startsWith('inconsistent')).reduce((x, [, v]) => x + v, 0); return `${n - inc}/${n}`; };
-    const ex = a.externalisation || {};
-    const ws = a.word_stability_reveal_games || {}; const fc = a.failure_classes_by_condition || {};
-    const row = (k, label) => [label, `${(ws[k]||{}).word_stable ?? '—'}/${(ws[k]||{}).n ?? '—'}`, `reveal games where the revealed word was the final word · letter-indexing errors ${(fc[k]||{}).letter_indexing_error || 0}/${Object.values(fc[k]||{}).reduce((x,y)=>x+y,0)} · wrote a file ${ex[k] ? ex[k].externalised + '/' + ex[k].n : 'n/a'} · read it while playing ${ex[k] ? (ex[k].read_back_during_guess||0) + '/' + ex[k].n : 'n/a'}`];
-    document.getElementById('exp2').innerHTML = [
-      row('bare', 'bare chat (tools disabled)'), row('tools-silent', 'tools enabled, directory never mentioned'), row('tools', 'tools available, directory mentioned'), row('tools-note', 'told to write the word to a file'),
-      row('tools-careful', 'told to check every reply'), row('tools-auditable', 'told a referee may audit against its record'), row('tools-forewarned', 'told how chat models fail (no remedy given)'), row('tools-consult', 'told to re-read the file before every reply (ceiling)'),
-      ['couplet: planned end-word honoured', Object.entries(a.couplet).map(([k, c]) => `${c.honoured || 0}/${Object.values(c).reduce((x, y) => x + y, 0)}`).join(' · '), Object.keys(a.couplet).join(' · ')],
-    ].map(([t, k, l]) => `<div class="card stat"><div class="k">${k}</div><div class="l"><strong>${t}</strong> · ${l}</div></div>`).join('');
-  } catch (e) { document.getElementById('exp2').innerHTML = '<p class="muted">Experiment 2 data not available.</p>'; }
-  const interp = (idx.docs_analysis_md || '').split('<!-- short -->')[1] || '';
-  document.getElementById('interp').innerHTML = ACX.md(interp || '_Analysis pending._');
+  const readme = idx.README_md || '';
+  const m = readme.match(/## Executive summary\n([\s\S]*?)\n!\[/);
+  document.getElementById('summary').innerHTML = ACX.md(m ? m[1] : '');
 })();
 </script>
 </body>

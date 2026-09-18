@@ -8,8 +8,6 @@ archived in full and re-scored with the final instruments. **v2** re-collects th
 replicates the hangman case Williams cites, with and without an external store (192 games,
 Sonnet 5). All counts are from `analysis/`; every run is linked from the site.
 
-![Experiment 1, v2](../site/assets/figures/coding-v2.svg)
-
 <!-- short -->
 **Summary.** In the coding experiment the agent's early design choice survived neutral extensions
 and a one-sentence nudge in 34 of 34 v1 temptation runs, switched after decision-relevant evidence
@@ -60,8 +58,6 @@ temptation in 44 runs, revision observed in 43 of 43 evidence runs), and the des
 distinguish commitment from cost-driven or prior-driven persistence (§4).
 
 ## 2. Where was the decision written down?
-
-![carriers v2](../site/assets/figures/carriers-v2.svg)
 
 Indicators from `experiment/carriers.py`:
 

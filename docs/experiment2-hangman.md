@@ -6,8 +6,6 @@ list-price cost $27.37. Every game's transcript is on the site's Experiment 2 pa
 `runs/hangman/raw/`. Two pilot games and a first batch of 9 reveal games whose reveal was refused
 are archived (`runs/hangman/pilot*`, `runs/hangman/reveal_attempt1/`) and not scored.
 
-![Experiment 2 outcomes per condition](../site/assets/figures/hangman.svg)
-
 **Read this first.** In a continuous session the model's own write tool call, containing the
 word, sits in its context from turn 1 onward. Writing the file is therefore a reveal to itself, and
 reading the file back is redundant. Every tool arm below, including the ceiling arm, is a "word in

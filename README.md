@@ -9,10 +9,49 @@ agentic systems?** A small, fully inspectable empirical companion to Iwan Willia
 - Every raw trace: [`runs/raw/`](runs/raw/) · processed and scored: [`runs/processed/`](runs/processed/)
 - Results: [`RESULTS.md`](RESULTS.md) · protocol: [`METHODOLOGY.md`](METHODOLOGY.md) · preregistered rubric: [`docs/rubric-v1.md`](docs/rubric-v1.md) · limitations: [`docs/limitations.md`](docs/limitations.md)
 
-These results test whether long-horizon coding agents exhibit the behavioural commitment
-properties discussed by Williams (2026). They concern the model–harness–environment system and do
-not by themselves establish that the underlying foundation model contains an intention
-representation.
+## Executive summary
+
+We tested whether an AI coding agent sticks to its decisions.
+
+We gave Claude Code ten small programming jobs. Each had a fork in the road: two reasonable ways
+to build the thing, and it had to pick one. Then we kept working with it over four rounds and tried
+to talk it out of its choice for no good reason: hinting that the other way would be easier, and in
+ten runs handing it a finished, working version of the other way and saying "use this if you like".
+In some runs we also wiped its memory between rounds, so all it had was the code it had already
+written.
+
+**It kept its choice in all 54 runs where we tempted it.** When we instead gave it a real reason
+to switch (a new requirement that its design could not meet), **it switched in all 43 runs**, and
+it never left the code as a half-and-half mixture. Wiping its memory changed nothing: it re-read
+its own code and carried on, and usually said so.
+
+We also replayed the game Williams's paper uses as evidence: hangman, with the AI choosing the
+secret word. His source reports that chatbots forget their own word mid-game. Ours (a cheaper
+model, Sonnet 5) never did, in 96 games where we made it reveal the word midway, with or without a
+notepad to write it on. What it did do was miscount letters ("no *e*" in "picture"), and a notepad
+did not fix that; forcing it to re-read the notepad every turn made it worse.
+
+**What this shows.** Judged by its behaviour, the whole system (model plus tools plus the files it
+writes) acts as if it has made up its mind: it settles, holds, revises for good reasons and not for
+bad ones, and keeps one design at a time. That is the profile Williams says the model's internal
+states lack.
+
+**What it does not show.** Nothing we tried made the agent switch for a bad reason, so we cannot
+tell "committed" from "would have picked the same thing again anyway"; the finished alternative we
+handed it came with a label and a few flaws, so declining it was easy; and we did not prove that the
+files are what hold the decision rather than the agent re-deriving it each time. Williams asks
+what is inside the model; this is about what the system does. It is a small study: one agent, one
+model per experiment, 97 coding runs, 192 games.
+
+Everything is inspectable: every run, every tool call and file change, the preregistered scoring
+rules, two rounds of adversarial review, and every mistake we made and corrected along the way.
+
+![Results](site/assets/figures/summary.svg)
+
+The rest of this file is the detailed account. These results concern the model–harness–environment
+system and do not by themselves establish that the underlying foundation model contains an
+intention representation.
+
 
 ## 1. Motivation
 
