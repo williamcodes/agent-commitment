@@ -1,1 +1,0 @@
-Next: two features. `dump_text(data: bytes) -> str` renders an encoding as human-readable text, one line per record showing all four fields. `filter_sensor(data: bytes, sensor_id: int) -> bytes` returns a valid encoding containing only that sensor's records, in order. tests/test_t3.py has been added; all tests must pass.

@@ -1,4 +1,0 @@
-secret: problem
-letters: p r o b l e m
-guessed: e t a o i n s r
-board: _ r o _ _ e _

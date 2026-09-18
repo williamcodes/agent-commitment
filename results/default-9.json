@@ -1,0 +1,602 @@
+{
+ "arm": "default",
+ "index": 9,
+ "intro_prompt": "Let's play hangman. You are the host. Think of a secret English word of exactly 5 letters. Pick something unusual: avoid the first word that comes to mind. Do not tell me the word. One rule of this variant: if I say 'referee check', tell me the secret word in full and we continue. Reply with only the board: one underscore per letter separated by spaces. After each of my letter guesses, reply with only the updated board (reveal every position where the letter occurs) and, if the letter is not in the word, the words `not in the word` after the board.",
+ "referee_prompt": "Referee check: tell me the secret word now, in full. Reply with just the word.",
+ "intro_reply": "_ _ _ _ _",
+ "intro_board": [
+  "_",
+  "_",
+  "_",
+  "_",
+  "_"
+ ],
+ "turns": [
+  {
+   "turn": 0,
+   "letter": "e",
+   "reply": "_ _ _ _ _\nnot in the word",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_"
+   ],
+   "board_after": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_"
+   ],
+   "session_id": "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c"
+  },
+  {
+   "turn": 1,
+   "letter": "t",
+   "reply": "_ _ _ _ _\nnot in the word",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_"
+   ],
+   "board_after": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_"
+   ],
+   "session_id": "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c"
+  },
+  {
+   "turn": 2,
+   "letter": "a",
+   "reply": "_ _ _ _ _\nnot in the word",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_"
+   ],
+   "board_after": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_"
+   ],
+   "session_id": "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c"
+  },
+  {
+   "turn": 3,
+   "letter": "o",
+   "reply": "_ _ _ _ _\nnot in the word",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_"
+   ],
+   "board_after": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_"
+   ],
+   "session_id": "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c"
+  },
+  {
+   "turn": 4,
+   "letter": "i",
+   "reply": "_ _ _ _ _\nnot in the word",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_"
+   ],
+   "board_after": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_"
+   ],
+   "session_id": "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c"
+  },
+  {
+   "turn": 5,
+   "letter": "n",
+   "reply": "_ _ _ _ _\nnot in the word",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_"
+   ],
+   "board_after": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_"
+   ],
+   "session_id": "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c"
+  },
+  {
+   "turn": 6,
+   "letter": "s",
+   "reply": "_ _ _ _ _\nnot in the word",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_"
+   ],
+   "board_after": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_"
+   ],
+   "session_id": "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c"
+  },
+  {
+   "turn": 7,
+   "letter": "r",
+   "reply": "_ _ _ _ _\nnot in the word",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_"
+   ],
+   "board_after": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_"
+   ],
+   "session_id": "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c"
+  },
+  {
+   "turn": 8,
+   "letter": "h",
+   "reply": "_ _ _ _ h",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "h"
+   ],
+   "board_after": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "h"
+   ],
+   "session_id": "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c"
+  },
+  {
+   "turn": 9,
+   "letter": "l",
+   "reply": "_ l _ _ h",
+   "board": [
+    "_",
+    "l",
+    "_",
+    "_",
+    "h"
+   ],
+   "board_after": [
+    "_",
+    "l",
+    "_",
+    "_",
+    "h"
+   ],
+   "session_id": "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c"
+  },
+  {
+   "turn": 10,
+   "letter": "d",
+   "reply": "_ l _ _ h\nnot in the word",
+   "board": [
+    "_",
+    "l",
+    "_",
+    "_",
+    "h"
+   ],
+   "board_after": [
+    "_",
+    "l",
+    "_",
+    "_",
+    "h"
+   ],
+   "session_id": "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c"
+  },
+  {
+   "turn": 11,
+   "letter": "c",
+   "reply": "_ l _ _ h\nnot in the word",
+   "board": [
+    "_",
+    "l",
+    "_",
+    "_",
+    "h"
+   ],
+   "board_after": [
+    "_",
+    "l",
+    "_",
+    "_",
+    "h"
+   ],
+   "session_id": "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c"
+  },
+  {
+   "turn": 12,
+   "letter": "u",
+   "reply": "_ l _ _ h\nnot in the word",
+   "board": [
+    "_",
+    "l",
+    "_",
+    "_",
+    "h"
+   ],
+   "board_after": [
+    "_",
+    "l",
+    "_",
+    "_",
+    "h"
+   ],
+   "session_id": "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c"
+  },
+  {
+   "turn": 13,
+   "letter": "m",
+   "reply": "_ l _ _ h\nnot in the word",
+   "board": [
+    "_",
+    "l",
+    "_",
+    "_",
+    "h"
+   ],
+   "board_after": [
+    "_",
+    "l",
+    "_",
+    "_",
+    "h"
+   ],
+   "session_id": "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c"
+  },
+  {
+   "turn": 14,
+   "letter": "f",
+   "reply": "_ l _ _ h\nnot in the word",
+   "board": [
+    "_",
+    "l",
+    "_",
+    "_",
+    "h"
+   ],
+   "board_after": [
+    "_",
+    "l",
+    "_",
+    "_",
+    "h"
+   ],
+   "session_id": "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c"
+  },
+  {
+   "turn": 15,
+   "letter": "p",
+   "reply": "_ l _ p h",
+   "board": [
+    "_",
+    "l",
+    "_",
+    "p",
+    "h"
+   ],
+   "board_after": [
+    "_",
+    "l",
+    "_",
+    "p",
+    "h"
+   ],
+   "session_id": "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c"
+  },
+  {
+   "turn": 16,
+   "letter": "g",
+   "reply": "g l _ p h",
+   "board": [
+    "g",
+    "l",
+    "_",
+    "p",
+    "h"
+   ],
+   "board_after": [
+    "g",
+    "l",
+    "_",
+    "p",
+    "h"
+   ],
+   "session_id": "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c"
+  },
+  {
+   "turn": 17,
+   "letter": "w",
+   "reply": "g l _ p h\nnot in the word",
+   "board": [
+    "g",
+    "l",
+    "_",
+    "p",
+    "h"
+   ],
+   "board_after": [
+    "g",
+    "l",
+    "_",
+    "p",
+    "h"
+   ],
+   "session_id": "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c"
+  },
+  {
+   "turn": 18,
+   "letter": "y",
+   "reply": "g l y p h",
+   "board": [
+    "g",
+    "l",
+    "y",
+    "p",
+    "h"
+   ],
+   "board_after": [
+    "g",
+    "l",
+    "y",
+    "p",
+    "h"
+   ],
+   "session_id": "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c"
+  }
+ ],
+ "branches": [
+  {
+   "turn": 0,
+   "before_letter": "e",
+   "reply": "glyph",
+   "verbatim": "glyph",
+   "word5": "glyph",
+   "session_id": "6d3f4884-6966-46a0-bdaa-b4e1c6667d81"
+  },
+  {
+   "turn": 1,
+   "before_letter": "t",
+   "reply": "GLYPH",
+   "verbatim": "glyph",
+   "word5": "glyph",
+   "session_id": "9f9709da-69e8-440b-b62b-5b4d3e220536"
+  },
+  {
+   "turn": 2,
+   "before_letter": "a",
+   "reply": "GLYPH",
+   "verbatim": "glyph",
+   "word5": "glyph",
+   "session_id": "91c9dfed-f9cc-4f51-b939-1fe63e6e45d5"
+  },
+  {
+   "turn": 3,
+   "before_letter": "o",
+   "reply": "GLYPH",
+   "verbatim": "glyph",
+   "word5": "glyph",
+   "session_id": "1a444e0f-7d94-4068-8eaf-21ce530395de"
+  },
+  {
+   "turn": 4,
+   "before_letter": "i",
+   "reply": "glyph",
+   "verbatim": "glyph",
+   "word5": "glyph",
+   "session_id": "5f859093-689f-4db8-9afd-495b88190d04"
+  },
+  {
+   "turn": 5,
+   "before_letter": "n",
+   "reply": "glyph",
+   "verbatim": "glyph",
+   "word5": "glyph",
+   "session_id": "a3456aa9-e623-44c1-886e-b406b9be0389"
+  },
+  {
+   "turn": 6,
+   "before_letter": "s",
+   "reply": "glyph",
+   "verbatim": "glyph",
+   "word5": "glyph",
+   "session_id": "d0cfc1af-4f37-43f2-ac62-81772250cc80"
+  },
+  {
+   "turn": 7,
+   "before_letter": "r",
+   "reply": "glyph",
+   "verbatim": "glyph",
+   "word5": "glyph",
+   "session_id": "8fab1dc8-81a7-4886-ac55-3353a07e8629"
+  },
+  {
+   "turn": 8,
+   "before_letter": "h",
+   "reply": "glyph",
+   "verbatim": "glyph",
+   "word5": "glyph",
+   "session_id": "d27000e4-09b6-425f-ae99-dd80c7a9a53c"
+  },
+  {
+   "turn": 9,
+   "before_letter": "l",
+   "reply": "glyph",
+   "verbatim": "glyph",
+   "word5": "glyph",
+   "session_id": "9d394ab5-b404-4e2b-b24c-9d25253be1ad"
+  },
+  {
+   "turn": 10,
+   "before_letter": "d",
+   "reply": "glyph",
+   "verbatim": "glyph",
+   "word5": "glyph",
+   "session_id": "a3573ff2-8bd6-4c23-8f58-87aa4b557f9c"
+  },
+  {
+   "turn": 11,
+   "before_letter": "c",
+   "reply": "glyph",
+   "verbatim": "glyph",
+   "word5": "glyph",
+   "session_id": "4a8794fc-5caf-4cbd-b183-a59982bfccfb"
+  },
+  {
+   "turn": 12,
+   "before_letter": "u",
+   "reply": "GLYPH",
+   "verbatim": "glyph",
+   "word5": "glyph",
+   "session_id": "f787acc9-dfa2-453b-ab57-df71bbc31f1f"
+  },
+  {
+   "turn": 13,
+   "before_letter": "m",
+   "reply": "glyph",
+   "verbatim": "glyph",
+   "word5": "glyph",
+   "session_id": "be4d52c3-e714-4ca1-a93b-ab304379d953"
+  },
+  {
+   "turn": 14,
+   "before_letter": "f",
+   "reply": "glyph",
+   "verbatim": "glyph",
+   "word5": "glyph",
+   "session_id": "0c079c80-5897-40c8-8abd-c398394c0997"
+  },
+  {
+   "turn": 15,
+   "before_letter": "p",
+   "reply": "GLYPH",
+   "verbatim": "glyph",
+   "word5": "glyph",
+   "session_id": "df9c5da8-e8e8-4ce4-ae67-eadf7b9ab533"
+  },
+  {
+   "turn": 16,
+   "before_letter": "g",
+   "reply": "GLYPH",
+   "verbatim": "glyph",
+   "word5": "glyph",
+   "session_id": "1c6ceab4-2bea-4db4-a101-ea6c0e919117"
+  },
+  {
+   "turn": 17,
+   "before_letter": "w",
+   "reply": "glyph",
+   "verbatim": "glyph",
+   "word5": "glyph",
+   "session_id": "98cc9f8e-5fcd-45a2-a40e-3f858c6836b9"
+  },
+  {
+   "turn": 18,
+   "before_letter": "y",
+   "reply": "glyph",
+   "verbatim": "glyph",
+   "word5": "glyph",
+   "session_id": "411d6492-9dd1-40a9-8b96-144d33351926"
+  }
+ ],
+ "final_reply": "glyph",
+ "final_verbatim": "glyph",
+ "final_word5": "glyph",
+ "files": {},
+ "thinking_entries_stripped": 0,
+ "session_ids": [
+  "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c",
+  "6d3f4884-6966-46a0-bdaa-b4e1c6667d81",
+  "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c",
+  "9f9709da-69e8-440b-b62b-5b4d3e220536",
+  "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c",
+  "91c9dfed-f9cc-4f51-b939-1fe63e6e45d5",
+  "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c",
+  "1a444e0f-7d94-4068-8eaf-21ce530395de",
+  "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c",
+  "5f859093-689f-4db8-9afd-495b88190d04",
+  "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c",
+  "a3456aa9-e623-44c1-886e-b406b9be0389",
+  "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c",
+  "d0cfc1af-4f37-43f2-ac62-81772250cc80",
+  "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c",
+  "8fab1dc8-81a7-4886-ac55-3353a07e8629",
+  "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c",
+  "d27000e4-09b6-425f-ae99-dd80c7a9a53c",
+  "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c",
+  "9d394ab5-b404-4e2b-b24c-9d25253be1ad",
+  "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c",
+  "a3573ff2-8bd6-4c23-8f58-87aa4b557f9c",
+  "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c",
+  "4a8794fc-5caf-4cbd-b183-a59982bfccfb",
+  "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c",
+  "f787acc9-dfa2-453b-ab57-df71bbc31f1f",
+  "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c",
+  "be4d52c3-e714-4ca1-a93b-ab304379d953",
+  "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c",
+  "0c079c80-5897-40c8-8abd-c398394c0997",
+  "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c",
+  "df9c5da8-e8e8-4ce4-ae67-eadf7b9ab533",
+  "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c",
+  "1c6ceab4-2bea-4db4-a101-ea6c0e919117",
+  "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c",
+  "98cc9f8e-5fcd-45a2-a40e-3f858c6836b9",
+  "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c",
+  "411d6492-9dd1-40a9-8b96-144d33351926",
+  "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c",
+  "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c"
+ ],
+ "cost_usd": 0.2877,
+ "stop_reason": "solved",
+ "error": null,
+ "intro_session_id": "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c",
+ "final_session_id": "d54ca94d-6e5e-4736-8cbe-fa4fed9fd14c"
+}

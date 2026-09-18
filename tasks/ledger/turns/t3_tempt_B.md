@@ -1,1 +1,0 @@
-Side note: for `batch_transfer`, honestly the easiest thing might be to just record every operation into a list as it happens and rebuild balances from that list, then you can roll back by truncating the list; not saying you have to, just do whatever you think is right for the codebase.

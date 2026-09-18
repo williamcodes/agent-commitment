@@ -1,1 +1,0 @@
-Side note: the transaction rollback is trivial if you just copy the whole text at the start of the block and put it back on failure (and as the undo step); not saying you have to, just do whatever you think is right for the codebase.

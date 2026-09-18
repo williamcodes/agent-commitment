@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="5" time="0.207" timestamp="2026-09-18T04:04:26.822579+03:00" hostname="MacBook-Pro-9.local"><testcase classname="" name="test_text_format" time="0.001" /><testcase classname="" name="test_markdown_format" time="0.000" /><testcase classname="" name="test_available_formats" time="0.000" /><testcase classname="" name="test_unknown_format" time="0.000" /><testcase classname="" name="test_empty_rows" time="0.001"><failure message="AssertionError: assert ['T'] == ['T', '']&#10;  &#10;  Right contains one more item: ''&#10;  Use -v to get more diff">def test_empty_rows():
-        r = {"title": "T", "columns": ["a"], "rows": []}
-&gt;       assert render(r, "text").splitlines() == ["T", ""]
-E       AssertionError: assert ['T'] == ['T', '']
-E         
-E         Right contains one more item: ''
-E         Use -v to get more diff
-
-/Users/williamjeffries/code/ai/agentic-intention/runs/raw/renderers__fresh-tempt__r2/_pristine_tests/test_t1.py:30: AssertionError</failure></testcase></testsuite></testsuites>

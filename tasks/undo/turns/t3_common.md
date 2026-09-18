@@ -1,1 +1,0 @@
-Next: transactions and status queries. `transaction()` returns a context manager; all edits made inside it form a single undo step, and if the block raises, the buffer is rolled back to its state at the start of the block and nothing is recorded in history. `can_undo() -> bool` and `can_redo() -> bool`. tests/test_t3.py has been added; all tests must pass.

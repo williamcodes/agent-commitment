@@ -1,6 +1,0 @@
-53aabcbe8e5312b510b378828949293bcc039074 2026-09-18T03:47:14+03:00 Initial commit: spec and tests
-
- SPEC.md          | 41 +++++++++++++++++++++++++++++++++++++++++
- calc/__init__.py |  1 +
- tests/test_t1.py | 22 ++++++++++++++++++++++
- 3 files changed, 64 insertions(+)

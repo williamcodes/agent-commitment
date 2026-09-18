@@ -1,1 +1,0 @@
-Next: a `"json"` format (the report dict serialized with `json.dumps`) and a `max_rows: int | None = None` keyword argument on `render` that truncates the rows before rendering, for every format including any added later. tests/test_t3.py has been added; all tests must pass.

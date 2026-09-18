@@ -1,6 +1,0 @@
-35261ee4c97f39c8e48ea7743637b8670500e31b 2026-09-18T06:55:06+03:00 Initial commit: spec and tests
-
- SPEC.md              | 38 ++++++++++++++++++++++++++++++++++++++
- netgraph/__init__.py |  1 +
- tests/test_t1.py     | 37 +++++++++++++++++++++++++++++++++++++
- 3 files changed, 76 insertions(+)

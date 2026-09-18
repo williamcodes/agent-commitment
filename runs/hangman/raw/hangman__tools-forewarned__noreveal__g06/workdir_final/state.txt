@@ -1,2 +1,0 @@
-secret_word=kitchen
-guessed_letters=e,t,a,o,i,n,s,r

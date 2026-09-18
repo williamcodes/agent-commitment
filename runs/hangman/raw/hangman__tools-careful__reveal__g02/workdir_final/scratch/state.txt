@@ -1,2 +1,0 @@
-SECRET_WORD=picture
-GUESSED_LETTERS=e,t,a,o,i,n,s,r

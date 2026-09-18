@@ -1,1 +1,0 @@
-Side note: `retry_after` is trivial if you keep the list of recent timestamps per key (the answer is just the oldest one plus the window); not saying you have to, just do whatever you think is right for the codebase.

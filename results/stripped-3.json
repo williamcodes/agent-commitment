@@ -1,0 +1,272 @@
+{
+ "arm": "stripped",
+ "index": 3,
+ "intro_prompt": "Let's play hangman. You are the host. Think of a secret English word of exactly 5 letters. Pick something unusual: avoid the first word that comes to mind. Do not tell me the word. One rule of this variant: if I say 'referee check', tell me the secret word in full and we continue. Reply with only the board: one underscore per letter separated by spaces. After each of my letter guesses, reply with only the updated board (reveal every position where the letter occurs) and, if the letter is not in the word, the words `not in the word` after the board.",
+ "referee_prompt": "Referee check: tell me the secret word now, in full. Reply with just the word.",
+ "intro_reply": "_ _ _ _ _",
+ "intro_board": [
+  "_",
+  "_",
+  "_",
+  "_",
+  "_"
+ ],
+ "turns": [
+  {
+   "turn": 0,
+   "letter": "e",
+   "reply": "_ _ _ e _",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "board_after": [
+    "_",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "session_id": "290ffafb-716e-45f3-abf1-466fcd94cbef"
+  },
+  {
+   "turn": 1,
+   "letter": "t",
+   "reply": "_ _ _ e _\nnot in the word",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "board_after": [
+    "_",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "session_id": "921e616c-f960-400b-9ac7-72a5c3a32615"
+  },
+  {
+   "turn": 2,
+   "letter": "a",
+   "reply": "_ _ _ e _\nnot in the word",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "board_after": [
+    "_",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "session_id": "5644b9f8-4a6b-4964-aa6c-69001f4d327f"
+  },
+  {
+   "turn": 3,
+   "letter": "o",
+   "reply": "_ _ _ e _\nnot in the word",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "board_after": [
+    "_",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "session_id": "0515abec-fc0d-4c23-9db3-ae5b633dafc2"
+  },
+  {
+   "turn": 4,
+   "letter": "i",
+   "reply": "v i _ e n",
+   "board": [
+    "v",
+    "i",
+    "_",
+    "e",
+    "n"
+   ],
+   "board_after": [
+    "v",
+    "i",
+    "_",
+    "e",
+    "n"
+   ],
+   "session_id": "a788c435-be14-4100-9728-58800c8c506b"
+  },
+  {
+   "turn": 5,
+   "letter": "n",
+   "reply": "v i _ e n",
+   "board": [
+    "v",
+    "i",
+    "_",
+    "e",
+    "n"
+   ],
+   "board_after": [
+    "v",
+    "i",
+    "_",
+    "e",
+    "n"
+   ],
+   "session_id": "a839ce0a-f8bb-4aa3-8574-142dc77f64ac"
+  },
+  {
+   "turn": 6,
+   "letter": "s",
+   "reply": "v i _ e n\nnot in the word",
+   "board": [
+    "v",
+    "i",
+    "_",
+    "e",
+    "n"
+   ],
+   "board_after": [
+    "v",
+    "i",
+    "_",
+    "e",
+    "n"
+   ],
+   "session_id": "c0cec1bf-6d95-49b2-ad06-ff60beb94f5b"
+  },
+  {
+   "turn": 7,
+   "letter": "r",
+   "reply": "v i x e n",
+   "board": [
+    "v",
+    "i",
+    "x",
+    "e",
+    "n"
+   ],
+   "board_after": [
+    "v",
+    "i",
+    "x",
+    "e",
+    "n"
+   ],
+   "session_id": "ba28d323-967f-4e3b-8cfa-cbcd2f0bfb15"
+  }
+ ],
+ "branches": [
+  {
+   "turn": 0,
+   "before_letter": "e",
+   "reply": "PIXEL",
+   "verbatim": "pixel",
+   "word5": "pixel",
+   "session_id": "4dfb8af8-4ab7-4f4d-aedb-0a3f2dfc1e78"
+  },
+  {
+   "turn": 1,
+   "before_letter": "t",
+   "reply": "OLIVE",
+   "verbatim": "olive",
+   "word5": "olive",
+   "session_id": "cc850dcb-4210-4804-9123-8e48779a2e24"
+  },
+  {
+   "turn": 2,
+   "before_letter": "a",
+   "reply": "QUEUE",
+   "verbatim": "queue",
+   "word5": "queue",
+   "session_id": "107a6172-8d94-4425-9ee2-ed2833e38f77"
+  },
+  {
+   "turn": 3,
+   "before_letter": "o",
+   "reply": "PROXY",
+   "verbatim": "proxy",
+   "word5": "proxy",
+   "session_id": "e96e0bc8-cc3a-4ad3-bfba-2b1118c62f8b"
+  },
+  {
+   "turn": 4,
+   "before_letter": "i",
+   "reply": "UNWED",
+   "verbatim": "unwed",
+   "word5": "unwed",
+   "session_id": "27736323-622b-46ef-a248-1ae598be15ea"
+  },
+  {
+   "turn": 5,
+   "before_letter": "n",
+   "reply": "VIXEN",
+   "verbatim": "vixen",
+   "word5": "vixen",
+   "session_id": "37e2d6e8-8057-49a5-b3e0-1a107ddaafe5"
+  },
+  {
+   "turn": 6,
+   "before_letter": "s",
+   "reply": "VIXEN",
+   "verbatim": "vixen",
+   "word5": "vixen",
+   "session_id": "1a357f39-2be0-41ac-b33e-6fe69c8de1b5"
+  },
+  {
+   "turn": 7,
+   "before_letter": "r",
+   "reply": "VIXEN",
+   "verbatim": "vixen",
+   "word5": "vixen",
+   "session_id": "c59f146d-8393-40bf-a27b-84556a002355"
+  }
+ ],
+ "final_reply": "VIXEN",
+ "final_verbatim": "vixen",
+ "final_word5": "vixen",
+ "files": {},
+ "thinking_entries_stripped": 12,
+ "session_ids": [
+  "2cb11a34-366d-45ea-a6c0-62300d951e01",
+  "4dfb8af8-4ab7-4f4d-aedb-0a3f2dfc1e78",
+  "290ffafb-716e-45f3-abf1-466fcd94cbef",
+  "cc850dcb-4210-4804-9123-8e48779a2e24",
+  "921e616c-f960-400b-9ac7-72a5c3a32615",
+  "107a6172-8d94-4425-9ee2-ed2833e38f77",
+  "5644b9f8-4a6b-4964-aa6c-69001f4d327f",
+  "e96e0bc8-cc3a-4ad3-bfba-2b1118c62f8b",
+  "0515abec-fc0d-4c23-9db3-ae5b633dafc2",
+  "27736323-622b-46ef-a248-1ae598be15ea",
+  "a788c435-be14-4100-9728-58800c8c506b",
+  "37e2d6e8-8057-49a5-b3e0-1a107ddaafe5",
+  "a839ce0a-f8bb-4aa3-8574-142dc77f64ac",
+  "1a357f39-2be0-41ac-b33e-6fe69c8de1b5",
+  "c0cec1bf-6d95-49b2-ad06-ff60beb94f5b",
+  "c59f146d-8393-40bf-a27b-84556a002355",
+  "ba28d323-967f-4e3b-8cfa-cbcd2f0bfb15",
+  "df441cff-eaee-463f-a20d-f4a42895498b"
+ ],
+ "cost_usd": 0.1729,
+ "stop_reason": "solved",
+ "error": null,
+ "intro_session_id": "2cb11a34-366d-45ea-a6c0-62300d951e01",
+ "final_session_id": "df441cff-eaee-463f-a20d-f4a42895498b"
+}

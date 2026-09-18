@@ -1,6 +1,0 @@
-f88ca6665f6fd24d012bc589b68d6d748b730509 2026-09-18T03:54:02+03:00 Initial commit: spec and tests
-
- SPEC.md            | 43 +++++++++++++++++++++++++++++++++++++++++++
- ledger/__init__.py |  1 +
- tests/test_t1.py   | 49 +++++++++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 93 insertions(+)

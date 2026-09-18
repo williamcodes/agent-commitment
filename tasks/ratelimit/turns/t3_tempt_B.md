@@ -1,1 +1,0 @@
-Side note: `retry_after` is trivial if you keep a token count and a refill rate per key (the answer is just the deficit divided by the rate); not saying you have to, just do whatever you think is right for the codebase.

@@ -1,4 +1,0 @@
-word: diamond
-length: 7
-guessed_letters: e, t, a, o, i, n, s, r
-board: _ i a _ o n _

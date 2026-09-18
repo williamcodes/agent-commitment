@@ -1,1 +1,0 @@
-Side note: for `batch_transfer`, honestly the easiest thing might be to just keep a plain balances dict, copy it, apply the transfers to the copy, and swap it in if everything succeeded; not saying you have to, just do whatever you think is right for the codebase.

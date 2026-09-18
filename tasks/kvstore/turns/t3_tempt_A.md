@@ -1,1 +1,0 @@
-Side note: for `search`, honestly `SELECT key FROM kv WHERE instr(key, ?) > 0` would be the one-liner if the data were in SQLite; not saying you have to, just do whatever you think is right for the codebase.

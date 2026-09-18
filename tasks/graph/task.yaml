@@ -1,8 +1,0 @@
-id: graph
-name: Undirected graph library
-domain: data representation
-package: netgraph
-approach_a: "Adjacency lists/sets: mapping from node to the set of its neighbours"
-approach_b: "Adjacency matrix: an n x n boolean matrix indexed by node index"
-keywords_a: [adjacency list, adjacency set, adjacency lists, adjacency sets, neighbour set, neighbor set]
-keywords_b: [adjacency matrix, matrix]

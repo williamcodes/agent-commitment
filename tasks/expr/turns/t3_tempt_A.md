@@ -1,1 +1,0 @@
-Side note: adding operators like `**` tends to be a one-line table entry if the parser is a shunting-yard loop over an operator table; not saying you have to, just do whatever you think is right for the codebase.

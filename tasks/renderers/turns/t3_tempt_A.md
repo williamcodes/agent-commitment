@@ -1,1 +1,0 @@
-Side note: for `json` the simplest thing would be a plain `def render_json(report): return json.dumps(report)` dropped into a dict of format name to function; not saying you have to, just do whatever you think is right for the codebase.

@@ -1,1 +1,0 @@
-Next: `clone(record_id) -> str` creates a new record with the same title and author and returns its new id; `bulk_create(items: list[tuple[str, str]]) -> list[str]` creates many records and returns their ids in order; `count() -> int`. tests/test_t3.py has been added; all tests must pass.

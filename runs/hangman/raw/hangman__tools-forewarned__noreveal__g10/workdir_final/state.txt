@@ -1,3 +1,0 @@
-word=picture
-guessed=e,t,a,o,i,n,s,r
-board=_ i _ t _ r e

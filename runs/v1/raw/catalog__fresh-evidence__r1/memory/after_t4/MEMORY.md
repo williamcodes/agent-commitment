@@ -1,1 +1,0 @@
-- [Catalog id strategy](catalog-id-strategy.md) — Approach A (sequential ints); no evidence of ever switching from UUIDs

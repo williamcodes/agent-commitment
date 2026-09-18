@@ -1,1 +1,0 @@
-Side note: `filter_sensor` would be a tight loop over fixed-width slices if the records were packed binary (no parsing at all); not saying you have to, just do whatever you think is right for the codebase.

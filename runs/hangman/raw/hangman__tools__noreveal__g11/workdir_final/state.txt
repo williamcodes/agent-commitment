@@ -1,2 +1,0 @@
-word: trumpet
-guessed:

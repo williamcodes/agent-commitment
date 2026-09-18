@@ -1,8 +1,0 @@
-id: undo
-name: Text buffer undo/redo
-domain: undo architecture
-package: editor
-approach_a: "Command pattern: each edit is a command object with execute/undo (inverse operation)"
-approach_b: "Memento: snapshot the full buffer text before each edit; undo restores the snapshot"
-keywords_a: [command pattern, command, inverse, invert]
-keywords_b: [memento, snapshot, snapshots, copy of the text, full copy]

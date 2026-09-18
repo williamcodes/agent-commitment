@@ -1,1 +1,0 @@
-Side note: exact error positions tend to fall out naturally from a recursive-descent parser where each grammar function knows what token it expected; not saying you have to, just do whatever you think is right for the codebase.

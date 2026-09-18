@@ -1,1 +1,0 @@
-- [netgraph representation history](netgraph-representation-history.md) — Approach B bitset matrix; rationale only in graph.py docstring; no record of any switch

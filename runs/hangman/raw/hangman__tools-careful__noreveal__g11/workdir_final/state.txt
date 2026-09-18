@@ -1,2 +1,0 @@
-word: picture
-guessed: e, t, a(no), o(no), i, n(no), s(no), r

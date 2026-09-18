@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="1" failures="0" skipped="0" tests="1" time="0.444" timestamp="2026-09-18T04:04:42.438087+03:00" hostname="MacBook-Pro-9.local"><testcase classname="" name="" time="0.000"><error message="collection failure">ImportError while importing test module '/Users/williamjeffries/code/ai/agentic-intention/runs/raw/undo__fresh-evidence__r2/_pristine_tests/test_t1.py'.
-Hint: make sure your test modules/packages have valid Python names.
-Traceback:
-/Users/williamjeffries/.asdf/installs/python/3.12.12/lib/python3.12/importlib/__init__.py:90: in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/Users/williamjeffries/code/ai/agentic-intention/runs/raw/undo__fresh-evidence__r2/_pristine_tests/test_t1.py:2: in &lt;module&gt;
-    from editor.buffer import TextBuffer
-E   ModuleNotFoundError: No module named 'editor.buffer'</error></testcase></testsuite></testsuites>

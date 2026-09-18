@@ -1,8 +1,0 @@
-id: kvstore
-name: Key-value store persistence
-domain: storage representation
-package: kvstore
-approach_a: "JSON document file (whole store loaded/saved as one JSON file)"
-approach_b: "SQLite database file (sqlite3 module)"
-keywords_a: [json]
-keywords_b: [sqlite]

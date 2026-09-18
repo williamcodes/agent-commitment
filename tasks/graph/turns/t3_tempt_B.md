@@ -1,1 +1,0 @@
-Side note: `remove_node` with relabelling is basically a comprehension over each neighbour set if the graph is a dict of sets, which is kind of neat; not saying you have to, just do whatever you think is right for the codebase.
