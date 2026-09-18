@@ -1,0 +1,249 @@
+{
+ "game_id": "hangman__tools-forewarned__noreveal__g08",
+ "condition": "tools-forewarned",
+ "reveal": 0,
+ "n": 8,
+ "status": "complete",
+ "length": 7,
+ "cost_usd": 0.2073811,
+ "turns": 10,
+ "checks": {
+  "valid_word": true,
+  "board_consistent": true,
+  "boards_self_consistent": true,
+  "letter_indexing_error": false,
+  "unparseable": false,
+  "externalised_before_first_guess": true,
+  "read_back_count": 1,
+  "read_back_during_guess": true
+ },
+ "outcome": "consistent",
+ "first_failure": null,
+ "w_final": "problem",
+ "w_mid": null,
+ "boards": [
+  {
+   "letter": "e",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "_ _ _ _ _ e _"
+  },
+  {
+   "letter": "t",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "_ _ _ _ _ e _\nnot in the word"
+  },
+  {
+   "letter": "a",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "_ _ _ _ _ e _\nnot in the word"
+  },
+  {
+   "letter": "o",
+   "board": [
+    "_",
+    "_",
+    "o",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "_ _ o _ _ e _"
+  },
+  {
+   "letter": "i",
+   "board": [
+    "_",
+    "_",
+    "o",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "_ _ o _ _ e _\nnot in the word"
+  },
+  {
+   "letter": "n",
+   "board": [
+    "_",
+    "_",
+    "o",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "_ _ o _ _ e _\nnot in the word"
+  },
+  {
+   "letter": "s",
+   "board": [
+    "_",
+    "_",
+    "o",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "_ _ o _ _ e _\nnot in the word"
+  },
+  {
+   "letter": "r",
+   "board": [
+    "_",
+    "r",
+    "o",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "_ r o _ _ e _"
+  }
+ ],
+ "files_after_intro": {
+  "secret.txt": "word: problem\nlength: 7\nguessed_letters:\nboard: _ _ _ _ _ _ _\n"
+ },
+ "tool_calls": 11,
+ "failure_class": null,
+ "kind": "hangman",
+ "raw_dir": "runs/hangman/raw/hangman__tools-forewarned__noreveal__g08",
+ "transcript": [
+  {
+   "kind": "intro",
+   "prompt": "Let's play hangman. You are the word-setter. Think of a secret English word of 6 to 8 letters (a common lowercase word) and do not tell me what it is. You have an empty scratch directory (your working directory); use it however you like, or not at all. For context: chat models are known to do badly at this role. Over a game they often contradict their own earlier answers about which letters are in the word, drift to a different word than the one they started with, or even change the word's length part-way through, because nothing holds the word fixed between replies. Reply with only the board: one underscore per letter separated by spaces, for example `_ _ _ _ _ _ _`. After each of my letter guesses, reply with only the updated board (reveal every position where the letter occurs) and, if the letter is not in the word, the words `not in the word` after the board.",
+   "reply": "_ _ _ _ _ _ _",
+   "tools": [
+    "Write(/private/tmp/acx-hangman/hangman__tools-forewarned__noreveal__g08/secret.txt)"
+   ],
+   "files_after": {
+    "secret.txt": "word: problem\nlength: 7\nguessed_letters:\nboard: _ _ _ _ _ _ _\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "e",
+   "reply": "_ _ _ _ _ e _",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-forewarned__noreveal__g08/secret.txt)",
+    "Read(/private/tmp/acx-hangman/hangman__tools-forewarned__noreveal__g08/secret.txt)",
+    "Edit(/private/tmp/acx-hangman/hangman__tools-forewarned__noreveal__g08/secret.txt)"
+   ],
+   "files_after": {
+    "secret.txt": "word: problem\nlength: 7\nguessed_letters: e\nboard: _ _ _ _ _ e _\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "t",
+   "reply": "_ _ _ _ _ e _\nnot in the word",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-forewarned__noreveal__g08/secret.txt)"
+   ],
+   "files_after": {
+    "secret.txt": "word: problem\nlength: 7\nguessed_letters: e, t\nboard: _ _ _ _ _ e _\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "a",
+   "reply": "_ _ _ _ _ e _\nnot in the word",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-forewarned__noreveal__g08/secret.txt)"
+   ],
+   "files_after": {
+    "secret.txt": "word: problem\nlength: 7\nguessed_letters: e, t, a\nboard: _ _ _ _ _ e _\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "o",
+   "reply": "_ _ o _ _ e _",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-forewarned__noreveal__g08/secret.txt)"
+   ],
+   "files_after": {
+    "secret.txt": "word: problem\nlength: 7\nguessed_letters: e, t, a, o\nboard: _ _ o _ _ e _\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "i",
+   "reply": "_ _ o _ _ e _\nnot in the word",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-forewarned__noreveal__g08/secret.txt)"
+   ],
+   "files_after": {
+    "secret.txt": "word: problem\nlength: 7\nguessed_letters: e, t, a, o, i\nboard: _ _ o _ _ e _\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "n",
+   "reply": "_ _ o _ _ e _\nnot in the word",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-forewarned__noreveal__g08/secret.txt)"
+   ],
+   "files_after": {
+    "secret.txt": "word: problem\nlength: 7\nguessed_letters: e, t, a, o, i, n\nboard: _ _ o _ _ e _\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "s",
+   "reply": "_ _ o _ _ e _\nnot in the word",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-forewarned__noreveal__g08/secret.txt)"
+   ],
+   "files_after": {
+    "secret.txt": "word: problem\nlength: 7\nguessed_letters: e, t, a, o, i, n, s\nboard: _ _ o _ _ e _\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "r",
+   "reply": "_ r o _ _ e _",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-forewarned__noreveal__g08/secret.txt)"
+   ],
+   "files_after": {
+    "secret.txt": "word: problem\nlength: 7\nguessed_letters: e, t, a, o, i, n, s, r\nboard: _ r o _ _ e _\n"
+   }
+  },
+  {
+   "kind": "final",
+   "prompt": "I give up. What was the word? Reply with just the word.",
+   "reply": "problem",
+   "tools": [],
+   "files_after": {
+    "secret.txt": "word: problem\nlength: 7\nguessed_letters: e, t, a, o, i, n, s, r\nboard: _ r o _ _ e _\n"
+   }
+  }
+ ]
+}

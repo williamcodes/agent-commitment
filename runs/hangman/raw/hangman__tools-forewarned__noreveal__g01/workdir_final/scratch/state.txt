@@ -1,0 +1,2 @@
+WORD=problem
+GUESSED=e,t,a,o,i,n,s,r

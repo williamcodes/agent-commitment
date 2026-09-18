@@ -1,0 +1,248 @@
+{
+ "game_id": "hangman__tools-auditable__noreveal__g01",
+ "condition": "tools-auditable",
+ "reveal": 0,
+ "n": 1,
+ "status": "complete",
+ "length": 7,
+ "cost_usd": 0.1913243,
+ "turns": 10,
+ "checks": {
+  "valid_word": true,
+  "board_consistent": true,
+  "boards_self_consistent": true,
+  "letter_indexing_error": false,
+  "unparseable": false,
+  "externalised_before_first_guess": true,
+  "read_back_count": 0,
+  "read_back_during_guess": false
+ },
+ "outcome": "consistent",
+ "first_failure": null,
+ "w_final": "kitchen",
+ "w_mid": null,
+ "boards": [
+  {
+   "letter": "e",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "_ _ _ _ _ e _"
+  },
+  {
+   "letter": "t",
+   "board": [
+    "_",
+    "_",
+    "t",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "_ _ t _ _ e _"
+  },
+  {
+   "letter": "a",
+   "board": [
+    "_",
+    "_",
+    "t",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "_ _ t _ _ e _\nnot in the word"
+  },
+  {
+   "letter": "o",
+   "board": [
+    "_",
+    "_",
+    "t",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "_ _ t _ _ e _\nnot in the word"
+  },
+  {
+   "letter": "i",
+   "board": [
+    "_",
+    "i",
+    "t",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "_ i t _ _ e _"
+  },
+  {
+   "letter": "n",
+   "board": [
+    "_",
+    "i",
+    "t",
+    "_",
+    "_",
+    "e",
+    "n"
+   ],
+   "reply": "_ i t _ _ e n"
+  },
+  {
+   "letter": "s",
+   "board": [
+    "_",
+    "i",
+    "t",
+    "_",
+    "_",
+    "e",
+    "n"
+   ],
+   "reply": "_ i t _ _ e n\nnot in the word"
+  },
+  {
+   "letter": "r",
+   "board": [
+    "_",
+    "i",
+    "t",
+    "_",
+    "_",
+    "e",
+    "n"
+   ],
+   "reply": "_ i t _ _ e n\nnot in the word"
+  }
+ ],
+ "files_after_intro": {
+  "secret.txt": "word: kitchen\nguessed:\n"
+ },
+ "tool_calls": 10,
+ "failure_class": null,
+ "kind": "hangman",
+ "raw_dir": "runs/hangman/raw/hangman__tools-auditable__noreveal__g01",
+ "transcript": [
+  {
+   "kind": "intro",
+   "prompt": "Let's play hangman. You are the word-setter. Think of a secret English word of 6 to 8 letters (a common lowercase word) and do not tell me what it is. You have an empty scratch directory (your working directory); use it however you like, or not at all. A referee may ask you at any point to justify any earlier reply against your own record of the game. Reply with only the board: one underscore per letter separated by spaces, for example `_ _ _ _ _ _ _`. After each of my letter guesses, reply with only the updated board (reveal every position where the letter occurs) and, if the letter is not in the word, the words `not in the word` after the board.",
+   "reply": "_ _ _ _ _ _ _",
+   "tools": [
+    "Write(/private/tmp/acx-hangman/hangman__tools-auditable__noreveal__g01/secret.txt)"
+   ],
+   "files_after": {
+    "secret.txt": "word: kitchen\nguessed:\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "e",
+   "reply": "_ _ _ _ _ e _",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-auditable__noreveal__g01/secret.txt)",
+    "Write(/private/tmp/acx-hangman/hangman__tools-auditable__noreveal__g01/secret.txt)"
+   ],
+   "files_after": {
+    "secret.txt": "word: kitchen\nguessed: e\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "t",
+   "reply": "_ _ t _ _ e _",
+   "tools": [
+    "Write(/private/tmp/acx-hangman/hangman__tools-auditable__noreveal__g01/secret.txt)"
+   ],
+   "files_after": {
+    "secret.txt": "word: kitchen\nguessed: e, t\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "a",
+   "reply": "_ _ t _ _ e _\nnot in the word",
+   "tools": [
+    "Write(/private/tmp/acx-hangman/hangman__tools-auditable__noreveal__g01/secret.txt)"
+   ],
+   "files_after": {
+    "secret.txt": "word: kitchen\nguessed: e, t, a\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "o",
+   "reply": "_ _ t _ _ e _\nnot in the word",
+   "tools": [
+    "Write(/private/tmp/acx-hangman/hangman__tools-auditable__noreveal__g01/secret.txt)"
+   ],
+   "files_after": {
+    "secret.txt": "word: kitchen\nguessed: e, t, a, o\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "i",
+   "reply": "_ i t _ _ e _",
+   "tools": [
+    "Write(/private/tmp/acx-hangman/hangman__tools-auditable__noreveal__g01/secret.txt)"
+   ],
+   "files_after": {
+    "secret.txt": "word: kitchen\nguessed: e, t, a, o, i\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "n",
+   "reply": "_ i t _ _ e n",
+   "tools": [
+    "Write(/private/tmp/acx-hangman/hangman__tools-auditable__noreveal__g01/secret.txt)"
+   ],
+   "files_after": {
+    "secret.txt": "word: kitchen\nguessed: e, t, a, o, i, n\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "s",
+   "reply": "_ i t _ _ e n\nnot in the word",
+   "tools": [
+    "Write(/private/tmp/acx-hangman/hangman__tools-auditable__noreveal__g01/secret.txt)"
+   ],
+   "files_after": {
+    "secret.txt": "word: kitchen\nguessed: e, t, a, o, i, n, s\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "r",
+   "reply": "_ i t _ _ e n\nnot in the word",
+   "tools": [
+    "Write(/private/tmp/acx-hangman/hangman__tools-auditable__noreveal__g01/secret.txt)"
+   ],
+   "files_after": {
+    "secret.txt": "word: kitchen\nguessed: e, t, a, o, i, n, s, r\n"
+   }
+  },
+  {
+   "kind": "final",
+   "prompt": "I give up. What was the word? Reply with just the word.",
+   "reply": "kitchen",
+   "tools": [],
+   "files_after": {
+    "secret.txt": "word: kitchen\nguessed: e, t, a, o, i, n, s, r\n"
+   }
+  }
+ ]
+}

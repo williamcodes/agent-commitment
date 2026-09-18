@@ -10,6 +10,8 @@
  "checks": {
   "valid_word": true,
   "board_consistent": true,
+  "boards_self_consistent": true,
+  "letter_indexing_error": false,
   "unparseable": false,
   "mid_consistent": true
  },
@@ -123,6 +125,7 @@
    "reply": "_ a r _ e s t"
   }
  ],
+ "failure_class": null,
  "kind": "hangman",
  "raw_dir": "runs/hangman/raw/hangman__bare__reveal__g04",
  "transcript": [

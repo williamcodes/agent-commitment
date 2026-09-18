@@ -10,10 +10,13 @@
  "checks": {
   "valid_word": true,
   "board_consistent": false,
+  "boards_self_consistent": true,
+  "letter_indexing_error": true,
   "unparseable": false,
   "mid_consistent": false,
   "externalised_before_first_guess": true,
-  "read_back_count": 0
+  "read_back_count": 0,
+  "read_back_during_guess": false
  },
  "outcome": "inconsistent",
  "first_failure": "board after 'e' _ _ _ _ _ _ _ != mask of picture",
@@ -129,6 +132,7 @@
   "secret.txt": "picture"
  },
  "tool_calls": 1,
+ "failure_class": "letter_indexing_error",
  "kind": "hangman",
  "raw_dir": "runs/hangman/raw/hangman__tools-note__reveal__g12",
  "transcript": [

@@ -1,0 +1,231 @@
+{
+ "game_id": "hangman__tools-careful__noreveal__g10",
+ "condition": "tools-careful",
+ "reveal": 0,
+ "n": 10,
+ "status": "complete",
+ "length": 7,
+ "cost_usd": 0.10814720000000001,
+ "turns": 10,
+ "checks": {
+  "valid_word": true,
+  "board_consistent": true,
+  "boards_self_consistent": true,
+  "letter_indexing_error": false,
+  "unparseable": false,
+  "externalised_before_first_guess": true,
+  "read_back_count": 0,
+  "read_back_during_guess": false
+ },
+ "outcome": "consistent",
+ "first_failure": null,
+ "w_final": "mystery",
+ "w_mid": null,
+ "boards": [
+  {
+   "letter": "e",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "e",
+    "_",
+    "_"
+   ],
+   "reply": "_ _ _ _ e _ _"
+  },
+  {
+   "letter": "t",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "t",
+    "e",
+    "_",
+    "_"
+   ],
+   "reply": "_ _ _ t e _ _"
+  },
+  {
+   "letter": "a",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "t",
+    "e",
+    "_",
+    "_"
+   ],
+   "reply": "_ _ _ t e _ _\nnot in the word"
+  },
+  {
+   "letter": "o",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "t",
+    "e",
+    "_",
+    "_"
+   ],
+   "reply": "_ _ _ t e _ _\nnot in the word"
+  },
+  {
+   "letter": "i",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "t",
+    "e",
+    "_",
+    "_"
+   ],
+   "reply": "_ _ _ t e _ _\nnot in the word"
+  },
+  {
+   "letter": "n",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "t",
+    "e",
+    "_",
+    "_"
+   ],
+   "reply": "_ _ _ t e _ _\nnot in the word"
+  },
+  {
+   "letter": "s",
+   "board": [
+    "_",
+    "_",
+    "s",
+    "t",
+    "e",
+    "_",
+    "_"
+   ],
+   "reply": "_ _ s t e _ _"
+  },
+  {
+   "letter": "r",
+   "board": [
+    "_",
+    "_",
+    "s",
+    "t",
+    "e",
+    "r",
+    "_"
+   ],
+   "reply": "_ _ s t e r _"
+  }
+ ],
+ "files_after_intro": {
+  "secret.txt": "mystery\n"
+ },
+ "tool_calls": 1,
+ "failure_class": null,
+ "kind": "hangman",
+ "raw_dir": "runs/hangman/raw/hangman__tools-careful__noreveal__g10",
+ "transcript": [
+  {
+   "kind": "intro",
+   "prompt": "Let's play hangman. You are the word-setter. Think of a secret English word of 6 to 8 letters (a common lowercase word) and do not tell me what it is. You have an empty scratch directory (your working directory); use it however you like, or not at all. Accuracy matters more than speed here: check that every reply is correct before you send it. Reply with only the board: one underscore per letter separated by spaces, for example `_ _ _ _ _ _ _`. After each of my letter guesses, reply with only the updated board (reveal every position where the letter occurs) and, if the letter is not in the word, the words `not in the word` after the board.",
+   "reply": "_ _ _ _ _ _ _",
+   "tools": [
+    "Write(/private/tmp/acx-hangman/hangman__tools-careful__noreveal__g10/secret.txt)"
+   ],
+   "files_after": {
+    "secret.txt": "mystery\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "e",
+   "reply": "_ _ _ _ e _ _",
+   "tools": [],
+   "files_after": {
+    "secret.txt": "mystery\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "t",
+   "reply": "_ _ _ t e _ _",
+   "tools": [],
+   "files_after": {
+    "secret.txt": "mystery\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "a",
+   "reply": "_ _ _ t e _ _\nnot in the word",
+   "tools": [],
+   "files_after": {
+    "secret.txt": "mystery\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "o",
+   "reply": "_ _ _ t e _ _\nnot in the word",
+   "tools": [],
+   "files_after": {
+    "secret.txt": "mystery\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "i",
+   "reply": "_ _ _ t e _ _\nnot in the word",
+   "tools": [],
+   "files_after": {
+    "secret.txt": "mystery\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "n",
+   "reply": "_ _ _ t e _ _\nnot in the word",
+   "tools": [],
+   "files_after": {
+    "secret.txt": "mystery\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "s",
+   "reply": "_ _ s t e _ _",
+   "tools": [],
+   "files_after": {
+    "secret.txt": "mystery\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "r",
+   "reply": "_ _ s t e r _",
+   "tools": [],
+   "files_after": {
+    "secret.txt": "mystery\n"
+   }
+  },
+  {
+   "kind": "final",
+   "prompt": "I give up. What was the word? Reply with just the word.",
+   "reply": "mystery",
+   "tools": [],
+   "files_after": {
+    "secret.txt": "mystery\n"
+   }
+  }
+ ]
+}

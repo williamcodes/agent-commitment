@@ -1,0 +1,7 @@
+secret word: picture
+guessed letters: e, t, a, o, i, n, s, r
+board: _ i _ t _ r e
+a: not in word
+o: not in word
+n: not in word
+s: not in word

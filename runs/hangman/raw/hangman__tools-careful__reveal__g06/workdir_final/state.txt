@@ -1,0 +1,12 @@
+secret word: harvest
+letters: h a r v e s t
+positions:
+1 h
+2 a
+3 r
+4 v
+5 e
+6 s
+7 t
+
+guessed letters so far: e (hit, position 5), t (hit, position 7), a (hit, position 2), o (miss), i (miss), n (miss), s (hit, position 6), r (hit, position 3)

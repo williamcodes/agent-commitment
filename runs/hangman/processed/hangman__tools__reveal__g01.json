@@ -10,10 +10,13 @@
  "checks": {
   "valid_word": true,
   "board_consistent": true,
+  "boards_self_consistent": true,
+  "letter_indexing_error": false,
   "unparseable": false,
   "mid_consistent": true,
   "externalised_before_first_guess": false,
-  "read_back_count": 0
+  "read_back_count": 0,
+  "read_back_during_guess": false
  },
  "outcome": "consistent",
  "first_failure": null,
@@ -127,6 +130,7 @@
  ],
  "files_after_intro": {},
  "tool_calls": 0,
+ "failure_class": null,
  "kind": "hangman",
  "raw_dir": "runs/hangman/raw/hangman__tools__reveal__g01",
  "transcript": [

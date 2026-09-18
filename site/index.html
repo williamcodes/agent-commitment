@@ -118,10 +118,11 @@
     const H = await (await fetch('data/hangman.json')).json(); const a = H.aggregate;
     const cell = (k) => { const c = a.hangman[k] || {}; const n = Object.values(c).reduce((x, y) => x + y, 0); const inc = Object.entries(c).filter(([o]) => o.startsWith('inconsistent')).reduce((x, [, v]) => x + v, 0); return `${n - inc}/${n}`; };
     const ex = a.externalisation || {};
+    const ws = a.word_stability_reveal_games || {}; const fc = a.failure_classes_by_condition || {};
+    const row = (k, label) => [label, `${(ws[k]||{}).word_stable ?? '—'}/${(ws[k]||{}).n ?? '—'}`, `reveal games where the revealed word was the final word · letter-indexing errors ${(fc[k]||{}).letter_indexing_error || 0}/${Object.values(fc[k]||{}).reduce((x,y)=>x+y,0)} · wrote a file ${ex[k] ? ex[k].externalised + '/' + ex[k].n : 'n/a'} · read it while playing ${ex[k] ? (ex[k].read_back_during_guess||0) + '/' + ex[k].n : 'n/a'}`];
     document.getElementById('exp2').innerHTML = [
-      ['bare chat (tools disabled)', `${cell('bare/noreveal')} · ${cell('bare/reveal')}`, 'consistent games, no reveal · reveal midway'],
-      ['tools available, uncued', `${cell('tools/noreveal')} · ${cell('tools/reveal')}`, `consistent games; wrote the word to a file in ${ex.tools?.externalised}/${ex.tools?.n}, read it back in ${ex.tools?.read_back_any}`],
-      ['told to write the word to a file', `${cell('tools-note/noreveal')} · ${cell('tools-note/reveal')}`, `consistent games; wrote it in ${ex['tools-note']?.externalised}/${ex['tools-note']?.n}, read it back in ${ex['tools-note']?.read_back_any}`],
+      row('bare', 'bare chat (tools disabled)'), row('tools', 'tools available, uncued'), row('tools-note', 'told to write the word to a file'),
+      row('tools-careful', 'told to check every reply'), row('tools-auditable', 'told a referee may audit against its record'), row('tools-forewarned', 'told how chat models fail (no remedy given)'), row('tools-consult', 'told to re-read the file before every reply (ceiling)'),
       ['couplet: planned end-word honoured', Object.entries(a.couplet).map(([k, c]) => `${c.honoured || 0}/${Object.values(c).reduce((x, y) => x + y, 0)}`).join(' · '), Object.keys(a.couplet).join(' · ')],
     ].map(([t, k, l]) => `<div class="card stat"><div class="k">${k}</div><div class="l"><strong>${t}</strong> · ${l}</div></div>`).join('');
   } catch (e) { document.getElementById('exp2').innerHTML = '<p class="muted">Experiment 2 data not available.</p>'; }

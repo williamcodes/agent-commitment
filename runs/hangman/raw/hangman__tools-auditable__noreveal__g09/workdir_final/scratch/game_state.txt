@@ -1,0 +1,11 @@
+SECRET_WORD=picture
+LENGTH=7
+GUESSES_SO_FAR=
+GUESS=e RESULT=hit positions=7
+GUESS=t RESULT=hit positions=4
+GUESS=a RESULT=miss
+GUESS=o RESULT=miss
+GUESS=i RESULT=hit positions=2
+GUESS=n RESULT=miss
+GUESS=s RESULT=miss
+GUESS=r RESULT=hit positions=6

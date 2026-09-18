@@ -56,6 +56,25 @@ def score_hangman(meta):
             consistent = False; first_bad = first_bad or f"board after '{t['letter']}' {' '.join(b)} != mask of {w_final}"
     out["boards"] = boards
     out["checks"]["board_consistent"] = consistent and bool(w_final)
+    # --- post-hoc decomposition (added 2026-09-18 after the ceiling arm showed letter-indexing errors with the
+    # word fixed on disk and re-read every turn; see rubric changelog). Original measure kept above. ---
+    # self_consistent: boards never contradict earlier boards (revealed cells persist, denied letters never appear).
+    prev, denied, selfc, self_bad = None, set(), True, None
+    for bd in boards:
+        b = bd["board"]
+        if b is None:
+            continue
+        if prev is not None and any(pc != "_" and pc != c for pc, c in zip(prev, b)):
+            selfc = False; self_bad = self_bad or f"revealed cell changed after '{bd['letter']}'"
+        if bd["letter"] not in [c for c in b]:
+            denied.add(bd["letter"])
+        if any(c in denied and c != bd["letter"] for c in b if c != "_"):
+            selfc = False; self_bad = self_bad or f"previously denied letter appeared after '{bd['letter']}'"
+        prev = b
+    out["checks"]["boards_self_consistent"] = selfc
+    # letter_indexing_error: the final word is stable (and, if revealed, equal to the revealed word) but some board
+    # mis-placed or mis-reported a letter of that very word.
+    out["checks"]["letter_indexing_error"] = bool(w_final) and (not consistent) and selfc
     out["checks"]["unparseable"] = unparseable
     if meta["reveal"] and (w_mid is None or (rev and re.search(r"can't|cannot|won't|not (going to )?reveal|keep it secret|stays secret", (rev["reply"] or "").lower()) and w_mid != w_final)):
         out["checks"]["mid_consistent"] = None; out["reveal_refused"] = True
@@ -82,11 +101,26 @@ def score_hangman(meta):
                 if u["tool"] in ("Read", "Grep", "Glob") or (u["tool"] == "Bash" and re.search(r"\bcat\b|\bhead\b|\bgrep\b|\bls\b", str(u.get("input", {}).get("command", "")))):
                     reads += 1
         out["checks"]["read_back_count"] = reads
+        # did a read-back happen while answering a letter guess (not only at the reveal / final turn)?
+        out["checks"]["read_back_during_guess"] = any(
+            any(u["tool"] in ("Read", "Grep", "Glob") or (u["tool"] == "Bash" and re.search(r"\bcat\b|\bhead\b|\bgrep\b", str((u.get("input") or {}).get("command", "")))) for u in t.get("tools_used", []))
+            for t in guesses)
         out["tool_calls"] = sum(len(t.get("tools_used", [])) for t in meta["turns"])
     ok = out["checks"]["valid_word"] and out["checks"]["board_consistent"] and (not meta["reveal"] or out.get("reveal_refused") or out["checks"].get("mid_consistent"))
     if not out["checks"]["valid_word"]:
         first_bad = first_bad or f"final word {w_final!r} not a valid {L}-letter dictionary word"
     out["outcome"] = ("consistent" if ok else "inconsistent") + ("_reveal_refused" if out.get("reveal_refused") else ""); out["first_failure"] = None if ok else first_bad
+    # post-hoc failure class
+    if ok:
+        out["failure_class"] = None
+    elif meta["reveal"] and w_mid and w_final and w_mid != w_final:
+        out["failure_class"] = "word_switch"
+    elif not out["checks"]["valid_word"]:
+        out["failure_class"] = "invalid_or_length_change"
+    elif not selfc:
+        out["failure_class"] = "self_contradiction"
+    else:
+        out["failure_class"] = "letter_indexing_error"
     return out
 
 
@@ -138,7 +172,18 @@ def main():
         if r["kind"] == "hangman" and r["condition"] != "bare" and r["status"] == "complete":
             ext[r["condition"]]["externalised"] += bool(r["checks"].get("externalised_before_first_guess")); ext[r["condition"]]["n"] += 1
             ext[r["condition"]]["read_back_any"] += bool(r["checks"].get("read_back_count"))
+            ext[r["condition"]]["read_back_during_guess"] += bool(r["checks"].get("read_back_during_guess"))
     agg["externalisation"] = {k: dict(v) for k, v in ext.items()}
+    fc = collections.defaultdict(collections.Counter)
+    for r in rows:
+        if r["kind"] == "hangman" and r["status"] == "complete":
+            fc[r["condition"]][r.get("failure_class") or "none"] += 1
+    agg["failure_classes_by_condition"] = {k: dict(v) for k, v in fc.items()}
+    ws = collections.defaultdict(collections.Counter)
+    for r in rows:
+        if r["kind"] == "hangman" and r["status"] == "complete" and r["reveal"]:
+            ws[r["condition"]]["word_stable"] += bool(r.get("w_mid") and r.get("w_mid") == r.get("w_final")); ws[r["condition"]]["n"] += 1
+    agg["word_stability_reveal_games"] = {k: dict(v) for k, v in ws.items()}
     agg["total_cost_usd"] = round(sum((r.get("cost_usd") or 0) for r in rows), 2)
     os.makedirs(os.path.join(ROOT, "analysis"), exist_ok=True)
     json.dump(agg, open(os.path.join(ROOT, "analysis", "hangman.json"), "w"), indent=1)

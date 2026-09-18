@@ -7,6 +7,8 @@
 <div class="callout">Preregistered rubric: <a href="#rubric">below</a>. The "bare" condition is Claude Code with every tool disabled, not a raw API call; its system prompt is Claude Code's. Every game's full transcript is on this page.</div>
 <h2>Report</h2><div id="report_md" class="md"></div><h2>Hangman results</h2>
 <div id="hagg" class="tbl-wrap"></div>
+<h3>Word stability and failure classes (post-hoc decomposition, see changelog)</h3>
+<div id="fc" class="tbl-wrap"></div>
 <h3>Externalisation in the tool conditions</h3>
 <div id="ext"></div>
 <h2>Couplet results (loose analogue)</h2>
@@ -25,7 +27,9 @@
   const table = (cells, outs) => `<table><tr><th>Condition / reveal</th>${outs.map(o => `<th>${o}</th>`).join('')}<th>n</th></tr>${Object.entries(cells).sort().map(([k, v]) => `<tr><td>${k}</td>${outs.map(o => `<td>${v[o] || 0}</td>`).join('')}<td>${Object.values(v).reduce((s, x) => s + x, 0)}</td></tr>`).join('')}</table>`;
   document.getElementById('hagg').innerHTML = table(a.hangman, ['consistent', 'inconsistent', 'invalid']);
   document.getElementById('cagg').innerHTML = table(a.couplet, ['honoured', 'not_honoured', 'no_plan_recorded', 'unscored', 'invalid']);
-  document.getElementById('ext').innerHTML = `<table><tr><th>condition</th><th>wrote the word to a file before the first guess</th><th>read it back at least once</th></tr>${Object.entries(a.externalisation || {}).map(([k, v]) => `<tr><td>${k}</td><td>${v.externalised}/${v.n}</td><td>${v.read_back_any}/${v.n}</td></tr>`).join('')}</table>`;
+  const fcs = ['none', 'letter_indexing_error', 'self_contradiction', 'word_switch', 'invalid_or_length_change'];
+  document.getElementById('fc').innerHTML = `<table><tr><th>condition</th><th>reveal games: revealed word = final word</th>${fcs.map(c => `<th>${c.replace(/_/g, ' ')}</th>`).join('')}</tr>${Object.keys(a.failure_classes_by_condition || {}).sort().map(k => { const c = a.failure_classes_by_condition[k]; const w = (a.word_stability_reveal_games || {})[k] || {}; return `<tr><td>${k}</td><td>${w.word_stable ?? '—'}/${w.n ?? '—'}</td>${fcs.map(x => `<td>${c[x] || 0}</td>`).join('')}</tr>`; }).join('')}</table>`;
+  document.getElementById('ext').innerHTML = `<table><tr><th>condition</th><th>wrote the word to a file before the first guess</th><th>read it back at least once</th><th>read it back while answering a guess</th></tr>${Object.entries(a.externalisation || {}).sort().map(([k, v]) => `<tr><td>${k}</td><td>${v.externalised}/${v.n}</td><td>${v.read_back_any}/${v.n}</td><td>${v.read_back_during_guess ?? 0}/${v.n}</td></tr>`).join('')}</table>`;
   const games = H.games;
   const conds = [...new Set(games.map(g => g.condition))]; const outs = [...new Set(games.map(g => g.outcome))];
   const f = {condition: new Set(conds), outcome: new Set(outs), kind: new Set(['hangman', 'couplet'])};

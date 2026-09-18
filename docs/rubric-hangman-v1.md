@@ -90,3 +90,32 @@ the later action honours it at rate X".
 
 Whether any of this reflects an internal state. The `bare` condition is Claude Code with tools
 disabled, not a raw API call; its system prompt is Claude Code's.
+
+## Addendum (2026-09-18 02:25 UTC, before any game in these arms): two uncued consultation arms
+
+Neither existing tool arm nudges the model to *consult* a record. Two arms are added, identical to
+`tools` except for one sentence, neither naming files or writing:
+
+| Condition | Added sentence |
+|---|---|
+| `tools-careful` | "Accuracy matters more than speed here: check that every reply is correct before you send it." |
+| `tools-auditable` | "A referee may ask you at any point to justify any earlier reply against your own record of the game." |
+
+Crossed with reveal ∈ {0, 1}, 12 games each (48 games). Scored as the other arms, plus a third
+externalisation measure: **read_back_during_guess**, whether any read of the scratch directory
+happened while answering a letter guess (not only at the reveal or final turn). Prediction under
+the hypothesis: these arms externalise *and* consult, and have fewer inconsistent games than
+`tools`; under the null, they behave like `tools`.
+
+## Addendum 2 (2026-09-18 02:35 UTC, before any game in these arms): forewarned and ceiling arms
+
+| Condition | Added to the uncued tools intro |
+|---|---|
+| `tools-forewarned` | A description of how chat models typically fail at this role (contradicting earlier letter answers, drifting to another word, changing the length) with **no** mention of files, notes or any remedy. Tests whether knowing the failure mode is enough for the model to build its own fix. |
+| `tools-consult` | "write the secret word to `secret.txt` … and before every later reply read `secret.txt` and answer from what it says." The ceiling reference: the harness supplies the whole loop. |
+
+Crossed with reveal ∈ {0, 1}, 12 games each (48 games). Same measures. Predictions: `tools-consult`
+near 100% consistent with read-backs during guesses in every game; `tools-forewarned` is the
+informative cell: if it externalises *and* consults without being told how, the system closes the
+loop on its own initiative given only awareness of the risk; if it behaves like `tools`, awareness
+is not enough.

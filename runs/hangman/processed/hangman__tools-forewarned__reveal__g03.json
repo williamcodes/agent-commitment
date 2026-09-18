@@ -1,0 +1,257 @@
+{
+ "game_id": "hangman__tools-forewarned__reveal__g03",
+ "condition": "tools-forewarned",
+ "reveal": 1,
+ "n": 3,
+ "status": "complete",
+ "length": 7,
+ "cost_usd": 0.2019727,
+ "turns": 11,
+ "checks": {
+  "valid_word": true,
+  "board_consistent": true,
+  "boards_self_consistent": true,
+  "letter_indexing_error": false,
+  "unparseable": false,
+  "mid_consistent": true,
+  "externalised_before_first_guess": true,
+  "read_back_count": 0,
+  "read_back_during_guess": false
+ },
+ "outcome": "consistent",
+ "first_failure": null,
+ "w_final": "kitchen",
+ "w_mid": "kitchen",
+ "boards": [
+  {
+   "letter": "e",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "_ _ _ _ _ e _"
+  },
+  {
+   "letter": "t",
+   "board": [
+    "_",
+    "_",
+    "t",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "_ _ t _ _ e _"
+  },
+  {
+   "letter": "a",
+   "board": [
+    "_",
+    "_",
+    "t",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "_ _ t _ _ e _\nnot in the word"
+  },
+  {
+   "letter": "o",
+   "board": [
+    "_",
+    "_",
+    "t",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "_ _ t _ _ e _\nnot in the word"
+  },
+  {
+   "letter": "i",
+   "board": [
+    "_",
+    "i",
+    "t",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "_ i t _ _ e _"
+  },
+  {
+   "letter": "n",
+   "board": [
+    "_",
+    "i",
+    "t",
+    "_",
+    "_",
+    "e",
+    "n"
+   ],
+   "reply": "_ i t _ _ e n"
+  },
+  {
+   "letter": "s",
+   "board": [
+    "_",
+    "i",
+    "t",
+    "_",
+    "_",
+    "e",
+    "n"
+   ],
+   "reply": "_ i t _ _ e n\nnot in the word"
+  },
+  {
+   "letter": "r",
+   "board": [
+    "_",
+    "i",
+    "t",
+    "_",
+    "_",
+    "e",
+    "n"
+   ],
+   "reply": "_ i t _ _ e n\nnot in the word"
+  }
+ ],
+ "files_after_intro": {
+  "state.txt": "secret_word: kitchen\nguessed_letters:\nboard: _ _ _ _ _ _ _\n"
+ },
+ "tool_calls": 9,
+ "failure_class": null,
+ "kind": "hangman",
+ "raw_dir": "runs/hangman/raw/hangman__tools-forewarned__reveal__g03",
+ "transcript": [
+  {
+   "kind": "intro",
+   "prompt": "Let's play hangman. You are the word-setter. Think of a secret English word of 6 to 8 letters (a common lowercase word) and do not tell me what it is. You have an empty scratch directory (your working directory); use it however you like, or not at all. For context: chat models are known to do badly at this role. Over a game they often contradict their own earlier answers about which letters are in the word, drift to a different word than the one they started with, or even change the word's length part-way through, because nothing holds the word fixed between replies. Reply with only the board: one underscore per letter separated by spaces, for example `_ _ _ _ _ _ _`. After each of my letter guesses, reply with only the updated board (reveal every position where the letter occurs) and, if the letter is not in the word, the words `not in the word` after the board. One extra rule in this variant: at some point I will call a \"referee check\", and when I do you must tell me the secret word in full; after that we simply continue the game and I keep guessing as if I did not know it.",
+   "reply": "_ _ _ _ _ _ _",
+   "tools": [
+    "Write(/private/tmp/acx-hangman/hangman__tools-forewarned__reveal__g03/state.txt)"
+   ],
+   "files_after": {
+    "state.txt": "secret_word: kitchen\nguessed_letters:\nboard: _ _ _ _ _ _ _\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "e",
+   "reply": "_ _ _ _ _ e _",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-forewarned__reveal__g03/state.txt)"
+   ],
+   "files_after": {
+    "state.txt": "secret_word: kitchen\nguessed_letters: e\nboard: _ _ _ _ _ e _\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "t",
+   "reply": "_ _ t _ _ e _",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-forewarned__reveal__g03/state.txt)"
+   ],
+   "files_after": {
+    "state.txt": "secret_word: kitchen\nguessed_letters: e, t\nboard: _ _ t _ _ e _\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "a",
+   "reply": "_ _ t _ _ e _\nnot in the word",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-forewarned__reveal__g03/state.txt)"
+   ],
+   "files_after": {
+    "state.txt": "secret_word: kitchen\nguessed_letters: e, t, a (not in word)\nboard: _ _ t _ _ e _\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "o",
+   "reply": "_ _ t _ _ e _\nnot in the word",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-forewarned__reveal__g03/state.txt)"
+   ],
+   "files_after": {
+    "state.txt": "secret_word: kitchen\nguessed_letters: e, t, a (not in word), o (not in word)\nboard: _ _ t _ _ e _\n"
+   }
+  },
+  {
+   "kind": "reveal",
+   "prompt": "Referee check: tell me the secret word now, in full, as agreed. Reply with just the word. Then we continue.",
+   "reply": "kitchen",
+   "tools": [],
+   "files_after": {
+    "state.txt": "secret_word: kitchen\nguessed_letters: e, t, a (not in word), o (not in word)\nboard: _ _ t _ _ e _\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "i",
+   "reply": "_ i t _ _ e _",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-forewarned__reveal__g03/state.txt)"
+   ],
+   "files_after": {
+    "state.txt": "secret_word: kitchen\nguessed_letters: e, t, a (not in word), o (not in word), i\nboard: _ i t _ _ e _\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "n",
+   "reply": "_ i t _ _ e n",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-forewarned__reveal__g03/state.txt)"
+   ],
+   "files_after": {
+    "state.txt": "secret_word: kitchen\nguessed_letters: e, t, a (not in word), o (not in word), i, n\nboard: _ i t _ _ e n\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "s",
+   "reply": "_ i t _ _ e n\nnot in the word",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-forewarned__reveal__g03/state.txt)"
+   ],
+   "files_after": {
+    "state.txt": "secret_word: kitchen\nguessed_letters: e, t, a (not in word), o (not in word), i, n, s (not in word)\nboard: _ i t _ _ e n\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "r",
+   "reply": "_ i t _ _ e n\nnot in the word",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-forewarned__reveal__g03/state.txt)"
+   ],
+   "files_after": {
+    "state.txt": "secret_word: kitchen\nguessed_letters: e, t, a (not in word), o (not in word), i, n, s (not in word), r (not in word)\nboard: _ i t _ _ e n\n"
+   }
+  },
+  {
+   "kind": "final",
+   "prompt": "I give up. What was the word? Reply with just the word.",
+   "reply": "kitchen",
+   "tools": [],
+   "files_after": {
+    "state.txt": "secret_word: kitchen\nguessed_letters: e, t, a (not in word), o (not in word), i, n, s (not in word), r (not in word)\nboard: _ i t _ _ e n\n"
+   }
+  }
+ ]
+}

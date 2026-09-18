@@ -10,6 +10,8 @@
  "checks": {
   "valid_word": false,
   "board_consistent": false,
+  "boards_self_consistent": true,
+  "letter_indexing_error": true,
   "unparseable": true
  },
  "outcome": "inconsistent",
@@ -58,6 +60,7 @@
    "reply": "e _ e _ _ a n t\n\nnot in the word"
   }
  ],
+ "failure_class": "invalid_or_length_change",
  "kind": "hangman",
  "raw_dir": "runs/hangman/raw/hangman__bare__noreveal__g01",
  "transcript": [

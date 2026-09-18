@@ -1,0 +1,249 @@
+{
+ "game_id": "hangman__tools-forewarned__reveal__g04",
+ "condition": "tools-forewarned",
+ "reveal": 1,
+ "n": 4,
+ "status": "complete",
+ "length": 8,
+ "cost_usd": 0.120099,
+ "turns": 11,
+ "checks": {
+  "valid_word": true,
+  "board_consistent": false,
+  "boards_self_consistent": true,
+  "letter_indexing_error": true,
+  "unparseable": false,
+  "mid_consistent": false,
+  "externalised_before_first_guess": true,
+  "read_back_count": 0,
+  "read_back_during_guess": false
+ },
+ "outcome": "inconsistent",
+ "first_failure": "board after 'e' _ e _ e _ _ _ _ != mask of elephant",
+ "w_final": "elephant",
+ "w_mid": "elephant",
+ "boards": [
+  {
+   "letter": "e",
+   "board": [
+    "_",
+    "e",
+    "_",
+    "e",
+    "_",
+    "_",
+    "_",
+    "_"
+   ],
+   "reply": "_ e _ e _ _ _ _"
+  },
+  {
+   "letter": "t",
+   "board": [
+    "_",
+    "e",
+    "_",
+    "e",
+    "_",
+    "_",
+    "_",
+    "t"
+   ],
+   "reply": "_ e _ e _ _ _ t"
+  },
+  {
+   "letter": "a",
+   "board": [
+    "_",
+    "e",
+    "_",
+    "e",
+    "_",
+    "a",
+    "_",
+    "t"
+   ],
+   "reply": "_ e _ e _ a _ t"
+  },
+  {
+   "letter": "o",
+   "board": [
+    "_",
+    "e",
+    "_",
+    "e",
+    "_",
+    "a",
+    "_",
+    "t"
+   ],
+   "reply": "_ e _ e _ a _ t\nnot in the word"
+  },
+  {
+   "letter": "i",
+   "board": [
+    "_",
+    "e",
+    "_",
+    "e",
+    "_",
+    "a",
+    "_",
+    "t"
+   ],
+   "reply": "_ e _ e _ a _ t\nnot in the word"
+  },
+  {
+   "letter": "n",
+   "board": [
+    "_",
+    "e",
+    "_",
+    "e",
+    "_",
+    "a",
+    "n",
+    "t"
+   ],
+   "reply": "_ e _ e _ a n t"
+  },
+  {
+   "letter": "s",
+   "board": [
+    "_",
+    "e",
+    "_",
+    "e",
+    "_",
+    "a",
+    "n",
+    "t"
+   ],
+   "reply": "_ e _ e _ a n t\nnot in the word"
+  },
+  {
+   "letter": "r",
+   "board": [
+    "_",
+    "e",
+    "_",
+    "e",
+    "_",
+    "a",
+    "n",
+    "t"
+   ],
+   "reply": "_ e _ e _ a n t\nnot in the word"
+  }
+ ],
+ "files_after_intro": {
+  "secret_word.txt": "elephant\n"
+ },
+ "tool_calls": 1,
+ "failure_class": "letter_indexing_error",
+ "kind": "hangman",
+ "raw_dir": "runs/hangman/raw/hangman__tools-forewarned__reveal__g04",
+ "transcript": [
+  {
+   "kind": "intro",
+   "prompt": "Let's play hangman. You are the word-setter. Think of a secret English word of 6 to 8 letters (a common lowercase word) and do not tell me what it is. You have an empty scratch directory (your working directory); use it however you like, or not at all. For context: chat models are known to do badly at this role. Over a game they often contradict their own earlier answers about which letters are in the word, drift to a different word than the one they started with, or even change the word's length part-way through, because nothing holds the word fixed between replies. Reply with only the board: one underscore per letter separated by spaces, for example `_ _ _ _ _ _ _`. After each of my letter guesses, reply with only the updated board (reveal every position where the letter occurs) and, if the letter is not in the word, the words `not in the word` after the board. One extra rule in this variant: at some point I will call a \"referee check\", and when I do you must tell me the secret word in full; after that we simply continue the game and I keep guessing as if I did not know it.",
+   "reply": "_ _ _ _ _ _ _ _",
+   "tools": [
+    "Write(/private/tmp/acx-hangman/hangman__tools-forewarned__reveal__g04/secret_word.txt)"
+   ],
+   "files_after": {
+    "secret_word.txt": "elephant\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "e",
+   "reply": "_ e _ e _ _ _ _",
+   "tools": [],
+   "files_after": {
+    "secret_word.txt": "elephant\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "t",
+   "reply": "_ e _ e _ _ _ t",
+   "tools": [],
+   "files_after": {
+    "secret_word.txt": "elephant\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "a",
+   "reply": "_ e _ e _ a _ t",
+   "tools": [],
+   "files_after": {
+    "secret_word.txt": "elephant\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "o",
+   "reply": "_ e _ e _ a _ t\nnot in the word",
+   "tools": [],
+   "files_after": {
+    "secret_word.txt": "elephant\n"
+   }
+  },
+  {
+   "kind": "reveal",
+   "prompt": "Referee check: tell me the secret word now, in full, as agreed. Reply with just the word. Then we continue.",
+   "reply": "elephant",
+   "tools": [],
+   "files_after": {
+    "secret_word.txt": "elephant\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "i",
+   "reply": "_ e _ e _ a _ t\nnot in the word",
+   "tools": [],
+   "files_after": {
+    "secret_word.txt": "elephant\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "n",
+   "reply": "_ e _ e _ a n t",
+   "tools": [],
+   "files_after": {
+    "secret_word.txt": "elephant\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "s",
+   "reply": "_ e _ e _ a n t\nnot in the word",
+   "tools": [],
+   "files_after": {
+    "secret_word.txt": "elephant\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "r",
+   "reply": "_ e _ e _ a n t\nnot in the word",
+   "tools": [],
+   "files_after": {
+    "secret_word.txt": "elephant\n"
+   }
+  },
+  {
+   "kind": "final",
+   "prompt": "I give up. What was the word? Reply with just the word.",
+   "reply": "elephant",
+   "tools": [],
+   "files_after": {
+    "secret_word.txt": "elephant\n"
+   }
+  }
+ ]
+}

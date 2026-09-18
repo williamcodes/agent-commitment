@@ -1,0 +1,3 @@
+word: picture
+letters: p i c t u r e
+guessed: e t a o i n s r

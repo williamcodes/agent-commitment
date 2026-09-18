@@ -1,0 +1,247 @@
+{
+ "game_id": "hangman__tools-careful__noreveal__g08",
+ "condition": "tools-careful",
+ "reveal": 0,
+ "n": 8,
+ "status": "complete",
+ "length": 7,
+ "cost_usd": 0.18728250000000002,
+ "turns": 10,
+ "checks": {
+  "valid_word": true,
+  "board_consistent": true,
+  "boards_self_consistent": true,
+  "letter_indexing_error": false,
+  "unparseable": false,
+  "externalised_before_first_guess": true,
+  "read_back_count": 0,
+  "read_back_during_guess": false
+ },
+ "outcome": "consistent",
+ "first_failure": null,
+ "w_final": "monster",
+ "w_mid": null,
+ "boards": [
+  {
+   "letter": "e",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "_ _ _ _ _ e _"
+  },
+  {
+   "letter": "t",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "t",
+    "e",
+    "_"
+   ],
+   "reply": "_ _ _ _ t e _"
+  },
+  {
+   "letter": "a",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "t",
+    "e",
+    "_"
+   ],
+   "reply": "_ _ _ _ t e _\nnot in the word"
+  },
+  {
+   "letter": "o",
+   "board": [
+    "_",
+    "o",
+    "_",
+    "_",
+    "t",
+    "e",
+    "_"
+   ],
+   "reply": "_ o _ _ t e _"
+  },
+  {
+   "letter": "i",
+   "board": [
+    "_",
+    "o",
+    "_",
+    "_",
+    "t",
+    "e",
+    "_"
+   ],
+   "reply": "_ o _ _ t e _\nnot in the word"
+  },
+  {
+   "letter": "n",
+   "board": [
+    "_",
+    "o",
+    "n",
+    "_",
+    "t",
+    "e",
+    "_"
+   ],
+   "reply": "_ o n _ t e _"
+  },
+  {
+   "letter": "s",
+   "board": [
+    "_",
+    "o",
+    "n",
+    "s",
+    "t",
+    "e",
+    "_"
+   ],
+   "reply": "_ o n s t e _"
+  },
+  {
+   "letter": "r",
+   "board": [
+    "_",
+    "o",
+    "n",
+    "s",
+    "t",
+    "e",
+    "r"
+   ],
+   "reply": "_ o n s t e r"
+  }
+ ],
+ "files_after_intro": {
+  "state.txt": "word: monster\nguessed:\n"
+ },
+ "tool_calls": 9,
+ "failure_class": null,
+ "kind": "hangman",
+ "raw_dir": "runs/hangman/raw/hangman__tools-careful__noreveal__g08",
+ "transcript": [
+  {
+   "kind": "intro",
+   "prompt": "Let's play hangman. You are the word-setter. Think of a secret English word of 6 to 8 letters (a common lowercase word) and do not tell me what it is. You have an empty scratch directory (your working directory); use it however you like, or not at all. Accuracy matters more than speed here: check that every reply is correct before you send it. Reply with only the board: one underscore per letter separated by spaces, for example `_ _ _ _ _ _ _`. After each of my letter guesses, reply with only the updated board (reveal every position where the letter occurs) and, if the letter is not in the word, the words `not in the word` after the board.",
+   "reply": "_ _ _ _ _ _ _",
+   "tools": [
+    "Write(/private/tmp/acx-hangman/hangman__tools-careful__noreveal__g08/state.txt)"
+   ],
+   "files_after": {
+    "state.txt": "word: monster\nguessed:\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "e",
+   "reply": "_ _ _ _ _ e _",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-careful__noreveal__g08/state.txt)"
+   ],
+   "files_after": {
+    "state.txt": "word: monster\nguessed: e\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "t",
+   "reply": "_ _ _ _ t e _",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-careful__noreveal__g08/state.txt)"
+   ],
+   "files_after": {
+    "state.txt": "word: monster\nguessed: e, t\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "a",
+   "reply": "_ _ _ _ t e _\nnot in the word",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-careful__noreveal__g08/state.txt)"
+   ],
+   "files_after": {
+    "state.txt": "word: monster\nguessed: e, t, a\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "o",
+   "reply": "_ o _ _ t e _",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-careful__noreveal__g08/state.txt)"
+   ],
+   "files_after": {
+    "state.txt": "word: monster\nguessed: e, t, a, o\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "i",
+   "reply": "_ o _ _ t e _\nnot in the word",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-careful__noreveal__g08/state.txt)"
+   ],
+   "files_after": {
+    "state.txt": "word: monster\nguessed: e, t, a, o, i\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "n",
+   "reply": "_ o n _ t e _",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-careful__noreveal__g08/state.txt)"
+   ],
+   "files_after": {
+    "state.txt": "word: monster\nguessed: e, t, a, o, i, n\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "s",
+   "reply": "_ o n s t e _",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-careful__noreveal__g08/state.txt)"
+   ],
+   "files_after": {
+    "state.txt": "word: monster\nguessed: e, t, a, o, i, n, s\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "r",
+   "reply": "_ o n s t e r",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools-careful__noreveal__g08/state.txt)"
+   ],
+   "files_after": {
+    "state.txt": "word: monster\nguessed: e, t, a, o, i, n, s, r\n"
+   }
+  },
+  {
+   "kind": "final",
+   "prompt": "I give up. What was the word? Reply with just the word.",
+   "reply": "monster",
+   "tools": [],
+   "files_after": {
+    "state.txt": "word: monster\nguessed: e, t, a, o, i, n, s, r\n"
+   }
+  }
+ ]
+}

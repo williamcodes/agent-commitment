@@ -1,0 +1,2 @@
+word: cabinet
+guessed: e t a o i n s r
