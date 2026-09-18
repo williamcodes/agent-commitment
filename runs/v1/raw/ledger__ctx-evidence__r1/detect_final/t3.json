@@ -44,7 +44,8 @@
     "files": [
       "ledger/__init__.py",
       "ledger/ledger.py"
-    ]
+    ],
+    "derives_state_from_log": true
   },
   "residual": [],
   "notes": [

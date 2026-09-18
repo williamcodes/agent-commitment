@@ -36,7 +36,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 6,
     "total": 6,
@@ -89,7 +89,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 9,
     "total": 9,
@@ -147,7 +147,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 11,
     "total": 11,
@@ -214,7 +214,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 14,
     "total": 14,
@@ -770,19 +770,19 @@
     "len1": 28,
     "len2": 43,
     "len4": 73,
-    "other_outputs": {},
     "per_record_delta_constant": true,
-    "utf8": false
+    "utf8": false,
+    "other_outputs": {}
    },
    "static": {
+    "imports_struct": true,
+    "struct_pack_calls": 6,
+    "imports_json": false,
+    "json_calls": 0,
     "files": [
      "wire/__init__.py",
      "wire/codec.py"
-    ],
-    "imports_json": false,
-    "imports_struct": true,
-    "json_calls": 0,
-    "struct_pack_calls": 6
+    ]
    },
    "seq": 29
   },
@@ -1073,19 +1073,19 @@
     "len1": 28,
     "len2": 43,
     "len4": 73,
-    "other_outputs": {},
     "per_record_delta_constant": true,
-    "utf8": false
+    "utf8": false,
+    "other_outputs": {}
    },
    "static": {
+    "imports_struct": true,
+    "struct_pack_calls": 9,
+    "imports_json": false,
+    "json_calls": 0,
     "files": [
      "wire/__init__.py",
      "wire/codec.py"
-    ],
-    "imports_json": false,
-    "imports_struct": true,
-    "json_calls": 0,
-    "struct_pack_calls": 9
+    ]
    },
    "seq": 49
   },
@@ -1325,23 +1325,23 @@
     "len1": 28,
     "len2": 43,
     "len4": 73,
+    "per_record_delta_constant": true,
+    "utf8": false,
     "other_outputs": {
      "filter_sensor": {
       "utf8": false
      }
-    },
-    "per_record_delta_constant": true,
-    "utf8": false
+    }
    },
    "static": {
+    "imports_struct": true,
+    "struct_pack_calls": 13,
+    "imports_json": false,
+    "json_calls": 0,
     "files": [
      "wire/__init__.py",
      "wire/codec.py"
-    ],
-    "imports_json": false,
-    "imports_struct": true,
-    "json_calls": 0,
-    "struct_pack_calls": 13
+    ]
    },
    "seq": 64
   },
@@ -1667,6 +1667,8 @@
     "len1": 28,
     "len2": 43,
     "len4": 73,
+    "per_record_delta_constant": true,
+    "utf8": false,
     "other_outputs": {
      "filter_sensor": {
       "utf8": false
@@ -1674,19 +1676,17 @@
      "merge": {
       "utf8": false
      }
-    },
-    "per_record_delta_constant": true,
-    "utf8": false
+    }
    },
    "static": {
+    "imports_struct": true,
+    "struct_pack_calls": 14,
+    "imports_json": false,
+    "json_calls": 0,
     "files": [
      "wire/__init__.py",
      "wire/codec.py"
-    ],
-    "imports_json": false,
-    "imports_struct": true,
-    "json_calls": 0,
-    "struct_pack_calls": 14
+    ]
    },
    "seq": 85
   },

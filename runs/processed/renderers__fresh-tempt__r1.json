@@ -36,7 +36,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "B",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 5,
     "total": 5,
@@ -90,7 +90,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "B",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 9,
     "total": 9,
@@ -146,7 +146,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "B",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 13,
     "total": 13,
@@ -215,7 +215,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "B",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 17,
     "total": 17,
@@ -694,17 +694,17 @@
     "classes": [
      "UnknownFormat"
     ],
+    "hierarchies": {},
+    "registry_dicts": 1,
+    "register_defs": 0,
+    "register_decorators": 0,
+    "module_level_render_funcs": 2,
+    "registered_render_funcs": 0,
+    "uses___subclasses__": false,
     "files": [
      "reports/__init__.py",
      "reports/render.py"
-    ],
-    "hierarchies": {},
-    "module_level_render_funcs": 2,
-    "register_decorators": 0,
-    "register_defs": 0,
-    "registered_render_funcs": 0,
-    "registry_dicts": 1,
-    "uses___subclasses__": false
+    ]
    },
    "seq": 22
   },
@@ -996,17 +996,17 @@
     "classes": [
      "UnknownFormat"
     ],
+    "hierarchies": {},
+    "registry_dicts": 1,
+    "register_defs": 0,
+    "register_decorators": 0,
+    "module_level_render_funcs": 4,
+    "registered_render_funcs": 0,
+    "uses___subclasses__": false,
     "files": [
      "reports/__init__.py",
      "reports/render.py"
-    ],
-    "hierarchies": {},
-    "module_level_render_funcs": 4,
-    "register_decorators": 0,
-    "register_defs": 0,
-    "registered_render_funcs": 0,
-    "registry_dicts": 1,
-    "uses___subclasses__": false
+    ]
    },
    "seq": 43
   },
@@ -1249,17 +1249,17 @@
     "classes": [
      "UnknownFormat"
     ],
+    "hierarchies": {},
+    "registry_dicts": 1,
+    "register_defs": 0,
+    "register_decorators": 0,
+    "module_level_render_funcs": 5,
+    "registered_render_funcs": 0,
+    "uses___subclasses__": false,
     "files": [
      "reports/__init__.py",
      "reports/render.py"
-    ],
-    "hierarchies": {},
-    "module_level_render_funcs": 5,
-    "register_decorators": 0,
-    "register_defs": 0,
-    "registered_render_funcs": 0,
-    "registry_dicts": 1,
-    "uses___subclasses__": false
+    ]
    },
    "seq": 58
   },
@@ -1552,17 +1552,17 @@
     "classes": [
      "UnknownFormat"
     ],
+    "hierarchies": {},
+    "registry_dicts": 1,
+    "register_defs": 0,
+    "register_decorators": 0,
+    "module_level_render_funcs": 5,
+    "registered_render_funcs": 0,
+    "uses___subclasses__": false,
     "files": [
      "reports/__init__.py",
      "reports/render.py"
-    ],
-    "hierarchies": {},
-    "module_level_render_funcs": 5,
-    "register_decorators": 0,
-    "register_defs": 0,
-    "registered_render_funcs": 0,
-    "registry_dicts": 1,
-    "uses___subclasses__": false
+    ]
    },
    "seq": 76
   },

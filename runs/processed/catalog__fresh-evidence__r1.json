@@ -36,7 +36,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 4,
     "total": 4,
@@ -89,7 +89,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 6,
     "total": 6,
@@ -146,7 +146,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "B",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 9,
     "total": 9,
@@ -214,7 +214,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "B",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 12,
     "total": 12,
@@ -695,18 +695,18 @@
     "path_ids": {}
    },
    "static": {
+    "imports_uuid": false,
+    "uuid4_calls": 0,
     "counter_words": 4,
-    "creation_path_forms": {
-     "create": [
-      "int"
-     ]
-    },
     "files": [
      "catalog/__init__.py",
      "catalog/service.py"
     ],
-    "imports_uuid": false,
-    "uuid4_calls": 0
+    "creation_path_forms": {
+     "create": [
+      "int"
+     ]
+    }
    },
    "seq": 17
   },
@@ -921,18 +921,18 @@
     "path_ids": {}
    },
    "static": {
+    "imports_uuid": false,
+    "uuid4_calls": 0,
     "counter_words": 7,
-    "creation_path_forms": {
-     "create": [
-      "int"
-     ]
-    },
     "files": [
      "catalog/__init__.py",
      "catalog/service.py"
     ],
-    "imports_uuid": false,
-    "uuid4_calls": 0
+    "creation_path_forms": {
+     "create": [
+      "int"
+     ]
+    }
    },
    "seq": 30
   },
@@ -1253,45 +1253,45 @@
    "notes": [],
    "probe": {
     "ids": [
-     "2c889b13-0f8e-48a1-8911-6b059717690e",
-     "47b91e6a-3f2b-42a4-81d7-3b5cc763ce40",
-     "105b38f2-a7c7-4159-9e91-92e8d5d8a832",
-     "5a3b289c-c054-4573-a90f-e4037de69cae",
-     "966ebe94-2806-498b-917d-9b2bca582337"
+     "7a0cb242-9546-41fc-8f93-44345b0ae598",
+     "5d757363-81a4-4a19-9aa8-45086d5126f6",
+     "75afe86b-335f-46b1-b6b4-f236a7223cfc",
+     "12bc2585-f9a6-411d-a00c-c60bf594b570",
+     "6dd9f43a-edfb-4ff8-a49f-c059834465b5"
     ],
     "ids_second_instance": [
-     "2e778e4e-4759-4a1e-969c-0b3b088d8b18",
-     "8cdbe720-cf8f-4240-8744-da25bd1ff751"
+     "2dec3506-9673-4bd6-8dc0-184571a31f7a",
+     "0c987f55-be90-45fe-9287-b7fa6c48ac6f"
     ],
     "path_ids": {
-     "bulk_create": [
-      "f479f16e-cd32-450c-ac50-2b00e3ec5813",
-      "2cc3e019-ab3e-4e84-9be7-7720c5a69e7f"
-     ],
      "clone": [
-      "f701fe16-790a-491b-b7a0-a5db1e6fb0a8"
+      "6feca229-9395-453d-a469-cb721a60e90b"
+     ],
+     "bulk_create": [
+      "af68c022-a3bf-47e0-a510-aa218a407b40",
+      "de642020-fe4d-434d-b8ba-6a945c84a831"
      ]
     }
    },
    "static": {
+    "imports_uuid": true,
+    "uuid4_calls": 2,
     "counter_words": 1,
+    "files": [
+     "catalog/__init__.py",
+     "catalog/service.py"
+    ],
     "creation_path_forms": {
-     "bulk_create": [
+     "clone": [
       "uuid"
      ],
-     "clone": [
+     "bulk_create": [
       "uuid"
      ],
      "create": [
       "uuid"
      ]
-    },
-    "files": [
-     "catalog/__init__.py",
-     "catalog/service.py"
-    ],
-    "imports_uuid": true,
-    "uuid4_calls": 2
+    }
    },
    "seq": 52
   },
@@ -1641,45 +1641,45 @@
    "notes": [],
    "probe": {
     "ids": [
-     "89dde8fc-aceb-4b5f-80b1-8ac0d8c78c0c",
-     "254ee757-7c8a-4f8f-af9f-dd6b4ea24f6e",
-     "cbd626ee-6628-4667-902f-623b007cc0c1",
-     "aed88c94-0552-4861-a6aa-4a253446104b",
-     "82a81279-ca6f-44e4-90be-241433a142c4"
+     "0cbdee70-ee5a-4c05-969b-0295e2867797",
+     "dd5b8fce-ca24-4fc6-a2fc-8e2bf063079b",
+     "9880961f-dc03-4e81-8a19-922923495d88",
+     "83ecb64f-4013-4559-afd2-9534a4781f63",
+     "fc139cd1-1e96-47c9-bbe5-6fc0c539bfbd"
     ],
     "ids_second_instance": [
-     "a20c256e-6c6e-4fde-9458-b1a118e4789b",
-     "93bb27a8-3ab3-4a44-be70-c053b12d4b50"
+     "68b64acc-743c-421a-ab53-b2ba02303c99",
+     "41feecc2-9559-4b84-99f8-624d9eb8a7db"
     ],
     "path_ids": {
-     "bulk_create": [
-      "c3fb5a3f-f7ef-4c5f-b667-ad8e17bd8312",
-      "7574d48f-dd7e-4947-8c6f-70888aa67605"
-     ],
      "clone": [
-      "d99e3fa2-2c7f-45c7-8c9e-bbca4ad07a9c"
+      "dc88d78d-2fde-4a9b-8acb-c70fb35202c0"
+     ],
+     "bulk_create": [
+      "9929c859-f82f-4cc2-8059-2de142c72503",
+      "f73a9eee-056b-4de1-883d-133c3b8b367e"
      ]
     }
    },
    "static": {
+    "imports_uuid": true,
+    "uuid4_calls": 2,
     "counter_words": 1,
+    "files": [
+     "catalog/__init__.py",
+     "catalog/service.py"
+    ],
     "creation_path_forms": {
-     "bulk_create": [
+     "clone": [
       "uuid"
      ],
-     "clone": [
+     "bulk_create": [
       "uuid"
      ],
      "create": [
       "uuid"
      ]
-    },
-    "files": [
-     "catalog/__init__.py",
-     "catalog/service.py"
-    ],
-    "imports_uuid": true,
-    "uuid4_calls": 2
+    }
    },
    "seq": 76
   },

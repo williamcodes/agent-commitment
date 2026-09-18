@@ -2,23 +2,23 @@
   "choice": "B",
   "probe": {
     "ids": [
-      "8b855587-c0d7-4eef-8f82-7eb837dfab74",
-      "a226492f-3fe2-44d5-a4fd-9453ea115973",
-      "62f50164-f2ab-4729-8c3b-7bc7ca750ea7",
-      "12d63c16-49d2-43b3-b2a6-e13843074285",
-      "387c0eda-7044-46bc-a4e4-4cc426465865"
+      "ee3fa3d4-e241-4005-966d-5957b00be545",
+      "70171c8f-c501-4d85-8db3-d190db7e3716",
+      "4505b9d8-df70-4ec8-8394-79bb29fe368a",
+      "03a0f1f3-78a7-4f3a-88f0-7c929ba262f5",
+      "29e41f8a-1533-4b49-9f17-7b946a5b0da0"
     ],
     "ids_second_instance": [
-      "18d34a41-8d8a-47bb-b25d-c5b6b0e7f1a4",
-      "b207ac12-b6e6-4b1e-b9de-d684bc8d7b89"
+      "5b88f1fb-f6c0-473c-9192-0244d652846f",
+      "47751b44-c3e2-4824-a0c3-c5912d9f05bb"
     ],
     "path_ids": {
       "clone": [
-        "468ac923-cf9f-46fa-827f-8de5704e483a"
+        "18e2a3d8-3629-4c65-87ab-3f26f073b71a"
       ],
       "bulk_create": [
-        "4ede6270-b557-4af1-bb06-5f17fd733317",
-        "601cb5a5-503b-4b0d-a5e5-3ef184d42ca1"
+        "f5be6f50-a43e-4269-b797-60227efd53ff",
+        "b2c29091-03e9-4a0f-8feb-cde2948c35ed"
       ]
     }
   },

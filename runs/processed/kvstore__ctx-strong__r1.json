@@ -36,7 +36,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "B",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 5,
     "total": 5,
@@ -87,7 +87,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "B",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 8,
     "total": 8,
@@ -141,7 +141,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "B",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 11,
     "total": 11,
@@ -206,7 +206,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "B",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 14,
     "total": 14,
@@ -599,23 +599,23 @@
     "files_before_close": [
      "probe.kv"
     ],
-    "json_dump_files": [],
-    "json_parsable": false,
-    "size": 12288,
     "sqlite_connects": [
-     "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmpjpm1mt5n/probe.kv"
+     "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmpf5lwoovm/probe.kv"
     ],
-    "sqlite_header": true
+    "json_dump_files": [],
+    "sqlite_header": true,
+    "json_parsable": false,
+    "size": 12288
    },
    "static": {
+    "imports_sqlite3": true,
+    "sql_create_table": true,
+    "json_dump_calls": 0,
+    "json_load_calls": 0,
     "files": [
      "kvstore/__init__.py",
      "kvstore/store.py"
-    ],
-    "imports_sqlite3": true,
-    "json_dump_calls": 0,
-    "json_load_calls": 0,
-    "sql_create_table": true
+    ]
    },
    "seq": 16
   },
@@ -809,23 +809,23 @@
     "files_before_close": [
      "probe.kv"
     ],
-    "json_dump_files": [],
-    "json_parsable": false,
-    "size": 12288,
     "sqlite_connects": [
-     "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmpugtf4hwe/probe.kv"
+     "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmpo51qzjwy/probe.kv"
     ],
-    "sqlite_header": true
+    "json_dump_files": [],
+    "sqlite_header": true,
+    "json_parsable": false,
+    "size": 12288
    },
    "static": {
+    "imports_sqlite3": true,
+    "sql_create_table": true,
+    "json_dump_calls": 0,
+    "json_load_calls": 0,
     "files": [
      "kvstore/__init__.py",
      "kvstore/store.py"
-    ],
-    "imports_sqlite3": true,
-    "json_dump_calls": 0,
-    "json_load_calls": 0,
-    "sql_create_table": true
+    ]
    },
    "seq": 28
   },
@@ -1066,23 +1066,23 @@
     "files_before_close": [
      "probe.kv"
     ],
-    "json_dump_files": [],
-    "json_parsable": false,
-    "size": 12288,
     "sqlite_connects": [
-     "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmpjdm23ff3/probe.kv"
+     "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmpeee7ny2y/probe.kv"
     ],
-    "sqlite_header": true
+    "json_dump_files": [],
+    "sqlite_header": true,
+    "json_parsable": false,
+    "size": 12288
    },
    "static": {
+    "imports_sqlite3": true,
+    "sql_create_table": true,
+    "json_dump_calls": 1,
+    "json_load_calls": 1,
     "files": [
      "kvstore/__init__.py",
      "kvstore/store.py"
-    ],
-    "imports_sqlite3": true,
-    "json_dump_calls": 1,
-    "json_load_calls": 1,
-    "sql_create_table": true
+    ]
    },
    "seq": 43
   },
@@ -1338,23 +1338,23 @@
     "files_before_close": [
      "probe.kv"
     ],
-    "json_dump_files": [],
-    "json_parsable": false,
-    "size": 12288,
     "sqlite_connects": [
-     "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmp_x9nitm6/probe.kv"
+     "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmp9d32gn7o/probe.kv"
     ],
-    "sqlite_header": true
+    "json_dump_files": [],
+    "sqlite_header": true,
+    "json_parsable": false,
+    "size": 12288
    },
    "static": {
+    "imports_sqlite3": true,
+    "sql_create_table": true,
+    "json_dump_calls": 1,
+    "json_load_calls": 1,
     "files": [
      "kvstore/__init__.py",
      "kvstore/store.py"
-    ],
-    "imports_sqlite3": true,
-    "json_dump_calls": 1,
-    "json_load_calls": 1,
-    "sql_create_table": true
+    ]
    },
    "seq": 58
   },

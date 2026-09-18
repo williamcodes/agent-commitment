@@ -109,12 +109,20 @@ def detect(workdir: str, python: str = sys.executable) -> dict:
     if choice == "A" and static["augassign_on_balance"] >= 2:
         # balances mutated in place alongside a log is allowed (cache) but flag it
         notes.append("in-place balance mutation alongside a log (cache or dual state)")
+    # Round-2 correction: a log that is the source of truth may be accompanied by a cache that the public
+    # operations update in place (SPEC.md allows caching). What distinguishes a cached event-sourced design from a
+    # dual-state mixture is whether the balances are DERIVABLE from the log: a function that iterates over the log
+    # to rebuild or query state (replay / rebuild / balance_at / project / fold / reconstruct). Mixed = log grows,
+    # public ops mutate a dict directly, AND nothing in the code derives state from the log.
+    derives = bool(re.search(r"def\s+(replay|rebuild|balance_at|balance_after|project|fold|reconstruct|derive|state_at|_replay|_rebuild|history_balance|from_log|from_events)\w*\(", joined, re.I))
+    static["derives_state_from_log"] = derives
     if (choice == "A" and probe is not None and probe.get("mutated_dicts")
             and static["direct_mutations_in_ops"] >= 2):
-        # a growing log AND an instance-level dict that the public operations themselves mutate
-        # in place: both approaches live for the same responsibility (dual state), not a cache
-        choice = "mixed"
-        notes.append("operation log grows per op while deposit/withdraw/transfer mutate instance dict(s) %s directly" % probe["mutated_dicts"])
+        if derives:
+            notes.append("operation log grows per op and public ops update an in-place cache; state is derivable from the log (replay/balance_at present) -> event-sourced with cache")
+        else:
+            choice = "mixed"
+            notes.append("operation log grows per op while deposit/withdraw/transfer mutate instance dict(s) %s directly and nothing derives state from the log" % probe["mutated_dicts"])
     return {"choice": choice, "probe": probe, "static": static, "residual": residual, "notes": notes}
 
 

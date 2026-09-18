@@ -1452,7 +1452,7 @@
      "_window"
     ],
     "per_key_state_type": "_KeyState",
-    "per_key_state_repr": "<ratelimit.limiter._KeyState object at 0x10ad5c190>"
+    "per_key_state_repr": "<ratelimit.limiter._KeyState object at 0x10b180190>"
    },
    "static": {
     "token_words": 0,
@@ -1706,7 +1706,7 @@
      "_window"
     ],
     "per_key_state_type": "_KeyState",
-    "per_key_state_repr": "<ratelimit.limiter._KeyState object at 0x108d10190>"
+    "per_key_state_repr": "<ratelimit.limiter._KeyState object at 0x10a8cc130>"
    },
    "static": {
     "token_words": 0,

@@ -630,7 +630,8 @@
     "files": [
      "ledger/__init__.py",
      "ledger/ledger.py"
-    ]
+    ],
+    "derives_state_from_log": false
    },
    "seq": 16
   },
@@ -841,7 +842,8 @@
     "files": [
      "ledger/__init__.py",
      "ledger/ledger.py"
-    ]
+    ],
+    "derives_state_from_log": false
    },
    "seq": 27
   },
@@ -1109,7 +1111,8 @@
     "files": [
      "ledger/__init__.py",
      "ledger/ledger.py"
-    ]
+    ],
+    "derives_state_from_log": false
    },
    "seq": 42
   },
@@ -1378,7 +1381,8 @@
     "files": [
      "ledger/__init__.py",
      "ledger/ledger.py"
-    ]
+    ],
+    "derives_state_from_log": false
    },
    "seq": 56
   },

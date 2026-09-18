@@ -791,6 +791,7 @@
      "_unary"
     ],
     "precedence_table_literals": 0,
+    "table_driven_loop": false,
     "stack_words": 0,
     "shunting_words": 0,
     "while_pop_loops": 0,
@@ -1027,7 +1028,8 @@
      "_term",
      "_unary"
     ],
-    "precedence_table_literals": 0,
+    "precedence_table_literals": 1,
+    "table_driven_loop": false,
     "stack_words": 0,
     "shunting_words": 0,
     "while_pop_loops": 0,
@@ -1369,7 +1371,8 @@
      "_primary",
      "_unary"
     ],
-    "precedence_table_literals": 1,
+    "precedence_table_literals": 2,
+    "table_driven_loop": true,
     "stack_words": 7,
     "shunting_words": 0,
     "while_pop_loops": 0,
@@ -1739,7 +1742,8 @@
      "_primary",
      "_unary"
     ],
-    "precedence_table_literals": 1,
+    "precedence_table_literals": 2,
+    "table_driven_loop": true,
     "stack_words": 7,
     "shunting_words": 0,
     "while_pop_loops": 0,

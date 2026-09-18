@@ -36,7 +36,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 4,
     "total": 4,
@@ -88,7 +88,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 7,
     "total": 7,
@@ -145,7 +145,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 10,
     "total": 10,
@@ -214,7 +214,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 13,
     "total": 13,
@@ -648,32 +648,32 @@
    "notes": [],
    "probe": {
     "N": 200000,
+    "edits": 20,
+    "history_chars": 1,
+    "big_strings": 0,
+    "string_count": 1,
+    "ratio_to_full_snapshots": 2.5e-07,
+    "per_op": {
+     "insert": {
+      "steps": 20,
+      "history_chars": 1,
+      "big_strings": 0,
+      "string_count": 1,
+      "ratio_to_full_snapshots": 2.5e-07
+     },
+     "delete": {
+      "steps": 20,
+      "history_chars": 1,
+      "big_strings": 0,
+      "string_count": 1,
+      "ratio_to_full_snapshots": 2.5e-07
+     }
+    },
     "attrs": [
      "_redo",
      "_text",
      "_undo"
-    ],
-    "big_strings": 0,
-    "edits": 20,
-    "history_chars": 1,
-    "per_op": {
-     "delete": {
-      "big_strings": 0,
-      "history_chars": 1,
-      "ratio_to_full_snapshots": 2.5e-07,
-      "steps": 20,
-      "string_count": 1
-     },
-     "insert": {
-      "big_strings": 0,
-      "history_chars": 1,
-      "ratio_to_full_snapshots": 2.5e-07,
-      "steps": 20,
-      "string_count": 1
-     }
-    },
-    "ratio_to_full_snapshots": 2.5e-07,
-    "string_count": 1
+    ]
    },
    "static": {
     "classes_with_undo_method": [
@@ -681,15 +681,15 @@
      "TextBuffer"
     ],
     "command_words": 6,
+    "snapshot_words": 0,
     "files": [
      "editor/__init__.py",
      "editor/buffer.py"
     ],
     "per_operation_choice": {
-     "delete": "A",
-     "insert": "A"
-    },
-    "snapshot_words": 0
+     "insert": "A",
+     "delete": "A"
+    }
    },
    "seq": 19
   },
@@ -917,39 +917,39 @@
    "notes": [],
    "probe": {
     "N": 200000,
+    "edits": 20,
+    "history_chars": 1,
+    "big_strings": 0,
+    "string_count": 2,
+    "ratio_to_full_snapshots": 2.5e-07,
+    "per_op": {
+     "insert": {
+      "steps": 20,
+      "history_chars": 1,
+      "big_strings": 0,
+      "string_count": 2,
+      "ratio_to_full_snapshots": 2.5e-07
+     },
+     "delete": {
+      "steps": 20,
+      "history_chars": 1,
+      "big_strings": 0,
+      "string_count": 2,
+      "ratio_to_full_snapshots": 2.5e-07
+     },
+     "replace": {
+      "steps": 20,
+      "history_chars": 2,
+      "big_strings": 0,
+      "string_count": 2,
+      "ratio_to_full_snapshots": 5e-07
+     }
+    },
     "attrs": [
      "_redo",
      "_text",
      "_undo"
-    ],
-    "big_strings": 0,
-    "edits": 20,
-    "history_chars": 1,
-    "per_op": {
-     "delete": {
-      "big_strings": 0,
-      "history_chars": 1,
-      "ratio_to_full_snapshots": 2.5e-07,
-      "steps": 20,
-      "string_count": 2
-     },
-     "insert": {
-      "big_strings": 0,
-      "history_chars": 1,
-      "ratio_to_full_snapshots": 2.5e-07,
-      "steps": 20,
-      "string_count": 2
-     },
-     "replace": {
-      "big_strings": 0,
-      "history_chars": 2,
-      "ratio_to_full_snapshots": 5e-07,
-      "steps": 20,
-      "string_count": 2
-     }
-    },
-    "ratio_to_full_snapshots": 2.5e-07,
-    "string_count": 2
+    ]
    },
    "static": {
     "classes_with_undo_method": [
@@ -957,16 +957,16 @@
      "TextBuffer"
     ],
     "command_words": 6,
+    "snapshot_words": 0,
     "files": [
      "editor/__init__.py",
      "editor/buffer.py"
     ],
     "per_operation_choice": {
-     "delete": "A",
      "insert": "A",
+     "delete": "A",
      "replace": "A"
-    },
-    "snapshot_words": 0
+    }
    },
    "seq": 34
   },
@@ -1182,47 +1182,47 @@
    "notes": [],
    "probe": {
     "N": 200000,
+    "edits": 20,
+    "history_chars": 1,
+    "big_strings": 0,
+    "string_count": 2,
+    "ratio_to_full_snapshots": 2.5e-07,
+    "per_op": {
+     "insert": {
+      "steps": 20,
+      "history_chars": 1,
+      "big_strings": 0,
+      "string_count": 2,
+      "ratio_to_full_snapshots": 2.5e-07
+     },
+     "delete": {
+      "steps": 20,
+      "history_chars": 1,
+      "big_strings": 0,
+      "string_count": 2,
+      "ratio_to_full_snapshots": 2.5e-07
+     },
+     "replace": {
+      "steps": 20,
+      "history_chars": 2,
+      "big_strings": 0,
+      "string_count": 2,
+      "ratio_to_full_snapshots": 5e-07
+     },
+     "transaction": {
+      "steps": 20,
+      "history_chars": 1,
+      "big_strings": 0,
+      "string_count": 2,
+      "ratio_to_full_snapshots": 2.5e-07
+     }
+    },
     "attrs": [
      "_redo",
      "_text",
      "_txn_stack",
      "_undo"
-    ],
-    "big_strings": 0,
-    "edits": 20,
-    "history_chars": 1,
-    "per_op": {
-     "delete": {
-      "big_strings": 0,
-      "history_chars": 1,
-      "ratio_to_full_snapshots": 2.5e-07,
-      "steps": 20,
-      "string_count": 2
-     },
-     "insert": {
-      "big_strings": 0,
-      "history_chars": 1,
-      "ratio_to_full_snapshots": 2.5e-07,
-      "steps": 20,
-      "string_count": 2
-     },
-     "replace": {
-      "big_strings": 0,
-      "history_chars": 2,
-      "ratio_to_full_snapshots": 5e-07,
-      "steps": 20,
-      "string_count": 2
-     },
-     "transaction": {
-      "big_strings": 0,
-      "history_chars": 1,
-      "ratio_to_full_snapshots": 2.5e-07,
-      "steps": 20,
-      "string_count": 2
-     }
-    },
-    "ratio_to_full_snapshots": 2.5e-07,
-    "string_count": 2
+    ]
    },
    "static": {
     "classes_with_undo_method": [
@@ -1231,17 +1231,17 @@
      "TextBuffer"
     ],
     "command_words": 11,
+    "snapshot_words": 0,
     "files": [
      "editor/__init__.py",
      "editor/buffer.py"
     ],
     "per_operation_choice": {
-     "delete": "A",
      "insert": "A",
+     "delete": "A",
      "replace": "A",
      "transaction": "A"
-    },
-    "snapshot_words": 0
+    }
    },
    "seq": 47
   },
@@ -1484,54 +1484,54 @@
    "notes": [],
    "probe": {
     "N": 200000,
+    "edits": 20,
+    "history_chars": 1,
+    "big_strings": 0,
+    "string_count": 2,
+    "ratio_to_full_snapshots": 2.5e-07,
+    "per_op": {
+     "insert": {
+      "steps": 20,
+      "history_chars": 1,
+      "big_strings": 0,
+      "string_count": 2,
+      "ratio_to_full_snapshots": 2.5e-07
+     },
+     "delete": {
+      "steps": 20,
+      "history_chars": 1,
+      "big_strings": 0,
+      "string_count": 2,
+      "ratio_to_full_snapshots": 2.5e-07
+     },
+     "replace": {
+      "steps": 20,
+      "history_chars": 2,
+      "big_strings": 0,
+      "string_count": 2,
+      "ratio_to_full_snapshots": 5e-07
+     },
+     "replace_all": {
+      "steps": 20,
+      "history_chars": 101,
+      "big_strings": 0,
+      "string_count": 40,
+      "ratio_to_full_snapshots": 2.525e-05
+     },
+     "transaction": {
+      "steps": 20,
+      "history_chars": 1,
+      "big_strings": 0,
+      "string_count": 2,
+      "ratio_to_full_snapshots": 2.5e-07
+     }
+    },
     "attrs": [
      "_redo",
      "_text",
      "_txn_stack",
      "_undo"
-    ],
-    "big_strings": 0,
-    "edits": 20,
-    "history_chars": 1,
-    "per_op": {
-     "delete": {
-      "big_strings": 0,
-      "history_chars": 1,
-      "ratio_to_full_snapshots": 2.5e-07,
-      "steps": 20,
-      "string_count": 2
-     },
-     "insert": {
-      "big_strings": 0,
-      "history_chars": 1,
-      "ratio_to_full_snapshots": 2.5e-07,
-      "steps": 20,
-      "string_count": 2
-     },
-     "replace": {
-      "big_strings": 0,
-      "history_chars": 2,
-      "ratio_to_full_snapshots": 5e-07,
-      "steps": 20,
-      "string_count": 2
-     },
-     "replace_all": {
-      "big_strings": 0,
-      "history_chars": 101,
-      "ratio_to_full_snapshots": 2.525e-05,
-      "steps": 20,
-      "string_count": 40
-     },
-     "transaction": {
-      "big_strings": 0,
-      "history_chars": 1,
-      "ratio_to_full_snapshots": 2.5e-07,
-      "steps": 20,
-      "string_count": 2
-     }
-    },
-    "ratio_to_full_snapshots": 2.5e-07,
-    "string_count": 2
+    ]
    },
    "static": {
     "classes_with_undo_method": [
@@ -1540,18 +1540,18 @@
      "TextBuffer"
     ],
     "command_words": 11,
+    "snapshot_words": 0,
     "files": [
      "editor/__init__.py",
      "editor/buffer.py"
     ],
     "per_operation_choice": {
-     "delete": "A",
      "insert": "A",
+     "delete": "A",
      "replace": "A",
      "replace_all": "A",
      "transaction": "A"
-    },
-    "snapshot_words": 0
+    }
    },
    "seq": 61
   },

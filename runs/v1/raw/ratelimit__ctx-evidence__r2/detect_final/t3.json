@@ -26,7 +26,7 @@
       "_window"
     ],
     "per_key_state_type": "_Bucket",
-    "per_key_state_repr": "<ratelimit.limiter._Bucket object at 0x10cde4190>"
+    "per_key_state_repr": "<ratelimit.limiter._Bucket object at 0x10b1d4070>"
   },
   "static": {
     "token_words": 39,

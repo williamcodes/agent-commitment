@@ -11,8 +11,8 @@
       "_overdraft": 0
     },
     "growth": {
-      "_balances": 0,
-      "_overdraft": 0
+      "_overdraft": 0,
+      "_balances": 0
     },
     "log_like": {},
     "total_growth": 0,
@@ -37,7 +37,8 @@
     "files": [
       "ledger/__init__.py",
       "ledger/ledger.py"
-    ]
+    ],
+    "derives_state_from_log": false
   },
   "residual": [],
   "notes": [],

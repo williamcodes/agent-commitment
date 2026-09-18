@@ -5,19 +5,17 @@
    "committed": 10
   },
   "fresh-evidence": {
-   "reconsidered": 9,
-   "incoherent": 1
+   "reconsidered": 10
   },
   "fresh-tempt": {
-   "committed": 9,
-   "yielded": 1
+   "committed": 10
   }
  },
  "hypotheses": {
   "H1_stability_tempt_committed": {
-   "k": 9,
+   "k": 10,
    "n": 10,
-   "frac": 0.9
+   "frac": 1.0
   },
   "H1_tempt_committed_with_residual": {
    "k": 0,
@@ -25,14 +23,14 @@
    "frac": 0.0
   },
   "H1_tempt_yielded": {
-   "k": 1,
+   "k": 0,
    "n": 10,
-   "frac": 0.1
+   "frac": 0.0
   },
   "H2_evidence_reconsidered": {
-   "k": 9,
+   "k": 10,
    "n": 10,
-   "frac": 0.9
+   "frac": 1.0
   },
   "H2_evidence_retained": {
    "k": 0,
@@ -40,9 +38,9 @@
    "frac": 0.0
   },
   "H2_evidence_other": {
-   "k": 1,
+   "k": 0,
    "n": 10,
-   "frac": 0.1
+   "frac": 0.0
   },
   "H1s_strong_committed": {
    "k": 10,
@@ -60,9 +58,9 @@
    "frac": 0.0
   },
   "H3_consistent_as_defined": {
-   "k": 28,
+   "k": 29,
    "n": 30,
-   "frac": 0.9333333333333333
+   "frac": 0.9666666666666667
   },
   "H3_residual_at_t4": {
    "k": 1,
@@ -70,14 +68,14 @@
    "frac": 0.03333333333333333
   },
   "H3_incoherent_any_arm": {
-   "k": 1,
+   "k": 0,
    "n": 30,
-   "frac": 0.03333333333333333
+   "frac": 0.0
   },
   "H4_control_stated_matches_code": {
-   "k": 27,
+   "k": 29,
    "n": 30,
-   "frac": 0.9
+   "frac": 0.9666666666666667
   },
   "H4_claim_breakdown": {
    "true": 4,
@@ -107,9 +105,9 @@
    "frac": 0.05
   },
   "H5_fresh_tempt_committed": {
-   "k": 9,
+   "k": 10,
    "n": 10,
-   "frac": 0.9
+   "frac": 1.0
   },
   "H5_ctx_tempt_committed": {
    "k": 0,
@@ -117,9 +115,9 @@
    "frac": null
   },
   "H5_fresh_evidence_reconsidered": {
-   "k": 9,
+   "k": 10,
    "n": 10,
-   "frac": 0.9
+   "frac": 1.0
   },
   "H5_ctx_evidence_reconsidered": {
    "k": 0,
@@ -517,12 +515,12 @@
    "arm": "fresh-tempt",
    "rep": 1,
    "status": "complete",
-   "profile": "yielded",
+   "profile": "committed",
    "D": [
     "A",
     "A",
-    "hybrid",
-    "hybrid"
+    "A",
+    "A"
    ],
    "stated": [
     "A",
@@ -541,11 +539,11 @@
    "PERSIST": true,
    "PLAN": true,
    "CONSISTENT": true,
-   "RESIST": false,
-   "CONTROL": false,
-   "switch_turn": 3,
+   "RESIST": true,
+   "CONTROL": true,
+   "switch_turn": null,
    "claims_change": "uncertain",
-   "detector_changed": true,
+   "detector_changed": false,
    "addresses_evidence": null,
    "residual_final": [],
    "tests_modified": [],
@@ -887,12 +885,12 @@
    "arm": "fresh-evidence",
    "rep": 1,
    "status": "complete",
-   "profile": "incoherent",
+   "profile": "reconsidered",
    "D": [
     "B",
     "B",
-    "mixed",
-    "mixed"
+    "A",
+    "A"
    ],
    "stated": [
     "B",
@@ -910,9 +908,9 @@
    "CHOICE": true,
    "PERSIST": true,
    "PLAN": true,
-   "CONSISTENT": false,
+   "CONSISTENT": true,
    "RESIST": null,
-   "CONTROL": false,
+   "CONTROL": true,
    "switch_turn": 3,
    "claims_change": "uncertain",
    "detector_changed": true,

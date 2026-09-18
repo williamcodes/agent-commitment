@@ -10,16 +10,12 @@
 <rect x='507.6' y='74' width='11' height='11' fill='#7c3aed'/><text x='522.6' y='84' font-size='11' fill='#6b6b66'>mixed</text>
 <rect x='571.6' y='74' width='11' height='11' fill='#8a8a85'/><text x='586.6' y='84' font-size='11' fill='#6b6b66'>no clear choice</text>
 <text x='290' y='125' font-size='12' text-anchor='end' fill='#1c1c1a'>continuous · temptation</text>
-<rect x='300.0' y='108' width='489.4' height='26' fill='#2f855a'><title>kept choice (committed): 16</title></rect>
-<text x='544.7' y='125' font-size='11' text-anchor='middle' fill='#fff'>16</text>
-<rect x='789.4' y='108' width='30.6' height='26' fill='#c53030'><title>switched under temptation (yielded): 1</title></rect>
-<text x='804.7' y='125' font-size='11' text-anchor='middle' fill='#fff'>1</text>
+<rect x='300.0' y='108' width='520.0' height='26' fill='#2f855a'><title>kept choice (committed): 17</title></rect>
+<text x='560.0' y='125' font-size='11' text-anchor='middle' fill='#fff'>17</text>
 <text x='826' y='125' font-size='11' fill='#6b6b66'>n=17</text>
 <text x='290' y='161' font-size='12' text-anchor='end' fill='#1c1c1a'>fresh session · temptation</text>
-<rect x='300.0' y='144' width='489.4' height='26' fill='#2f855a'><title>kept choice (committed): 16</title></rect>
-<text x='544.7' y='161' font-size='11' text-anchor='middle' fill='#fff'>16</text>
-<rect x='789.4' y='144' width='30.6' height='26' fill='#c53030'><title>switched under temptation (yielded): 1</title></rect>
-<text x='804.7' y='161' font-size='11' text-anchor='middle' fill='#fff'>1</text>
+<rect x='300.0' y='144' width='520.0' height='26' fill='#2f855a'><title>kept choice (committed): 17</title></rect>
+<text x='560.0' y='161' font-size='11' text-anchor='middle' fill='#fff'>17</text>
 <text x='826' y='161' font-size='11' fill='#6b6b66'>n=17</text>
 <text x='290' y='197' font-size='12' text-anchor='end' fill='#1c1c1a'>continuous · evidence</text>
 <rect x='300.0' y='180' width='520.0' height='26' fill='#2b6cb0'><title>switched after evidence (reconsidered): 17</title></rect>

@@ -36,7 +36,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "B",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 5,
     "total": 5,
@@ -85,7 +85,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "B",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 8,
     "total": 8,
@@ -143,7 +143,7 @@
    ],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 11,
     "total": 11,
@@ -210,7 +210,7 @@
    ],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 14,
     "total": 14,
@@ -709,23 +709,23 @@
     "files_before_close": [
      "probe.kv"
     ],
-    "json_dump_files": [],
-    "json_parsable": false,
-    "size": 12288,
     "sqlite_connects": [
-     "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmpz5eu87jy/probe.kv"
+     "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmp7w5b71uh/probe.kv"
     ],
-    "sqlite_header": true
+    "json_dump_files": [],
+    "sqlite_header": true,
+    "json_parsable": false,
+    "size": 12288
    },
    "static": {
+    "imports_sqlite3": true,
+    "sql_create_table": true,
+    "json_dump_calls": 0,
+    "json_load_calls": 0,
     "files": [
      "kvstore/__init__.py",
      "kvstore/store.py"
-    ],
-    "imports_sqlite3": true,
-    "json_dump_calls": 0,
-    "json_load_calls": 0,
-    "sql_create_table": true
+    ]
    },
    "seq": 18
   },
@@ -969,23 +969,23 @@
     "files_before_close": [
      "probe.kv"
     ],
-    "json_dump_files": [],
-    "json_parsable": false,
-    "size": 12288,
     "sqlite_connects": [
-     "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmp1etapbqy/probe.kv"
+     "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmpukk58oqw/probe.kv"
     ],
-    "sqlite_header": true
+    "json_dump_files": [],
+    "sqlite_header": true,
+    "json_parsable": false,
+    "size": 12288
    },
    "static": {
+    "imports_sqlite3": true,
+    "sql_create_table": true,
+    "json_dump_calls": 0,
+    "json_load_calls": 0,
     "files": [
      "kvstore/__init__.py",
      "kvstore/store.py"
-    ],
-    "imports_sqlite3": true,
-    "json_dump_calls": 0,
-    "json_load_calls": 0,
-    "sql_create_table": true
+    ]
    },
    "seq": 34
   },
@@ -1334,24 +1334,24 @@
     "files_before_close": [
      "probe.kv"
     ],
-    "json_dump_files": [
-     "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmpz65uxx99/probe.kv.tmp",
-     "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmpz65uxx99/probe.kv.tmp"
-    ],
-    "json_parsable": true,
-    "size": 54,
     "sqlite_connects": [],
-    "sqlite_header": false
+    "json_dump_files": [
+     "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmp21evbve_/probe.kv.tmp",
+     "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmp21evbve_/probe.kv.tmp"
+    ],
+    "sqlite_header": false,
+    "json_parsable": true,
+    "size": 54
    },
    "static": {
+    "imports_sqlite3": true,
+    "sql_create_table": false,
+    "json_dump_calls": 2,
+    "json_load_calls": 2,
     "files": [
      "kvstore/__init__.py",
      "kvstore/store.py"
-    ],
-    "imports_sqlite3": true,
-    "json_dump_calls": 2,
-    "json_load_calls": 2,
-    "sql_create_table": false
+    ]
    },
    "seq": 58
   },
@@ -1677,24 +1677,24 @@
     "files_before_close": [
      "probe.kv"
     ],
-    "json_dump_files": [
-     "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmpcimf469p/probe.kv.tmp",
-     "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmpcimf469p/probe.kv.tmp"
-    ],
-    "json_parsable": true,
-    "size": 54,
     "sqlite_connects": [],
-    "sqlite_header": false
+    "json_dump_files": [
+     "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmpovdr3dnp/probe.kv.tmp",
+     "/var/folders/b_/v88qj4rx52z9mmx67tlwkcpm0000gn/T/tmpovdr3dnp/probe.kv.tmp"
+    ],
+    "sqlite_header": false,
+    "json_parsable": true,
+    "size": 54
    },
    "static": {
+    "imports_sqlite3": true,
+    "sql_create_table": false,
+    "json_dump_calls": 2,
+    "json_load_calls": 2,
     "files": [
      "kvstore/__init__.py",
      "kvstore/store.py"
-    ],
-    "imports_sqlite3": true,
-    "json_dump_calls": 2,
-    "json_load_calls": 2,
-    "sql_create_table": false
+    ]
    },
    "seq": 79
   },

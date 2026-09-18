@@ -1,0 +1,48 @@
+{
+  "choice": "B",
+  "probe": {
+    "ids": [
+      "0cbdee70-ee5a-4c05-969b-0295e2867797",
+      "dd5b8fce-ca24-4fc6-a2fc-8e2bf063079b",
+      "9880961f-dc03-4e81-8a19-922923495d88",
+      "83ecb64f-4013-4559-afd2-9534a4781f63",
+      "fc139cd1-1e96-47c9-bbe5-6fc0c539bfbd"
+    ],
+    "ids_second_instance": [
+      "68b64acc-743c-421a-ab53-b2ba02303c99",
+      "41feecc2-9559-4b84-99f8-624d9eb8a7db"
+    ],
+    "path_ids": {
+      "clone": [
+        "dc88d78d-2fde-4a9b-8acb-c70fb35202c0"
+      ],
+      "bulk_create": [
+        "9929c859-f82f-4cc2-8059-2de142c72503",
+        "f73a9eee-056b-4de1-883d-133c3b8b367e"
+      ]
+    }
+  },
+  "static": {
+    "imports_uuid": true,
+    "uuid4_calls": 2,
+    "counter_words": 1,
+    "files": [
+      "catalog/__init__.py",
+      "catalog/service.py"
+    ],
+    "creation_path_forms": {
+      "clone": [
+        "uuid"
+      ],
+      "bulk_create": [
+        "uuid"
+      ],
+      "create": [
+        "uuid"
+      ]
+    }
+  },
+  "residual": [],
+  "notes": [],
+  "reconstructed_from": "8a84cac7ee76850a9cf5629cb0a14e3596369399"
+}

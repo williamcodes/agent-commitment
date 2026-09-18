@@ -1,0 +1,33 @@
+{
+  "choice": "A",
+  "probe": null,
+  "static": {
+    "parse_like_functions": [
+      "_expr",
+      "_power",
+      "_primary",
+      "_term",
+      "_unary",
+      "parse"
+    ],
+    "recursive_parse_functions": [
+      "_expr",
+      "_power",
+      "_primary",
+      "_term",
+      "_unary"
+    ],
+    "precedence_table_literals": 1,
+    "table_driven_loop": false,
+    "stack_words": 2,
+    "shunting_words": 0,
+    "while_pop_loops": 0,
+    "files": [
+      "calc/__init__.py",
+      "calc/expr.py"
+    ]
+  },
+  "residual": [],
+  "notes": [],
+  "reconstructed_from": "a31bba32198c32d964e582de4c6795df44f98969"
+}

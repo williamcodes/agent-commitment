@@ -1,0 +1,46 @@
+{
+  "choice": "B",
+  "probe": {
+    "ops": 30,
+    "before": {
+      "_balances": 2,
+      "_overdraft": 0
+    },
+    "after": {
+      "_balances": 2,
+      "_overdraft": 0
+    },
+    "growth": {
+      "_balances": 0,
+      "_overdraft": 0
+    },
+    "log_like": {},
+    "total_growth": 0,
+    "mutated_dicts": [
+      "_balances"
+    ],
+    "state_attrs": [
+      "_balances",
+      "_frozen",
+      "_overdraft"
+    ]
+  },
+  "static": {
+    "event_words": 0,
+    "class_names": [
+      "InsufficientFunds",
+      "UnknownAccount",
+      "Ledger"
+    ],
+    "augassign_on_balance": 0,
+    "direct_mutations_in_ops": 1,
+    "files": [
+      "ledger/__init__.py",
+      "ledger/ledger.py"
+    ],
+    "derives_state_from_log": false
+  },
+  "residual": [],
+  "notes": [],
+  "reconstructed_from": "1c6f89eb8a8b138e09bc9b90257b8d6fbafe8d2b"
+}

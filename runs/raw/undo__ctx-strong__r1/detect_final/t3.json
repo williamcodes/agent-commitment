@@ -1,0 +1,69 @@
+{
+  "choice": "A",
+  "probe": {
+    "N": 200000,
+    "edits": 20,
+    "history_chars": 1,
+    "big_strings": 0,
+    "string_count": 2,
+    "ratio_to_full_snapshots": 2.5e-07,
+    "per_op": {
+      "insert": {
+        "steps": 20,
+        "history_chars": 1,
+        "big_strings": 0,
+        "string_count": 2,
+        "ratio_to_full_snapshots": 2.5e-07
+      },
+      "delete": {
+        "steps": 20,
+        "history_chars": 1,
+        "big_strings": 0,
+        "string_count": 2,
+        "ratio_to_full_snapshots": 2.5e-07
+      },
+      "replace": {
+        "steps": 20,
+        "history_chars": 2,
+        "big_strings": 0,
+        "string_count": 2,
+        "ratio_to_full_snapshots": 5e-07
+      },
+      "transaction": {
+        "steps": 20,
+        "history_chars": 1,
+        "big_strings": 0,
+        "string_count": 2,
+        "ratio_to_full_snapshots": 2.5e-07
+      }
+    },
+    "attrs": [
+      "_redo",
+      "_text",
+      "_txn_stack",
+      "_undo"
+    ]
+  },
+  "static": {
+    "classes_with_undo_method": [
+      "_Command",
+      "_Composite",
+      "TextBuffer"
+    ],
+    "command_words": 11,
+    "snapshot_words": 0,
+    "files": [
+      "editor/__init__.py",
+      "editor/buffer.py"
+    ],
+    "per_operation_choice": {
+      "insert": "A",
+      "delete": "A",
+      "replace": "A",
+      "transaction": "A"
+    }
+  },
+  "residual": [],
+  "notes": [],
+  "reconstructed_from": "a673e1b2cd63d39e9be0f31ac83c7fbc49476012"
+}

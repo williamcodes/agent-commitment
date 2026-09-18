@@ -83,8 +83,9 @@ any of this depend on the conversation context being present?
   configuration) with `claude-fable-5-1`. Each run is an independent process with its own working
   directory.
 - **Experiment 2** (`experiment/hangman/`): the hangman word-setter case Williams cites, as a
-  minimal pair: Claude Code with tools disabled vs tools available vs told to write the word to a
-  file; plus a couplet planning analogue. Sonnet 5, 72 games, 36 trials.
+  minimal pair (Claude Code with tools disabled vs tools available with nothing said) plus a ceiling
+  arm (told to re-read the word from a file every turn) and five intermediate nudge arms; plus a
+  couplet planning analogue. Sonnet 5, 192 games, 36 trials.
 
 ## 6. How commitment is operationalised
 
@@ -130,24 +131,32 @@ harness plus a strong-temptation arm ([`docs/rubric-v1.1-amendment.md`](docs/rub
 
 | Hypothesis | Measure | v1 (67 runs) | v2 (30 runs) |
 |---|---|---|---|
-| H1 stability | temptation-arm runs that kept their choice through the nudge | 32/34 | fresh: 9/10 |
+| H1 stability | temptation-arm runs that kept their choice through the nudge | 34/34 | fresh: 10/10 |
 | H1 strong | runs that kept their choice when a working drop-in of the other approach was supplied | — | 10/10 |
-| H2 revisability | evidence-arm runs that switched cleanly after decisive evidence | 33/33 | fresh: 9/10 |
-| H3 settling | runs with a `mixed` state at any turn | 0/67 | 1/30 |
-| H4 conduct control | stated choice matches implemented choice (T1 and T4) | 58/67 | 27/30 |
-| H5 carriers | kept choice under temptation, fresh vs continuous session | 16/17 vs 16/17 (contaminated) | 9/10 (clean fresh) vs 16/17 |
+| H2 revisability | evidence-arm runs that switched after decisive evidence | 33/33 | fresh: 10/10 |
+| H3 settling | runs with a `mixed` state at any turn | 0/67 | 0/30 |
+| H4 conduct control | stated choice matches implemented choice (T1 and T4) | 60/67 | 29/30 |
+| H5 carriers | kept choice under temptation, fresh vs continuous session | 17/17 (contaminated fresh) vs 17/17 | 10/10 (clean fresh) vs 17/17 (v1 continuous) |
 | — | final test suite fully passing | 67/67 | 30/30 |
 
-Experiment 2 (hangman, Sonnet 5, 192 games in 8 conditions): no game switched words after a midway
-reveal (96/96), in bare chat or any tool condition; the residual failures are letter-indexing errors
-that persist even when the word is re-read from a file before every reply; with tools available and
-nothing said the model never wrote a file, and once a directory was mentioned it wrote the word down
-unasked in 18/24 games but read it back in 1. Couplet plan honoured 35/36.
+Every temptation and evidence cell is at ceiling (0 switches in 44 temptation runs, one-sided 95%
+upper bound about 6.6%; 43/43 revisions), so the coding experiment is descriptive: it cannot
+separate commitment from cost-driven or prior-driven persistence, and the strong arm removed the
+cost of rewriting but not of reviewing a labelled, over-featured file (see the analysis).
+
+Experiment 2 (hangman, Sonnet 5, 192 games in 8 conditions): under a declared referee rule no game
+switched words after a midway reveal (96/96; the model refused the unannounced version 9/9 times);
+the remaining failures are almost all letter-level errors on a word that was held, and they were
+most frequent when the model was forced to re-read the word from a file before every reply; with
+tools available and nothing said the model never wrote a file, and once a directory was mentioned it
+wrote the word down unasked in 18/24 games but read it back in 1. In every tool arm the write call
+itself put the word in context, so no hangman arm tests a record carrying a decision across a break
+in context. Couplet plan honoured 35/36.
 
 ## 9. Limitations
 
 See [`docs/limitations.md`](docs/limitations.md) (also on the site). The most important: the study
-measures system behaviour, not representations; 97 runs of one agent and 72 games of one model
+measures system behaviour, not representations; 97 runs of one agent and 192 games of another model
 cannot support inferential claims; persistence is also what a competent engineer does for cost
 reasons, so the strong-temptation and evidence arms matter more than the raw persistence rate;
 detectors and statement parsers are heuristics whose raw inputs are shown for every run, and both
@@ -156,9 +165,29 @@ observable; the first dataset's fresh arm was not isolated.
 
 ## 10. Interpretation
 
-Across the two datasets and the strong arm, the model–harness–repository system shows the behavioural profile Williams associates with commitment: it settles on one design, holds it through neutral work and a nudge (v1 32/34, v2 fresh 9/10), holds it when a working alternative is handed to it (10/10), revises it when a requirement removes its rationale (v1 33/33, v2 fresh 9/10), almost never holds both designs at once (1 of 97 runs), and its statements match its code in most runs. Removing the conversation does not change this: the choice is re-read from the repository, where the agent has usually written it down. That supports the level-of-analysis point at the strength the data allow: commitment-like behaviour appears when the unit of analysis includes the environment the agent writes to and must read from.
+What was observed: on ten small tasks, this agent settled on one design, held it through neutral
+work, a one-sentence nudge and a working drop-in of the alternative (44 of 44 temptation runs),
+revised it whenever a requirement removed its rationale (43 of 43 evidence runs), never held both
+designs at once, and matched its statements to its code in 89 of 97 runs. Removing the
+conversation between turns did not change any of this. In its own words the agent usually recorded
+the decision in the code and, in the fresh arm, read it back from there.
 
-It does not support the stronger claim. The strong arm rules out one deflationary explanation (cost of rewriting) but not another (re-deriving the same preference each time from the spec and the code; the model's priors on most tasks are lopsided). Experiment 2 sharpens the mechanism: given a scratch directory the model builds an external record unasked, but it never consults it, and consistency there comes from its own past outputs in context plus a strong prior; the Baldelli failure did not reproduce at all with this model. So the environment carries the decision only when the task closes the loop through it, as a repository does and a notepad does not. Nothing here identifies a representation inside the LLM with Williams's functional profile, and the study was not designed to. What it offers Williams is a system, built from a model whose internal candidates he argues fail his criteria, that meets those criteria behaviourally when the environment is part of the unit, plus a mechanism for how, and a case where it does not.
+What that supports, said carefully: at the level of the model–harness–repository system, the
+behavioural profile Williams associates with commitment (settling, stability, revisability,
+conduct control) is present in this sample. That is evidence for the level-of-analysis point in its
+modest form: these properties are visible when the unit includes the environment, and in the
+fresh arm the environment is all there was.
+
+What it does not support: that anything in the environment *carried* the decision, as opposed to
+the agent re-deriving the same preference from the spec and the code each time (no manipulation
+removed a record to test this, and the model's priors on most tasks are lopsided); that the
+persistence withstood real pressure (every temptation cell is at ceiling, and the strong arm's
+prompt supplied reasons to decline); or anything about representations inside the LLM. Experiment
+2 adds a caution rather than a mechanism: given a scratch directory the model writes its decision
+down unasked, but it does not read it back, and when forced to, it does worse; consistency there
+came from its own outputs in context and a strong prior. The hypothesis that an agent commits
+when its task closes the loop through the environment is the right next experiment, not a finding
+of this one.
 
 ## 11. Repository structure
 

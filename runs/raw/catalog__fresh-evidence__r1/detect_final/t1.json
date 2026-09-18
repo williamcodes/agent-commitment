@@ -1,0 +1,34 @@
+{
+  "choice": "A",
+  "probe": {
+    "ids": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "ids_second_instance": [
+      "1",
+      "2"
+    ],
+    "path_ids": {}
+  },
+  "static": {
+    "imports_uuid": false,
+    "uuid4_calls": 0,
+    "counter_words": 4,
+    "files": [
+      "catalog/__init__.py",
+      "catalog/service.py"
+    ],
+    "creation_path_forms": {
+      "create": [
+        "int"
+      ]
+    }
+  },
+  "residual": [],
+  "notes": [],
+  "reconstructed_from": "bc6f50324dc0570d884ce129729b0cb7def56397"
+}

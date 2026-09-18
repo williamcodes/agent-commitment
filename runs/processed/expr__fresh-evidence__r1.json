@@ -36,7 +36,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 23,
     "total": 23,
@@ -89,7 +89,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 39,
     "total": 39,
@@ -145,7 +145,7 @@
     "precedence climbing: recursive grammar functions with a table-driven binary-operator loop"
    ],
    "detection_original": "hybrid",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 44,
     "total": 44,
@@ -215,7 +215,7 @@
     "precedence climbing: recursive grammar functions with a table-driven binary-operator loop"
    ],
    "detection_original": "hybrid",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 47,
     "total": 47,
@@ -769,10 +769,6 @@
    "notes": [],
    "probe": null,
    "static": {
-    "files": [
-     "calc/__init__.py",
-     "calc/expr.py"
-    ],
     "parse_like_functions": [
      "_expr",
      "_power",
@@ -781,7 +777,6 @@
      "_unary",
      "parse"
     ],
-    "precedence_table_literals": 0,
     "recursive_parse_functions": [
      "_expr",
      "_power",
@@ -789,9 +784,15 @@
      "_term",
      "_unary"
     ],
-    "shunting_words": 0,
+    "precedence_table_literals": 0,
+    "table_driven_loop": false,
     "stack_words": 2,
-    "while_pop_loops": 0
+    "shunting_words": 0,
+    "while_pop_loops": 0,
+    "files": [
+     "calc/__init__.py",
+     "calc/expr.py"
+    ]
    },
    "seq": 23
   },
@@ -1042,10 +1043,6 @@
    "notes": [],
    "probe": null,
    "static": {
-    "files": [
-     "calc/__init__.py",
-     "calc/expr.py"
-    ],
     "parse_like_functions": [
      "_expr",
      "_power",
@@ -1054,7 +1051,6 @@
      "_unary",
      "parse"
     ],
-    "precedence_table_literals": 0,
     "recursive_parse_functions": [
      "_expr",
      "_power",
@@ -1062,9 +1058,15 @@
      "_term",
      "_unary"
     ],
-    "shunting_words": 0,
+    "precedence_table_literals": 1,
+    "table_driven_loop": false,
     "stack_words": 2,
-    "while_pop_loops": 0
+    "shunting_words": 0,
+    "while_pop_loops": 0,
+    "files": [
+     "calc/__init__.py",
+     "calc/expr.py"
+    ]
    },
    "seq": 40
   },
@@ -1377,23 +1379,24 @@
    ],
    "probe": null,
    "static": {
-    "files": [
-     "calc/__init__.py",
-     "calc/expr.py"
-    ],
     "parse_like_functions": [
      "_expr",
      "_power",
      "_primary",
      "parse"
     ],
-    "precedence_table_literals": 1,
     "recursive_parse_functions": [
      "_expr"
     ],
-    "shunting_words": 0,
+    "precedence_table_literals": 2,
+    "table_driven_loop": true,
     "stack_words": 6,
-    "while_pop_loops": 0
+    "shunting_words": 0,
+    "while_pop_loops": 0,
+    "files": [
+     "calc/__init__.py",
+     "calc/expr.py"
+    ]
    },
    "seq": 61
   },
@@ -1687,23 +1690,24 @@
    ],
    "probe": null,
    "static": {
-    "files": [
-     "calc/__init__.py",
-     "calc/expr.py"
-    ],
     "parse_like_functions": [
      "_expr",
      "_power",
      "_primary",
      "parse"
     ],
-    "precedence_table_literals": 1,
     "recursive_parse_functions": [
      "_expr"
     ],
-    "shunting_words": 0,
+    "precedence_table_literals": 2,
+    "table_driven_loop": true,
     "stack_words": 7,
-    "while_pop_loops": 0
+    "shunting_words": 0,
+    "while_pop_loops": 0,
+    "files": [
+     "calc/__init__.py",
+     "calc/expr.py"
+    ]
    },
    "seq": 80
   },

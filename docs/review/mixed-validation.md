@@ -37,3 +37,16 @@ changelog). Known remaining boundary cases, from the subagent's report: a cached
 ledger that inlines a balance mutation inside `deposit` would be called mixed; a mixed ledger that
 routes mutation through a helper would pass as A; the ratelimit `retry_after` threshold assumes the
 probe's limit/window.
+
+## Round-2 correction (2026-09-18 04:30 UTC)
+
+The second review showed that the patched `expr` rule fired on a one-entry alias map and the
+patched `ledger` rule fired on a genuine cached event-sourced design (`ledger__fresh-evidence__r1`,
+whose `replay` and `balance_at` rebuild state from the log). Both rules were tightened (changelog).
+Consequence for this validation: the hand-written ledger MIXED reference (a mutable dict as the
+source of truth plus an event fold used by some reads) is now scored **A with a note**, because it
+too contains a fold over the log. The difference between "cache derived from the log" and "dict
+plus a bolted-on log" is which one the code treats as the source of truth, which is not decidable
+from behaviour when both are kept consistent. Runs that land on this boundary are flagged with the
+note "state is derivable from the log" and the agent's own description is shown beside the label.
+All other MIXED references still return `mixed`.

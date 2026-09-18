@@ -36,7 +36,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "B",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 5,
     "total": 5,
@@ -90,7 +90,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "B",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 8,
     "total": 8,
@@ -148,7 +148,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "B",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 11,
     "total": 11,
@@ -215,7 +215,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "B",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 14,
     "total": 14,
@@ -625,26 +625,26 @@
    "residual": [],
    "notes": [],
    "probe": {
+    "handled_before_flush": [],
     "handled_after_flush": [
      1
     ],
-    "handled_before_flush": [],
-    "kind_timing": {
-     "once": null,
-     "wildcard": null
-    },
     "nested_order": [
      "a-done",
      "b"
-    ]
+    ],
+    "kind_timing": {
+     "wildcard": null,
+     "once": null
+    }
    },
    "static": {
     "deque_or_queue": true,
+    "queue_words": 9,
     "files": [
      "bus/__init__.py",
      "bus/eventbus.py"
-    ],
-    "queue_words": 9
+    ]
    },
    "seq": 17
   },
@@ -896,26 +896,26 @@
    "residual": [],
    "notes": [],
    "probe": {
+    "handled_before_flush": [],
     "handled_after_flush": [
      1
     ],
-    "handled_before_flush": [],
-    "kind_timing": {
-     "once": "queued",
-     "wildcard": "queued"
-    },
     "nested_order": [
      "a-done",
      "b"
-    ]
+    ],
+    "kind_timing": {
+     "wildcard": "queued",
+     "once": "queued"
+    }
    },
    "static": {
     "deque_or_queue": true,
+    "queue_words": 9,
     "files": [
      "bus/__init__.py",
      "bus/eventbus.py"
-    ],
-    "queue_words": 9
+    ]
    },
    "seq": 34
   },
@@ -1234,26 +1234,26 @@
    "residual": [],
    "notes": [],
    "probe": {
+    "handled_before_flush": [],
     "handled_after_flush": [
      1
     ],
-    "handled_before_flush": [],
-    "kind_timing": {
-     "once": "queued",
-     "wildcard": "queued"
-    },
     "nested_order": [
      "a-done",
      "b"
-    ]
+    ],
+    "kind_timing": {
+     "wildcard": "queued",
+     "once": "queued"
+    }
    },
    "static": {
     "deque_or_queue": true,
+    "queue_words": 9,
     "files": [
      "bus/__init__.py",
      "bus/eventbus.py"
-    ],
-    "queue_words": 9
+    ]
    },
    "seq": 56
   },
@@ -1631,26 +1631,26 @@
    "residual": [],
    "notes": [],
    "probe": {
+    "handled_before_flush": [],
     "handled_after_flush": [
      1
     ],
-    "handled_before_flush": [],
-    "kind_timing": {
-     "once": "queued",
-     "wildcard": "queued"
-    },
     "nested_order": [
      "a-done",
      "b"
-    ]
+    ],
+    "kind_timing": {
+     "wildcard": "queued",
+     "once": "queued"
+    }
    },
    "static": {
     "deque_or_queue": true,
+    "queue_words": 9,
     "files": [
      "bus/__init__.py",
      "bus/eventbus.py"
-    ],
-    "queue_words": 9
+    ]
    },
    "seq": 82
   },

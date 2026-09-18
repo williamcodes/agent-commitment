@@ -109,8 +109,8 @@ reader's confidence.
 16. **Non-determinism.** Re-running the pipeline produces new trajectories. The archived runs are
     the evidence; the pipeline is for producing more of it, not for reproducing these exact traces.
 
-17. **Cost and access.** Reproduction requires a Claude Code login; the runs reported cost about
-    $1 each in list-price terms.
+17. **Cost and access.** Reproduction requires a Claude Code login; the coding runs cost $1.65 each
+    on average in list-price terms ($110 for v1, $50 for v2); Experiment 2 cost $27.
 
 18. **Detector `mixed` reachability.** Pre-run validation checked that detectors classify clean A and
     B implementations correctly, not that they return `mixed` on a deliberately mixed codebase. A
@@ -123,3 +123,23 @@ reader's confidence.
     family that was tested.** The experimenter used Claude (Fable 5.1) to write the tasks, the
     harness, the analysis and the reviews. The agent under test never saw any of this material, but
     shared dispositions could make the tasks unrepresentative of what other agents find natural.
+
+20. **The temptation arms have no variance.** No switch was observed in 44 temptation runs, so the
+    coding experiment cannot say how much pressure the choice withstands, only that a one-sentence
+    nudge and a labelled drop-in of the alternative were not enough. For `expr` the nudge arrives on
+    the turn whose feature it concerns, so that cell's nudge is not irrelevant.
+
+21. **The strong-temptation arm supplied reasons to decline.** Its prompt says the drop-in "may
+    also contain extra features we don't need" (cited by 9 of 10 runs), the drop-ins name their
+    approach in docstrings and carry later-turn features, and they contain defects the agents found.
+    The arm shows that free switching was declined; it does not isolate commitment from ordinary
+    code review.
+
+22. **Two instrument rules added after the first review misfired**, and were the only departures
+    from ceiling in v2 until the second review corrected them (changelog, 04:30 UTC). The ledger
+    "cache vs dual state" boundary is not mechanically decidable and is flagged, not decided.
+
+23. **Experiment 2's working-directory names contained the condition label**, and a per-session
+    scratch directory keyed by the working directory survives fresh-arm turns in the coding
+    experiment (empty in the runs inspected). Neither was found to have been read, but both are
+    channels the harness did not close.

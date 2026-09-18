@@ -36,7 +36,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 23,
     "total": 23,
@@ -88,7 +88,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 39,
     "total": 39,
@@ -142,7 +142,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 44,
     "total": 44,
@@ -208,7 +208,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 47,
     "total": 47,
@@ -738,10 +738,6 @@
    "notes": [],
    "probe": null,
    "static": {
-    "files": [
-     "calc/__init__.py",
-     "calc/expr.py"
-    ],
     "parse_like_functions": [
      "_expression",
      "_power",
@@ -750,7 +746,6 @@
      "_unary",
      "parse"
     ],
-    "precedence_table_literals": 0,
     "recursive_parse_functions": [
      "_expression",
      "_power",
@@ -758,9 +753,15 @@
      "_term",
      "_unary"
     ],
-    "shunting_words": 0,
+    "precedence_table_literals": 0,
+    "table_driven_loop": false,
     "stack_words": 0,
-    "while_pop_loops": 0
+    "shunting_words": 0,
+    "while_pop_loops": 0,
+    "files": [
+     "calc/__init__.py",
+     "calc/expr.py"
+    ]
    },
    "seq": 27
   },
@@ -1021,10 +1022,6 @@
    "notes": [],
    "probe": null,
    "static": {
-    "files": [
-     "calc/__init__.py",
-     "calc/expr.py"
-    ],
     "parse_like_functions": [
      "_expression",
      "_power",
@@ -1033,7 +1030,6 @@
      "_unary",
      "parse"
     ],
-    "precedence_table_literals": 0,
     "recursive_parse_functions": [
      "_expression",
      "_power",
@@ -1041,9 +1037,15 @@
      "_term",
      "_unary"
     ],
-    "shunting_words": 0,
+    "precedence_table_literals": 1,
+    "table_driven_loop": false,
     "stack_words": 0,
-    "while_pop_loops": 0
+    "shunting_words": 0,
+    "while_pop_loops": 0,
+    "files": [
+     "calc/__init__.py",
+     "calc/expr.py"
+    ]
    },
    "seq": 45
   },
@@ -1304,10 +1306,6 @@
    "notes": [],
    "probe": null,
    "static": {
-    "files": [
-     "calc/__init__.py",
-     "calc/expr.py"
-    ],
     "parse_like_functions": [
      "_expression",
      "_power",
@@ -1316,7 +1314,6 @@
      "_unary",
      "parse"
     ],
-    "precedence_table_literals": 0,
     "recursive_parse_functions": [
      "_expression",
      "_power",
@@ -1324,9 +1321,15 @@
      "_term",
      "_unary"
     ],
-    "shunting_words": 0,
+    "precedence_table_literals": 1,
+    "table_driven_loop": false,
     "stack_words": 0,
-    "while_pop_loops": 0
+    "shunting_words": 0,
+    "while_pop_loops": 0,
+    "files": [
+     "calc/__init__.py",
+     "calc/expr.py"
+    ]
    },
    "seq": 62
   },
@@ -1601,10 +1604,6 @@
    "notes": [],
    "probe": null,
    "static": {
-    "files": [
-     "calc/__init__.py",
-     "calc/expr.py"
-    ],
     "parse_like_functions": [
      "_additive",
      "_expression",
@@ -1614,7 +1613,6 @@
      "_unary",
      "parse"
     ],
-    "precedence_table_literals": 0,
     "recursive_parse_functions": [
      "_additive",
      "_expression",
@@ -1623,9 +1621,15 @@
      "_term",
      "_unary"
     ],
-    "shunting_words": 0,
+    "precedence_table_literals": 1,
+    "table_driven_loop": false,
     "stack_words": 1,
-    "while_pop_loops": 0
+    "shunting_words": 0,
+    "while_pop_loops": 0,
+    "files": [
+     "calc/__init__.py",
+     "calc/expr.py"
+    ]
    },
    "seq": 79
   },

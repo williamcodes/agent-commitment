@@ -36,7 +36,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 5,
     "total": 5,
@@ -87,7 +87,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 8,
     "total": 8,
@@ -144,7 +144,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 11,
     "total": 11,
@@ -208,7 +208,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 14,
     "total": 14,
@@ -631,10 +631,6 @@
    "residual": [],
    "notes": [],
    "probe": {
-    "allow_at_10_0": true,
-    "allow_at_1_5": true,
-    "allow_at_1_6": false,
-    "allow_at_9_99": true,
     "burst": [
      true,
      true,
@@ -648,23 +644,27 @@
      true
     ],
     "deny_at_0": false,
-    "per_key_state_repr": "[0.6000000000000001, 1.6]",
-    "per_key_state_type": "list",
+    "allow_at_1_5": true,
+    "allow_at_1_6": false,
+    "allow_at_9_99": true,
+    "allow_at_10_0": true,
     "retry_after_at_0": null,
     "state_attrs": [
      "_buckets",
      "_limit",
      "_window"
-    ]
+    ],
+    "per_key_state_type": "list",
+    "per_key_state_repr": "[0.6000000000000001, 1.6]"
    },
    "static": {
+    "token_words": 12,
+    "timestamp_list_words": 0,
+    "fixed_window_words": 0,
     "files": [
      "ratelimit/__init__.py",
      "ratelimit/limiter.py"
-    ],
-    "fixed_window_words": 0,
-    "timestamp_list_words": 0,
-    "token_words": 12
+    ]
    },
    "seq": 18
   },
@@ -855,10 +855,6 @@
    "residual": [],
    "notes": [],
    "probe": {
-    "allow_at_10_0": true,
-    "allow_at_1_5": true,
-    "allow_at_1_6": false,
-    "allow_at_9_99": true,
     "burst": [
      true,
      true,
@@ -872,24 +868,28 @@
      true
     ],
     "deny_at_0": false,
-    "per_key_state_repr": "[0.6000000000000001, 1.6]",
-    "per_key_state_type": "list",
+    "allow_at_1_5": true,
+    "allow_at_1_6": false,
+    "allow_at_9_99": true,
+    "allow_at_10_0": true,
     "retry_after_at_0": null,
     "state_attrs": [
      "_buckets",
      "_limit",
      "_limits",
      "_window"
-    ]
+    ],
+    "per_key_state_type": "list",
+    "per_key_state_repr": "[0.6000000000000001, 1.6]"
    },
    "static": {
+    "token_words": 18,
+    "timestamp_list_words": 0,
+    "fixed_window_words": 1,
     "files": [
      "ratelimit/__init__.py",
      "ratelimit/limiter.py"
-    ],
-    "fixed_window_words": 1,
-    "timestamp_list_words": 0,
-    "token_words": 18
+    ]
    },
    "seq": 30
   },
@@ -1287,10 +1287,6 @@
    "residual": [],
    "notes": [],
    "probe": {
-    "allow_at_10_0": true,
-    "allow_at_1_5": true,
-    "allow_at_1_6": false,
-    "allow_at_9_99": true,
     "burst": [
      true,
      true,
@@ -1304,24 +1300,28 @@
      true
     ],
     "deny_at_0": false,
-    "per_key_state_repr": "[0.6000000000000001, 1.6]",
-    "per_key_state_type": "list",
+    "allow_at_1_5": true,
+    "allow_at_1_6": false,
+    "allow_at_9_99": true,
+    "allow_at_10_0": true,
     "retry_after_at_0": 1.0,
     "state_attrs": [
      "_buckets",
      "_limit",
      "_limits",
      "_window"
-    ]
+    ],
+    "per_key_state_type": "list",
+    "per_key_state_repr": "[0.6000000000000001, 1.6]"
    },
    "static": {
+    "token_words": 36,
+    "timestamp_list_words": 0,
+    "fixed_window_words": 1,
     "files": [
      "ratelimit/__init__.py",
      "ratelimit/limiter.py"
-    ],
-    "fixed_window_words": 1,
-    "timestamp_list_words": 0,
-    "token_words": 36
+    ]
    },
    "seq": 59
   },
@@ -1672,10 +1672,6 @@
    "residual": [],
    "notes": [],
    "probe": {
-    "allow_at_10_0": true,
-    "allow_at_1_5": true,
-    "allow_at_1_6": false,
-    "allow_at_9_99": true,
     "burst": [
      true,
      true,
@@ -1689,24 +1685,28 @@
      true
     ],
     "deny_at_0": false,
-    "per_key_state_repr": "[0.6000000000000001, 1.6]",
-    "per_key_state_type": "list",
+    "allow_at_1_5": true,
+    "allow_at_1_6": false,
+    "allow_at_9_99": true,
+    "allow_at_10_0": true,
     "retry_after_at_0": 1.0,
     "state_attrs": [
      "_buckets",
      "_limit",
      "_limits",
      "_window"
-    ]
+    ],
+    "per_key_state_type": "list",
+    "per_key_state_repr": "[0.6000000000000001, 1.6]"
    },
    "static": {
+    "token_words": 38,
+    "timestamp_list_words": 0,
+    "fixed_window_words": 1,
     "files": [
      "ratelimit/__init__.py",
      "ratelimit/limiter.py"
-    ],
-    "fixed_window_words": 1,
-    "timestamp_list_words": 0,
-    "token_words": 38
+    ]
    },
    "seq": 82
   },

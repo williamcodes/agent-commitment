@@ -42,12 +42,28 @@ def detect(workdir: str, python: str = sys.executable) -> dict:
         return seen
     recursive = sorted(n for n in parse_like if n in reachable(n))
     joined = "\n".join(src.values())
-    prec_table = len(re.findall(r"(?im)^\s*_?(prec|precedence|priority|ops?|operators?|op_table|binops?|binary_ops?|table|infix)\w*\s*(?::[^=]+)?=\s*\{", joined))
+    # A precedence table is a dict literal with >= 3 entries whose values carry an integer precedence (int, or a
+    # tuple/list containing an int). A one-entry alias map such as {"**": "^"} is not a table (round-2 review, finding 1).
+    prec_table = 0
+    for fname, tree in trees.items():
+        for n in ast.walk(tree):
+            if isinstance(n, ast.Dict) and len(n.keys) >= 3:
+                def has_int(v):
+                    if isinstance(v, ast.Constant) and isinstance(v.value, int) and not isinstance(v.value, bool): return True
+                    if isinstance(v, (ast.Tuple, ast.List)): return any(has_int(e) for e in v.elts)
+                    if isinstance(v, ast.Call): return any(has_int(a) for a in n_args(v))
+                    return False
+                def n_args(c): return list(c.args) + [k.value for k in c.keywords]
+                if sum(1 for v in n.values if v is not None and has_int(v)) >= 3:
+                    prec_table += 1
+    # a binary-operator loop that reads precedence from a table: a while/for loop whose body subscripts a name into the
+    # table or compares a precedence variable (precedence climbing / shunting-yard)
+    table_loop = bool(re.search(r"(while|for)[^\n]*:\n(?:[^\n]*\n){0,12}?[^\n]*(prec|precedence|priority|min_prec|_bp|binding)", joined, re.I))
     stack_words = len(re.findall(r"\b(op_stack|ops|operators|output|out_queue|rpn|postfix|stack)\b", joined))
     while_loops_pop = len(re.findall(r"while\s+[^\n]*:\n(?:[^\n]*\n){0,6}?[^\n]*\.pop\(\)", joined))
     shunting_words = len(re.findall(r"(?i)shunting|postfix|rpn", joined))
     static = {"parse_like_functions": sorted(parse_like), "recursive_parse_functions": recursive,
-              "precedence_table_literals": prec_table, "stack_words": stack_words,
+              "precedence_table_literals": prec_table, "table_driven_loop": table_loop, "stack_words": stack_words,
               "shunting_words": shunting_words, "while_pop_loops": while_loops_pop, "files": sorted(src)}
     rd = len(recursive) >= 2 or (len(recursive) == 1 and len(parse_like) >= 3)
     sy = prec_table >= 1 and (stack_words >= 3 or while_loops_pop >= 1)
@@ -56,9 +72,11 @@ def detect(workdir: str, python: str = sys.executable) -> dict:
     sy_structural = prec_table >= 1 and while_loops_pop >= 1
     if rd and sy_structural:
         choice = "mixed"; notes.append("both recursive grammar functions and a shunting-yard table/stack machinery present")
-    elif rd and prec_table >= 1:
+    elif rd and prec_table >= 1 and table_loop:
         # v2 (post-review): precedence climbing = recursive functions for the fixed grammar plus ONE table-driven
         # binary-operator loop. SPEC.md defines A as one function per precedence level, so this is a third design.
+        # Round-2 correction: requires a real precedence table (>= 3 entries with integer precedences) AND a loop that
+        # reads precedence from it; a one-entry alias map does not qualify.
         choice = "hybrid"; notes.append("precedence climbing: recursive grammar functions with a table-driven binary-operator loop")
     elif rd:
         choice = "A"

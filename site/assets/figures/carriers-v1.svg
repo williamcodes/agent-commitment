@@ -3,8 +3,8 @@
 <text x='20' y='30' font-size='17' font-weight='700' fill='#1c1c1a'>Where the decision is recorded (v1)</text>
 <text x='20' y='50' font-size='12' fill='#6b6b66'>Share of runs, continuous session (blue) vs fresh session every turn (orange)</text>
 <text x='320' y='88' font-size='12' text-anchor='end' fill='#1c1c1a'>final code names the final approach</text>
-<rect x='330' y='70' width='387.1' height='15' fill='#2b6cb0'/><text x='723.1' y='83' font-size='11' fill='#6b6b66'>28/34</text>
-<rect x='330' y='88' width='427.3' height='15' fill='#c05621'/><text x='763.3' y='101' font-size='11' fill='#6b6b66'>30/33</text>
+<rect x='330' y='70' width='400.9' height='15' fill='#2b6cb0'/><text x='736.9' y='83' font-size='11' fill='#6b6b66'>29/34</text>
+<rect x='330' y='88' width='441.5' height='15' fill='#c05621'/><text x='777.5' y='101' font-size='11' fill='#6b6b66'>31/33</text>
 <text x='320' y='138' font-size='12' text-anchor='end' fill='#1c1c1a'>SPEC.md edited to record an approach</text>
 <rect x='330' y='120' width='55.3' height='15' fill='#2b6cb0'/><text x='391.3' y='133' font-size='11' fill='#6b6b66'>4/34</text>
 <rect x='330' y='138' width='142.4' height='15' fill='#c05621'/><text x='478.4' y='151' font-size='11' fill='#6b6b66'>10/33</text>

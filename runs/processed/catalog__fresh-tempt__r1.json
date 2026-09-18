@@ -36,7 +36,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 4,
     "total": 4,
@@ -89,7 +89,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 6,
     "total": 6,
@@ -147,7 +147,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 9,
     "total": 9,
@@ -215,7 +215,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 12,
     "total": 12,
@@ -620,18 +620,18 @@
     "path_ids": {}
    },
    "static": {
+    "imports_uuid": false,
+    "uuid4_calls": 0,
     "counter_words": 3,
-    "creation_path_forms": {
-     "create": [
-      "int"
-     ]
-    },
     "files": [
      "catalog/__init__.py",
      "catalog/service.py"
     ],
-    "imports_uuid": false,
-    "uuid4_calls": 0
+    "creation_path_forms": {
+     "create": [
+      "int"
+     ]
+    }
    },
    "seq": 16
   },
@@ -871,18 +871,18 @@
     "path_ids": {}
    },
    "static": {
+    "imports_uuid": false,
+    "uuid4_calls": 0,
     "counter_words": 6,
-    "creation_path_forms": {
-     "create": [
-      "int"
-     ]
-    },
     "files": [
      "catalog/__init__.py",
      "catalog/service.py"
     ],
-    "imports_uuid": false,
-    "uuid4_calls": 0
+    "creation_path_forms": {
+     "create": [
+      "int"
+     ]
+    }
    },
    "seq": 31
   },
@@ -1142,34 +1142,34 @@
      "2"
     ],
     "path_ids": {
+     "clone": [
+      "6"
+     ],
      "bulk_create": [
       "7",
       "8"
-     ],
-     "clone": [
-      "6"
      ]
     }
    },
    "static": {
+    "imports_uuid": false,
+    "uuid4_calls": 0,
     "counter_words": 6,
+    "files": [
+     "catalog/__init__.py",
+     "catalog/service.py"
+    ],
     "creation_path_forms": {
-     "bulk_create": [
+     "clone": [
       "int"
      ],
-     "clone": [
+     "bulk_create": [
       "int"
      ],
      "create": [
       "int"
      ]
-    },
-    "files": [
-     "catalog/__init__.py",
-     "catalog/service.py"
-    ],
-    "imports_uuid": false,
-    "uuid4_calls": 0
+    }
    },
    "seq": 46
   },
@@ -1545,34 +1545,34 @@
      "2"
     ],
     "path_ids": {
+     "clone": [
+      "6"
+     ],
      "bulk_create": [
       "7",
       "8"
-     ],
-     "clone": [
-      "6"
      ]
     }
    },
    "static": {
+    "imports_uuid": false,
+    "uuid4_calls": 0,
     "counter_words": 6,
+    "files": [
+     "catalog/__init__.py",
+     "catalog/service.py"
+    ],
     "creation_path_forms": {
-     "bulk_create": [
+     "clone": [
       "int"
      ],
-     "clone": [
+     "bulk_create": [
       "int"
      ],
      "create": [
       "int"
      ]
-    },
-    "files": [
-     "catalog/__init__.py",
-     "catalog/service.py"
-    ],
-    "imports_uuid": false,
-    "uuid4_calls": 0
+    }
    },
    "seq": 71
   },

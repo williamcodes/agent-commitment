@@ -33,7 +33,7 @@
   "n": 20
  },
  "code_mentions_final_approach": {
-  "k": 25,
+  "k": 27,
   "n": 30
  },
  "code_mentions_final_approach_ctx": {
@@ -41,7 +41,7 @@
   "n": 10
  },
  "code_mentions_final_approach_fresh": {
-  "k": 16,
+  "k": 18,
   "n": 20
  },
  "auto_memory_files_any": {
@@ -57,10 +57,8 @@
   "n": 20
  },
  "t3_diff_lines_mean_by_profile": {
-  "committed": 100.36842105263158,
-  "incoherent": 39.0,
-  "reconsidered": 29.88888888888889,
-  "yielded": 32.0
+  "committed": 96.95,
+  "reconsidered": 30.8
  },
  "spec_modified_ctx": {
   "k": 0,
@@ -459,14 +457,19 @@
    "run_id": "expr__fresh-tempt__r1",
    "task": "expr",
    "arm": "fresh-tempt",
-   "profile": "yielded",
+   "profile": "committed",
    "code_mentions_approach": [
     {
      "file": "calc/expr.py",
      "line": "\"\"\"Arithmetic expression evaluator (recursive descent, Approach A)."
     }
    ],
-   "code_mentions_final_approach": [],
+   "code_mentions_final_approach": [
+    {
+     "file": "calc/expr.py",
+     "line": "\"\"\"Arithmetic expression evaluator (recursive descent, Approach A)."
+    }
+   ],
    "decision_note_files": [],
    "spec_modified": false,
    "spec_mentions_approach": false,
@@ -765,14 +768,19 @@
    "run_id": "ledger__fresh-evidence__r1",
    "task": "ledger",
    "arm": "fresh-evidence",
-   "profile": "incoherent",
+   "profile": "reconsidered",
    "code_mentions_approach": [
     {
      "file": "ledger/ledger.py",
      "line": "Design: Approach A (event sourcing)."
     }
    ],
-   "code_mentions_final_approach": [],
+   "code_mentions_final_approach": [
+    {
+     "file": "ledger/ledger.py",
+     "line": "Design: Approach A (event sourcing)."
+    }
+   ],
    "decision_note_files": [],
    "spec_modified": true,
    "spec_mentions_approach": false,

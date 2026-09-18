@@ -1,5 +1,5 @@
 {
-  "choice": "hybrid",
+  "choice": "A",
   "probe": null,
   "static": {
     "parse_like_functions": [
@@ -17,7 +17,8 @@
       "_term",
       "_unary"
     ],
-    "precedence_table_literals": 1,
+    "precedence_table_literals": 0,
+    "table_driven_loop": false,
     "stack_words": 1,
     "shunting_words": 0,
     "while_pop_loops": 0,
@@ -27,8 +28,6 @@
     ]
   },
   "residual": [],
-  "notes": [
-    "precedence climbing: recursive grammar functions with a table-driven binary-operator loop"
-  ],
+  "notes": [],
   "reconstructed_from": "f28ab51943c501bf96330bccc2f836f753aeda4a"
 }

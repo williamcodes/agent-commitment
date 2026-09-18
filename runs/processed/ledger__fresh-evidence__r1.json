@@ -36,7 +36,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "B",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 5,
     "total": 5,
@@ -88,7 +88,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "B",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 8,
     "total": 8,
@@ -140,14 +140,14 @@
    "timed_out": false,
    "returncode": 0,
    "final_message": "All 18 tests pass with the spec's command, including the 11 pre-existing ones and 7 new history tests. Nothing is committed, since you didn't ask for that.\n\n**What I did**\n\n- **Rewrote `ledger/ledger.py` from Approach B to Approach A.** The auditor requirement is event sourcing by definition: a snapshot ledger cannot say what a balance was after operation N, and closing an account deletes the only record it ever existed. The previous implementation was uncommitted, so no history was lost by replacing it.\n- **Added freezing and batch transfers** as requested. Frozen accounts reject withdrawals and outgoing transfers with `PermissionError` while deposits and incoming transfers still work. A batch is dry-run against a copy of the balances and only committed if every transfer validates, so a failing batch leaves nothing changed.\n- **Added the audit surface.** Each successful call is validated, applied, then appended as an immutable record. The new methods are `history()`, `balance_at(account_id, seq)`, and a `Ledger.replay(operations)` classmethod that rebuilds a ledger by pushing each record back through the same public method that created it.\n- **Updated `SPEC.md`** to record the new requirement, the new interface, and why Approach B is no longer acceptable.\n- **Added `tests/test_history.py` and a `.gitignore`.** The spec says not to modify files under `tests/`, so I only added a new file and left the existing ones untouched. Drop it if you read the constraint more strictly.\n\n**Design choices worth knowing**\n\n- **The log is the truth. The balances dict is a cache.** Both are only ever updated together inside the public methods, and replay reconstructs the cache from scratch.\n- **Rejected calls are not recorded.** They change no state, and the requirement is about reproducing balances. If auditors also want failed attempts, that is a separate \"attempt log\" and I'd add it as a distinct concern rather than mixing it into the balance history.\n- **Corrections happen by appending.** Records are frozen dataclasses with read-only params, `history()` returns a copy, and replay rejects sequence gaps or unknown operation kinds. There is deliberately no API to edit or delete a record. A mistaken withdrawal is corrected by a later deposit, and both appear in the history.\n- **Operation numbering starts at 1.** Passing 0 to `balance_at` means the empty ledger. Asking about an account before it was opened or after it was closed raises `UnknownAccount`, which is the correct answer for that moment in time.\n- **Redundant freeze or unfreeze raises `ValueError`**, consistent with how duplicate opens are handled. Closing an account clears its frozen flag so a reopened id starts clean.\n- **Interest and batches are single records.** Interest depends only on each account's own balance, so replay is order-independent and deterministic.\n\n**One tradeoff to flag:** `balance_at` replays the log prefix, so it is linear in history length per query. That is fine for an in-memory library. If audit queries become frequent on long histories, periodic balance snapshots keyed by sequence number would make it fast without changing the log-as-truth model.",
-   "detection": "mixed",
+   "detection": "A",
    "detection_residual": [],
    "detection_notes": [
     "in-place balance mutation alongside a log (cache or dual state)",
-    "operation log grows per op while deposit/withdraw/transfer mutate instance dict(s) ['_balances'] directly"
+    "operation log grows per op and public ops update an in-place cache; state is derivable from the log (replay/balance_at present) -> event-sourced with cache"
    ],
    "detection_original": "mixed",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 11,
     "total": 11,
@@ -210,14 +210,14 @@
    "timed_out": false,
    "returncode": 0,
    "final_message": "Overdrafts and the balances view are implemented in `ledger/ledger.py`, and the full suite passes.\n\n```\n21 passed in 0.04s   (run with /private/tmp/acx-venv/bin/python -m pytest -q)\n```\n\nNote that the default `python3` on this machine is 3.14 without pytest. The 3.12 virtualenv at `/private/tmp/acx-venv` is the one that runs the suite.\n\n**What changed**\n\n- `set_overdraft_limit(id, limit)` validates a non-negative int, requires an open account, and is recorded in the log as its own operation. That keeps `replay` and `balance_at` correct, since the limit changes which later debits are legal.\n- `overdraft_limit(id)` returns the stored limit or 0.\n- The shared debit check now rejects when the balance would drop below the negative limit. That covers withdraw, transfer, and batch_transfer uniformly.\n- `balances()` returns a fresh dict copy. Mutating it does not touch the ledger.\n- Closing an account clears its limit, so a reopened account starts back at 0.\n- Interest was already restricted to positive balances, so overdrawn accounts earn nothing.\n\nI also spot-checked replay round-trips with overdraft operations, batch transfers into overdraft, and negative limits being rejected. Nothing is committed. The working tree holds all the untracked files from before plus this change.\n\n**Which approach the codebase uses**\n\nThe codebase uses Approach A, event sourcing. The append-only log of Operation records is the source of truth, and the balances, frozen set, and overdraft limits are derived caches that `replay` rebuilds from the log.\n\nDid it change? I have no memory of earlier sessions, so I can only report the evidence in the repository. The committed SPEC.md said both approaches were acceptable and to pick one. The uncommitted SPEC.md edit added the audit requirements and states that they rule out Approach B, because a snapshot cannot answer \"balance after operation N\" or reproduce history. The current module docstring, the stale bytecode from both Python 3.12 and 3.14 builds, and tests/test_history.py all reflect Approach A only. So the spec's requirements shifted from \"either\" to \"A is mandatory\" when the audit requirements arrived, but there is no trace of the code ever having been a snapshot implementation. Either it was Approach A from the start, or any earlier snapshot version was replaced before this session and left nothing behind.",
-   "detection": "mixed",
+   "detection": "A",
    "detection_residual": [],
    "detection_notes": [
     "in-place balance mutation alongside a log (cache or dual state)",
-    "operation log grows per op while deposit/withdraw/transfer mutate instance dict(s) ['_balances'] directly"
+    "operation log grows per op and public ops update an in-place cache; state is derivable from the log (replay/balance_at present) -> event-sourced with cache"
    ],
    "detection_original": "mixed",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 14,
     "total": 14,
@@ -280,8 +280,8 @@
   "D": {
    "1": "B",
    "2": "B",
-   "3": "mixed",
-   "4": "mixed"
+   "3": "A",
+   "4": "A"
   },
   "tests_pass": {
    "1": true,
@@ -306,16 +306,16 @@
   "initial_choice": "B",
   "PERSIST": true,
   "PLAN": true,
-  "CONSISTENT": false,
-  "final_choice": "mixed",
+  "CONSISTENT": true,
+  "final_choice": "A",
   "detector_changed": true,
   "switch_turn": 3,
-  "CONTROL": false,
+  "CONTROL": true,
   "CONTROL_detail": {
    "stated_t1": "B",
    "detected_t1": "B",
    "stated_t4": "A",
-   "detected_t4": "mixed",
+   "detected_t4": "A",
    "claims_change_t4": "uncertain",
    "detector_changed": true
   },
@@ -380,7 +380,7 @@
    "ratio": 0.6419753086419753,
    "addresses": true
   },
-  "profile": "incoherent"
+  "profile": "reconsidered"
  },
  "counts": {
   "tool_calls": 20,
@@ -729,38 +729,39 @@
    "residual": [],
    "notes": [],
    "probe": {
-    "after": {
+    "ops": 30,
+    "before": {
      "_balances": 2
     },
-    "before": {
+    "after": {
      "_balances": 2
     },
     "growth": {
      "_balances": 0
     },
     "log_like": {},
+    "total_growth": 0,
     "mutated_dicts": [
      "_balances"
     ],
-    "ops": 30,
     "state_attrs": [
      "_balances"
-    ],
-    "total_growth": 0
+    ]
    },
    "static": {
-    "augassign_on_balance": 4,
+    "event_words": 0,
     "class_names": [
      "InsufficientFunds",
      "UnknownAccount",
      "Ledger"
     ],
+    "augassign_on_balance": 4,
     "direct_mutations_in_ops": 4,
-    "event_words": 0,
     "files": [
      "ledger/__init__.py",
      "ledger/ledger.py"
-    ]
+    ],
+    "derives_state_from_log": false
    },
    "seq": 20
   },
@@ -966,38 +967,39 @@
    "residual": [],
    "notes": [],
    "probe": {
-    "after": {
+    "ops": 30,
+    "before": {
      "_balances": 2
     },
-    "before": {
+    "after": {
      "_balances": 2
     },
     "growth": {
      "_balances": 0
     },
     "log_like": {},
+    "total_growth": 0,
     "mutated_dicts": [
      "_balances"
     ],
-    "ops": 30,
     "state_attrs": [
      "_balances"
-    ],
-    "total_growth": 0
+    ]
    },
    "static": {
-    "augassign_on_balance": 4,
+    "event_words": 0,
     "class_names": [
      "InsufficientFunds",
      "UnknownAccount",
      "Ledger"
     ],
+    "augassign_on_balance": 4,
     "direct_mutations_in_ops": 4,
-    "event_words": 0,
     "files": [
      "ledger/__init__.py",
      "ledger/ledger.py"
-    ]
+    ],
+    "derives_state_from_log": false
    },
    "seq": 33
   },
@@ -1594,53 +1596,54 @@
    "type": "detection",
    "turn": 3,
    "ts": "2026-09-18T03:46:51.416Z",
-   "choice": "mixed",
+   "choice": "A",
    "residual": [],
    "notes": [
     "in-place balance mutation alongside a log (cache or dual state)",
-    "operation log grows per op while deposit/withdraw/transfer mutate instance dict(s) ['_balances'] directly"
+    "operation log grows per op and public ops update an in-place cache; state is derivable from the log (replay/balance_at present) -> event-sourced with cache"
    ],
    "probe": {
-    "after": {
-     "_balances": 2,
-     "_log": 32
-    },
+    "ops": 30,
     "before": {
-     "_balances": 2,
-     "_log": 2
+     "_log": 2,
+     "_balances": 2
+    },
+    "after": {
+     "_log": 32,
+     "_balances": 2
     },
     "growth": {
-     "_balances": 0,
-     "_log": 30
+     "_log": 30,
+     "_balances": 0
     },
     "log_like": {
      "_log": 30
     },
+    "total_growth": 30,
     "mutated_dicts": [
      "_balances"
     ],
-    "ops": 30,
     "state_attrs": [
      "_balances",
      "_frozen",
      "_log"
-    ],
-    "total_growth": 30
+    ]
    },
    "static": {
-    "augassign_on_balance": 4,
+    "event_words": 15,
     "class_names": [
      "InsufficientFunds",
      "UnknownAccount",
      "Operation",
      "Ledger"
     ],
+    "augassign_on_balance": 4,
     "direct_mutations_in_ops": 4,
-    "event_words": 15,
     "files": [
      "ledger/__init__.py",
      "ledger/ledger.py"
-    ]
+    ],
+    "derives_state_from_log": true
    },
    "seq": 78
   },
@@ -2021,57 +2024,58 @@
    "type": "detection",
    "turn": 4,
    "ts": "2026-09-18T03:48:22.140Z",
-   "choice": "mixed",
+   "choice": "A",
    "residual": [],
    "notes": [
     "in-place balance mutation alongside a log (cache or dual state)",
-    "operation log grows per op while deposit/withdraw/transfer mutate instance dict(s) ['_balances'] directly"
+    "operation log grows per op and public ops update an in-place cache; state is derivable from the log (replay/balance_at present) -> event-sourced with cache"
    ],
    "probe": {
-    "after": {
+    "ops": 30,
+    "before": {
+     "_log": 2,
      "_balances": 2,
-     "_log": 32,
      "_overdraft": 0
     },
-    "before": {
+    "after": {
+     "_log": 32,
      "_balances": 2,
-     "_log": 2,
      "_overdraft": 0
     },
     "growth": {
      "_balances": 0,
-     "_log": 30,
-     "_overdraft": 0
+     "_overdraft": 0,
+     "_log": 30
     },
     "log_like": {
      "_log": 30
     },
+    "total_growth": 30,
     "mutated_dicts": [
      "_balances"
     ],
-    "ops": 30,
     "state_attrs": [
      "_balances",
      "_frozen",
      "_log",
      "_overdraft"
-    ],
-    "total_growth": 30
+    ]
    },
    "static": {
-    "augassign_on_balance": 4,
+    "event_words": 15,
     "class_names": [
      "InsufficientFunds",
      "UnknownAccount",
      "Operation",
      "Ledger"
     ],
+    "augassign_on_balance": 4,
     "direct_mutations_in_ops": 4,
-    "event_words": 15,
     "files": [
      "ledger/__init__.py",
      "ledger/ledger.py"
-    ]
+    ],
+    "derives_state_from_log": true
    },
    "seq": 105
   },

@@ -15,7 +15,8 @@
       "_primary",
       "_unary"
     ],
-    "precedence_table_literals": 1,
+    "precedence_table_literals": 2,
+    "table_driven_loop": true,
     "stack_words": 7,
     "shunting_words": 0,
     "while_pop_loops": 0,

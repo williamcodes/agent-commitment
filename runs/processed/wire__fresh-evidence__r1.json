@@ -36,7 +36,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 6,
     "total": 6,
@@ -87,7 +87,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "A",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 9,
     "total": 9,
@@ -143,7 +143,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "B",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 11,
     "total": 11,
@@ -209,7 +209,7 @@
    "detection_residual": [],
    "detection_notes": [],
    "detection_original": "B",
-   "detector_version": "run-time",
+   "detector_version": "final",
    "tests": {
     "passed": 14,
     "total": 14,
@@ -737,19 +737,19 @@
     "len1": 28,
     "len2": 43,
     "len4": 73,
-    "other_outputs": {},
     "per_record_delta_constant": true,
-    "utf8": false
+    "utf8": false,
+    "other_outputs": {}
    },
    "static": {
+    "imports_struct": true,
+    "struct_pack_calls": 6,
+    "imports_json": false,
+    "json_calls": 0,
     "files": [
      "wire/__init__.py",
      "wire/codec.py"
-    ],
-    "imports_json": false,
-    "imports_struct": true,
-    "json_calls": 0,
-    "struct_pack_calls": 6
+    ]
    },
    "seq": 22
   },
@@ -990,19 +990,19 @@
     "len1": 28,
     "len2": 43,
     "len4": 73,
-    "other_outputs": {},
     "per_record_delta_constant": true,
-    "utf8": false
+    "utf8": false,
+    "other_outputs": {}
    },
    "static": {
+    "imports_struct": true,
+    "struct_pack_calls": 9,
+    "imports_json": false,
+    "json_calls": 0,
     "files": [
      "wire/__init__.py",
      "wire/codec.py"
-    ],
-    "imports_json": false,
-    "imports_struct": true,
-    "json_calls": 0,
-    "struct_pack_calls": 9
+    ]
    },
    "seq": 38
   },
@@ -1456,32 +1456,32 @@
    "residual": [],
    "notes": [],
    "probe": {
-    "json_lines": 4,
     "len1": 61,
     "len2": 123,
     "len4": 246,
+    "per_record_delta_constant": false,
+    "utf8": true,
     "lines": 4,
+    "json_lines": 4,
+    "printable_ratio": 1.0,
     "other_outputs": {
      "filter_sensor": {
-      "json_lines": 1,
+      "utf8": true,
       "lines": 1,
-      "printable_ratio": 1.0,
-      "utf8": true
+      "json_lines": 1,
+      "printable_ratio": 1.0
      }
-    },
-    "per_record_delta_constant": false,
-    "printable_ratio": 1.0,
-    "utf8": true
+    }
    },
    "static": {
+    "imports_struct": false,
+    "struct_pack_calls": 0,
+    "imports_json": true,
+    "json_calls": 2,
     "files": [
      "wire/__init__.py",
      "wire/codec.py"
-    ],
-    "imports_json": true,
-    "imports_struct": false,
-    "json_calls": 2,
-    "struct_pack_calls": 0
+    ]
    },
    "seq": 72
   },
@@ -1862,38 +1862,38 @@
    "residual": [],
    "notes": [],
    "probe": {
-    "json_lines": 4,
     "len1": 61,
     "len2": 123,
     "len4": 246,
+    "per_record_delta_constant": false,
+    "utf8": true,
     "lines": 4,
+    "json_lines": 4,
+    "printable_ratio": 1.0,
     "other_outputs": {
      "filter_sensor": {
-      "json_lines": 1,
+      "utf8": true,
       "lines": 1,
-      "printable_ratio": 1.0,
-      "utf8": true
+      "json_lines": 1,
+      "printable_ratio": 1.0
      },
      "merge": {
-      "json_lines": 6,
+      "utf8": true,
       "lines": 6,
-      "printable_ratio": 1.0,
-      "utf8": true
+      "json_lines": 6,
+      "printable_ratio": 1.0
      }
-    },
-    "per_record_delta_constant": false,
-    "printable_ratio": 1.0,
-    "utf8": true
+    }
    },
    "static": {
+    "imports_struct": false,
+    "struct_pack_calls": 0,
+    "imports_json": true,
+    "json_calls": 2,
     "files": [
      "wire/__init__.py",
      "wire/codec.py"
-    ],
-    "imports_json": true,
-    "imports_struct": false,
-    "json_calls": 2,
-    "struct_pack_calls": 0
+    ]
    },
    "seq": 99
   },

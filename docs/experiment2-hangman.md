@@ -8,6 +8,14 @@ are archived (`runs/hangman/pilot*`, `runs/hangman/reveal_attempt1/`) and not sc
 
 ![Experiment 2 outcomes per condition](../site/assets/figures/hangman.svg)
 
+**Read this first.** In a continuous session the model's own write tool call, containing the
+word, sits in its context from turn 1 onward. Writing the file is therefore a reveal to itself, and
+reading the file back is redundant. Every tool arm below, including the ceiling arm, is a "word in
+context" arm; none tests a record carrying a decision across a break in context. That design (a
+fresh session per turn with the board history in the prompt and the file present or absent) was not
+run. Second, the working-directory names contained the condition label (the leak fixed for the
+coding experiment's v2 was reintroduced here); no game's text refers to it.
+
 ## Why this experiment
 
 Williams cites Baldelli et al. (2026): a model playing hangman as word-setter may reveal "AWAKING"
@@ -21,9 +29,14 @@ replicated directly and turned into a minimal pair: the same model with and with
 | bare chat (tools disabled) | 22 | 1 letter-indexing error, 1 length change | 12/12 | n/a | n/a |
 | tools enabled, same prompt verbatim | 23 | 1 letter-indexing error | 12/12 | 0/24 | 0/24 |
 
-Giving the model tools changes nothing by itself: it never used them. And the failure Williams
-cites did not occur in either condition: in all reveal games the word given at the referee check
-was the word given at the end, and no game's boards contradicted its own earlier boards.
+Giving the model tools changes nothing by itself: it never used them. Under a declared referee
+rule the failure Williams cites did not occur in either condition: in all 24 reveal games here (96
+across all arms; one-sided 95% upper bound on the switch rate about 3%) the word given at the
+referee check was the word given at the end. The rule is a commitment device Baldelli's setting did
+not have, and the model refused the unannounced version in 9 of 9 attempts, which is itself a
+finding about this model. In no-reveal games word stability cannot be observed, so their failure
+classes are inferred by analogy with the reveal and ceiling games (the identical "`e` not in
+picture" denial occurs with the word on disk and re-read).
 
 ## 2. The ceiling: told to write the word and re-read it before every reply
 
@@ -32,9 +45,12 @@ was the word given at the end, and no game's boards contradicted its own earlier
 | tools-consult | 14 | 9 letter-indexing errors, 1 other | 12/12 | 24/24 | 24/24 |
 
 With the word on disk and re-read before every single reply, the model still mis-reported or
-mis-placed letters of that word in 9 of 24 games, more than in any other arm. The residual failures
-are therefore character-level execution errors ("no `e`" in "picture"; `t` one cell off), not
-memory failures, and an external record cannot fix them. Failure classes are a post-hoc
+mis-placed letters of that word in 9 of 24 games, plus one self-contradiction: 10 of 24 inconsistent
+against 2 of 24 in bare chat (one-sided Fisher p ≈ 0.01) and 1 of 24 with tools silent (p ≈ 0.002).
+The residual failures are character-level execution errors ("no `e`" in "picture"; `t` one cell
+off), not memory failures; an external record cannot fix them, and forcing the model to consult one
+before every reply made them more frequent. The read-then-answer loop interferes with the task
+rather than helping it. Failure classes are a post-hoc
 decomposition of the preregistered `inconsistent` outcome (changelog, 02:50 UTC); the
 preregistered column is kept.
 
@@ -72,10 +88,12 @@ tools; 11/12 written to `plan.txt`, the one failure being "high" in the file and
 ## Reading
 
 For this model the specific commitment failure Williams cites does not reproduce in any of the
-eight conditions. The bare model keeps the word because its own past outputs in the context window
-are the record: in no-reveal games the word does not exist until the end and consistency is
-re-derivation from the boards plus a strong prior over words ("picture" in roughly half the games);
-in reveal games the transcript holds the word and it was honoured every time. What does reproduce is
+eight conditions, under a declared referee rule. The bare model keeps the word because its own past
+outputs in the context window are the record: in reveal games the transcript holds the word and it
+was honoured every time; in no-reveal games nothing observable fixes the word before the end (the
+model's thinking blocks are redacted, so whether it chose one at the start cannot be known), and
+consistency is compatible with re-derivation from the boards plus a strong prior over words
+("picture" in roughly half the games). What does reproduce is
 letter-level indexing error, which is not a failure to hold the decision and which the ceiling arm
 shows external memory cannot fix.
 
