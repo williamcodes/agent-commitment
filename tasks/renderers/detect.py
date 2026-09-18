@@ -27,16 +27,18 @@ def detect(workdir: str, python: str = sys.executable) -> dict:
     registry_dicts = len(re.findall(r"(?i)(registry|_formats|formats|renderers|_renderers)\s*(?::\s*dict[^=]*)?=\s*\{", joined))
     register_defs = len(re.findall(r"def\s+register\w*\(", joined))
     register_decorators = len(re.findall(r"@register\w*", joined))
-    render_funcs = len(re.findall(r"^def\s+(render_|_render_)\w+\(", joined, re.M))
+    render_funcs = len(re.findall(r"^def\s+_?render_(?!many\b)\w+\(", joined, re.M))
+    # format functions actually wired into a registry: '"name": render_x' mapping entries or @register decorators
+    registered_funcs = len(re.findall(r"[\"']\w+[\"']\s*:\s*_?render_\w+\b", joined)) + register_decorators
     subclasses_call = "__subclasses__" in joined
     static = {
         "classes": sorted(names), "hierarchies": hierarchies, "registry_dicts": registry_dicts,
         "register_defs": register_defs, "register_decorators": register_decorators,
-        "module_level_render_funcs": render_funcs, "uses___subclasses__": subclasses_call, "files": sorted(src),
+        "module_level_render_funcs": render_funcs, "registered_render_funcs": registered_funcs, "uses___subclasses__": subclasses_call, "files": sorted(src),
     }
     has_hier = bool(hierarchies)
     has_reg = registry_dicts > 0 or register_defs > 0 or register_decorators > 0
-    if has_hier and (render_funcs >= 2 and has_reg):
+    if has_hier and registered_funcs >= 2:
         choice = "mixed"
         notes.append("class hierarchy and function registry both implement formats")
     elif has_hier:

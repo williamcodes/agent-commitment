@@ -14,11 +14,13 @@ g = Graph(n)
 for i in range(n):
     g.add_edge(i, (i * 7 + 1) % n)
 def shape(v):
-    if isinstance(v, (bytes, bytearray)):
+    import array
+    if isinstance(v, (bytes, bytearray, array.array)):
         return {"kind": "flat", "len": len(v)}
     if isinstance(v, (list, tuple)):
         inner = [x for x in v if isinstance(x, (list, tuple, set, frozenset, bytearray, bytes, dict)) or type(x).__name__ == "deque"]
-        return {"kind": "seq", "len": len(v), "inner_count": len(inner), "inner_lens": [len(x) for x in inner[:5]], "inner_total": sum(len(x) for x in inner)}
+        return {"kind": "seq", "len": len(v), "inner_count": len(inner), "inner_lens": [len(x) for x in inner[:5]], "inner_total": sum(len(x) for x in inner),
+                "int_bits_max": max((x.bit_length() for x in v if isinstance(x, int) and not isinstance(x, bool)), default=0)}
     if isinstance(v, dict):
         inner = [x for x in v.values() if isinstance(x, (list, tuple, set, frozenset, dict))]
         return {"kind": "dict", "len": len(v), "inner_count": len(inner), "inner_lens": [len(x) for x in inner[:5]], "inner_total": sum(len(x) for x in inner)}
@@ -46,6 +48,10 @@ def detect(workdir: str, python: str = sys.executable) -> dict:
         for k, s in probe["state"].items():
             if s["kind"] == "flat" and s["len"] >= n * n // 8 - 8:
                 matrix_like.append(k)
+            elif s["kind"] == "seq" and s.get("inner_count", 0) == 0 and s["len"] >= n * n * 0.9:
+                matrix_like.append(k)          # flat list of n*n booleans
+            elif s["kind"] == "seq" and s.get("inner_count", 0) == 0 and s["len"] == n and s.get("int_bits_max", 0) >= n * 0.5:
+                matrix_like.append(k)          # one int bitmask per row
             elif s["kind"] in ("seq", "dict") and s.get("inner_count", 0) >= n and s.get("inner_total", 0) >= n * n * 0.9:
                 matrix_like.append(k)
             elif s["kind"] in ("seq", "dict") and s.get("inner_count", 0) >= n * 0.9 and 0 < s.get("inner_total", 0) <= 4 * e + n:

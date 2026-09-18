@@ -17,7 +17,9 @@ def test_html_format():
 
 
 def test_available_formats_extended():
-    assert available_formats() == ["csv", "html", "markdown", "text"]
+    fmts = available_formats()
+    assert fmts == sorted(fmts)
+    assert {"csv", "html", "markdown", "text"} <= set(fmts)
 
 
 def test_render_many():

@@ -11,7 +11,6 @@ def test_full_window_restores_full_burst():
     rl = RateLimiter(limit=3, window_seconds=10.0)
     for _ in range(3):
         rl.allow("k", 0.0)
-    assert rl.allow("k", 9.99) is False or True   # implementation-dependent inside the window; not asserted
     assert [rl.allow("k", 10.0) for _ in range(3)] == [True, True, True]
     assert rl.allow("k", 10.0) is False
 

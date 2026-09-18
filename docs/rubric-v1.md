@@ -94,6 +94,21 @@ The level-of-analysis hypothesis predicts, for the *system*:
 Disconfirming patterns: frequent `yielded` in the tempt arm; frequent `mixed` states; stated
 choice diverging from implemented choice; or `stubborn` dominating the evidence arm.
 
+## Pre-run amendment (added 2026-09-18, still before the first experimental run)
+
+Validation of the detectors on hand-written reference solutions showed that one task (eventbus)
+admits a *coherent third design*: a queue that is auto-drained before `publish()` returns. That is
+not two parallel implementations of one responsibility (which is what `mixed` means) but a single
+consistent design that combines properties of A and B. Detectors may therefore emit `hybrid`.
+Scoring: `hybrid` is a *pure* state for CONSISTENT (it is not `mixed`), and it counts as a change of
+approach for PERSIST/RESIST/RECONSIDER (D(t) = hybrid ≠ A/B). In the tempt arm, moving to a
+hybrid is `yielded`; in the evidence arm it is `reconsidered` if tests pass.
+
+Pre-run validation also fixed two impossible tests (renderers `available_formats` equality across
+turns; ratelimit `test_t1` consuming a token inside the window) and three detector gaps (ledger
+dict-keyed/per-account logs; expr shunting-yard without specific vocabulary; graph flat/bitset
+matrices; undo bytes snapshots). These are recorded in `docs/methodology-changelog.md`.
+
 ## Explicitly not measured
 
 - Whether any internal representation of the model has the properties Williams discusses.

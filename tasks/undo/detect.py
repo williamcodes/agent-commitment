@@ -21,6 +21,8 @@ def strings(obj, depth=0, seen=None):
     seen.add(id(obj))
     if isinstance(obj, str):
         yield obj; return
+    if isinstance(obj, (bytes, bytearray)):
+        yield obj.decode("latin-1"); return
     if isinstance(obj, (list, tuple, set, frozenset)) or type(obj).__name__ == "deque":
         for x in obj: yield from strings(x, depth + 1, seen)
     elif isinstance(obj, dict):

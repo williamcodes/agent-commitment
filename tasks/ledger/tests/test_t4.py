@@ -21,7 +21,7 @@ def test_overdraft_default_zero():
     assert l.overdraft_limit("a") == 0
 
 
-def test_snapshot_balances_dict():
+def test_balances_dict():
     l = Ledger()
     l.open_account("a", 1)
     l.open_account("b", 2)

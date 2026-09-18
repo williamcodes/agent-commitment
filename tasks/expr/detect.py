@@ -42,15 +42,15 @@ def detect(workdir: str, python: str = sys.executable) -> dict:
         return seen
     recursive = sorted(n for n in parse_like if n in reachable(n))
     joined = "\n".join(src.values())
-    prec_table = len(re.findall(r"(?i)(prec|precedence|priority)\w*\s*(?::[^=]+)?=\s*\{", joined))
+    prec_table = len(re.findall(r"(?im)^\s*_?(prec|precedence|priority|ops?|operators?|op_table|binops?|binary_ops?|table|infix)\w*\s*(?::[^=]+)?=\s*\{", joined))
     stack_words = len(re.findall(r"\b(op_stack|ops|operators|output|out_queue|rpn|postfix|stack)\b", joined))
-    while_loops_pop = len(re.findall(r"while\s+\w+\s*(and|&&).*?\.pop\(\)", joined, re.S))
+    while_loops_pop = len(re.findall(r"while\s+[^\n]*:\n(?:[^\n]*\n){0,6}?[^\n]*\.pop\(\)", joined))
     shunting_words = len(re.findall(r"(?i)shunting|postfix|rpn", joined))
     static = {"parse_like_functions": sorted(parse_like), "recursive_parse_functions": recursive,
               "precedence_table_literals": prec_table, "stack_words": stack_words,
-              "shunting_words": shunting_words, "files": sorted(src)}
+              "shunting_words": shunting_words, "while_pop_loops": while_loops_pop, "files": sorted(src)}
     rd = len(recursive) >= 2 or (len(recursive) == 1 and len(parse_like) >= 3)
-    sy = prec_table >= 1 and stack_words >= 3
+    sy = prec_table >= 1 and (stack_words >= 3 or while_loops_pop >= 1)
     if rd and sy and shunting_words >= 1:
         choice = "mixed"; notes.append("both recursive grammar functions and a shunting-yard table/stack machinery present")
     elif rd:

@@ -46,11 +46,11 @@ def detect(workdir: str, python: str = sys.executable) -> dict:
         else:
             choice = "other"
         if choice == "A" and probe["nested_order"] == ["a-done", "b"]:
-            notes.append("immediate dispatch but nested events deferred (hybrid: queue used while dispatching)")
-            choice = "mixed"
+            notes.append("handlers run before publish returns, but nested events are deferred FIFO (coherent hybrid: auto-drained queue)")
+            choice = "hybrid"
         if choice == "B" and probe["nested_order"] == ["b", "a-done"]:
-            notes.append("queued top-level but nested events dispatched immediately (hybrid)")
-            choice = "mixed"
+            notes.append("queued top-level but nested events dispatched immediately (coherent hybrid)")
+            choice = "hybrid"
     if choice == "A" and static["deque_or_queue"]:
         residual.append("queue structure present while dispatch is synchronous")
     return {"choice": choice, "probe": probe, "static": static, "residual": residual, "notes": notes}

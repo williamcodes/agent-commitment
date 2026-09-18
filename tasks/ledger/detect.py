@@ -25,7 +25,7 @@ def containers(obj, depth=0, seen=None):
     elif isinstance(obj, dict):
         items = list(obj.items())
     for k, v in items:
-        if isinstance(v, (list, tuple)) or type(v).__name__ == "deque":
+        if isinstance(v, (list, tuple, dict)) or type(v).__name__ == "deque":
             yield (str(k), v)
         if isinstance(v, (dict, list)) or hasattr(v, "__dict__"):
             if isinstance(v, list):
@@ -49,7 +49,11 @@ for i in range(10):
 after = sizes(l)
 growth = {k: after.get(k, 0) - before.get(k, 0) for k in set(before) | set(after)}
 log_like = {k: g for k, g in growth.items() if g >= ops}   # grew at least one entry per op
+total_growth = sum(g for g in growth.values() if g > 0)
+if not log_like and total_growth >= ops:                     # e.g. per-account event streams
+    log_like = {"<sum of all containers>": total_growth}
 out = {"ops": ops, "before": before, "after": after, "growth": growth, "log_like": log_like,
+       "total_growth": total_growth,
        "state_attrs": sorted(vars(l).keys()) if hasattr(l, "__dict__") else []}
 print("PROBE_RESULT " + json.dumps(out))
 ''')

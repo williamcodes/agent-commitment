@@ -33,8 +33,9 @@ def sh(cmd, **kw):
 
 
 def mangle(path: str) -> str:
-    # Claude Code's project directory name for a cwd
-    return path.replace("/", "-")
+    # Claude Code's project directory name for a cwd: every non-alphanumeric char becomes '-'
+    import re
+    return re.sub(r"[^A-Za-z0-9-]", "-", path)
 
 
 def project_dir(cwd: str) -> str:
@@ -56,38 +57,39 @@ def log(run_id, msg):
 
 
 def run_tests(task, workdir, run_dir, turn):
-    """Run pristine copies of tests applicable at this turn. Returns summary dict."""
+    """Run pristine copies of tests applicable at this turn, one pytest invocation per test file so
+    results can be attributed per file. Returns summary dict."""
+    import xml.etree.ElementTree as ET
     pristine = os.path.join(run_dir, "_pristine_tests")
     os.makedirs(pristine, exist_ok=True)
-    files = []
+    os.makedirs(os.path.join(run_dir, "tests"), exist_ok=True)
+    env = dict(os.environ, PYTHONPATH=workdir, PYTHONDONTWRITEBYTECODE="1")
+    summary = {"turn": turn, "files": [], "per_file": {}, "total": 0, "passed": 0, "failed": 0, "errors": 0, "skipped": 0, "returncode": 0}
+    stdout_all = []
     for t in range(1, turn + 1):
         src = task["tests"][t]
-        dst = os.path.join(pristine, os.path.basename(src))
+        name = os.path.basename(src)
+        dst = os.path.join(pristine, name)
         shutil.copy(src, dst)
-        files.append(dst)
-    xml = os.path.join(run_dir, "tests", f"t{turn}.junit.xml")
-    os.makedirs(os.path.dirname(xml), exist_ok=True)
-    env = dict(os.environ, PYTHONPATH=workdir, PYTHONDONTWRITEBYTECODE="1")
-    r = subprocess.run([PY, "-m", "pytest", "-q", "-p", "no:cacheprovider", "--rootdir", workdir,
-                        f"--junitxml={xml}", *files], cwd=workdir, capture_output=True, text=True,
-                       timeout=600, env=env)
-    open(os.path.join(run_dir, "tests", f"t{turn}.stdout.txt"), "w").write(r.stdout + "\n--- stderr ---\n" + r.stderr)
-    summary = {"turn": turn, "returncode": r.returncode, "files": [os.path.basename(f) for f in files]}
-    try:
-        import xml.etree.ElementTree as ET
-        root = ET.parse(xml).getroot()
-        suite = root if root.tag == "testsuite" else root.find("testsuite")
-        total = int(suite.get("tests", 0)); fail = int(suite.get("failures", 0)); err = int(suite.get("errors", 0)); skip = int(suite.get("skipped", 0))
-        summary.update(total=total, failed=fail, errors=err, skipped=skip, passed=total - fail - err - skip)
-        per_file = {}
-        for tc in suite.iter("testcase"):
-            f = os.path.basename(tc.get("file") or tc.get("classname", "").replace(".", "/") + ".py")
-            ok = tc.find("failure") is None and tc.find("error") is None
-            per_file.setdefault(f, {"passed": 0, "failed": 0})
-            per_file[f]["passed" if ok else "failed"] += 1
-        summary["per_file"] = per_file
-    except Exception as e:
-        summary.update(total=0, passed=0, failed=0, errors=1, parse_error=repr(e))
+        summary["files"].append(name)
+        xml = os.path.join(run_dir, "tests", f"t{turn}.{name}.junit.xml")
+        try:
+            r = subprocess.run([PY, "-m", "pytest", "-q", "-p", "no:cacheprovider", "--rootdir", workdir, f"--junitxml={xml}", dst],
+                               cwd=workdir, capture_output=True, text=True, timeout=600, env=env)
+            stdout_all.append(f"=== {name} (rc={r.returncode}) ===\n{r.stdout}\n--- stderr ---\n{r.stderr}")
+            summary["returncode"] = max(summary["returncode"], r.returncode)
+            root = ET.parse(xml).getroot()
+            suite = root if root.tag == "testsuite" else root.find("testsuite")
+            total = int(suite.get("tests", 0)); fail = int(suite.get("failures", 0)); err = int(suite.get("errors", 0)); skip = int(suite.get("skipped", 0))
+            # collection errors show up as errors with tests=1 or 0; treat any error as failing the file
+            pf = {"total": total, "passed": total - fail - err - skip, "failed": fail, "errors": err, "skipped": skip}
+        except Exception as e:
+            stdout_all.append(f"=== {name} EXCEPTION {e!r}")
+            pf = {"total": 0, "passed": 0, "failed": 0, "errors": 1, "skipped": 0, "exception": repr(e)}
+        summary["per_file"][name] = pf
+        for k in ("total", "passed", "failed", "errors", "skipped"):
+            summary[k] += pf[k]
+    open(os.path.join(run_dir, "tests", f"t{turn}.stdout.txt"), "w").write("\n".join(stdout_all))
     # did the agent modify visible tests?
     modified = []
     for t in range(1, turn + 1):

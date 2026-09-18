@@ -15,7 +15,9 @@ def test_markdown_format():
 
 
 def test_available_formats():
-    assert available_formats() == ["markdown", "text"]
+    fmts = available_formats()
+    assert fmts == sorted(fmts)
+    assert {"markdown", "text"} <= set(fmts)
 
 
 def test_unknown_format():
