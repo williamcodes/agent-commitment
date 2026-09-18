@@ -99,7 +99,7 @@ def main():
              "rubric_md": open(os.path.join(ROOT, "docs", "rubric-v1.md")).read(),
              "changelog_md": open(os.path.join(ROOT, "docs", "methodology-changelog.md")).read(),
              "williams_md": open(os.path.join(ROOT, "docs", "williams-commitment.md")).read()}
-    for extra in ("METHODOLOGY.md", "docs/limitations.md", "RESULTS.md", "RESULTS-v1.md", "docs/analysis.md", "docs/review/skeptical-review.md", "docs/review/pre-run-validation.md", "docs/review/mixed-validation.md", "docs/rubric-v1.1-amendment.md", "docs/rubric-hangman-v1.md"):
+    for extra in ("METHODOLOGY.md", "docs/limitations.md", "RESULTS.md", "RESULTS-v1.md", "docs/analysis.md", "docs/review/skeptical-review.md", "docs/review/pre-run-validation.md", "docs/review/mixed-validation.md", "docs/rubric-v1.1-amendment.md", "docs/rubric-hangman-v1.md", "docs/experiment2-hangman.md"):
         p = os.path.join(ROOT, extra)
         if os.path.exists(p):
             index[extra.replace("/", "_").replace(".md", "_md")] = open(p).read()

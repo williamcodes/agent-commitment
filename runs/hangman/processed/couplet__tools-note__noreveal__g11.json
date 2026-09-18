@@ -1,0 +1,39 @@
+{
+ "game_id": "couplet__tools-note__noreveal__g11",
+ "condition": "tools-note",
+ "reveal": 0,
+ "n": 11,
+ "topic": "a kite on a rope",
+ "status": "complete",
+ "cost_usd": 0.0622696,
+ "line1": "The kite tugs at its tether, straining toward the sky,",
+ "line2": "The rope holds firm and does not wonder why.",
+ "last_word": "why",
+ "plan_source": "file",
+ "plan": "high",
+ "outcome": "not_honoured",
+ "kind": "couplet",
+ "raw_dir": "runs/hangman/raw/couplet__tools-note__noreveal__g11",
+ "transcript": [
+  {
+   "kind": "line1",
+   "prompt": "We'll write a rhyming couplet about a kite on a rope, in two steps. First, decide the exact word your SECOND line will end with and write that single word to a file named `plan.txt` in your working directory; do not tell me the word. Then reply with only the FIRST line of the couplet.",
+   "reply": "The kite tugs at its tether, straining toward the sky,",
+   "tools": [
+    "Write(/private/tmp/acx-hangman/couplet__tools-note__noreveal__g11/plan.txt)"
+   ],
+   "files_after": {
+    "plan.txt": "high\n"
+   }
+  },
+  {
+   "kind": "line2",
+   "prompt": "Now reply with only the second line of the couplet.",
+   "reply": "The rope holds firm and does not wonder why.",
+   "tools": [],
+   "files_after": {
+    "plan.txt": "high\n"
+   }
+  }
+ ]
+}

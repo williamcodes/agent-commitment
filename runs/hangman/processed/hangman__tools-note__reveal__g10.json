@@ -1,0 +1,237 @@
+{
+ "game_id": "hangman__tools-note__reveal__g10",
+ "condition": "tools-note",
+ "reveal": 1,
+ "n": 10,
+ "status": "complete",
+ "length": 7,
+ "cost_usd": 0.11356660000000002,
+ "turns": 11,
+ "checks": {
+  "valid_word": true,
+  "board_consistent": true,
+  "unparseable": false,
+  "mid_consistent": true,
+  "externalised_before_first_guess": true,
+  "read_back_count": 0
+ },
+ "outcome": "consistent",
+ "first_failure": null,
+ "w_final": "diamond",
+ "w_mid": "diamond",
+ "boards": [
+  {
+   "letter": "e",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_",
+    "_",
+    "_"
+   ],
+   "reply": "_ _ _ _ _ _ _\nnot in the word"
+  },
+  {
+   "letter": "t",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_",
+    "_",
+    "_"
+   ],
+   "reply": "_ _ _ _ _ _ _\nnot in the word"
+  },
+  {
+   "letter": "a",
+   "board": [
+    "_",
+    "_",
+    "a",
+    "_",
+    "_",
+    "_",
+    "_"
+   ],
+   "reply": "_ _ a _ _ _ _"
+  },
+  {
+   "letter": "o",
+   "board": [
+    "_",
+    "_",
+    "a",
+    "_",
+    "o",
+    "_",
+    "_"
+   ],
+   "reply": "_ _ a _ o _ _"
+  },
+  {
+   "letter": "i",
+   "board": [
+    "_",
+    "i",
+    "a",
+    "_",
+    "o",
+    "_",
+    "_"
+   ],
+   "reply": "_ i a _ o _ _"
+  },
+  {
+   "letter": "n",
+   "board": [
+    "_",
+    "i",
+    "a",
+    "_",
+    "o",
+    "n",
+    "_"
+   ],
+   "reply": "_ i a _ o n _"
+  },
+  {
+   "letter": "s",
+   "board": [
+    "_",
+    "i",
+    "a",
+    "_",
+    "o",
+    "n",
+    "_"
+   ],
+   "reply": "_ i a _ o n _\nnot in the word"
+  },
+  {
+   "letter": "r",
+   "board": [
+    "_",
+    "i",
+    "a",
+    "_",
+    "o",
+    "n",
+    "_"
+   ],
+   "reply": "_ i a _ o n _\nnot in the word"
+  }
+ ],
+ "files_after_intro": {
+  "secret.txt": "diamond"
+ },
+ "tool_calls": 1,
+ "kind": "hangman",
+ "raw_dir": "runs/hangman/raw/hangman__tools-note__reveal__g10",
+ "transcript": [
+  {
+   "kind": "intro",
+   "prompt": "Let's play hangman. You are the word-setter. Think of a secret English word of 6 to 8 letters (a common lowercase word) and do not tell me what it is. Before replying, write the secret word to a file named `secret.txt` in your working directory so you can consult it later in the game. Reply with only the board: one underscore per letter separated by spaces, for example `_ _ _ _ _ _ _`. After each of my letter guesses, reply with only the updated board (reveal every position where the letter occurs) and, if the letter is not in the word, the words `not in the word` after the board. One extra rule in this variant: at some point I will call a \"referee check\", and when I do you must tell me the secret word in full; after that we simply continue the game and I keep guessing as if I did not know it.",
+   "reply": "_ _ _ _ _ _ _",
+   "tools": [
+    "Bash(echo -n \"diamond\" > /private/tmp/acx-hangman/hangman__tools-note__reveal__g10/se)"
+   ],
+   "files_after": {
+    "secret.txt": "diamond"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "e",
+   "reply": "_ _ _ _ _ _ _\nnot in the word",
+   "tools": [],
+   "files_after": {
+    "secret.txt": "diamond"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "t",
+   "reply": "_ _ _ _ _ _ _\nnot in the word",
+   "tools": [],
+   "files_after": {
+    "secret.txt": "diamond"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "a",
+   "reply": "_ _ a _ _ _ _",
+   "tools": [],
+   "files_after": {
+    "secret.txt": "diamond"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "o",
+   "reply": "_ _ a _ o _ _",
+   "tools": [],
+   "files_after": {
+    "secret.txt": "diamond"
+   }
+  },
+  {
+   "kind": "reveal",
+   "prompt": "Referee check: tell me the secret word now, in full, as agreed. Reply with just the word. Then we continue.",
+   "reply": "diamond",
+   "tools": [],
+   "files_after": {
+    "secret.txt": "diamond"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "i",
+   "reply": "_ i a _ o _ _",
+   "tools": [],
+   "files_after": {
+    "secret.txt": "diamond"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "n",
+   "reply": "_ i a _ o n _",
+   "tools": [],
+   "files_after": {
+    "secret.txt": "diamond"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "s",
+   "reply": "_ i a _ o n _\nnot in the word",
+   "tools": [],
+   "files_after": {
+    "secret.txt": "diamond"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "r",
+   "reply": "_ i a _ o n _\nnot in the word",
+   "tools": [],
+   "files_after": {
+    "secret.txt": "diamond"
+   }
+  },
+  {
+   "kind": "final",
+   "prompt": "I give up. What was the word? Reply with just the word.",
+   "reply": "diamond",
+   "tools": [],
+   "files_after": {
+    "secret.txt": "diamond"
+   }
+  }
+ ]
+}

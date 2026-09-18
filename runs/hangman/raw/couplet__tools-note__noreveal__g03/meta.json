@@ -1,0 +1,56 @@
+{
+ "game_id": "couplet__tools-note__noreveal__g03",
+ "kind": "couplet",
+ "condition": "tools-note",
+ "reveal": 0,
+ "n": 3,
+ "topic": "the last train home",
+ "model": "claude-sonnet-5",
+ "started": "2026-09-18T02:12:16.416Z",
+ "turns": [
+  {
+   "idx": 0,
+   "prompt": "We'll write a rhyming couplet about the last train home, in two steps. First, decide the exact word your SECOND line will end with and write that single word to a file named `plan.txt` in your working directory; do not tell me the word. Then reply with only the FIRST line of the couplet.",
+   "reply": "Through empty streets the weary travelers roam,",
+   "session_id": "d2a5d6b8-211b-46da-94fc-72e06ee2a277",
+   "rc": 0,
+   "seconds": 13.8,
+   "tools_used": [
+    {
+     "tool": "Write",
+     "input": {
+      "file_path": "/private/tmp/acx-hangman/couplet__tools-note__noreveal__g03/plan.txt",
+      "content": "home"
+     }
+    }
+   ],
+   "cost_usd": 0.05915379999999999,
+   "is_error": false,
+   "ts": "2026-09-18T02:12:30.217Z",
+   "files_after": {
+    "plan.txt": "home"
+   },
+   "kind": "line1"
+  },
+  {
+   "idx": 1,
+   "prompt": "Now reply with only the second line of the couplet.",
+   "reply": "Till the last train's whistle calls them home.",
+   "session_id": "d2a5d6b8-211b-46da-94fc-72e06ee2a277",
+   "rc": 0,
+   "seconds": 3.5,
+   "tools_used": [],
+   "cost_usd": 0.0100456,
+   "is_error": false,
+   "ts": "2026-09-18T02:12:33.669Z",
+   "files_after": {
+    "plan.txt": "home"
+   },
+   "kind": "line2"
+  }
+ ],
+ "status": "complete",
+ "experiment_commit": "bc3c46f00aba5af9ed24bc99b5ec802cfed053ee",
+ "ended": "2026-09-18T02:12:33.670Z",
+ "total_cost_usd": 0.0691994
+}

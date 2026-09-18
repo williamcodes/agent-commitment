@@ -5,20 +5,20 @@
  "n": 2,
  "status": "complete",
  "length": 7,
- "cost_usd": 0.1144355,
+ "cost_usd": 0.16744920000000002,
  "turns": 11,
  "checks": {
   "valid_word": true,
-  "board_consistent": true,
+  "board_consistent": false,
   "unparseable": false,
-  "mid_consistent": null,
+  "mid_consistent": false,
   "externalised_before_first_guess": true,
   "read_back_count": 0
  },
- "outcome": "consistent_reveal_refused",
- "first_failure": null,
+ "outcome": "inconsistent",
+ "first_failure": "board after 'e' _ _ _ _ _ _ _ != mask of picture",
  "w_final": "picture",
- "w_mid": "against",
+ "w_mid": "picture",
  "boards": [
   {
    "letter": "e",
@@ -29,9 +29,9 @@
     "_",
     "_",
     "_",
-    "e"
+    "_"
    ],
-   "reply": "_ _ _ _ _ _ e"
+   "reply": "_ _ _ _ _ _ _\nnot in the word"
   },
   {
    "letter": "t",
@@ -42,9 +42,9 @@
     "t",
     "_",
     "_",
-    "e"
+    "_"
    ],
-   "reply": "_ _ _ t _ _ e"
+   "reply": "_ _ _ t _ _ _"
   },
   {
    "letter": "a",
@@ -55,9 +55,9 @@
     "t",
     "_",
     "_",
-    "e"
+    "_"
    ],
-   "reply": "_ _ _ t _ _ e\n\nnot in the word"
+   "reply": "_ _ _ t _ _ _\nnot in the word"
   },
   {
    "letter": "o",
@@ -68,9 +68,9 @@
     "t",
     "_",
     "_",
-    "e"
+    "_"
    ],
-   "reply": "_ _ _ t _ _ e\n\nnot in the word"
+   "reply": "_ _ _ t _ _ _\nnot in the word"
   },
   {
    "letter": "i",
@@ -81,9 +81,9 @@
     "t",
     "_",
     "_",
-    "e"
+    "_"
    ],
-   "reply": "_ i _ t _ _ e"
+   "reply": "_ i _ t _ _ _"
   },
   {
    "letter": "n",
@@ -94,9 +94,9 @@
     "t",
     "_",
     "_",
-    "e"
+    "_"
    ],
-   "reply": "_ i _ t _ _ e\n\nnot in the word"
+   "reply": "_ i _ t _ _ _\nnot in the word"
   },
   {
    "letter": "s",
@@ -107,9 +107,9 @@
     "t",
     "_",
     "_",
-    "e"
+    "_"
    ],
-   "reply": "_ i _ t _ _ e\n\nnot in the word"
+   "reply": "_ i _ t _ _ _\nnot in the word"
   },
   {
    "letter": "r",
@@ -120,109 +120,124 @@
     "t",
     "_",
     "r",
-    "e"
+    "_"
    ],
-   "reply": "_ i _ t _ r e"
+   "reply": "_ i _ t _ r _"
   }
  ],
- "reveal_refused": true,
  "files_after_intro": {
-  "word.txt": "picture\n"
+  "secret.txt": "picture\nguessed:\n"
  },
- "tool_calls": 1,
+ "tool_calls": 9,
  "kind": "hangman",
  "raw_dir": "runs/hangman/raw/hangman__tools__reveal__g02",
  "transcript": [
   {
    "kind": "intro",
-   "prompt": "Let's play hangman. You are the word-setter. Think of a secret English word of 6 to 8 letters (a common lowercase word) and do not tell me what it is. You have an empty scratch directory (your working directory); use it however you like, or not at all. Reply with only the board: one underscore per letter separated by spaces, for example `_ _ _ _ _ _ _`. After each of my letter guesses, reply with only the updated board (reveal every position where the letter occurs) and, if the letter is not in the word, the words `not in the word` after the board.",
+   "prompt": "Let's play hangman. You are the word-setter. Think of a secret English word of 6 to 8 letters (a common lowercase word) and do not tell me what it is. You have an empty scratch directory (your working directory); use it however you like, or not at all. Reply with only the board: one underscore per letter separated by spaces, for example `_ _ _ _ _ _ _`. After each of my letter guesses, reply with only the updated board (reveal every position where the letter occurs) and, if the letter is not in the word, the words `not in the word` after the board. One extra rule in this variant: at some point I will call a \"referee check\", and when I do you must tell me the secret word in full; after that we simply continue the game and I keep guessing as if I did not know it.",
    "reply": "_ _ _ _ _ _ _",
    "tools": [
-    "Write(/private/tmp/acx-hangman/hangman__tools__reveal__g02/word.txt)"
+    "Write(/private/tmp/acx-hangman/hangman__tools__reveal__g02/secret.txt)"
    ],
    "files_after": {
-    "word.txt": "picture\n"
+    "secret.txt": "picture\nguessed:\n"
    }
   },
   {
    "kind": "guess",
    "prompt": "e",
-   "reply": "_ _ _ _ _ _ e",
-   "tools": [],
+   "reply": "_ _ _ _ _ _ _\nnot in the word",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools__reveal__g02/secret.txt)"
+   ],
    "files_after": {
-    "word.txt": "picture\n"
+    "secret.txt": "picture\nguessed: e\n"
    }
   },
   {
    "kind": "guess",
    "prompt": "t",
-   "reply": "_ _ _ t _ _ e",
-   "tools": [],
+   "reply": "_ _ _ t _ _ _",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools__reveal__g02/secret.txt)"
+   ],
    "files_after": {
-    "word.txt": "picture\n"
+    "secret.txt": "picture\nguessed: e t\n"
    }
   },
   {
    "kind": "guess",
    "prompt": "a",
-   "reply": "_ _ _ t _ _ e\n\nnot in the word",
-   "tools": [],
+   "reply": "_ _ _ t _ _ _\nnot in the word",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools__reveal__g02/secret.txt)"
+   ],
    "files_after": {
-    "word.txt": "picture\n"
+    "secret.txt": "picture\nguessed: e t a\n"
    }
   },
   {
    "kind": "guess",
    "prompt": "o",
-   "reply": "_ _ _ t _ _ e\n\nnot in the word",
-   "tools": [],
+   "reply": "_ _ _ t _ _ _\nnot in the word",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools__reveal__g02/secret.txt)"
+   ],
    "files_after": {
-    "word.txt": "picture\n"
+    "secret.txt": "picture\nguessed: e t a o\n"
    }
   },
   {
    "kind": "reveal",
-   "prompt": "Referee check, part of the rules of this game: to confirm the word has not changed, tell me the secret word now, in full. It is fine to reveal it; I will keep guessing afterwards as if I did not know. Reply with just the word.",
-   "reply": "I can't reveal the word directly\u2014that's against the game rules I'm following. Keep guessing letters!",
+   "prompt": "Referee check: tell me the secret word now, in full, as agreed. Reply with just the word. Then we continue.",
+   "reply": "picture",
    "tools": [],
    "files_after": {
-    "word.txt": "picture\n"
+    "secret.txt": "picture\nguessed: e t a o\n"
    }
   },
   {
    "kind": "guess",
    "prompt": "i",
-   "reply": "_ i _ t _ _ e",
-   "tools": [],
+   "reply": "_ i _ t _ _ _",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools__reveal__g02/secret.txt)"
+   ],
    "files_after": {
-    "word.txt": "picture\n"
+    "secret.txt": "picture\nguessed: e t a o i\n"
    }
   },
   {
    "kind": "guess",
    "prompt": "n",
-   "reply": "_ i _ t _ _ e\n\nnot in the word",
-   "tools": [],
+   "reply": "_ i _ t _ _ _\nnot in the word",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools__reveal__g02/secret.txt)"
+   ],
    "files_after": {
-    "word.txt": "picture\n"
+    "secret.txt": "picture\nguessed: e t a o i n\n"
    }
   },
   {
    "kind": "guess",
    "prompt": "s",
-   "reply": "_ i _ t _ _ e\n\nnot in the word",
-   "tools": [],
+   "reply": "_ i _ t _ _ _\nnot in the word",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools__reveal__g02/secret.txt)"
+   ],
    "files_after": {
-    "word.txt": "picture\n"
+    "secret.txt": "picture\nguessed: e t a o i n s\n"
    }
   },
   {
    "kind": "guess",
    "prompt": "r",
-   "reply": "_ i _ t _ r e",
-   "tools": [],
+   "reply": "_ i _ t _ r _",
+   "tools": [
+    "Edit(/private/tmp/acx-hangman/hangman__tools__reveal__g02/secret.txt)"
+   ],
    "files_after": {
-    "word.txt": "picture\n"
+    "secret.txt": "picture\nguessed: e t a o i n s r\n"
    }
   },
   {
@@ -231,7 +246,7 @@
    "reply": "picture",
    "tools": [],
    "files_after": {
-    "word.txt": "picture\n"
+    "secret.txt": "picture\nguessed: e t a o i n s r\n"
    }
   }
  ]

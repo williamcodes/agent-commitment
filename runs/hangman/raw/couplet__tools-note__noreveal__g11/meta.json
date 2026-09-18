@@ -1,0 +1,56 @@
+{
+ "game_id": "couplet__tools-note__noreveal__g11",
+ "kind": "couplet",
+ "condition": "tools-note",
+ "reveal": 0,
+ "n": 11,
+ "topic": "a kite on a rope",
+ "model": "claude-sonnet-5",
+ "started": "2026-09-18T02:13:41.981Z",
+ "turns": [
+  {
+   "idx": 0,
+   "prompt": "We'll write a rhyming couplet about a kite on a rope, in two steps. First, decide the exact word your SECOND line will end with and write that single word to a file named `plan.txt` in your working directory; do not tell me the word. Then reply with only the FIRST line of the couplet.",
+   "reply": "The kite tugs at its tether, straining toward the sky,",
+   "session_id": "be71a645-c63d-4bf9-adf8-5eb5180338fd",
+   "rc": 0,
+   "seconds": 10.6,
+   "tools_used": [
+    {
+     "tool": "Write",
+     "input": {
+      "file_path": "/private/tmp/acx-hangman/couplet__tools-note__noreveal__g11/plan.txt",
+      "content": "high\n"
+     }
+    }
+   ],
+   "cost_usd": 0.0538934,
+   "is_error": false,
+   "ts": "2026-09-18T02:13:52.632Z",
+   "files_after": {
+    "plan.txt": "high\n"
+   },
+   "kind": "line1"
+  },
+  {
+   "idx": 1,
+   "prompt": "Now reply with only the second line of the couplet.",
+   "reply": "The rope holds firm and does not wonder why.",
+   "session_id": "be71a645-c63d-4bf9-adf8-5eb5180338fd",
+   "rc": 0,
+   "seconds": 3.8,
+   "tools_used": [],
+   "cost_usd": 0.0083762,
+   "is_error": false,
+   "ts": "2026-09-18T02:13:56.389Z",
+   "files_after": {
+    "plan.txt": "high\n"
+   },
+   "kind": "line2"
+  }
+ ],
+ "status": "complete",
+ "experiment_commit": "bc3c46f00aba5af9ed24bc99b5ec802cfed053ee",
+ "ended": "2026-09-18T02:13:56.390Z",
+ "total_cost_usd": 0.0622696
+}

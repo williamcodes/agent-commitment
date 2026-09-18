@@ -1,0 +1,1 @@
+We'll write a rhyming couplet about an old bicycle, in two steps. First, decide the exact word your SECOND line will end with and write that single word to a file named `plan.txt` in your working directory; do not tell me the word. Then reply with only the FIRST line of the couplet.

@@ -1,0 +1,56 @@
+{
+ "game_id": "couplet__tools-note__noreveal__g10",
+ "kind": "couplet",
+ "condition": "tools-note",
+ "reveal": 0,
+ "n": 10,
+ "topic": "the first snow",
+ "model": "claude-sonnet-5",
+ "started": "2026-09-18T02:13:32.478Z",
+ "turns": [
+  {
+   "idx": 0,
+   "prompt": "We'll write a rhyming couplet about the first snow, in two steps. First, decide the exact word your SECOND line will end with and write that single word to a file named `plan.txt` in your working directory; do not tell me the word. Then reply with only the FIRST line of the couplet.",
+   "reply": "The first snow drifts down soft through fading light,",
+   "session_id": "8970dd1d-cfeb-479a-9713-ecfef038f560",
+   "rc": 0,
+   "seconds": 10.2,
+   "tools_used": [
+    {
+     "tool": "Write",
+     "input": {
+      "file_path": "/private/tmp/acx-hangman/couplet__tools-note__noreveal__g10/plan.txt",
+      "content": "white"
+     }
+    }
+   ],
+   "cost_usd": 0.0526353,
+   "is_error": false,
+   "ts": "2026-09-18T02:13:42.736Z",
+   "files_after": {
+    "plan.txt": "white"
+   },
+   "kind": "line1"
+  },
+  {
+   "idx": 1,
+   "prompt": "Now reply with only the second line of the couplet.",
+   "reply": "And dresses rooftops in a gentle white.",
+   "session_id": "8970dd1d-cfeb-479a-9713-ecfef038f560",
+   "rc": 0,
+   "seconds": 3.5,
+   "tools_used": [],
+   "cost_usd": 0.0079796,
+   "is_error": false,
+   "ts": "2026-09-18T02:13:46.270Z",
+   "files_after": {
+    "plan.txt": "white"
+   },
+   "kind": "line2"
+  }
+ ],
+ "status": "complete",
+ "experiment_commit": "bc3c46f00aba5af9ed24bc99b5ec802cfed053ee",
+ "ended": "2026-09-18T02:13:46.272Z",
+ "total_cost_usd": 0.0606149
+}

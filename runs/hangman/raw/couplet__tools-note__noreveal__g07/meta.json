@@ -1,0 +1,56 @@
+{
+ "game_id": "couplet__tools-note__noreveal__g07",
+ "kind": "couplet",
+ "condition": "tools-note",
+ "reveal": 0,
+ "n": 7,
+ "topic": "a lost glove",
+ "model": "claude-sonnet-5",
+ "started": "2026-09-18T02:13:02.710Z",
+ "turns": [
+  {
+   "idx": 0,
+   "prompt": "We'll write a rhyming couplet about a lost glove, in two steps. First, decide the exact word your SECOND line will end with and write that single word to a file named `plan.txt` in your working directory; do not tell me the word. Then reply with only the FIRST line of the couplet.",
+   "reply": "A single glove lay lost beneath the snow,",
+   "session_id": "4ec40ed7-9371-4c83-bb8b-dc95400323b7",
+   "rc": 0,
+   "seconds": 11.8,
+   "tools_used": [
+    {
+     "tool": "Write",
+     "input": {
+      "file_path": "/private/tmp/acx-hangman/couplet__tools-note__noreveal__g07/plan.txt",
+      "content": "know"
+     }
+    }
+   ],
+   "cost_usd": 0.054855499999999995,
+   "is_error": false,
+   "ts": "2026-09-18T02:13:14.507Z",
+   "files_after": {
+    "plan.txt": "know"
+   },
+   "kind": "line1"
+  },
+  {
+   "idx": 1,
+   "prompt": "Now reply with only the second line of the couplet.",
+   "reply": "Where footprints fade and no one seems to know.",
+   "session_id": "4ec40ed7-9371-4c83-bb8b-dc95400323b7",
+   "rc": 0,
+   "seconds": 3.9,
+   "tools_used": [],
+   "cost_usd": 0.0086838,
+   "is_error": false,
+   "ts": "2026-09-18T02:13:18.364Z",
+   "files_after": {
+    "plan.txt": "know"
+   },
+   "kind": "line2"
+  }
+ ],
+ "status": "complete",
+ "experiment_commit": "bc3c46f00aba5af9ed24bc99b5ec802cfed053ee",
+ "ended": "2026-09-18T02:13:18.365Z",
+ "total_cost_usd": 0.06353929999999999
+}

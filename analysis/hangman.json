@@ -1,41 +1,52 @@
 {
- "n": 18,
+ "n": 108,
  "hangman": {
   "bare/noreveal": {
-   "inconsistent": 1,
-   "consistent": 2
+   "inconsistent": 2,
+   "consistent": 10
   },
   "bare/reveal": {
-   "consistent_reveal_refused": 2,
-   "inconsistent_reveal_refused": 1
+   "consistent": 12
   },
   "tools-note/noreveal": {
    "inconsistent": 1,
-   "consistent": 2
+   "consistent": 11
   },
   "tools-note/reveal": {
-   "consistent_reveal_refused": 2,
-   "inconsistent": 1
+   "consistent": 8,
+   "inconsistent": 4
   },
   "tools/noreveal": {
-   "consistent": 3
+   "consistent": 12
   },
   "tools/reveal": {
-   "consistent_reveal_refused": 3
+   "consistent": 7,
+   "inconsistent": 5
   }
  },
- "couplet": {},
+ "couplet": {
+  "bare/reveal": {
+   "honoured": 12
+  },
+  "tools-note/noreveal": {
+   "honoured": 11,
+   "not_honoured": 1
+  },
+  "tools/reveal": {
+   "honoured": 12
+  }
+ },
  "externalisation": {
   "tools-note": {
-   "externalised": 6,
-   "n": 6,
+   "externalised": 24,
+   "n": 24,
    "read_back_any": 0
   },
   "tools": {
-   "externalised": 3,
-   "n": 6,
-   "read_back_any": 0
+   "externalised": 18,
+   "n": 24,
+   "read_back_any": 1
   }
  },
- "total_cost_usd": 1.59
+ "total_cost_usd": 8.28
 }

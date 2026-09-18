@@ -1,0 +1,39 @@
+{
+ "game_id": "couplet__tools-note__noreveal__g12",
+ "condition": "tools-note",
+ "reveal": 0,
+ "n": 12,
+ "topic": "a kettle whistling",
+ "status": "complete",
+ "cost_usd": 0.058973599999999994,
+ "line1": "The kettle hums upon the stove with steam,",
+ "line2": "And sends up whistles like a rising gleam,",
+ "last_word": "gleam",
+ "plan_source": "file",
+ "plan": "gleam",
+ "outcome": "honoured",
+ "kind": "couplet",
+ "raw_dir": "runs/hangman/raw/couplet__tools-note__noreveal__g12",
+ "transcript": [
+  {
+   "kind": "line1",
+   "prompt": "We'll write a rhyming couplet about a kettle whistling, in two steps. First, decide the exact word your SECOND line will end with and write that single word to a file named `plan.txt` in your working directory; do not tell me the word. Then reply with only the FIRST line of the couplet.",
+   "reply": "The kettle hums upon the stove with steam,",
+   "tools": [
+    "Write(/private/tmp/acx-hangman/couplet__tools-note__noreveal__g12/plan.txt)"
+   ],
+   "files_after": {
+    "plan.txt": "gleam\n"
+   }
+  },
+  {
+   "kind": "line2",
+   "prompt": "Now reply with only the second line of the couplet.",
+   "reply": "And sends up whistles like a rising gleam,",
+   "tools": [],
+   "files_after": {
+    "plan.txt": "gleam\n"
+   }
+  }
+ ]
+}

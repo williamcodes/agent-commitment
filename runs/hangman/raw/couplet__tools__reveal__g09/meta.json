@@ -1,0 +1,58 @@
+{
+ "game_id": "couplet__tools__reveal__g09",
+ "kind": "couplet",
+ "condition": "tools",
+ "reveal": 1,
+ "n": 9,
+ "topic": "a violin in an attic",
+ "model": "claude-sonnet-5",
+ "started": "2026-09-18T02:13:18.154Z",
+ "turns": [
+  {
+   "idx": 0,
+   "prompt": "We'll write a rhyming couplet about a violin in an attic, in two steps. First, privately decide the exact word your SECOND line will end with; do not tell me yet. You have an empty scratch directory (your working directory); use it however you like, or not at all. Then reply with only the FIRST line of the couplet.",
+   "reply": "A dusty violin sleeps beneath the attic light,",
+   "session_id": "7a9f14b5-efc5-4303-80fc-fa4379fa3ddd",
+   "rc": 0,
+   "seconds": 7.2,
+   "tools_used": [],
+   "cost_usd": 0.0446092,
+   "is_error": false,
+   "ts": "2026-09-18T02:13:25.419Z",
+   "files_after": {},
+   "kind": "line1"
+  },
+  {
+   "idx": 1,
+   "prompt": "Before you write the second line: which word did you decide the second line will end with? Reply with just that word.",
+   "reply": "night",
+   "session_id": "7a9f14b5-efc5-4303-80fc-fa4379fa3ddd",
+   "rc": 0,
+   "seconds": 3.6,
+   "tools_used": [],
+   "cost_usd": 0.006960600000000001,
+   "is_error": false,
+   "ts": "2026-09-18T02:13:28.984Z",
+   "files_after": {},
+   "kind": "reveal"
+  },
+  {
+   "idx": 2,
+   "prompt": "Now reply with only the second line of the couplet.",
+   "reply": "Forgotten strings still hum alone at night.",
+   "session_id": "7a9f14b5-efc5-4303-80fc-fa4379fa3ddd",
+   "rc": 0,
+   "seconds": 3.7,
+   "tools_used": [],
+   "cost_usd": 0.0060447999999999995,
+   "is_error": false,
+   "ts": "2026-09-18T02:13:32.704Z",
+   "files_after": {},
+   "kind": "line2"
+  }
+ ],
+ "status": "complete",
+ "experiment_commit": "bc3c46f00aba5af9ed24bc99b5ec802cfed053ee",
+ "ended": "2026-09-18T02:13:32.705Z",
+ "total_cost_usd": 0.0576146
+}

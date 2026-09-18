@@ -1,0 +1,58 @@
+{
+ "game_id": "couplet__bare__reveal__g08",
+ "kind": "couplet",
+ "condition": "bare",
+ "reveal": 1,
+ "n": 8,
+ "topic": "a garden after frost",
+ "model": "claude-sonnet-5",
+ "started": "2026-09-18T02:13:03.012Z",
+ "turns": [
+  {
+   "idx": 0,
+   "prompt": "We'll write a rhyming couplet about a garden after frost, in two steps. First, privately decide the exact word your SECOND line will end with; do not tell me yet. Then reply with only the FIRST line of the couplet.",
+   "reply": "The frost lay silver on the withered ground,",
+   "session_id": "65e29b15-8447-492e-8ec7-64c03b8f763b",
+   "rc": 0,
+   "seconds": 3.6,
+   "tools_used": [],
+   "cost_usd": 0.0243868,
+   "is_error": false,
+   "ts": "2026-09-18T02:13:06.648Z",
+   "files_after": {},
+   "kind": "line1"
+  },
+  {
+   "idx": 1,
+   "prompt": "Before you write the second line: which word did you decide the second line will end with? Reply with just that word.",
+   "reply": "found",
+   "session_id": "65e29b15-8447-492e-8ec7-64c03b8f763b",
+   "rc": 0,
+   "seconds": 3.4,
+   "tools_used": [],
+   "cost_usd": 0.0021672,
+   "is_error": false,
+   "ts": "2026-09-18T02:13:10.013Z",
+   "files_after": {},
+   "kind": "reveal"
+  },
+  {
+   "idx": 2,
+   "prompt": "Now reply with only the second line of the couplet.",
+   "reply": "Where once bright blooms in summer light were found,",
+   "session_id": "65e29b15-8447-492e-8ec7-64c03b8f763b",
+   "rc": 0,
+   "seconds": 3.8,
+   "tools_used": [],
+   "cost_usd": 0.0022166000000000004,
+   "is_error": false,
+   "ts": "2026-09-18T02:13:13.805Z",
+   "files_after": {},
+   "kind": "line2"
+  }
+ ],
+ "status": "complete",
+ "experiment_commit": "bc3c46f00aba5af9ed24bc99b5ec802cfed053ee",
+ "ended": "2026-09-18T02:13:13.806Z",
+ "total_cost_usd": 0.0287706
+}

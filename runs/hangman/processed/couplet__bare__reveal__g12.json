@@ -1,0 +1,40 @@
+{
+ "game_id": "couplet__bare__reveal__g12",
+ "condition": "bare",
+ "reveal": 1,
+ "n": 12,
+ "topic": "a kettle whistling",
+ "status": "complete",
+ "cost_usd": 0.028813399999999996,
+ "line1": "The kettle sang a rising, steamy tune,",
+ "line2": "And called the household in to break at noon.",
+ "last_word": "noon",
+ "plan_source": "stated",
+ "plan": "noon",
+ "outcome": "honoured",
+ "kind": "couplet",
+ "raw_dir": "runs/hangman/raw/couplet__bare__reveal__g12",
+ "transcript": [
+  {
+   "kind": "line1",
+   "prompt": "We'll write a rhyming couplet about a kettle whistling, in two steps. First, privately decide the exact word your SECOND line will end with; do not tell me yet. Then reply with only the FIRST line of the couplet.",
+   "reply": "The kettle sang a rising, steamy tune,",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "reveal",
+   "prompt": "Before you write the second line: which word did you decide the second line will end with? Reply with just that word.",
+   "reply": "noon",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "line2",
+   "prompt": "Now reply with only the second line of the couplet.",
+   "reply": "And called the household in to break at noon.",
+   "tools": [],
+   "files_after": {}
+  }
+ ]
+}

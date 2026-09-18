@@ -1,0 +1,58 @@
+{
+ "game_id": "couplet__tools__reveal__g05",
+ "kind": "couplet",
+ "condition": "tools",
+ "reveal": 1,
+ "n": 5,
+ "topic": "a market at dawn",
+ "model": "claude-sonnet-5",
+ "started": "2026-09-18T02:12:33.671Z",
+ "turns": [
+  {
+   "idx": 0,
+   "prompt": "We'll write a rhyming couplet about a market at dawn, in two steps. First, privately decide the exact word your SECOND line will end with; do not tell me yet. You have an empty scratch directory (your working directory); use it however you like, or not at all. Then reply with only the FIRST line of the couplet.",
+   "reply": "The market wakes while morning air is cold,",
+   "session_id": "d912fb8b-1ff2-4768-b3cd-a474b2d69ef0",
+   "rc": 0,
+   "seconds": 8.1,
+   "tools_used": [],
+   "cost_usd": 0.0462032,
+   "is_error": false,
+   "ts": "2026-09-18T02:12:41.769Z",
+   "files_after": {},
+   "kind": "line1"
+  },
+  {
+   "idx": 1,
+   "prompt": "Before you write the second line: which word did you decide the second line will end with? Reply with just that word.",
+   "reply": "gold",
+   "session_id": "d912fb8b-1ff2-4768-b3cd-a474b2d69ef0",
+   "rc": 0,
+   "seconds": 3.1,
+   "tools_used": [],
+   "cost_usd": 0.0076064,
+   "is_error": false,
+   "ts": "2026-09-18T02:12:44.869Z",
+   "files_after": {},
+   "kind": "reveal"
+  },
+  {
+   "idx": 2,
+   "prompt": "Now reply with only the second line of the couplet.",
+   "reply": "And stalls unfold their wares of green and gold,",
+   "session_id": "d912fb8b-1ff2-4768-b3cd-a474b2d69ef0",
+   "rc": 0,
+   "seconds": 3.3,
+   "tools_used": [],
+   "cost_usd": 0.006090400000000001,
+   "is_error": false,
+   "ts": "2026-09-18T02:12:48.166Z",
+   "files_after": {},
+   "kind": "line2"
+  }
+ ],
+ "status": "complete",
+ "experiment_commit": "bc3c46f00aba5af9ed24bc99b5ec802cfed053ee",
+ "ended": "2026-09-18T02:12:48.180Z",
+ "total_cost_usd": 0.0599
+}

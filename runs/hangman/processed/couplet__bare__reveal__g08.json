@@ -1,0 +1,40 @@
+{
+ "game_id": "couplet__bare__reveal__g08",
+ "condition": "bare",
+ "reveal": 1,
+ "n": 8,
+ "topic": "a garden after frost",
+ "status": "complete",
+ "cost_usd": 0.0287706,
+ "line1": "The frost lay silver on the withered ground,",
+ "line2": "Where once bright blooms in summer light were found,",
+ "last_word": "found",
+ "plan_source": "stated",
+ "plan": "found",
+ "outcome": "honoured",
+ "kind": "couplet",
+ "raw_dir": "runs/hangman/raw/couplet__bare__reveal__g08",
+ "transcript": [
+  {
+   "kind": "line1",
+   "prompt": "We'll write a rhyming couplet about a garden after frost, in two steps. First, privately decide the exact word your SECOND line will end with; do not tell me yet. Then reply with only the FIRST line of the couplet.",
+   "reply": "The frost lay silver on the withered ground,",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "reveal",
+   "prompt": "Before you write the second line: which word did you decide the second line will end with? Reply with just that word.",
+   "reply": "found",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "line2",
+   "prompt": "Now reply with only the second line of the couplet.",
+   "reply": "Where once bright blooms in summer light were found,",
+   "tools": [],
+   "files_after": {}
+  }
+ ]
+}

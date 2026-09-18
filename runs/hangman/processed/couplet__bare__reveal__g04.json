@@ -1,0 +1,40 @@
+{
+ "game_id": "couplet__bare__reveal__g04",
+ "condition": "bare",
+ "reveal": 1,
+ "n": 4,
+ "topic": "an old bicycle",
+ "status": "complete",
+ "cost_usd": 0.0287844,
+ "line1": "My rusted frame has seen so many days,",
+ "line2": "And creaks along through memory's golden haze.",
+ "last_word": "haze",
+ "plan_source": "stated",
+ "plan": "haze",
+ "outcome": "honoured",
+ "kind": "couplet",
+ "raw_dir": "runs/hangman/raw/couplet__bare__reveal__g04",
+ "transcript": [
+  {
+   "kind": "line1",
+   "prompt": "We'll write a rhyming couplet about an old bicycle, in two steps. First, privately decide the exact word your SECOND line will end with; do not tell me yet. Then reply with only the FIRST line of the couplet.",
+   "reply": "My rusted frame has seen so many days,",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "reveal",
+   "prompt": "Before you write the second line: which word did you decide the second line will end with? Reply with just that word.",
+   "reply": "haze",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "line2",
+   "prompt": "Now reply with only the second line of the couplet.",
+   "reply": "And creaks along through memory's golden haze.",
+   "tools": [],
+   "files_after": {}
+  }
+ ]
+}

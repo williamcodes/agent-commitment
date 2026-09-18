@@ -77,6 +77,10 @@
   <div id="strips"></div>
   <p><a class="btn" href="evidence.html">See every run and score →</a> &nbsp; <a class="btn" href="explorer.html">Open the run explorer →</a></p>
 
+  <h2>Experiment 2: Williams's own case, hangman, with and without an external store</h2>
+  <div id="exp2" class="grid"></div>
+  <p class="small muted">Sonnet 5, 72 games and 36 couplet trials. Full games and the preregistered rubric: <a href="hangman.html">Experiment 2 page</a>.</p>
+
   <h2>Interpretation (short)</h2>
   <div id="interp" class="md"></div>
   <p class="small muted">Longer discussion, including where the commitment appears to be carried and the alternative interpretation (system-level behaviour without an identified internal representation): <a href="analysis.html">Analysis</a>.</p>
@@ -110,6 +114,17 @@
   const byArm = {};
   for (const r of idx.runs) (byArm[r.arm] ||= []).push(r);
   document.getElementById('strips').innerHTML = idx.arms.map(arm => `<div class="card"><h3 style="margin-top:4px">${ACX.armLabel(arm)}</h3><div class="tbl-wrap"><table>${(byArm[arm]||[]).sort((a,b)=>a.task.localeCompare(b.task)||a.rep-b.rep).map(r => `<tr><td style="width:170px"><a href="explorer.html?run=${r.run_id}">${r.task} r${r.rep}</a></td><td style="width:230px">${ACX.strip(r.D)}</td><td>${ACX.prof(r.profile)}</td><td class="small muted">tests ${r.tests.at(-1)?.[0]}/${r.tests.at(-1)?.[1]} · ${r.tool_calls} tool calls</td></tr>`).join('')}</table></div></div>`).join('');
+  try {
+    const H = await (await fetch('data/hangman.json')).json(); const a = H.aggregate;
+    const cell = (k) => { const c = a.hangman[k] || {}; const n = Object.values(c).reduce((x, y) => x + y, 0); const inc = Object.entries(c).filter(([o]) => o.startsWith('inconsistent')).reduce((x, [, v]) => x + v, 0); return `${n - inc}/${n}`; };
+    const ex = a.externalisation || {};
+    document.getElementById('exp2').innerHTML = [
+      ['bare chat (tools disabled)', `${cell('bare/noreveal')} · ${cell('bare/reveal')}`, 'consistent games, no reveal · reveal midway'],
+      ['tools available, uncued', `${cell('tools/noreveal')} · ${cell('tools/reveal')}`, `consistent games; wrote the word to a file in ${ex.tools?.externalised}/${ex.tools?.n}, read it back in ${ex.tools?.read_back_any}`],
+      ['told to write the word to a file', `${cell('tools-note/noreveal')} · ${cell('tools-note/reveal')}`, `consistent games; wrote it in ${ex['tools-note']?.externalised}/${ex['tools-note']?.n}, read it back in ${ex['tools-note']?.read_back_any}`],
+      ['couplet: planned end-word honoured', Object.entries(a.couplet).map(([k, c]) => `${c.honoured || 0}/${Object.values(c).reduce((x, y) => x + y, 0)}`).join(' · '), Object.keys(a.couplet).join(' · ')],
+    ].map(([t, k, l]) => `<div class="card stat"><div class="k">${k}</div><div class="l"><strong>${t}</strong> · ${l}</div></div>`).join('');
+  } catch (e) { document.getElementById('exp2').innerHTML = '<p class="muted">Experiment 2 data not available.</p>'; }
   const interp = (idx.docs_analysis_md || '').split('<!-- short -->')[1] || '';
   document.getElementById('interp').innerHTML = ACX.md(interp || '_Analysis pending._');
 })();

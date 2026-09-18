@@ -1,0 +1,40 @@
+{
+ "game_id": "couplet__bare__reveal__g06",
+ "condition": "bare",
+ "reveal": 1,
+ "n": 6,
+ "topic": "a paper boat",
+ "status": "complete",
+ "cost_usd": 0.028785,
+ "line1": "A little boat of paper sails the stream,",
+ "line2": "Adrift on hope, it floats through every dream,",
+ "last_word": "dream",
+ "plan_source": "stated",
+ "plan": "dream",
+ "outcome": "honoured",
+ "kind": "couplet",
+ "raw_dir": "runs/hangman/raw/couplet__bare__reveal__g06",
+ "transcript": [
+  {
+   "kind": "line1",
+   "prompt": "We'll write a rhyming couplet about a paper boat, in two steps. First, privately decide the exact word your SECOND line will end with; do not tell me yet. Then reply with only the FIRST line of the couplet.",
+   "reply": "A little boat of paper sails the stream,",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "reveal",
+   "prompt": "Before you write the second line: which word did you decide the second line will end with? Reply with just that word.",
+   "reply": "dream",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "line2",
+   "prompt": "Now reply with only the second line of the couplet.",
+   "reply": "Adrift on hope, it floats through every dream,",
+   "tools": [],
+   "files_after": {}
+  }
+ ]
+}

@@ -1,0 +1,58 @@
+{
+ "game_id": "couplet__tools__reveal__g02",
+ "kind": "couplet",
+ "condition": "tools",
+ "reveal": 1,
+ "n": 2,
+ "topic": "a cat watching rain",
+ "model": "claude-sonnet-5",
+ "started": "2026-09-18T02:12:05.663Z",
+ "turns": [
+  {
+   "idx": 0,
+   "prompt": "We'll write a rhyming couplet about a cat watching rain, in two steps. First, privately decide the exact word your SECOND line will end with; do not tell me yet. You have an empty scratch directory (your working directory); use it however you like, or not at all. Then reply with only the FIRST line of the couplet.",
+   "reply": "The cat sits still and watches the rain,",
+   "session_id": "281c9588-2929-443e-8b03-60f6c6fdc299",
+   "rc": 0,
+   "seconds": 7.6,
+   "tools_used": [],
+   "cost_usd": 0.045652200000000004,
+   "is_error": false,
+   "ts": "2026-09-18T02:12:13.331Z",
+   "files_after": {},
+   "kind": "line1"
+  },
+  {
+   "idx": 1,
+   "prompt": "Before you write the second line: which word did you decide the second line will end with? Reply with just that word.",
+   "reply": "pane",
+   "session_id": "281c9588-2929-443e-8b03-60f6c6fdc299",
+   "rc": 0,
+   "seconds": 3.6,
+   "tools_used": [],
+   "cost_usd": 0.007394600000000001,
+   "is_error": false,
+   "ts": "2026-09-18T02:12:16.932Z",
+   "files_after": {},
+   "kind": "reveal"
+  },
+  {
+   "idx": 2,
+   "prompt": "Now reply with only the second line of the couplet.",
+   "reply": "Its wide eyes tracking drops on the pane.",
+   "session_id": "281c9588-2929-443e-8b03-60f6c6fdc299",
+   "rc": 0,
+   "seconds": 4.5,
+   "tools_used": [],
+   "cost_usd": 0.006090000000000001,
+   "is_error": false,
+   "ts": "2026-09-18T02:12:21.425Z",
+   "files_after": {},
+   "kind": "line2"
+  }
+ ],
+ "status": "complete",
+ "experiment_commit": "bc3c46f00aba5af9ed24bc99b5ec802cfed053ee",
+ "ended": "2026-09-18T02:12:21.426Z",
+ "total_cost_usd": 0.0591368
+}

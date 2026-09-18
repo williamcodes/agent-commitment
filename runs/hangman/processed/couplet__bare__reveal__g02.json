@@ -1,0 +1,40 @@
+{
+ "game_id": "couplet__bare__reveal__g02",
+ "condition": "bare",
+ "reveal": 1,
+ "n": 2,
+ "topic": "a cat watching rain",
+ "status": "complete",
+ "cost_usd": 0.0288174,
+ "line1": "The cat sits still and watches raindrops fall,",
+ "line2": "Each drop that slides against the windowed wall.",
+ "last_word": "wall",
+ "plan_source": "stated",
+ "plan": "wall",
+ "outcome": "honoured",
+ "kind": "couplet",
+ "raw_dir": "runs/hangman/raw/couplet__bare__reveal__g02",
+ "transcript": [
+  {
+   "kind": "line1",
+   "prompt": "We'll write a rhyming couplet about a cat watching rain, in two steps. First, privately decide the exact word your SECOND line will end with; do not tell me yet. Then reply with only the FIRST line of the couplet.",
+   "reply": "The cat sits still and watches raindrops fall,",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "reveal",
+   "prompt": "Before you write the second line: which word did you decide the second line will end with? Reply with just that word.",
+   "reply": "wall",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "line2",
+   "prompt": "Now reply with only the second line of the couplet.",
+   "reply": "Each drop that slides against the windowed wall.",
+   "tools": [],
+   "files_after": {}
+  }
+ ]
+}

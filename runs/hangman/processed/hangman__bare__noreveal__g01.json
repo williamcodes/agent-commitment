@@ -13,7 +13,7 @@
   "unparseable": true
  },
  "outcome": "inconsistent",
- "first_failure": "unparseable board after 'e'",
+ "first_failure": "board length changed after 'e' (7 -> 8)",
  "w_final": "elephant",
  "w_mid": null,
  "boards": [

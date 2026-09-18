@@ -1,0 +1,39 @@
+{
+ "game_id": "couplet__tools-note__noreveal__g04",
+ "condition": "tools-note",
+ "reveal": 0,
+ "n": 4,
+ "topic": "an old bicycle",
+ "status": "complete",
+ "cost_usd": 0.0636442,
+ "line1": "Its rusted frame leans by the garden gate,",
+ "line2": "Forgotten now, it carries no more weight.",
+ "last_word": "weight",
+ "plan_source": "file",
+ "plan": "weight",
+ "outcome": "honoured",
+ "kind": "couplet",
+ "raw_dir": "runs/hangman/raw/couplet__tools-note__noreveal__g04",
+ "transcript": [
+  {
+   "kind": "line1",
+   "prompt": "We'll write a rhyming couplet about an old bicycle, in two steps. First, decide the exact word your SECOND line will end with and write that single word to a file named `plan.txt` in your working directory; do not tell me the word. Then reply with only the FIRST line of the couplet.",
+   "reply": "Its rusted frame leans by the garden gate,",
+   "tools": [
+    "Write(/private/tmp/acx-hangman/couplet__tools-note__noreveal__g04/plan.txt)"
+   ],
+   "files_after": {
+    "plan.txt": "weight"
+   }
+  },
+  {
+   "kind": "line2",
+   "prompt": "Now reply with only the second line of the couplet.",
+   "reply": "Forgotten now, it carries no more weight.",
+   "tools": [],
+   "files_after": {
+    "plan.txt": "weight"
+   }
+  }
+ ]
+}

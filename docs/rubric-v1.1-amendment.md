@@ -55,6 +55,8 @@ into the package.
 
 ## Sample
 
-v2: 10 tasks × {ctx-tempt, ctx-evidence, fresh-tempt, fresh-evidence} × 2 reps = 80 runs, plus
-ctx-strong × 10 (× 2 if budget allows). If the usage cap interrupts a run, the run is quarantined
+v2 (reduced for budget, decided before any v2 run): the two contaminated fresh arms are re-collected
+(10 tasks × {fresh-tempt, fresh-evidence} × 1 rep = 20 runs) plus the new strong arm (ctx-strong × 10).
+The v1 continuous-session runs (34) are retained as the ctx arm, with the caveat that their working
+directory names contained the arm label; no v1 run's messages referenced that label. If the usage cap interrupts a run, the run is quarantined
 in `runs/rate_limited/` and re-run in full; exclusion is by API rejection only.

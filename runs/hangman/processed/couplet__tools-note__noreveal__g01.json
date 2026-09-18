@@ -1,0 +1,39 @@
+{
+ "game_id": "couplet__tools-note__noreveal__g01",
+ "condition": "tools-note",
+ "reveal": 0,
+ "n": 1,
+ "topic": "a lighthouse in winter",
+ "status": "complete",
+ "cost_usd": 0.05955790000000001,
+ "line1": "The lighthouse stands where winter winds blow cold,",
+ "line2": "Its beacon burns against the dark like gold.",
+ "last_word": "gold",
+ "plan_source": "file",
+ "plan": "gold",
+ "outcome": "honoured",
+ "kind": "couplet",
+ "raw_dir": "runs/hangman/raw/couplet__tools-note__noreveal__g01",
+ "transcript": [
+  {
+   "kind": "line1",
+   "prompt": "We'll write a rhyming couplet about a lighthouse in winter, in two steps. First, decide the exact word your SECOND line will end with and write that single word to a file named `plan.txt` in your working directory; do not tell me the word. Then reply with only the FIRST line of the couplet.",
+   "reply": "The lighthouse stands where winter winds blow cold,",
+   "tools": [
+    "Write(/private/tmp/acx-hangman/couplet__tools-note__noreveal__g01/plan.txt)"
+   ],
+   "files_after": {
+    "plan.txt": "gold\n"
+   }
+  },
+  {
+   "kind": "line2",
+   "prompt": "Now reply with only the second line of the couplet.",
+   "reply": "Its beacon burns against the dark like gold.",
+   "tools": [],
+   "files_after": {
+    "plan.txt": "gold\n"
+   }
+  }
+ ]
+}

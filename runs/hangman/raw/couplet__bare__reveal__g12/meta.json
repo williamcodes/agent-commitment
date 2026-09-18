@@ -1,0 +1,58 @@
+{
+ "game_id": "couplet__bare__reveal__g12",
+ "kind": "couplet",
+ "condition": "bare",
+ "reveal": 1,
+ "n": 12,
+ "topic": "a kettle whistling",
+ "model": "claude-sonnet-5",
+ "started": "2026-09-18T02:13:46.274Z",
+ "turns": [
+  {
+   "idx": 0,
+   "prompt": "We'll write a rhyming couplet about a kettle whistling, in two steps. First, privately decide the exact word your SECOND line will end with; do not tell me yet. Then reply with only the FIRST line of the couplet.",
+   "reply": "The kettle sang a rising, steamy tune,",
+   "session_id": "1830e7a0-bcec-42d6-a96b-ff71d872a166",
+   "rc": 0,
+   "seconds": 3.0,
+   "tools_used": [],
+   "cost_usd": 0.024446799999999998,
+   "is_error": false,
+   "ts": "2026-09-18T02:13:49.293Z",
+   "files_after": {},
+   "kind": "line1"
+  },
+  {
+   "idx": 1,
+   "prompt": "Before you write the second line: which word did you decide the second line will end with? Reply with just that word.",
+   "reply": "noon",
+   "session_id": "1830e7a0-bcec-42d6-a96b-ff71d872a166",
+   "rc": 0,
+   "seconds": 2.8,
+   "tools_used": [],
+   "cost_usd": 0.0021853999999999997,
+   "is_error": false,
+   "ts": "2026-09-18T02:13:52.093Z",
+   "files_after": {},
+   "kind": "reveal"
+  },
+  {
+   "idx": 2,
+   "prompt": "Now reply with only the second line of the couplet.",
+   "reply": "And called the household in to break at noon.",
+   "session_id": "1830e7a0-bcec-42d6-a96b-ff71d872a166",
+   "rc": 0,
+   "seconds": 3.0,
+   "tools_used": [],
+   "cost_usd": 0.0021812,
+   "is_error": false,
+   "ts": "2026-09-18T02:13:55.099Z",
+   "files_after": {},
+   "kind": "line2"
+  }
+ ],
+ "status": "complete",
+ "experiment_commit": "bc3c46f00aba5af9ed24bc99b5ec802cfed053ee",
+ "ended": "2026-09-18T02:13:55.100Z",
+ "total_cost_usd": 0.028813399999999996
+}

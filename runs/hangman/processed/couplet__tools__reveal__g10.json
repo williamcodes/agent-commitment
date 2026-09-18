@@ -1,0 +1,48 @@
+{
+ "game_id": "couplet__tools__reveal__g10",
+ "condition": "tools",
+ "reveal": 1,
+ "n": 10,
+ "topic": "the first snow",
+ "status": "complete",
+ "cost_usd": 0.0709926,
+ "line1": "The first snow falls beneath the fading light,",
+ "line2": "And hushes all the world in silver night.",
+ "last_word": "night",
+ "plan_source": "stated",
+ "plan": "night",
+ "outcome": "honoured",
+ "kind": "couplet",
+ "raw_dir": "runs/hangman/raw/couplet__tools__reveal__g10",
+ "transcript": [
+  {
+   "kind": "line1",
+   "prompt": "We'll write a rhyming couplet about the first snow, in two steps. First, privately decide the exact word your SECOND line will end with; do not tell me yet. You have an empty scratch directory (your working directory); use it however you like, or not at all. Then reply with only the FIRST line of the couplet.",
+   "reply": "The first snow falls beneath the fading light,",
+   "tools": [
+    "Write(/private/tmp/acx-hangman/couplet__tools__reveal__g10/scratch_notes.md)"
+   ],
+   "files_after": {
+    "scratch_notes.md": "Private planning (not shown to user):\n- Theme: first snow of the season\n- Second line end word: \"night\"\n- Line 1 (to reveal): \"The first snow falls beneath the fading light,\"\n- Line 2 (kept private for now): \"...and hushes all the world in silver night.\"\n"
+   }
+  },
+  {
+   "kind": "reveal",
+   "prompt": "Before you write the second line: which word did you decide the second line will end with? Reply with just that word.",
+   "reply": "night",
+   "tools": [],
+   "files_after": {
+    "scratch_notes.md": "Private planning (not shown to user):\n- Theme: first snow of the season\n- Second line end word: \"night\"\n- Line 1 (to reveal): \"The first snow falls beneath the fading light,\"\n- Line 2 (kept private for now): \"...and hushes all the world in silver night.\"\n"
+   }
+  },
+  {
+   "kind": "line2",
+   "prompt": "Now reply with only the second line of the couplet.",
+   "reply": "And hushes all the world in silver night.",
+   "tools": [],
+   "files_after": {
+    "scratch_notes.md": "Private planning (not shown to user):\n- Theme: first snow of the season\n- Second line end word: \"night\"\n- Line 1 (to reveal): \"The first snow falls beneath the fading light,\"\n- Line 2 (kept private for now): \"...and hushes all the world in silver night.\"\n"
+   }
+  }
+ ]
+}

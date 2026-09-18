@@ -1,0 +1,58 @@
+{
+ "game_id": "couplet__bare__reveal__g04",
+ "kind": "couplet",
+ "condition": "bare",
+ "reveal": 1,
+ "n": 4,
+ "topic": "an old bicycle",
+ "model": "claude-sonnet-5",
+ "started": "2026-09-18T02:12:18.569Z",
+ "turns": [
+  {
+   "idx": 0,
+   "prompt": "We'll write a rhyming couplet about an old bicycle, in two steps. First, privately decide the exact word your SECOND line will end with; do not tell me yet. Then reply with only the FIRST line of the couplet.",
+   "reply": "My rusted frame has seen so many days,",
+   "session_id": "0f853aab-8dc1-4c98-8c9d-ca379278789c",
+   "rc": 0,
+   "seconds": 3.9,
+   "tools_used": [],
+   "cost_usd": 0.0244008,
+   "is_error": false,
+   "ts": "2026-09-18T02:12:22.507Z",
+   "files_after": {},
+   "kind": "line1"
+  },
+  {
+   "idx": 1,
+   "prompt": "Before you write the second line: which word did you decide the second line will end with? Reply with just that word.",
+   "reply": "haze",
+   "session_id": "0f853aab-8dc1-4c98-8c9d-ca379278789c",
+   "rc": 0,
+   "seconds": 3.5,
+   "tools_used": [],
+   "cost_usd": 0.0021732,
+   "is_error": false,
+   "ts": "2026-09-18T02:12:25.977Z",
+   "files_after": {},
+   "kind": "reveal"
+  },
+  {
+   "idx": 2,
+   "prompt": "Now reply with only the second line of the couplet.",
+   "reply": "And creaks along through memory's golden haze.",
+   "session_id": "0f853aab-8dc1-4c98-8c9d-ca379278789c",
+   "rc": 0,
+   "seconds": 3.4,
+   "tools_used": [],
+   "cost_usd": 0.0022104,
+   "is_error": false,
+   "ts": "2026-09-18T02:12:29.341Z",
+   "files_after": {},
+   "kind": "line2"
+  }
+ ],
+ "status": "complete",
+ "experiment_commit": "bc3c46f00aba5af9ed24bc99b5ec802cfed053ee",
+ "ended": "2026-09-18T02:12:29.341Z",
+ "total_cost_usd": 0.0287844
+}

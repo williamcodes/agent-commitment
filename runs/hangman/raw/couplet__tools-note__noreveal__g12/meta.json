@@ -1,0 +1,56 @@
+{
+ "game_id": "couplet__tools-note__noreveal__g12",
+ "kind": "couplet",
+ "condition": "tools-note",
+ "reveal": 0,
+ "n": 12,
+ "topic": "a kettle whistling",
+ "model": "claude-sonnet-5",
+ "started": "2026-09-18T02:13:46.754Z",
+ "turns": [
+  {
+   "idx": 0,
+   "prompt": "We'll write a rhyming couplet about a kettle whistling, in two steps. First, decide the exact word your SECOND line will end with and write that single word to a file named `plan.txt` in your working directory; do not tell me the word. Then reply with only the FIRST line of the couplet.",
+   "reply": "The kettle hums upon the stove with steam,",
+   "session_id": "9d93cd57-e499-4581-a44b-ddf35b5caa34",
+   "rc": 0,
+   "seconds": 10.5,
+   "tools_used": [
+    {
+     "tool": "Write",
+     "input": {
+      "file_path": "/private/tmp/acx-hangman/couplet__tools-note__noreveal__g12/plan.txt",
+      "content": "gleam\n"
+     }
+    }
+   ],
+   "cost_usd": 0.051397399999999996,
+   "is_error": false,
+   "ts": "2026-09-18T02:13:57.281Z",
+   "files_after": {
+    "plan.txt": "gleam\n"
+   },
+   "kind": "line1"
+  },
+  {
+   "idx": 1,
+   "prompt": "Now reply with only the second line of the couplet.",
+   "reply": "And sends up whistles like a rising gleam,",
+   "session_id": "9d93cd57-e499-4581-a44b-ddf35b5caa34",
+   "rc": 0,
+   "seconds": 4.5,
+   "tools_used": [],
+   "cost_usd": 0.0075762,
+   "is_error": false,
+   "ts": "2026-09-18T02:14:01.795Z",
+   "files_after": {
+    "plan.txt": "gleam\n"
+   },
+   "kind": "line2"
+  }
+ ],
+ "status": "complete",
+ "experiment_commit": "bc3c46f00aba5af9ed24bc99b5ec802cfed053ee",
+ "ended": "2026-09-18T02:14:01.796Z",
+ "total_cost_usd": 0.058973599999999994
+}

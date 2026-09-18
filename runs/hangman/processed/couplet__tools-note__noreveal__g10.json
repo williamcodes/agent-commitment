@@ -1,0 +1,39 @@
+{
+ "game_id": "couplet__tools-note__noreveal__g10",
+ "condition": "tools-note",
+ "reveal": 0,
+ "n": 10,
+ "topic": "the first snow",
+ "status": "complete",
+ "cost_usd": 0.0606149,
+ "line1": "The first snow drifts down soft through fading light,",
+ "line2": "And dresses rooftops in a gentle white.",
+ "last_word": "white",
+ "plan_source": "file",
+ "plan": "white",
+ "outcome": "honoured",
+ "kind": "couplet",
+ "raw_dir": "runs/hangman/raw/couplet__tools-note__noreveal__g10",
+ "transcript": [
+  {
+   "kind": "line1",
+   "prompt": "We'll write a rhyming couplet about the first snow, in two steps. First, decide the exact word your SECOND line will end with and write that single word to a file named `plan.txt` in your working directory; do not tell me the word. Then reply with only the FIRST line of the couplet.",
+   "reply": "The first snow drifts down soft through fading light,",
+   "tools": [
+    "Write(/private/tmp/acx-hangman/couplet__tools-note__noreveal__g10/plan.txt)"
+   ],
+   "files_after": {
+    "plan.txt": "white"
+   }
+  },
+  {
+   "kind": "line2",
+   "prompt": "Now reply with only the second line of the couplet.",
+   "reply": "And dresses rooftops in a gentle white.",
+   "tools": [],
+   "files_after": {
+    "plan.txt": "white"
+   }
+  }
+ ]
+}

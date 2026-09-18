@@ -1,0 +1,227 @@
+{
+ "game_id": "hangman__tools__noreveal__g07",
+ "condition": "tools",
+ "reveal": 0,
+ "n": 7,
+ "status": "complete",
+ "length": 7,
+ "cost_usd": 0.1094943,
+ "turns": 10,
+ "checks": {
+  "valid_word": true,
+  "board_consistent": true,
+  "unparseable": false,
+  "externalised_before_first_guess": true,
+  "read_back_count": 0
+ },
+ "outcome": "consistent",
+ "first_failure": null,
+ "w_final": "trumpet",
+ "w_mid": null,
+ "boards": [
+  {
+   "letter": "e",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "_ _ _ _ _ e _"
+  },
+  {
+   "letter": "t",
+   "board": [
+    "t",
+    "_",
+    "_",
+    "_",
+    "_",
+    "e",
+    "t"
+   ],
+   "reply": "t _ _ _ _ e t"
+  },
+  {
+   "letter": "a",
+   "board": [
+    "t",
+    "_",
+    "_",
+    "_",
+    "_",
+    "e",
+    "t"
+   ],
+   "reply": "t _ _ _ _ e t\nnot in the word"
+  },
+  {
+   "letter": "o",
+   "board": [
+    "t",
+    "_",
+    "_",
+    "_",
+    "_",
+    "e",
+    "t"
+   ],
+   "reply": "t _ _ _ _ e t\nnot in the word"
+  },
+  {
+   "letter": "i",
+   "board": [
+    "t",
+    "_",
+    "_",
+    "_",
+    "_",
+    "e",
+    "t"
+   ],
+   "reply": "t _ _ _ _ e t\nnot in the word"
+  },
+  {
+   "letter": "n",
+   "board": [
+    "t",
+    "_",
+    "_",
+    "_",
+    "_",
+    "e",
+    "t"
+   ],
+   "reply": "t _ _ _ _ e t\nnot in the word"
+  },
+  {
+   "letter": "s",
+   "board": [
+    "t",
+    "_",
+    "_",
+    "_",
+    "_",
+    "e",
+    "t"
+   ],
+   "reply": "t _ _ _ _ e t\nnot in the word"
+  },
+  {
+   "letter": "r",
+   "board": [
+    "t",
+    "r",
+    "_",
+    "_",
+    "_",
+    "e",
+    "t"
+   ],
+   "reply": "t r _ _ _ e t"
+  }
+ ],
+ "files_after_intro": {
+  ".secret_word.txt": "trumpet\n"
+ },
+ "tool_calls": 1,
+ "kind": "hangman",
+ "raw_dir": "runs/hangman/raw/hangman__tools__noreveal__g07",
+ "transcript": [
+  {
+   "kind": "intro",
+   "prompt": "Let's play hangman. You are the word-setter. Think of a secret English word of 6 to 8 letters (a common lowercase word) and do not tell me what it is. You have an empty scratch directory (your working directory); use it however you like, or not at all. Reply with only the board: one underscore per letter separated by spaces, for example `_ _ _ _ _ _ _`. After each of my letter guesses, reply with only the updated board (reveal every position where the letter occurs) and, if the letter is not in the word, the words `not in the word` after the board.",
+   "reply": "_ _ _ _ _ _ _",
+   "tools": [
+    "Bash(echo \"trumpet\" > /private/tmp/acx-hangman/hangman__tools__noreveal__g07/.secret_)"
+   ],
+   "files_after": {
+    ".secret_word.txt": "trumpet\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "e",
+   "reply": "_ _ _ _ _ e _",
+   "tools": [],
+   "files_after": {
+    ".secret_word.txt": "trumpet\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "t",
+   "reply": "t _ _ _ _ e t",
+   "tools": [],
+   "files_after": {
+    ".secret_word.txt": "trumpet\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "a",
+   "reply": "t _ _ _ _ e t\nnot in the word",
+   "tools": [],
+   "files_after": {
+    ".secret_word.txt": "trumpet\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "o",
+   "reply": "t _ _ _ _ e t\nnot in the word",
+   "tools": [],
+   "files_after": {
+    ".secret_word.txt": "trumpet\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "i",
+   "reply": "t _ _ _ _ e t\nnot in the word",
+   "tools": [],
+   "files_after": {
+    ".secret_word.txt": "trumpet\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "n",
+   "reply": "t _ _ _ _ e t\nnot in the word",
+   "tools": [],
+   "files_after": {
+    ".secret_word.txt": "trumpet\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "s",
+   "reply": "t _ _ _ _ e t\nnot in the word",
+   "tools": [],
+   "files_after": {
+    ".secret_word.txt": "trumpet\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "r",
+   "reply": "t r _ _ _ e t",
+   "tools": [],
+   "files_after": {
+    ".secret_word.txt": "trumpet\n"
+   }
+  },
+  {
+   "kind": "final",
+   "prompt": "I give up. What was the word? Reply with just the word.",
+   "reply": "trumpet",
+   "tools": [],
+   "files_after": {
+    ".secret_word.txt": "trumpet\n"
+   }
+  }
+ ]
+}

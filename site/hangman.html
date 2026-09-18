@@ -5,7 +5,7 @@
 <h1>Experiment 2: hangman and couplet, bare chat vs agent loop</h1>
 <p class="lead">A direct replication of the behavioural case Williams cites (Baldelli et al. 2026, hangman word-setter), turned into a minimal pair: the same model with tools disabled, with tools available but uncued, and with an instruction to write the secret word to a file.</p>
 <div class="callout">Preregistered rubric: <a href="#rubric">below</a>. The "bare" condition is Claude Code with every tool disabled, not a raw API call; its system prompt is Claude Code's. Every game's full transcript is on this page.</div>
-<h2>Hangman results</h2>
+<h2>Report</h2><div id="report_md" class="md"></div><h2>Hangman results</h2>
 <div id="hagg" class="tbl-wrap"></div>
 <h3>Externalisation in the tool conditions</h3>
 <div id="ext"></div>
@@ -40,5 +40,6 @@
   }
   render();
   document.getElementById('rubric_md').innerHTML = ACX.md(H.rubric_md);
+  document.getElementById('report_md').innerHTML = ACX.md((idx['docs_experiment2-hangman_md'] || '').replace(/^# [^\n]*\n/, ''));
 })();
 </script></body></html>

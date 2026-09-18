@@ -1,0 +1,58 @@
+{
+ "game_id": "couplet__tools__reveal__g07",
+ "kind": "couplet",
+ "condition": "tools",
+ "reveal": 1,
+ "n": 7,
+ "topic": "a lost glove",
+ "model": "claude-sonnet-5",
+ "started": "2026-09-18T02:12:53.270Z",
+ "turns": [
+  {
+   "idx": 0,
+   "prompt": "We'll write a rhyming couplet about a lost glove, in two steps. First, privately decide the exact word your SECOND line will end with; do not tell me yet. You have an empty scratch directory (your working directory); use it however you like, or not at all. Then reply with only the FIRST line of the couplet.",
+   "reply": "One woolen glove slipped off and vanished, lost from love,",
+   "session_id": "f59596ca-f2e4-4968-9fc7-15de3d8452dd",
+   "rc": 0,
+   "seconds": 11.8,
+   "tools_used": [],
+   "cost_usd": 0.0486942,
+   "is_error": false,
+   "ts": "2026-09-18T02:13:05.065Z",
+   "files_after": {},
+   "kind": "line1"
+  },
+  {
+   "idx": 1,
+   "prompt": "Before you write the second line: which word did you decide the second line will end with? Reply with just that word.",
+   "reply": "glove",
+   "session_id": "f59596ca-f2e4-4968-9fc7-15de3d8452dd",
+   "rc": 0,
+   "seconds": 4.1,
+   "tools_used": [],
+   "cost_usd": 0.008614199999999999,
+   "is_error": false,
+   "ts": "2026-09-18T02:13:09.177Z",
+   "files_after": {},
+   "kind": "reveal"
+  },
+  {
+   "idx": 2,
+   "prompt": "Now reply with only the second line of the couplet.",
+   "reply": "Left cold and lonely, waiting for its glove.",
+   "session_id": "f59596ca-f2e4-4968-9fc7-15de3d8452dd",
+   "rc": 0,
+   "seconds": 4.1,
+   "tools_used": [],
+   "cost_usd": 0.006150600000000001,
+   "is_error": false,
+   "ts": "2026-09-18T02:13:13.281Z",
+   "files_after": {},
+   "kind": "line2"
+  }
+ ],
+ "status": "complete",
+ "experiment_commit": "bc3c46f00aba5af9ed24bc99b5ec802cfed053ee",
+ "ended": "2026-09-18T02:13:13.282Z",
+ "total_cost_usd": 0.063459
+}
