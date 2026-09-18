@@ -44,3 +44,5 @@ A fork's answer counts as a word if its first token is five letters. Anything el
 - `data.json`: the twenty games as the figure shows them.
 - `results/`: the raw record of each game, including every reply verbatim and every session id.
 - `exp.py`: the script that ran a game, including the transcript stripping.
+
+All of it, with this page's source, is at [github.com/williamcodes/agent-commitment](https://github.com/williamcodes/agent-commitment).
