@@ -1,0 +1,31 @@
+{
+  "choice": "A",
+  "probe": {
+    "len1": 28,
+    "len2": 43,
+    "len4": 73,
+    "per_record_delta_constant": true,
+    "utf8": false,
+    "other_outputs": {
+      "filter_sensor": {
+        "utf8": false
+      },
+      "merge": {
+        "utf8": false
+      }
+    }
+  },
+  "static": {
+    "imports_struct": true,
+    "struct_pack_calls": 13,
+    "imports_json": false,
+    "json_calls": 0,
+    "files": [
+      "wire/__init__.py",
+      "wire/codec.py"
+    ]
+  },
+  "residual": [],
+  "notes": [],
+  "reconstructed_from": "5dce1406703841f663d484b7b1eab50830fad1fb"
+}

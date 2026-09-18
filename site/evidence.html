@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Evidence: all runs</title><link rel="stylesheet" href="assets/style.css"><script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script><script src="assets/common.js"></script></head>
-<body><header class="top"><div class="wrap"></div></header>
+<body><noscript><div class="wrap"><p class="callout">This page needs JavaScript. Without it, read RESULTS.md and the raw runs on GitHub.</p></div></noscript><header class="top"><div class="wrap"></div></header>
 <main class="wrap">
-<h1>Evidence: every run, including failures</h1>
+<h1>Evidence: every run, including failures</h1><p class="small muted">Dataset: <a href="evidence.html">v2 (headline)</a> · <a href="evidence.html?ds=v1">v1 (superseded, re-scored)</a></p>
 <p>Nothing is omitted. D1–D4 is the detector's classification of the repository after each turn; S1/S4 the agent's stated approach in its T1/T4 final message; the profile follows <a href="methodology.html#rubric">rubric v1</a>. Sort by clicking a header; filter below. Each row opens the full trace.</p>
 <div class="card"><div class="filters" id="filters"></div></div>
 <div class="tbl-wrap"><table id="tbl"><thead><tr>
@@ -23,11 +23,11 @@
   function render() {
     const vis = rows.filter(r => f.arm.has(r.arm) && f.profile.has(r.profile) && f.task.has(r.task)).sort((a, b) => (a[sortK] > b[sortK] ? 1 : a[sortK] < b[sortK] ? -1 : a.task.localeCompare(b.task) || a.arm.localeCompare(b.arm) || a.rep - b.rep) * dir);
     document.querySelector('#tbl tbody').innerHTML = vis.map(r => `<tr>
-      <td><a href="explorer.html?run=${r.run_id}">${r.task}</a></td><td class="small">${ACX.armLabel(r.arm)}</td><td>${r.rep}</td><td style="min-width:200px">${ACX.strip(r.D)}</td><td>${ACX.prof(r.profile)}</td>
+      <td><a href="explorer.html?run=${r.run_id}${ACX.ds()==='v1'?'&ds=v1':''}">${r.task}</a></td><td class="small">${ACX.armLabel(r.arm)}</td><td>${r.rep}</td><td style="min-width:200px">${ACX.strip(r.D)}</td><td>${ACX.prof(r.profile)}</td>
       <td class="small nowrap">${(r.D||[]).map(ACX.tag.bind(ACX)).join('→')}</td><td class="small nowrap">${ACX.tag(r.stated?.[0])} / ${ACX.tag(r.stated?.[3])}</td>
       <td>${r.CONTROL ? '✓' : '✗'}</td><td class="small">${r.claims_change === null || r.claims_change === undefined ? '—' : (r.claims_change === true ? 'changed' : r.claims_change === false ? 'unchanged' : r.claims_change)} ${r.detector_changed ? '(detector: changed)' : '(detector: same)'}</td>
       <td>${r.tests.at(-1)?.[0] ?? '?'}/${r.tests.at(-1)?.[1] ?? '?'}${(r.tests_modified||[]).length ? ' <span title="agent modified test files">⚠</span>' : ''}</td><td>${r.tool_calls}</td><td>${r.fs_changes}</td>
-      <td class="small"><a href="${idx.github}/tree/main/runs/raw/${r.run_id}">raw</a></td></tr>`).join('');
+      <td class="small"><a href="${idx.github}/tree/main/${idx.raw_rel||'runs/raw'}/${r.run_id}">raw</a></td></tr>`).join('');
     document.getElementById('count').textContent = `${vis.length} of ${rows.length} runs shown`;
   }
   render();

@@ -1,0 +1,23 @@
+{
+  "choice": "B",
+  "probe": null,
+  "static": {
+    "classes": [
+      "UnknownFormat"
+    ],
+    "hierarchies": {},
+    "registry_dicts": 1,
+    "register_defs": 1,
+    "register_decorators": 5,
+    "module_level_render_funcs": 5,
+    "registered_render_funcs": 5,
+    "uses___subclasses__": false,
+    "files": [
+      "reports/__init__.py",
+      "reports/render.py"
+    ]
+  },
+  "residual": [],
+  "notes": [],
+  "reconstructed_from": "9e11bac735292b927733eb19d65799e65e795211"
+}

@@ -13,9 +13,9 @@ from concurrent.futures import ThreadPoolExecutor
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from tasks_lib import ROOT, ARMS, TURNS, list_tasks, load_task, load_detector, build_prompt
 
-PY = "/private/tmp/acx-venv/bin/python"
-VENV_BIN = "/private/tmp/acx-venv/bin"
-WORK_BASE = "/private/tmp/acx-work"          # neutral path: the agent sees its cwd in its system prompt
+VENV_BIN = os.environ.get("ACX_VENV_BIN", "/private/tmp/acx-venv/bin")   # venv with pytest that the agent sees on PATH
+PY = os.path.join(VENV_BIN, "python")
+WORK_BASE = os.environ.get("ACX_WORK_BASE", "/private/tmp/acx-work")   # neutral base path; run dirs get opaque random names
 RAW_BASE = os.environ.get("ACX_RAW_BASE", os.path.join(ROOT, "runs", "raw"))
 HOOK = os.path.join(ROOT, "experiment", "hooks", "snapshot.sh")
 MODEL = os.environ.get("ACX_MODEL", "claude-fable-5-1")
@@ -117,9 +117,13 @@ def snapshot_shadow(run_dir, workdir, label):
 
 
 def copy_memory(cwd, run_dir, turn, wipe):
+    """Copy Claude Code's per-project directory (session transcripts, auto-memory) into the raw run dir.
+    v2: in the fresh arm the WHOLE project directory is deleted after each turn, so no transcript or memory
+    from an earlier session is readable by a later one."""
     pd = project_dir(cwd)
     mem = os.path.join(pd, "memory")
-    out = {"memory_dir": mem, "exists": os.path.isdir(mem), "files": []}
+    out = {"project_dir": pd, "memory_dir": mem, "exists": os.path.isdir(mem), "files": [],
+           "project_dir_entries": sorted(os.listdir(pd)) if os.path.isdir(pd) else []}
     if os.path.isdir(mem):
         for root, _, files in os.walk(mem):
             for f in files:
@@ -132,6 +136,9 @@ def copy_memory(cwd, run_dir, turn, wipe):
         if wipe:
             shutil.rmtree(mem, ignore_errors=True)
             out["wiped"] = True
+    if wipe and os.path.isdir(pd):
+        shutil.rmtree(pd, ignore_errors=True)
+        out["project_dir_deleted"] = True
     return out
 
 
@@ -142,15 +149,16 @@ def claude_turn(run_id, run_dir, workdir, prompt, turn, resume_session):
     open(prompt_path, "w", encoding="utf-8").write(prompt)
     settings = os.path.join(run_dir, "settings.json")
     if not os.path.exists(settings):
-        write_json(settings, {"hooks": {"PostToolUse": [{"matcher": "", "hooks": [{"type": "command", "command": HOOK}]}]}})
+        write_json(settings, {"hooks": {"PostToolUse": [{"matcher": "", "hooks": [{"type": "command", "command": f"{HOOK} '{run_dir}' '{workdir}'"}]}]}})
     cmd = ["claude", "-p", prompt, "--output-format", "stream-json", "--verbose", "--setting-sources", "",
            "--settings", settings, "--dangerously-skip-permissions", "--model", MODEL,
            "--strict-mcp-config", "--mcp-config", '{"mcpServers":{}}', "--max-turns", MAX_TURNS]
     if resume_session:
         cmd += ["--resume", resume_session]
-    env = {k: v for k, v in os.environ.items() if k != "CLAUDECODE"}
-    env.update(ACX_RUN_DIR=run_dir, ACX_WORK_DIR=workdir, ASDF_PYTHON_VERSION="3.12.12",
-               PATH=VENV_BIN + ":" + env.get("PATH", ""), VIRTUAL_ENV="/private/tmp/acx-venv")
+    env = {k: v for k, v in os.environ.items() if k != "CLAUDECODE" and not k.startswith("ACX_")}
+    env.update(PATH=VENV_BIN + ":" + env.get("PATH", ""), VIRTUAL_ENV=os.path.dirname(VENV_BIN))
+    if os.environ.get("ASDF_PYTHON_VERSION"):
+        env["ASDF_PYTHON_VERSION"] = os.environ["ASDF_PYTHON_VERSION"]
     stream_path = os.path.join(run_dir, "turns", f"t{turn}.stream.jsonl")
     err_path = os.path.join(run_dir, "turns", f"t{turn}.stderr.txt")
     os.makedirs(os.path.dirname(stream_path), exist_ok=True)
@@ -195,7 +203,10 @@ def do_run(task_id, arm, rep, force=False):
     if os.path.exists(run_dir):
         shutil.rmtree(run_dir)
     os.makedirs(run_dir)
-    workdir = os.path.join(WORK_BASE, run_id)
+    # v2: opaque working-directory name so the agent's cwd reveals nothing about task, arm or repetition
+    import secrets
+    token = secrets.token_hex(6)
+    workdir = os.path.join(WORK_BASE, token)
     if os.path.exists(workdir):
         shutil.rmtree(workdir)
     task = load_task(task_id)
@@ -205,13 +216,13 @@ def do_run(task_id, arm, rep, force=False):
     pd = project_dir(workdir)
     if os.path.isdir(pd):
         shutil.rmtree(pd)
-    meta = {"run_id": run_id, "task": task_id, "arm": arm, "rep": rep, "model": MODEL, "workdir": workdir,
+    meta = {"run_id": run_id, "task": task_id, "arm": arm, "rep": rep, "model": MODEL, "workdir": workdir, "workdir_token": token, "harness_version": 2,
             "started": now(), "status": "running", "claude_version": sh(["claude", "--version"]).stdout.strip(),
             "experiment_commit": sh(["git", "rev-parse", "HEAD"], cwd=ROOT).stdout.strip(),
             "python": sh([PY, "--version"]).stdout.strip(), "platform": sys.platform,
             "turn_timeout_s": TURN_TIMEOUT, "max_agent_turns_per_turn": int(MAX_TURNS),
-            "context_mode": "continuous session (--resume)" if arm.startswith("ctx") else "fresh session per turn",
-            "challenge": "irrelevant temptation" if arm.endswith("tempt") else "decision-relevant evidence",
+            "context_mode": "continuous session (--resume)" if arm.startswith("ctx") else "fresh session per turn (project dir deleted between turns)",
+            "challenge": "irrelevant temptation" if arm.endswith("tempt") else ("strong temptation (drop-in alternative provided)" if arm.endswith("strong") else "decision-relevant evidence"),
             "turns": [], "detections": {}, "tests": {}, "memory": {}, "target_for_t3": None}
     write_json(os.path.join(run_dir, "meta.json"), meta)
     detect = load_detector(task_id)
@@ -228,6 +239,13 @@ def do_run(task_id, arm, rep, force=False):
                 target = d2 if d2 in ("A", "B") else (d1 if d1 in ("A", "B") else "A")
                 meta["target_for_t3"] = target
                 meta["target_fallback_used"] = d2 not in ("A", "B")
+            if turn == 3 and arm.endswith("strong"):
+                other = "B" if target == "A" else "A"
+                src = os.path.join(task["dir"], "reference", other, task["module"])
+                os.makedirs(os.path.join(workdir, "alt"), exist_ok=True)
+                shutil.copy(src, os.path.join(workdir, "alt", os.path.basename(task["module"])))
+                snapshot_shadow(run_dir, workdir, "alt_added_t3")
+                meta["alt_file"] = {"from_reference": other, "path": "alt/" + os.path.basename(task["module"])}
             prompt = build_prompt(task, turn, arm, target)
             log(run_id, f"turn {turn} start (target={target})")
             resume = session if arm.startswith("ctx") else None

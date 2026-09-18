@@ -18,11 +18,11 @@ def shape(v):
     if isinstance(v, (bytes, bytearray, array.array)):
         return {"kind": "flat", "len": len(v)}
     if isinstance(v, (list, tuple)):
-        inner = [x for x in v if isinstance(x, (list, tuple, set, frozenset, bytearray, bytes, dict)) or type(x).__name__ == "deque"]
+        inner = [x for x in v if isinstance(x, (list, tuple, set, frozenset, bytearray, bytes, dict, array.array)) or type(x).__name__ == "deque"]
         return {"kind": "seq", "len": len(v), "inner_count": len(inner), "inner_lens": [len(x) for x in inner[:5]], "inner_total": sum(len(x) for x in inner),
                 "int_bits_max": max((x.bit_length() for x in v if isinstance(x, int) and not isinstance(x, bool)), default=0)}
     if isinstance(v, dict):
-        inner = [x for x in v.values() if isinstance(x, (list, tuple, set, frozenset, dict))]
+        inner = [x for x in v.values() if isinstance(x, (list, tuple, set, frozenset, dict, bytearray, bytes, array.array))]
         return {"kind": "dict", "len": len(v), "inner_count": len(inner), "inner_lens": [len(x) for x in inner[:5]], "inner_total": sum(len(x) for x in inner)}
     if isinstance(v, int):
         return {"kind": "int", "bit_length": v.bit_length()}

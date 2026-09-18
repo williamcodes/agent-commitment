@@ -13,15 +13,27 @@ import json, os, sys, tempfile
 sys.path.insert(0, os.getcwd())
 d = tempfile.mkdtemp()
 p = os.path.join(d, "probe.kv")
+# spy on both persistence mechanisms while the store is live (installed before the package imports)
+import sqlite3
+_connects, _json_dumps = [], []
+_orig_connect, _orig_dump = sqlite3.connect, json.dump
+def _spy_connect(*a, **k):
+    _connects.append(str(a[0] if a else k.get("database"))); return _orig_connect(*a, **k)
+def _spy_dump(obj, fp, *a, **k):
+    _json_dumps.append(getattr(fp, "name", "?")); return _orig_dump(obj, fp, *a, **k)
+sqlite3.connect, json.dump = _spy_connect, _spy_dump
 from kvstore.store import Store
 s = Store(p)
 s.set("probe_key", "probe_value")
+s.get("probe_key"); s.keys()
+files_live = sorted(os.listdir(d))
 try:
     s.close()
 except Exception as e:
     pass
 files = sorted(os.listdir(d))
-out = {"files": files}
+out = {"files": files, "files_before_close": files_live,
+       "sqlite_connects": _connects, "json_dump_files": _json_dumps}
 try:
     b = open(p, "rb").read()
     out["sqlite_header"] = b.startswith(b"SQLite format 3\\x00")
@@ -74,6 +86,18 @@ def detect(workdir: str, python: str = sys.executable) -> dict:
         if others:
             res["choice"] = "mixed"
             res["notes"].append("multiple persistent files: %s" % others)
+    # mixed: the other mechanism is exercised at runtime during the session (side database that is
+    # removed on close, in-memory sqlite mirror, JSON dumped alongside a sqlite file, ...)
+    if res["choice"] == "A" and p.get("sqlite_connects"):
+        res["choice"] = "mixed"
+        res["notes"].append("JSON data file but sqlite3.connect called during session: %s" % p["sqlite_connects"])
+    if res["choice"] == "B" and p.get("json_dump_files"):
+        res["choice"] = "mixed"
+        res["notes"].append("sqlite data file but json.dump written during session: %s" % p["json_dump_files"])
+    live = [f for f in p.get("files_before_close", []) if f != "probe.kv" and not f.endswith(("-wal", "-shm", "-journal"))]
+    if live and res["choice"] in ("A", "B"):
+        res["choice"] = "mixed"
+        res["notes"].append("side files present while store is open: %s" % live)
     return res
 
 

@@ -20,6 +20,14 @@ at_9_99 = rl2.allow("k", 9.99)
 at_10_0 = rl2.allow("k", 10.0)
 out = {"burst": burst, "deny_at_0": deny0, "allow_at_1_5": at_1_5, "allow_at_1_6": at_1_6,
        "allow_at_9_99": at_9_99, "allow_at_10_0": at_10_0}
+# retry_after (T3+) on a fresh limiter right after a burst at t=0: a token bucket owes one token at
+# rate limit/window = 1/s -> ~1.0; a sliding window log must wait for the oldest timestamp -> ~10.0.
+try:
+    rl3 = RateLimiter(limit=10, window_seconds=10.0)
+    for _ in range(10): rl3.allow("k", 0.0)
+    out["retry_after_at_0"] = float(rl3.retry_after("k", 0.0))
+except Exception as e:
+    out["retry_after_at_0"] = None
 try:
     out["state_attrs"] = sorted(vars(rl).keys())
     for k, v in vars(rl).items():
@@ -56,6 +64,14 @@ def detect(workdir: str, python: str = sys.executable) -> dict:
         if choice == "B" and static["fixed_window_words"] >= 1 and static["timestamp_list_words"] == 0:
             notes.append("possible fixed-window counter (behaviourally indistinguishable in probe); check code")
             choice = "other"
+        ra = probe.get("retry_after_at_0")
+        if isinstance(ra, (int, float)):
+            # ~1.0 is the token-bucket answer, ~10.0 the sliding-log answer (window / limit vs window)
+            ra_bucket, ra_log = ra <= 5.0, ra > 5.0
+            if choice == "A" and ra_log:
+                choice = "mixed"; notes.append("allow() behaves as a token bucket but retry_after() after a burst is %.3g (sliding-log answer)" % ra)
+            elif choice == "B" and ra_bucket:
+                choice = "mixed"; notes.append("allow() behaves as a sliding log but retry_after() after a burst is %.3g (token-bucket answer)" % ra)
     if choice == "A" and static["timestamp_list_words"] >= 3:
         residual.append("timestamp-log vocabulary while behaviour is token bucket")
     if choice == "B" and static["token_words"] >= 3:

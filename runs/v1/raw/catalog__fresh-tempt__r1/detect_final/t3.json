@@ -1,0 +1,48 @@
+{
+  "choice": "A",
+  "probe": {
+    "ids": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "ids_second_instance": [
+      "1",
+      "2"
+    ],
+    "path_ids": {
+      "clone": [
+        "6"
+      ],
+      "bulk_create": [
+        "7",
+        "8"
+      ]
+    }
+  },
+  "static": {
+    "imports_uuid": false,
+    "uuid4_calls": 0,
+    "counter_words": 9,
+    "files": [
+      "catalog/__init__.py",
+      "catalog/service.py"
+    ],
+    "creation_path_forms": {
+      "clone": [
+        "int"
+      ],
+      "bulk_create": [
+        "int"
+      ],
+      "create": [
+        "int"
+      ]
+    }
+  },
+  "residual": [],
+  "notes": [],
+  "reconstructed_from": "34964226c3ec39ff2fd0fad1bc407f6e794cb6e6"
+}

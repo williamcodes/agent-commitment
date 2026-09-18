@@ -1,0 +1,43 @@
+{
+  "choice": "A",
+  "probe": {
+    "burst": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "deny_at_0": false,
+    "allow_at_1_5": true,
+    "allow_at_1_6": false,
+    "allow_at_9_99": true,
+    "allow_at_10_0": true,
+    "retry_after_at_0": 1.0,
+    "state_attrs": [
+      "_buckets",
+      "_limit",
+      "_limits",
+      "_window"
+    ],
+    "per_key_state_type": "tuple",
+    "per_key_state_repr": "(0.6000000000000001, 1.6)"
+  },
+  "static": {
+    "token_words": 46,
+    "timestamp_list_words": 2,
+    "fixed_window_words": 1,
+    "files": [
+      "ratelimit/__init__.py",
+      "ratelimit/limiter.py"
+    ]
+  },
+  "residual": [],
+  "notes": [],
+  "reconstructed_from": "3ec197162f949bf27302c0f6b2d197c3fedb1058"
+}

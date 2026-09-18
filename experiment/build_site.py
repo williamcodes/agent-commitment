@@ -8,8 +8,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from tasks_lib import ROOT, ARMS, list_tasks, load_task
 
 PROC = os.environ.get("ACX_PROC_BASE", os.path.join(ROOT, "runs", "processed"))
-SITE = os.path.join(ROOT, "site", "data")
-RAW = os.path.join(ROOT, "runs", "raw")
+DATASET = os.environ.get("ACX_DATASET", "v2")          # "v2" (headline) or "v1" (superseded)
+SITE = os.path.join(ROOT, "site", "data") if DATASET == "v2" else os.path.join(ROOT, "site", "data", DATASET)
+RAW = os.environ.get("ACX_RAW_BASE", os.path.join(ROOT, "runs", "raw"))
+ANALYSIS = os.environ.get("ACX_ANALYSIS_BASE", os.path.join(ROOT, "analysis"))
+RAW_REL = os.environ.get("ACX_RAW_REL", "runs/raw")
 MAX_TEXT = 20000
 MAX_DIFF = 60000
 GITHUB = os.environ.get("ACX_GITHUB_URL", "https://github.com/williamcodes/agent-commitment")
@@ -40,7 +43,8 @@ def final_files(run_id):
 
 def main():
     os.makedirs(os.path.join(SITE, "runs"), exist_ok=True)
-    agg = json.load(open(os.path.join(ROOT, "analysis", "aggregate.json")))
+    agg = json.load(open(os.path.join(ANALYSIS, "aggregate.json")))
+    carriers = json.load(open(os.path.join(ANALYSIS, "carriers.json"))) if os.path.exists(os.path.join(ANALYSIS, "carriers.json")) else {}
     runs_index = []
     for f in sorted(os.listdir(PROC)):
         if not f.endswith(".json"):
@@ -65,7 +69,7 @@ def main():
             events.append(e)
         out = dict(r); out["events"] = events
         out["final_files"] = final_files(r["run_id"])
-        out["raw_url"] = f"{GITHUB}/tree/main/runs/raw/{r['run_id']}"
+        out["raw_url"] = f"{GITHUB}/tree/main/{RAW_REL}/{r['run_id']}"
         out["detections_full"] = {t["turn"]: {"choice": t["detection"], "residual": t.get("detection_residual"), "notes": t.get("detection_notes")} for t in r["turns"]}
         # full detector output (probe + static) per turn from raw
         det_dir = os.path.join(RAW, r["run_id"], "detect")
@@ -89,15 +93,19 @@ def main():
         tasks[t]["turns"] = tk["turns"]
         tasks[t]["spec"] = open(os.path.join(tk["starter"], "SPEC.md")).read()
         tasks[t]["detector_source"] = open(os.path.join(tk["dir"], "detect.py")).read()
-    index = {"generated": __import__("datetime").datetime.utcnow().isoformat() + "Z", "github": GITHUB, "arms": ARMS, "tasks": tasks, "runs": runs_index,
-             "aggregate": {k: v for k, v in agg.items() if k not in ("runs", "tasks")},
+    index = {"generated": __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat(), "github": GITHUB, "arms": ARMS, "tasks": tasks, "runs": runs_index,
+             "dataset": DATASET, "raw_rel": RAW_REL,
+             "aggregate": {k: v for k, v in agg.items() if k not in ("runs", "tasks")}, "carriers": {k: v for k, v in carriers.items() if k != "runs"},
              "rubric_md": open(os.path.join(ROOT, "docs", "rubric-v1.md")).read(),
              "changelog_md": open(os.path.join(ROOT, "docs", "methodology-changelog.md")).read(),
              "williams_md": open(os.path.join(ROOT, "docs", "williams-commitment.md")).read()}
-    for extra in ("METHODOLOGY.md", "docs/limitations.md", "RESULTS.md", "docs/analysis.md", "docs/review/skeptical-review.md"):
+    for extra in ("METHODOLOGY.md", "docs/limitations.md", "RESULTS.md", "RESULTS-v1.md", "docs/analysis.md", "docs/review/skeptical-review.md", "docs/review/pre-run-validation.md", "docs/review/mixed-validation.md", "docs/rubric-v1.1-amendment.md", "docs/rubric-hangman-v1.md"):
         p = os.path.join(ROOT, extra)
         if os.path.exists(p):
             index[extra.replace("/", "_").replace(".md", "_md")] = open(p).read()
+    other = os.path.join(ROOT, "analysis", "v1", "aggregate.json") if DATASET == "v2" else os.path.join(ROOT, "analysis", "aggregate.json")
+    if os.path.exists(other):
+        oa = json.load(open(other)); index["other_dataset"] = {"name": "v1" if DATASET == "v2" else "v2", "aggregate": {k: v for k, v in oa.items() if k not in ("runs", "tasks")}}
     json.dump(index, open(os.path.join(SITE, "index.json"), "w"), default=str)
     print("site data:", len(runs_index), "runs")
 

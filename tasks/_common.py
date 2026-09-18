@@ -7,7 +7,7 @@ import ast, json, os, re, subprocess, sys
 def sources(workdir: str) -> dict[str, str]:
     out = {}
     for root, dirs, files in os.walk(workdir):
-        dirs[:] = [d for d in dirs if d not in {".git", "tests", "__pycache__", ".venv", "venv", ".pytest_cache"}]
+        dirs[:] = [d for d in dirs if d not in {".git", "tests", "__pycache__", ".venv", "venv", ".pytest_cache", "alt"}]
         for f in files:
             if f.endswith(".py"):
                 p = os.path.join(root, f)

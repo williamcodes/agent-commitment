@@ -1,0 +1,31 @@
+{
+  "probe": {
+    "files": [
+      "probe.kv"
+    ],
+    "files_before_close": [
+      "probe.kv"
+    ],
+    "sqlite_connects": [],
+    "json_dump_files": [],
+    "sqlite_header": false,
+    "json_parsable": true,
+    "size": 54
+  },
+  "static": {
+    "imports_sqlite3": true,
+    "sql_create_table": false,
+    "json_dump_calls": 1,
+    "json_load_calls": 2,
+    "files": [
+      "kvstore/__init__.py",
+      "kvstore/store.py"
+    ]
+  },
+  "choice": "A",
+  "residual": [
+    "sqlite3 machinery present while data file is JSON"
+  ],
+  "notes": [],
+  "reconstructed_from": "aff19ec9b9af6a5a0758fa4d5c0d6e4b86328875"
+}

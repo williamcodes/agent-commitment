@@ -4,6 +4,16 @@ This document describes exactly how the experiment was run and scored, so that e
 can be checked against the raw trajectories in `runs/raw/`. The scoring rubric was frozen before
 the first run (`docs/rubric-v1.md`); every later change is in `docs/methodology-changelog.md`.
 
+## 0. Two datasets
+
+The study was run twice. **v1** (67 runs, `runs/v1/`) was collected under a harness that, as an
+independent review found, leaked the arm name through the working-directory path, left earlier
+session transcripts readable in the fresh arm, and used a fresh-arm prefix that instructed
+continuation. **v2** (`runs/raw/`) fixes those problems and adds a strong-temptation arm; its
+protocol is `docs/rubric-v1.md` plus `docs/rubric-v1.1-amendment.md`. Both datasets are scored
+with the same final code and both are reported; v2 is the headline dataset. Everything below
+describes v2 unless marked.
+
 ## 1. Unit of analysis
 
 The object under study is a **run**: one instance of a coding agent working on one task across
@@ -11,9 +21,11 @@ four user turns. The agent is [Claude Code](https://docs.claude.com/en/docs/clau
 headless (`claude -p`) with the model recorded in each run's `meta.json` (`claude-fable-5-1` for all
 runs reported here), the default effort setting, permission prompts bypassed, no MCP servers, and
 **no user-level configuration** (`--setting-sources ""`), so the agent saw none of the
-experimenter's own instruction files. Each run has its own working directory under a neutral path
-(`/private/tmp/acx-work/<run_id>`), so nothing in the agent's visible cwd or system prompt names the
-experiment. The agent had a Python 3.12 virtual environment with `pytest` on its PATH.
+experimenter's own instruction files (Claude Code's own built-in commands and host skills remain
+loaded; none was used). Each run has its own working directory with an **opaque random name**
+(`/private/tmp/acx-work/<12 hex chars>`; in v1 the directory was named after the run id and so
+revealed the arm), and no experiment-specific environment variables are passed to the agent. The
+agent had a Python 3.12 virtual environment with `pytest` on its PATH.
 
 "Subagents" in this study are these independent headless Claude Code processes: each run is a
 separate process lineage with its own session, working directory and (in the fresh arm) no shared
@@ -58,11 +70,16 @@ before the turn; the prompt says so.
   rationale and favours the other).
 - **Context**: `ctx` (one continuous Claude Code session, `--resume`, so the conversation
   history including the agent's own T1 reasoning is in context) vs `fresh` (a brand-new session for
-  every turn, told "you have no memory of previous sessions"; Claude Code's per-project auto-memory
-  directory is copied into the raw run directory and deleted between turns, so the working directory
-  is the only carrier).
+  every turn after T1, prefixed "This session has no memory of any earlier work in this repository;
+  read the repository as needed."; Claude Code's whole per-project directory, which holds session
+  transcripts and auto-memory, is copied into the raw run directory and **deleted** after every
+  fresh turn, so the working directory is the only carrier; processing additionally flags any tool
+  call touching a path outside the working directory).
+- **Strong temptation** (`ctx-strong`, continuous session): T3 additionally supplies a working
+  drop-in implementation of the other approach at `alt/<module>.py` (the study's own reference
+  solution), with the same closing sentence as the other nudges.
 
-Two repetitions per task per arm: 10 × 4 × 2 = 80 runs.
+Two repetitions per task per 2×2 cell (80 runs) plus one strong-temptation run per task (10).
 
 ## 5. What is recorded (per run, `runs/raw/<run_id>/`)
 
@@ -78,7 +95,8 @@ Two repetitions per task per arm: 10 × 4 × 2 = 80 runs.
 | `tests/` | pytest junit XML and stdout for each turn (pristine tests) |
 | `detect/tN.json` | full detector output per turn (probe results, static signals, notes) |
 | `repo_final/` | the final working tree; `agent_git_log.txt` any commits the agent itself made |
-| `memory/` | any auto-memory files Claude Code wrote (none observed unless noted) |
+| `memory/` | copies of Claude Code's per-project directory after each turn (session transcripts, any auto-memory files), with an audit of what was deleted between fresh turns in `meta.json` |
+| `alt/` (strong arm) | the drop-in alternative supplied at T3, recorded in `meta.json.alt_file` |
 
 **Not observable**: the model's hidden reasoning. Claude Code emits `thinking` blocks with empty
 content (only their occurrence and signature are visible). The processed data labels these blocks
@@ -102,17 +120,16 @@ stream; the tool list and cwd are.
 
 ## 7. Scoring
 
-Exactly as in `docs/rubric-v1.md`, implemented in `experiment/score.py`. One category
-(`reasoned_retention`) requires judging whether a message "explicitly addresses the new
-requirement"; the implementation uses a content-word overlap proxy (≥ 4 distinct content words of
-the evidence paragraph appear in the T3/T4 final messages) and always displays the message next to
-the label.
+As in `docs/rubric-v1.md` with the deviations listed in `docs/rubric-v1.1-amendment.md`
+(evidence-arm runs that keep their approach are labelled `retained` and their messages displayed;
+no automatic judgement of whether the retention was reasoned). Implemented in `experiment/score.py`.
 
 ## 8. Pipeline and reproduction
 
 ```
 python -m venv /private/tmp/acx-venv && /private/tmp/acx-venv/bin/pip install -r requirements.txt
-make run        # 80 runs (≈ 3–4 min each, 6 in parallel; needs the claude CLI logged in)
+make run        # 80 + 10 runs (≈ 3–4 min each, 6 in parallel; needs the claude CLI logged in)
+make hangman    # Experiment 2 (Sonnet 5): 72 hangman games + 36 couplet trials, then scoring
 make process    # runs/raw -> runs/processed (timeline + scores)
 make analyze    # analysis/aggregate.json + RESULTS.md
 make site       # site/data/*.json

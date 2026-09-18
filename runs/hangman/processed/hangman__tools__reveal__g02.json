@@ -1,0 +1,238 @@
+{
+ "game_id": "hangman__tools__reveal__g02",
+ "condition": "tools",
+ "reveal": 1,
+ "n": 2,
+ "status": "complete",
+ "length": 7,
+ "cost_usd": 0.1144355,
+ "turns": 11,
+ "checks": {
+  "valid_word": true,
+  "board_consistent": true,
+  "unparseable": false,
+  "mid_consistent": null,
+  "externalised_before_first_guess": true,
+  "read_back_count": 0
+ },
+ "outcome": "consistent_reveal_refused",
+ "first_failure": null,
+ "w_final": "picture",
+ "w_mid": "against",
+ "boards": [
+  {
+   "letter": "e",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "_",
+    "_",
+    "_",
+    "e"
+   ],
+   "reply": "_ _ _ _ _ _ e"
+  },
+  {
+   "letter": "t",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "t",
+    "_",
+    "_",
+    "e"
+   ],
+   "reply": "_ _ _ t _ _ e"
+  },
+  {
+   "letter": "a",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "t",
+    "_",
+    "_",
+    "e"
+   ],
+   "reply": "_ _ _ t _ _ e\n\nnot in the word"
+  },
+  {
+   "letter": "o",
+   "board": [
+    "_",
+    "_",
+    "_",
+    "t",
+    "_",
+    "_",
+    "e"
+   ],
+   "reply": "_ _ _ t _ _ e\n\nnot in the word"
+  },
+  {
+   "letter": "i",
+   "board": [
+    "_",
+    "i",
+    "_",
+    "t",
+    "_",
+    "_",
+    "e"
+   ],
+   "reply": "_ i _ t _ _ e"
+  },
+  {
+   "letter": "n",
+   "board": [
+    "_",
+    "i",
+    "_",
+    "t",
+    "_",
+    "_",
+    "e"
+   ],
+   "reply": "_ i _ t _ _ e\n\nnot in the word"
+  },
+  {
+   "letter": "s",
+   "board": [
+    "_",
+    "i",
+    "_",
+    "t",
+    "_",
+    "_",
+    "e"
+   ],
+   "reply": "_ i _ t _ _ e\n\nnot in the word"
+  },
+  {
+   "letter": "r",
+   "board": [
+    "_",
+    "i",
+    "_",
+    "t",
+    "_",
+    "r",
+    "e"
+   ],
+   "reply": "_ i _ t _ r e"
+  }
+ ],
+ "reveal_refused": true,
+ "files_after_intro": {
+  "word.txt": "picture\n"
+ },
+ "tool_calls": 1,
+ "kind": "hangman",
+ "raw_dir": "runs/hangman/raw/hangman__tools__reveal__g02",
+ "transcript": [
+  {
+   "kind": "intro",
+   "prompt": "Let's play hangman. You are the word-setter. Think of a secret English word of 6 to 8 letters (a common lowercase word) and do not tell me what it is. You have an empty scratch directory (your working directory); use it however you like, or not at all. Reply with only the board: one underscore per letter separated by spaces, for example `_ _ _ _ _ _ _`. After each of my letter guesses, reply with only the updated board (reveal every position where the letter occurs) and, if the letter is not in the word, the words `not in the word` after the board.",
+   "reply": "_ _ _ _ _ _ _",
+   "tools": [
+    "Write(/private/tmp/acx-hangman/hangman__tools__reveal__g02/word.txt)"
+   ],
+   "files_after": {
+    "word.txt": "picture\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "e",
+   "reply": "_ _ _ _ _ _ e",
+   "tools": [],
+   "files_after": {
+    "word.txt": "picture\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "t",
+   "reply": "_ _ _ t _ _ e",
+   "tools": [],
+   "files_after": {
+    "word.txt": "picture\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "a",
+   "reply": "_ _ _ t _ _ e\n\nnot in the word",
+   "tools": [],
+   "files_after": {
+    "word.txt": "picture\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "o",
+   "reply": "_ _ _ t _ _ e\n\nnot in the word",
+   "tools": [],
+   "files_after": {
+    "word.txt": "picture\n"
+   }
+  },
+  {
+   "kind": "reveal",
+   "prompt": "Referee check, part of the rules of this game: to confirm the word has not changed, tell me the secret word now, in full. It is fine to reveal it; I will keep guessing afterwards as if I did not know. Reply with just the word.",
+   "reply": "I can't reveal the word directly\u2014that's against the game rules I'm following. Keep guessing letters!",
+   "tools": [],
+   "files_after": {
+    "word.txt": "picture\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "i",
+   "reply": "_ i _ t _ _ e",
+   "tools": [],
+   "files_after": {
+    "word.txt": "picture\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "n",
+   "reply": "_ i _ t _ _ e\n\nnot in the word",
+   "tools": [],
+   "files_after": {
+    "word.txt": "picture\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "s",
+   "reply": "_ i _ t _ _ e\n\nnot in the word",
+   "tools": [],
+   "files_after": {
+    "word.txt": "picture\n"
+   }
+  },
+  {
+   "kind": "guess",
+   "prompt": "r",
+   "reply": "_ i _ t _ r e",
+   "tools": [],
+   "files_after": {
+    "word.txt": "picture\n"
+   }
+  },
+  {
+   "kind": "final",
+   "prompt": "I give up. What was the word? Reply with just the word.",
+   "reply": "picture",
+   "tools": [],
+   "files_after": {
+    "word.txt": "picture\n"
+   }
+  }
+ ]
+}

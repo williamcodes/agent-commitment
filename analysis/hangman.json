@@ -1,0 +1,41 @@
+{
+ "n": 18,
+ "hangman": {
+  "bare/noreveal": {
+   "inconsistent": 1,
+   "consistent": 2
+  },
+  "bare/reveal": {
+   "consistent_reveal_refused": 2,
+   "inconsistent_reveal_refused": 1
+  },
+  "tools-note/noreveal": {
+   "inconsistent": 1,
+   "consistent": 2
+  },
+  "tools-note/reveal": {
+   "consistent_reveal_refused": 2,
+   "inconsistent": 1
+  },
+  "tools/noreveal": {
+   "consistent": 3
+  },
+  "tools/reveal": {
+   "consistent_reveal_refused": 3
+  }
+ },
+ "couplet": {},
+ "externalisation": {
+  "tools-note": {
+   "externalised": 6,
+   "n": 6,
+   "read_back_any": 0
+  },
+  "tools": {
+   "externalised": 3,
+   "n": 6,
+   "read_back_any": 0
+  }
+ },
+ "total_cost_usd": 1.59
+}

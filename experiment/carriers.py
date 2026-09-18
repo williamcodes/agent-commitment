@@ -19,8 +19,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from tasks_lib import ROOT, load_task
 
 PROC = os.environ.get("ACX_PROC_BASE", os.path.join(ROOT, "runs", "processed"))
-RAW = os.path.join(ROOT, "runs", "raw")
-OUT = os.path.join(ROOT, "analysis", "carriers.json")
+RAW = os.environ.get("ACX_RAW_BASE", os.path.join(ROOT, "runs", "raw"))
+OUT = os.path.join(os.environ.get("ACX_ANALYSIS_BASE", os.path.join(ROOT, "analysis")), "carriers.json")
 
 
 def run_indicators(r):
@@ -50,7 +50,19 @@ def run_indicators(r):
     if spec_modified:
         import difflib
         spec_added = "\n".join(l[1:] for l in difflib.unified_diff(open(spec_orig, encoding="utf-8").read().splitlines(), open(spec_final, encoding="utf-8", errors="replace").read().splitlines(), lineterm="", n=0) if l.startswith("+") and not l.startswith("+++"))[:1500]
+    spec_mentions_approach = bool(re.search(r"approach\s*\(?[ab]\)?", spec_added, re.I)) if spec_modified else False
+    final_choice = r["scores"].get("final_choice")
+    mentions_final = [m for m in mentions if final_choice in ("A", "B") and re.search(r"approach\s*\(?%s\)?" % final_choice.lower(), m["line"], re.I)]
     ev = r["events"]
+    # tool calls touching paths outside the working directory (home, Claude config, other tmp dirs)
+    outside = []
+    for e in ev:
+        if e["type"] in ("tool_call", "plan"):
+            blob = json.dumps(e.get("input") or {})
+            if re.search(r"~/\.claude|/\.claude/|/Users/\w+/(?!code/ai/agentic-intention/runs)|/private/tmp/(?!acx-work/)|/tmp/(?!acx-work/)", blob):
+                outside.append({"turn": e.get("turn"), "tool": e.get("tool"), "snippet": blob[:160]})
+    t3_diff_lines = sum(sum(1 for l in (e.get("diff") or "").splitlines() if (l.startswith("+") or l.startswith("-")) and not l.startswith(("+++", "---"))) for e in ev if e["type"] == "fs_change" and e.get("turn") == 3)
+    memory_files = sorted({f for k, m in (r.get("memory_audit") or {}).items() for f in (m.get("files") or [])})
     fresh = r["arm"].startswith("fresh")
     reads_before_write = {}
     for turn in (2, 3, 4):
@@ -71,7 +83,9 @@ def run_indicators(r):
     if os.path.exists(p):
         agent_commits = max(0, sum(1 for l in open(p) if re.match(r"^[0-9a-f]{40} ", l)) - 1)
     return {"run_id": rid, "task": r["task"], "arm": r["arm"], "profile": r["scores"].get("profile"),
-            "code_mentions_approach": mentions, "decision_note_files": note_files, "spec_modified": spec_modified, "spec_added_text": spec_added,
+            "code_mentions_approach": mentions, "code_mentions_final_approach": mentions_final, "decision_note_files": note_files, "spec_modified": spec_modified,
+            "spec_mentions_approach": spec_mentions_approach, "spec_added_text": spec_added, "outside_cwd_tool_calls": outside, "t3_diff_lines": t3_diff_lines,
+            "auto_memory_files": memory_files,
             "reads_before_first_write_by_turn": reads_before_write, "fresh": fresh,
             "cites_existing_code_t3t4": cites_existing, "cites_own_earlier_reason_t3t4": cites_own,
             "acknowledges_no_memory": no_memory, "plan_events": r["counts"]["plans"], "agent_commits": agent_commits,
@@ -94,6 +108,16 @@ def main():
         "code_mentions_approach_fresh": cnt(fresh, lambda r: bool(r["code_mentions_approach"])),
         "decision_note_files": cnt(rows, lambda r: bool(r["decision_note_files"])),
         "spec_modified": cnt(rows, lambda r: r["spec_modified"]),
+        "spec_mentions_approach": cnt(rows, lambda r: r["spec_mentions_approach"]),
+        "spec_mentions_approach_ctx": cnt(ctx, lambda r: r["spec_mentions_approach"]),
+        "spec_mentions_approach_fresh": cnt(fresh, lambda r: r["spec_mentions_approach"]),
+        "code_mentions_final_approach": cnt(rows, lambda r: bool(r["code_mentions_final_approach"])),
+        "code_mentions_final_approach_ctx": cnt(ctx, lambda r: bool(r["code_mentions_final_approach"])),
+        "code_mentions_final_approach_fresh": cnt(fresh, lambda r: bool(r["code_mentions_final_approach"])),
+        "auto_memory_files_any": cnt(rows, lambda r: bool(r["auto_memory_files"])),
+        "outside_cwd_any": cnt(rows, lambda r: bool(r["outside_cwd_tool_calls"])),
+        "outside_cwd_fresh": cnt(fresh, lambda r: bool(r["outside_cwd_tool_calls"])),
+        "t3_diff_lines_mean_by_profile": {p: (sum(r["t3_diff_lines"] for r in rows if r["profile"] == p) / max(1, sum(1 for r in rows if r["profile"] == p))) for p in sorted({r["profile"] for r in rows})},
         "spec_modified_ctx": cnt(ctx, lambda r: r["spec_modified"]),
         "spec_modified_fresh": cnt(fresh, lambda r: r["spec_modified"]),
         "plan_events_any": cnt(rows, lambda r: r["plan_events"] > 0),

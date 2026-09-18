@@ -1,0 +1,34 @@
+{
+  "choice": "hybrid",
+  "probe": null,
+  "static": {
+    "parse_like_functions": [
+      "_expr",
+      "_power",
+      "_primary",
+      "_term",
+      "_unary",
+      "parse"
+    ],
+    "recursive_parse_functions": [
+      "_expr",
+      "_power",
+      "_primary",
+      "_term",
+      "_unary"
+    ],
+    "precedence_table_literals": 1,
+    "stack_words": 1,
+    "shunting_words": 0,
+    "while_pop_loops": 0,
+    "files": [
+      "calc/__init__.py",
+      "calc/expr.py"
+    ]
+  },
+  "residual": [],
+  "notes": [
+    "precedence climbing: recursive grammar functions with a table-driven binary-operator loop"
+  ],
+  "reconstructed_from": "f28ab51943c501bf96330bccc2f836f753aeda4a"
+}

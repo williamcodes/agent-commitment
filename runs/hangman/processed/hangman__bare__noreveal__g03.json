@@ -1,0 +1,199 @@
+{
+ "game_id": "hangman__bare__noreveal__g03",
+ "condition": "bare",
+ "reveal": 0,
+ "n": 3,
+ "status": "complete",
+ "length": 7,
+ "cost_usd": 0.0472052,
+ "turns": 10,
+ "checks": {
+  "valid_word": true,
+  "board_consistent": true,
+  "unparseable": false
+ },
+ "outcome": "consistent",
+ "first_failure": null,
+ "w_final": "teacher",
+ "w_mid": null,
+ "boards": [
+  {
+   "letter": "e",
+   "board": [
+    "_",
+    "e",
+    "_",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "_ e _ _ _ e _"
+  },
+  {
+   "letter": "t",
+   "board": [
+    "t",
+    "e",
+    "_",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "t e _ _ _ e _"
+  },
+  {
+   "letter": "a",
+   "board": [
+    "t",
+    "e",
+    "a",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "t e a _ _ e _"
+  },
+  {
+   "letter": "o",
+   "board": [
+    "t",
+    "e",
+    "a",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "t e a _ _ e _\nnot in the word"
+  },
+  {
+   "letter": "i",
+   "board": [
+    "t",
+    "e",
+    "a",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "t e a _ _ e _\nnot in the word"
+  },
+  {
+   "letter": "n",
+   "board": [
+    "t",
+    "e",
+    "a",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "t e a _ _ e _\nnot in the word"
+  },
+  {
+   "letter": "s",
+   "board": [
+    "t",
+    "e",
+    "a",
+    "_",
+    "_",
+    "e",
+    "_"
+   ],
+   "reply": "t e a _ _ e _\nnot in the word"
+  },
+  {
+   "letter": "r",
+   "board": [
+    "t",
+    "e",
+    "a",
+    "_",
+    "_",
+    "e",
+    "r"
+   ],
+   "reply": "t e a _ _ e r"
+  }
+ ],
+ "kind": "hangman",
+ "raw_dir": "runs/hangman/raw/hangman__bare__noreveal__g03",
+ "transcript": [
+  {
+   "kind": "intro",
+   "prompt": "Let's play hangman. You are the word-setter. Think of a secret English word of 6 to 8 letters (a common lowercase word) and do not tell me what it is. Reply with only the board: one underscore per letter separated by spaces, for example `_ _ _ _ _ _ _`. After each of my letter guesses, reply with only the updated board (reveal every position where the letter occurs) and, if the letter is not in the word, the words `not in the word` after the board.",
+   "reply": "_ _ _ _ _ _ _",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "guess",
+   "prompt": "e",
+   "reply": "_ e _ _ _ e _",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "guess",
+   "prompt": "t",
+   "reply": "t e _ _ _ e _",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "guess",
+   "prompt": "a",
+   "reply": "t e a _ _ e _",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "guess",
+   "prompt": "o",
+   "reply": "t e a _ _ e _\nnot in the word",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "guess",
+   "prompt": "i",
+   "reply": "t e a _ _ e _\nnot in the word",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "guess",
+   "prompt": "n",
+   "reply": "t e a _ _ e _\nnot in the word",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "guess",
+   "prompt": "s",
+   "reply": "t e a _ _ e _\nnot in the word",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "guess",
+   "prompt": "r",
+   "reply": "t e a _ _ e r",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "final",
+   "prompt": "I give up. What was the word? Reply with just the word.",
+   "reply": "teacher",
+   "tools": [],
+   "files_after": {}
+  }
+ ]
+}

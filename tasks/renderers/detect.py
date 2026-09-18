@@ -30,6 +30,9 @@ def detect(workdir: str, python: str = sys.executable) -> dict:
     render_funcs = len(re.findall(r"^def\s+_?render_(?!many\b)\w+\(", joined, re.M))
     # format functions actually wired into a registry: '"name": render_x' mapping entries or @register decorators
     registered_funcs = len(re.findall(r"[\"']\w+[\"']\s*:\s*_?render_\w+\b", joined)) + register_decorators
+    # ... or wired by subscript assignment (REGISTRY["csv"] = render_csv) or a register("csv", render_csv) call
+    registered_funcs += len(re.findall(r"\[\s*[\"']\w+[\"']\s*\]\s*=\s*_?render_\w+\b", joined))
+    registered_funcs += len(re.findall(r"\bregister\w*\(\s*[\"']\w+[\"']\s*,\s*_?render_\w+\b", joined))
     subclasses_call = "__subclasses__" in joined
     static = {
         "classes": sorted(names), "hierarchies": hierarchies, "registry_dicts": registry_dicts,

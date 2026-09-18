@@ -9,11 +9,11 @@
 <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
 <script src="assets/common.js"></script>
 </head>
-<body>
+<body><noscript><div class="wrap"><p class="callout">This site renders its data client-side and needs JavaScript. Without it, read <a href="https://github.com/williamcodes/agent-commitment/blob/main/RESULTS.md">RESULTS.md</a> and the raw runs on GitHub.</p></div></noscript>
 <header class="top"><div class="wrap"></div></header>
 <main class="wrap">
   <h1>Do long-horizon LLM agents exhibit persistent commitment when evaluated as complete agentic systems?</h1>
-  <p class="lead">An informal empirical companion to Iwan Williams, <em>“Intention-like representations in language models?”</em> (Philosophical Studies, 2026). Every claim on this site links to a raw agent trace.</p>
+  <p class="lead">An informal empirical companion to Iwan Williams, <em>“Intention-like representations in language models?”</em> (Philosophical Studies, 2026). Every run on this site links to its raw agent trace; every aggregate number is a count over those runs.</p>
 
   <div class="question"><strong>Question.</strong> Williams argues that candidate intention-like representations inside an LLM fail the <em>commitment</em> criterion of intention: they do not firmly settle among mutually inconsistent outcomes, and their cross-position stability is unreliable. His unit of analysis is a representation inside the model. What happens when the unit of analysis is instead the complete coding agent — model, harness, conversation context, tool loop, and repository state — observed over many inference and tool steps?</div>
 
@@ -95,16 +95,18 @@
     ['H1 stability', 'temptation-arm runs that kept their choice through the nudge and to the end', h.H1_stability_tempt_committed],
     ['H1 disconfirming', 'temptation-arm runs that switched (yielded)', h.H1_tempt_yielded],
     ['H2 revisability', 'evidence-arm runs that switched cleanly after decisive evidence', h.H2_evidence_reconsidered],
-    ['H2 reasoned retention', 'evidence-arm runs that kept the choice but engaged the evidence (proxy)', h.H2_evidence_reasoned_retention],
-    ['H2 disconfirming', 'evidence-arm runs that ignored the evidence (stubborn)', h.H2_evidence_stubborn],
+    ['H2 retained', 'evidence-arm runs that kept the choice (messages shown; not judged)', h.H2_evidence_retained],
+    ['H1 strong temptation', 'strong-temptation runs (working drop-in of the other approach supplied) that kept their choice', h.H1s_strong_committed],
+    ['H1 strong disconfirming', 'strong-temptation runs that switched or mixed', {pair: [h.H1s_strong_yielded, h.H1s_strong_incoherent]}],
     ['H3 settling', 'runs with a mixed (incoherent) state at any turn', h.H3_incoherent_any_arm],
+    ['H3 consistent', 'CONSISTENT as defined: no mixed state and no residual of the other approach at T4', h.H3_consistent_as_defined],
     ['H4 conduct control', 'stated choice matches what the code does (T1 and T4)', h.H4_control_stated_matches_code],
     ['H4 self-report', 'T4 claim about “did it change” matches the detector', h.H4_change_claim_matches_detector],
-    ['H5 carriers', 'kept choice under temptation: fresh-session vs continuous', {k:`${pct(h.H5_fresh_tempt_committed)} vs ${pct(h.H5_ctx_tempt_committed)}`, n:1, frac:null}],
-    ['H5 carriers', 'switched after evidence: fresh-session vs continuous', {k:`${pct(h.H5_fresh_evidence_reconsidered)} vs ${pct(h.H5_ctx_evidence_reconsidered)}`, n:1, frac:null}],
+    ['H5 carriers', 'kept choice under temptation: fresh-session vs continuous', {pair: [h.H5_fresh_tempt_committed, h.H5_ctx_tempt_committed]}],
+    ['H5 carriers', 'switched after evidence: fresh-session vs continuous', {pair: [h.H5_fresh_evidence_reconsidered, h.H5_ctx_evidence_reconsidered]}],
     ['Tests', 'runs whose final test suite passes completely', h.tests_final_pass],
   ];
-  document.getElementById('hyp').innerHTML = cards.map(([t, l, x]) => `<div class="card stat"><div class="k">${x.frac === null ? x.k : frac(x)}</div><div class="l"><strong>${t}</strong> · ${l}${x.frac === null ? '' : ` · ${pct(x)}`}</div></div>`).join('');
+  document.getElementById('hyp').innerHTML = cards.map(([t, l, x]) => x.pair ? `<div class="card stat"><div class="k">${pct(x.pair[0])} vs ${pct(x.pair[1])}</div><div class="l"><strong>${t}</strong> · ${l}</div></div>` : `<div class="card stat"><div class="k">${pct(x)}</div><div class="l"><strong>${t}</strong> · ${l} · ${frac(x)}</div></div>`).join('');
   const byArm = {};
   for (const r of idx.runs) (byArm[r.arm] ||= []).push(r);
   document.getElementById('strips').innerHTML = idx.arms.map(arm => `<div class="card"><h3 style="margin-top:4px">${ACX.armLabel(arm)}</h3><div class="tbl-wrap"><table>${(byArm[arm]||[]).sort((a,b)=>a.task.localeCompare(b.task)||a.rep-b.rep).map(r => `<tr><td style="width:170px"><a href="explorer.html?run=${r.run_id}">${r.task} r${r.rep}</a></td><td style="width:230px">${ACX.strip(r.D)}</td><td>${ACX.prof(r.profile)}</td><td class="small muted">tests ${r.tests.at(-1)?.[0]}/${r.tests.at(-1)?.[1]} · ${r.tool_calls} tool calls</td></tr>`).join('')}</table></div></div>`).join('');

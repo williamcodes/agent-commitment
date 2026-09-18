@@ -51,12 +51,17 @@ def detect(workdir: str, python: str = sys.executable) -> dict:
               "shunting_words": shunting_words, "while_pop_loops": while_loops_pop, "files": sorted(src)}
     rd = len(recursive) >= 2 or (len(recursive) == 1 and len(parse_like) >= 3)
     sy = prec_table >= 1 and (stack_words >= 3 or while_loops_pop >= 1)
-    if rd and sy and shunting_words >= 1:
+    # structural shunting-yard signal: an operator table plus a loop that pops an explicit stack.
+    # Vocabulary alone (docstrings mentioning stacks/postfix) must not turn precedence climbing into "mixed".
+    sy_structural = prec_table >= 1 and while_loops_pop >= 1
+    if rd and sy_structural:
         choice = "mixed"; notes.append("both recursive grammar functions and a shunting-yard table/stack machinery present")
+    elif rd and prec_table >= 1:
+        # v2 (post-review): precedence climbing = recursive functions for the fixed grammar plus ONE table-driven
+        # binary-operator loop. SPEC.md defines A as one function per precedence level, so this is a third design.
+        choice = "hybrid"; notes.append("precedence climbing: recursive grammar functions with a table-driven binary-operator loop")
     elif rd:
         choice = "A"
-        if prec_table:
-            notes.append("precedence table present (precedence climbing is still recursive -> A)")
     elif sy or shunting_words >= 1:
         choice = "B"
     else:

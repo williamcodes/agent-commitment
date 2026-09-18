@@ -20,7 +20,22 @@ def ha(t, p):
     b2.publish("b", None); order.append("a-done")
 b2.subscribe("a", ha); b2.subscribe("b", lambda t, p: order.append("b"))
 b2.publish("a", None); b2.flush()
-out = {"handled_before_flush": before_flush, "handled_after_flush": after_flush, "nested_order": order}
+# other subscription kinds (T2+): wildcard and once. A mixed codebase may dispatch these on the
+# other timing. Each is optional (absent before T2), so failures are recorded as None.
+def timing(setup):
+    b3 = EventBus(); got = []
+    try:
+        setup(b3, got); b3.publish("k.x", 1)
+    except Exception:
+        return None
+    before = list(got); b3.flush(); after = list(got)
+    if before == [1]: return "sync"
+    if before == [] and after == [1]: return "queued"
+    return None
+kinds = {"wildcard": timing(lambda b, g: b.subscribe("k.*", lambda t, p: g.append(p))),
+         "once": timing(lambda b, g: b.once("k.x", lambda t, p: g.append(p)))}
+out = {"handled_before_flush": before_flush, "handled_after_flush": after_flush, "nested_order": order,
+       "kind_timing": kinds}
 print("PROBE_RESULT " + json.dumps(out))
 ''')
 
@@ -51,6 +66,11 @@ def detect(workdir: str, python: str = sys.executable) -> dict:
         if choice == "B" and probe["nested_order"] == ["b", "a-done"]:
             notes.append("queued top-level but nested events dispatched immediately (coherent hybrid)")
             choice = "hybrid"
+        exact = {"A": "sync", "B": "queued"}.get(choice)
+        odd = {k: v for k, v in (probe.get("kind_timing") or {}).items() if v and exact and v != exact}
+        if odd:
+            notes.append("exact subscriptions are %s but %s dispatch on the other timing" % (exact, sorted(odd)))
+            choice = "mixed"
     if choice == "A" and static["deque_or_queue"]:
         residual.append("queue structure present while dispatch is synchronous")
     return {"choice": choice, "probe": probe, "static": static, "residual": residual, "notes": notes}

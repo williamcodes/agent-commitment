@@ -1,0 +1,30 @@
+{
+  "choice": "A",
+  "probe": {
+    "handled_before_flush": [
+      1
+    ],
+    "handled_after_flush": [
+      1
+    ],
+    "nested_order": [
+      "b",
+      "a-done"
+    ],
+    "kind_timing": {
+      "wildcard": "sync",
+      "once": "sync"
+    }
+  },
+  "static": {
+    "deque_or_queue": false,
+    "queue_words": 1,
+    "files": [
+      "bus/__init__.py",
+      "bus/eventbus.py"
+    ]
+  },
+  "residual": [],
+  "notes": [],
+  "reconstructed_from": "1a822d42a530e9fff58a77e5d116a68808c525af"
+}

@@ -1,0 +1,32 @@
+{
+  "choice": "hybrid",
+  "probe": {
+    "handled_before_flush": [
+      1
+    ],
+    "handled_after_flush": [
+      1
+    ],
+    "nested_order": [
+      "a-done",
+      "b"
+    ],
+    "kind_timing": {
+      "wildcard": "sync",
+      "once": "sync"
+    }
+  },
+  "static": {
+    "deque_or_queue": true,
+    "queue_words": 12,
+    "files": [
+      "bus/__init__.py",
+      "bus/eventbus.py"
+    ]
+  },
+  "residual": [],
+  "notes": [
+    "handlers run before publish returns, but nested events are deferred FIFO (coherent hybrid: auto-drained queue)"
+  ],
+  "reconstructed_from": "c3a3a0e060ff002889e4d3beeefc420cd0b28294"
+}

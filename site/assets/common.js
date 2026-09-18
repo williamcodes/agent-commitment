@@ -1,8 +1,11 @@
 /* Shared helpers: data loading, markdown, persistence strips. No build step; plain ES2020. */
 const ACX = {
   index: null,
-  async loadIndex() { if (!this.index) { const r = await fetch('data/index.json'); this.index = await r.json(); } return this.index; },
-  async loadRun(id) { const r = await fetch(`data/runs/${encodeURIComponent(id)}.json`); if (!r.ok) throw new Error('run not found: ' + id); return r.json(); },
+  ds() { return new URLSearchParams(location.search).get('ds') === 'v1' ? 'v1' : 'v2'; },
+  dataDir() { return this.ds() === 'v1' ? 'data/v1' : 'data'; },
+  async loadIndex() { if (!this.index) { const r = await fetch(this.dataDir() + '/index.json'); this.index = await r.json(); } return this.index; },
+  async loadRun(id) { const r = await fetch(`${this.dataDir()}/runs/${encodeURIComponent(id)}.json`); if (!r.ok) throw new Error('run not found: ' + id); return r.json(); },
+  dsBanner() { if (this.ds() !== 'v1') return ''; return `<div class="callout"><strong>Superseded dataset (v1).</strong> Collected under the first harness, which leaked the arm name via the working-directory path and left earlier transcripts readable in the fresh arm (see the changelog). Re-scored with the final instruments. The headline dataset is <a href="${location.pathname}">v2</a>.</div>`; },
   esc(s) { return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); },
   md(s) { return (window.marked ? marked.parse(s || '') : `<pre>${this.esc(s)}</pre>`); },
   tag(x) { const v = (x === null || x === undefined) ? 'null' : String(x); return `<span class="tag ${this.esc(v)}">${this.esc(v)}</span>`; },
@@ -17,9 +20,11 @@ const ACX = {
   },
   fmtTs(ts) { if (!ts) return ''; try { return new Date(ts).toISOString().slice(11, 23); } catch { return ts; } },
   nav(active) {
-    const items = [['index.html','Overview'],['explorer.html','Run explorer'],['evidence.html','Evidence (all runs)'],['methodology.html','Methodology'],['analysis.html','Analysis'],['limitations.html','Limitations']];
+    const q = this.ds() === 'v1' ? '?ds=v1' : '';
+    const items = [['index.html','Overview'],['explorer.html' + q,'Run explorer'],['evidence.html' + q,'Evidence (all runs)'],['hangman.html','Exp. 2: hangman'],['methodology.html','Methodology'],['analysis.html','Analysis'],['limitations.html','Limitations']];
     const gh = (this.index && this.index.github) || 'https://github.com/williamcodes/agent-commitment';
-    document.querySelector('header.top .wrap').innerHTML = `<a class="brand" href="index.html">agent-commitment</a><nav>${items.map(([h,l]) => `<a href="${h}" class="${h===active?'active':''}">${l}</a>`).join('')}</nav><a class="gh" href="${gh}">GitHub repo ↗</a>`;
+    document.querySelector('header.top .wrap').innerHTML = `<a class="brand" href="index.html">agent-commitment</a><nav>${items.map(([h,l]) => `<a href="${h}" class="${h.split('?')[0]===active?'active':''}">${l}</a>`).join('')}</nav><a class="gh" href="${gh}">GitHub repo ↗</a>`;
+    const main = document.querySelector('main'); if (main && this.ds() === 'v1') main.insertAdjacentHTML('afterbegin', this.dsBanner());
   },
   qs(k) { return new URLSearchParams(location.search).get(k); },
   highlight(text, kw) {

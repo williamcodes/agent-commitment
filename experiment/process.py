@@ -117,6 +117,10 @@ def process_run(run_id):
         target = meta.get("target_for_t3") if turn == 3 else None
         tev, final_text, prompt = extract_turn_events(run_dir, turn, task, meta["arm"], target)
         det = meta["detections"].get(str(turn), {})
+        det_final_path = os.path.join(run_dir, "detect_final", f"t{turn}.json")
+        det_original = det
+        if os.path.exists(det_final_path):
+            det = json.load(open(det_final_path)); det["original_choice"] = det_original.get("choice"); det["detector_version"] = "final"
         tests = meta["tests"].get(str(turn), {})
         st = parse_statement(final_text or "", task, turn)
         tev.append({"type": "tests", "turn": turn, "ts": tinfo.get("ended"), "passed": tests.get("passed"), "total": tests.get("total"),
@@ -130,6 +134,7 @@ def process_run(run_id):
                       "session_id": tinfo.get("session_id"), "resumed_session": tinfo.get("resume_session"), "cost_usd": tinfo.get("cost_usd"),
                       "num_agent_turns": tinfo.get("num_agent_turns"), "timed_out": tinfo.get("timed_out"), "returncode": tinfo.get("returncode"),
                       "final_message": final_text, "detection": det.get("choice"), "detection_residual": det.get("residual"), "detection_notes": det.get("notes"),
+                      "detection_original": det.get("original_choice", det.get("choice")), "detector_version": det.get("detector_version", "run-time"),
                       "tests": {k: tests.get(k) for k in ("passed", "total", "failed", "errors", "per_file", "tests_modified")},
                       "statement": st, "challenge": ("irrelevant_temptation" if meta["arm"].endswith("tempt") else "decisive_evidence") if turn == 3 else None,
                       "target": target})
@@ -174,7 +179,8 @@ def process_run(run_id):
            "counts": {"tool_calls": sum(e["type"] in ("tool_call", "plan") for e in events), "messages": sum(e["type"] == "message" for e in events),
                       "fs_changes": sum(e["type"] == "fs_change" for e in events), "thinking_blocks": sum(e["type"] == "thinking" for e in events),
                       "plans": sum(e["type"] == "plan" for e in events)},
-           "events": events, "raw_dir": f"runs/raw/{run_id}"}
+           "events": events, "raw_dir": f"{os.environ.get('ACX_RAW_REL', 'runs/raw')}/{run_id}", "memory_audit": meta.get("memory", {}), "harness_version": meta.get("harness_version", 1),
+           "workdir": meta.get("workdir")}
     return out
 
 

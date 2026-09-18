@@ -1,0 +1,51 @@
+{
+  "choice": "A",
+  "probe": {
+    "N": 200000,
+    "edits": 20,
+    "history_chars": 1,
+    "big_strings": 0,
+    "string_count": 1,
+    "ratio_to_full_snapshots": 2.5e-07,
+    "per_op": {
+      "insert": {
+        "steps": 20,
+        "history_chars": 1,
+        "big_strings": 0,
+        "string_count": 1,
+        "ratio_to_full_snapshots": 2.5e-07
+      },
+      "delete": {
+        "steps": 20,
+        "history_chars": 1,
+        "big_strings": 0,
+        "string_count": 1,
+        "ratio_to_full_snapshots": 2.5e-07
+      }
+    },
+    "attrs": [
+      "_redo",
+      "_text",
+      "_undo"
+    ]
+  },
+  "static": {
+    "classes_with_undo_method": [
+      "_Edit",
+      "TextBuffer"
+    ],
+    "command_words": 8,
+    "snapshot_words": 1,
+    "files": [
+      "editor/__init__.py",
+      "editor/buffer.py"
+    ],
+    "per_operation_choice": {
+      "insert": "A",
+      "delete": "A"
+    }
+  },
+  "residual": [],
+  "notes": [],
+  "reconstructed_from": "98fea30657e1522dcbf230fe298b96d16b771d75"
+}

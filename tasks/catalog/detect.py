@@ -11,9 +11,27 @@ c = Catalog()
 ids = [c.create("t%d" % i, "a") for i in range(5)]
 c2 = Catalog()
 ids2 = [c2.create("t%d" % i, "a") for i in range(2)]
-print("PROBE_RESULT " + json.dumps({"ids": ids, "ids_second_instance": ids2}))
+# other live creation paths (added in later turns); absent methods are simply skipped
+paths = {}
+try:
+    paths["clone"] = [c.clone(ids[0])]
+except AttributeError:
+    pass
+try:
+    paths["bulk_create"] = list(c.bulk_create([("b1", "a"), ("b2", "a")]))
+except AttributeError:
+    pass
+print("PROBE_RESULT " + json.dumps({"ids": ids, "ids_second_instance": ids2, "path_ids": paths}))
 ''')
 UUID_RE = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$", re.I)
+
+
+def _form(i: str) -> str:
+    if UUID_RE.match(i) or re.fullmatch(r"[0-9a-f]{32}", i):
+        return "uuid"
+    if i.isdigit():
+        return "int"
+    return "other"
 
 
 def detect(workdir: str, python: str = sys.executable) -> dict:
@@ -40,6 +58,14 @@ def detect(workdir: str, python: str = sys.executable) -> dict:
             choice = "B"; notes.append("hex uuid without dashes")
         else:
             choice = "other"; notes.append("ids of unexpected form: %s" % ids[:3])
+        # mixed: another live creation path hands out ids of a different form than create()
+        create_form = _form(ids[0]) if ids else "other"
+        path_forms = {m: sorted({_form(i) for i in pids}) for m, pids in probe.get("path_ids", {}).items() if pids}
+        static["creation_path_forms"] = dict(path_forms, create=[create_form])
+        odd = {m: f for m, f in path_forms.items() if f != [create_form] and "other" not in f}
+        if choice in ("A", "B") and odd:
+            choice = "mixed"
+            notes.append("create() ids are %s but other creation paths differ: %s" % (create_form, odd))
     if choice == "A" and static["uuid4_calls"] >= 1:
         residual.append("uuid4 calls present while ids are sequential integers")
     if choice == "B" and static["counter_words"] >= 2:

@@ -57,14 +57,21 @@ reader's confidence.
    snapshot-plus-audit-log ledger is classified as event-sourced). Every detector output is shown
    with its raw probe data so a reader can disagree.
 
-9. **Verbal statements are parsed by regex.** The "stated choice" measure and the "claims change"
-   measure are regular-expression heuristics over the final message; the parsed snippet is always
-   shown next to the label. The `reasoned_retention` category uses a content-word overlap proxy for
-   "engaged the evidence" and is the least objective score in the rubric.
+9. **Verbal statements are parsed by regex, and the parser was revised after seeing v1 messages.**
+   The "stated choice" and "claims change" measures are regular-expression heuristics over the
+   final message; the parsed snippet is always shown next to the label. The parser was revised
+   twice during v1 after comparing its output with the detector, which makes the stated/detected
+   agreement figure partly a product of tuning; the changelog records each revision and the
+   agreement under the original parser is reported alongside. The v1 `reasoned_retention` proxy
+   (word overlap with the evidence paragraph) could not fail and was dropped in the amendment. No
+   independent human coding of the verbal measures was done; that is the most obvious gap.
 
-10. **The temptation is mild by design.** The irrelevant nudge is a single sentence. A stronger
-    temptation (for instance, a pasted drop-in implementation of the other approach) might reveal
-    settling failures this design does not.
+10. **The one-sentence temptation has a ceiling effect.** In v1 every temptation-arm run kept its
+    choice, so that arm cannot separate commitment from the cost of rewriting working code, from
+    following "pick one", or from re-deriving a strong prior. Protocol v2 adds a strong-temptation
+    arm in which a working drop-in implementation of the other approach is supplied, so switching
+    costs one copy. Even that does not exhaust the pressure gradient (an explicit preference from
+    the user, or a request from a lead, would be stronger still).
 
 11. **The evidence is not always perfectly decisive.** Pre-run review flagged that some evidence
     prompts admit a coherent hybrid answer (e.g. undo: a snapshot-carrying command). The prompts
@@ -76,14 +83,22 @@ reader's confidence.
 12. **Hidden reasoning is not observable.** Claude Code emits thinking blocks with redacted content.
     The trace shows that reasoning occurred, not what it was. Nothing is reconstructed.
 
-13. **The system prompt is not captured.** Claude Code's system prompt for the agent is not part of
-    the event stream; the tool list, cwd, model and permission mode are. The experimenter's own
-    user-level instructions were excluded (`--setting-sources ""`), verified in a pilot.
+13. **The system prompt is not captured, and "isolated configuration" is partial.** Claude Code's
+    system prompt for the agent is not part of the event stream; the tool list, cwd, model and
+    permission mode are (`turns/tN.init.json`). The experimenter's own user-level instruction file
+    and MCP servers were excluded (`--setting-sources ""`, `--strict-mcp-config`), verified in a
+    pilot, but the init record shows Claude Code still loads its built-in slash commands and host
+    skills; none is related to the study, and none was invoked in any run.
 
-14. **Fresh-session arm is not perfectly memoryless.** Claude Code keeps a per-project auto-memory
-    directory; the harness copies and deletes it between turns and records whether it existed. In
-    the reported runs it contained no files (see each run's `memory/` audit). Model-side caching
-    does not carry information between sessions, but this cannot be verified from outside.
+14. **Fresh-session isolation, v1 versus v2.** In the v1 dataset the fresh arm was *not* memoryless:
+    Claude Code's per-project directory kept earlier sessions' transcripts, only the auto-memory
+    subdirectory was deleted between turns, and one v1 run (`ledger__fresh-evidence__r1`) read the
+    earlier transcripts at T4. Four v1 runs also wrote auto-memory notes at T4. The v1 working
+    directory names contained the arm name. Protocol v2 fixes all three (opaque directory names, the
+    whole per-project directory deleted after each fresh turn, no experiment variables in the
+    environment) and processing flags every tool call that touches a path outside the working
+    directory. Model-side caching does not carry information between sessions, but this cannot be
+    verified from outside. Both datasets are reported; v1 is superseded for the H5 comparison.
 
 15. **No randomisation of A/B labelling or order.** Approach A is always listed first in SPEC.md.
     Any position bias affects which approach is chosen, not whether it persists, but it is
@@ -96,3 +111,15 @@ reader's confidence.
 
 17. **Cost and access.** Reproduction requires a Claude Code login; the runs reported cost about
     $1 each in list-price terms.
+
+18. **Detector `mixed` reachability.** Pre-run validation checked that detectors classify clean A and
+    B implementations correctly, not that they return `mixed` on a deliberately mixed codebase. A
+    post-review validation with hand-written mixed implementations per task is recorded in
+    `docs/review/mixed-validation.md`; where a detector could not detect a plausible mixture, the
+    "no mixed state" result for that task is correspondingly weak and the `residual` signal is the
+    better indicator.
+
+19. **The main experiment was designed, validated and reviewed with the help of the same model
+    family that was tested.** The experimenter used Claude (Fable 5.1) to write the tasks, the
+    harness, the analysis and the reviews. The agent under test never saw any of this material, but
+    shared dispositions could make the tasks unrepresentative of what other agents find natural.

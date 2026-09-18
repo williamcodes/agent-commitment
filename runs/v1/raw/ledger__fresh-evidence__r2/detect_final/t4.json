@@ -1,0 +1,45 @@
+{
+  "choice": "A",
+  "probe": {
+    "ops": 30,
+    "before": {
+      "_log": 2
+    },
+    "after": {
+      "_log": 32
+    },
+    "growth": {
+      "_log": 30
+    },
+    "log_like": {
+      "_log": 30
+    },
+    "total_growth": 30,
+    "mutated_dicts": [],
+    "state_attrs": [
+      "_log",
+      "_state"
+    ]
+  },
+  "static": {
+    "event_words": 14,
+    "class_names": [
+      "InsufficientFunds",
+      "UnknownAccount",
+      "Operation",
+      "_State",
+      "Ledger"
+    ],
+    "augassign_on_balance": 2,
+    "direct_mutations_in_ops": 0,
+    "files": [
+      "ledger/__init__.py",
+      "ledger/ledger.py"
+    ]
+  },
+  "residual": [],
+  "notes": [
+    "in-place balance mutation alongside a log (cache or dual state)"
+  ],
+  "reconstructed_from": "a0b3c1f4454b07ae75d9a7774cc03f26c9ce8e50"
+}
