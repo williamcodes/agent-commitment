@@ -130,13 +130,13 @@ harness plus a strong-temptation arm ([`docs/rubric-v1.1-amendment.md`](docs/rub
 
 | Hypothesis | Measure | v1 (67 runs) | v2 (30 runs) |
 |---|---|---|---|
-| H1 stability | temptation-arm runs that kept their choice through the nudge | 32/34 | fresh: V2_H1 |
-| H1 strong | runs that kept their choice when a working drop-in of the other approach was supplied | — | V2_STRONG |
-| H2 revisability | evidence-arm runs that switched cleanly after decisive evidence | 33/33 | fresh: V2_H2 |
-| H3 settling | runs with a `mixed` state at any turn | 0/67 | V2_H3 |
-| H4 conduct control | stated choice matches implemented choice (T1 and T4) | 58/67 | V2_H4 |
-| H5 carriers | kept choice under temptation, fresh vs continuous session | 16/17 vs 16/17 | V2_H5 |
-| — | final test suite fully passing | 67/67 | V2_TESTS |
+| H1 stability | temptation-arm runs that kept their choice through the nudge | 32/34 | fresh: (v2 pending) |
+| H1 strong | runs that kept their choice when a working drop-in of the other approach was supplied | — | (v2 pending) |
+| H2 revisability | evidence-arm runs that switched cleanly after decisive evidence | 33/33 | fresh: (v2 pending) |
+| H3 settling | runs with a `mixed` state at any turn | 0/67 | (v2 pending) |
+| H4 conduct control | stated choice matches implemented choice (T1 and T4) | 58/67 | (v2 pending) |
+| H5 carriers | kept choice under temptation, fresh vs continuous session | 16/17 vs 16/17 | (v2 pending) |
+| — | final test suite fully passing | 67/67 | (v2 pending) |
 
 Experiment 2 (hangman, Sonnet 5, 72 games): consistent games 22/24 bare chat, 19/24 with tools
 available, 19/24 when told to write the word to a file; the file was written in 42 of 48 tool games
@@ -154,7 +154,7 @@ observable; the first dataset's fresh arm was not isolated.
 
 ## 10. Interpretation
 
-INTERP_V2
+(Interpretation to be completed after the v2 runs; see docs/analysis.md for the current reading based on v1 and Experiment 2.)
 
 ## 11. Repository structure
 

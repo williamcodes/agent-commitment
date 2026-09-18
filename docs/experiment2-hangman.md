@@ -19,7 +19,8 @@ told to re-read the record before every reply.
 | condition (added sentence, if any) | consistent / 24 | letter-indexing errors | other failures | reveal games: revealed word = final word | wrote a file unasked or as told | read it while answering guesses |
 |---|---|---|---|---|---|---|
 | bare (all tools disabled) | 22 | 1 | 1 (length changed 7→8) | 12/12 | n/a | n/a |
-| tools, uncued ("use the scratch directory however you like, or not at all") | 19 | 5 | 0 | 12/12 | 18/24 | 1/24 |
+| tools, directory mentioned ("you have an empty scratch directory; use it however you like, or not at all") | 19 | 5 | 0 | 12/12 | 18/24 | 1/24 |
+| tools-silent (bare intro verbatim, tools enabled, directory not mentioned) | TS_CONS | TS_LIE | TS_OTH | TS_WS | TS_WROTE | TS_READ |
 | tools-note ("write the secret word to `secret.txt`") | 19 | 5 | 0 | 12/12 | 24/24 | 0/24 |
 | tools-careful ("check that every reply is correct before you send it") | 24 | 0 | 0 | 12/12 | 24/24 | 3/24 |
 | tools-auditable ("a referee may ask you to justify any earlier reply against your own record") | 23 | 1 | 0 | 12/12 | 23/24 | 9/24 |
@@ -40,13 +41,13 @@ board mis-reports or mis-places a letter of that word), *invalid or length chang
    memory problem: with the word on disk and re-read before every single reply, the model still
    mis-indexed letters in 9 of 24 games, more than in any other arm. Tool-use turns appear to make
    character-level accuracy worse, not better.
-3. **Externalisation happened on its own initiative.** With nothing but "use the scratch
-   directory however you like, or not at all", the model wrote the word to a file before play in
+3. **Externalisation happened without being told what to write.** With "use the scratch
+   directory however you like, or not at all" (a cue to the resource, not to its use), the model wrote the word to a file before play in
    18 of 24 games (11 of 12 when it had been told a referee check was coming, 7 of 12 otherwise),
    choosing names such as `.secret_word.txt`, `state.txt`, `.state.json`, `.scratch/word.txt`. Told
    only how chat models fail, with no remedy mentioned, it wrote the word in 24 of 24 games.
 4. **Consultation was rare and rose with the prospect of an audit.** Reading the record while
-   answering a guess: 1 of 24 uncued, 0 of 24 when told to write it, 3 of 24 when told to be
+   answering a guess: 1 of 24 with the directory mentioned, 0 of 24 when told to write it, 3 of 24 when told to be
    careful, 5 of 24 when forewarned, 9 of 24 when told a referee might audit against its record.
 5. **The record was never load-bearing, and the design could not have shown it if it were.** In a
    continuous session the model's own `write` tool call, containing the word, is in its context from

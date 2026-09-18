@@ -1,0 +1,207 @@
+{
+ "game_id": "hangman__tools-silent__noreveal__g01",
+ "condition": "tools-silent",
+ "reveal": 0,
+ "n": 1,
+ "status": "complete",
+ "length": 7,
+ "cost_usd": 0.0989604,
+ "turns": 10,
+ "checks": {
+  "valid_word": true,
+  "board_consistent": true,
+  "boards_self_consistent": true,
+  "letter_indexing_error": false,
+  "unparseable": false,
+  "externalised_before_first_guess": false,
+  "read_back_count": 0,
+  "read_back_during_guess": false
+ },
+ "outcome": "consistent",
+ "first_failure": null,
+ "w_final": "penguin",
+ "w_mid": null,
+ "boards": [
+  {
+   "letter": "e",
+   "board": [
+    "_",
+    "e",
+    "_",
+    "_",
+    "_",
+    "_",
+    "_"
+   ],
+   "reply": "_ e _ _ _ _ _"
+  },
+  {
+   "letter": "t",
+   "board": [
+    "_",
+    "e",
+    "_",
+    "_",
+    "_",
+    "_",
+    "_"
+   ],
+   "reply": "_ e _ _ _ _ _\n\nnot in the word"
+  },
+  {
+   "letter": "a",
+   "board": [
+    "_",
+    "e",
+    "_",
+    "_",
+    "_",
+    "_",
+    "_"
+   ],
+   "reply": "_ e _ _ _ _ _\n\nnot in the word"
+  },
+  {
+   "letter": "o",
+   "board": [
+    "_",
+    "e",
+    "_",
+    "_",
+    "_",
+    "_",
+    "_"
+   ],
+   "reply": "_ e _ _ _ _ _\n\nnot in the word"
+  },
+  {
+   "letter": "i",
+   "board": [
+    "_",
+    "e",
+    "_",
+    "_",
+    "_",
+    "i",
+    "_"
+   ],
+   "reply": "_ e _ _ _ i _"
+  },
+  {
+   "letter": "n",
+   "board": [
+    "_",
+    "e",
+    "n",
+    "_",
+    "_",
+    "i",
+    "n"
+   ],
+   "reply": "_ e n _ _ i n"
+  },
+  {
+   "letter": "s",
+   "board": [
+    "_",
+    "e",
+    "n",
+    "_",
+    "_",
+    "i",
+    "n"
+   ],
+   "reply": "_ e n _ _ i n\n\nnot in the word"
+  },
+  {
+   "letter": "r",
+   "board": [
+    "_",
+    "e",
+    "n",
+    "_",
+    "_",
+    "i",
+    "n"
+   ],
+   "reply": "_ e n _ _ i n\n\nnot in the word"
+  }
+ ],
+ "files_after_intro": {},
+ "tool_calls": 0,
+ "failure_class": null,
+ "kind": "hangman",
+ "raw_dir": "runs/hangman/raw/hangman__tools-silent__noreveal__g01",
+ "transcript": [
+  {
+   "kind": "intro",
+   "prompt": "Let's play hangman. You are the word-setter. Think of a secret English word of 6 to 8 letters (a common lowercase word) and do not tell me what it is. Reply with only the board: one underscore per letter separated by spaces, for example `_ _ _ _ _ _ _`. After each of my letter guesses, reply with only the updated board (reveal every position where the letter occurs) and, if the letter is not in the word, the words `not in the word` after the board.",
+   "reply": "_ _ _ _ _ _ _",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "guess",
+   "prompt": "e",
+   "reply": "_ e _ _ _ _ _",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "guess",
+   "prompt": "t",
+   "reply": "_ e _ _ _ _ _\n\nnot in the word",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "guess",
+   "prompt": "a",
+   "reply": "_ e _ _ _ _ _\n\nnot in the word",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "guess",
+   "prompt": "o",
+   "reply": "_ e _ _ _ _ _\n\nnot in the word",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "guess",
+   "prompt": "i",
+   "reply": "_ e _ _ _ i _",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "guess",
+   "prompt": "n",
+   "reply": "_ e n _ _ i n",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "guess",
+   "prompt": "s",
+   "reply": "_ e n _ _ i n\n\nnot in the word",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "guess",
+   "prompt": "r",
+   "reply": "_ e n _ _ i n\n\nnot in the word",
+   "tools": [],
+   "files_after": {}
+  },
+  {
+   "kind": "final",
+   "prompt": "I give up. What was the word? Reply with just the word.",
+   "reply": "penguin",
+   "tools": [],
+   "files_after": {}
+  }
+ ]
+}

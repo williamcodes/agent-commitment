@@ -70,6 +70,8 @@
   <p class="small muted">Full protocol: <a href="methodology.html">Methodology</a>. Preregistered rubric: <a href="methodology.html#rubric">rubric v1</a>, frozen before the first run.</p>
 
   <h2>Aggregate results</h2>
+  <div id="dsnote" class="callout" style="display:none"></div>
+  <p><img src="assets/figures/coding-current.svg" alt="Experiment 1 run profiles per arm" style="max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px"></p>
   <p class="small muted">Counts only. Cells have two runs each, so no inferential statistics are reported. Click any strip to open the run.</p>
   <div id="hyp" class="grid"></div>
   <h3>Persistence of the initial choice, every run</h3>
@@ -78,6 +80,7 @@
   <p><a class="btn" href="evidence.html">See every run and score →</a> &nbsp; <a class="btn" href="explorer.html">Open the run explorer →</a></p>
 
   <h2>Experiment 2: Williams's own case, hangman, with and without an external store</h2>
+  <p><img src="assets/figures/hangman.svg" alt="Experiment 2 outcomes per condition" style="max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px"></p>
   <div id="exp2" class="grid"></div>
   <p class="small muted">Sonnet 5, 72 games and 36 couplet trials. Full games and the preregistered rubric: <a href="hangman.html">Experiment 2 page</a>.</p>
 
@@ -92,6 +95,7 @@
   document.getElementById('ghlink').href = idx.github;
   document.getElementById('nruns').textContent = idx.runs.length;
   document.getElementById('model').textContent = (idx.aggregate.models || []).join(', ');
+  if (idx.dataset_note) { const n = document.getElementById('dsnote'); n.style.display = ''; n.innerHTML = idx.dataset_note; }
   const h = idx.aggregate.hypotheses;
   const pct = x => x.n ? `${x.k}/${x.n}` : '—';
   const frac = x => x.n ? Math.round(100 * x.frac) + '%' : '—';
@@ -121,7 +125,7 @@
     const ws = a.word_stability_reveal_games || {}; const fc = a.failure_classes_by_condition || {};
     const row = (k, label) => [label, `${(ws[k]||{}).word_stable ?? '—'}/${(ws[k]||{}).n ?? '—'}`, `reveal games where the revealed word was the final word · letter-indexing errors ${(fc[k]||{}).letter_indexing_error || 0}/${Object.values(fc[k]||{}).reduce((x,y)=>x+y,0)} · wrote a file ${ex[k] ? ex[k].externalised + '/' + ex[k].n : 'n/a'} · read it while playing ${ex[k] ? (ex[k].read_back_during_guess||0) + '/' + ex[k].n : 'n/a'}`];
     document.getElementById('exp2').innerHTML = [
-      row('bare', 'bare chat (tools disabled)'), row('tools', 'tools available, uncued'), row('tools-note', 'told to write the word to a file'),
+      row('bare', 'bare chat (tools disabled)'), row('tools-silent', 'tools enabled, directory never mentioned'), row('tools', 'tools available, directory mentioned'), row('tools-note', 'told to write the word to a file'),
       row('tools-careful', 'told to check every reply'), row('tools-auditable', 'told a referee may audit against its record'), row('tools-forewarned', 'told how chat models fail (no remedy given)'), row('tools-consult', 'told to re-read the file before every reply (ceiling)'),
       ['couplet: planned end-word honoured', Object.entries(a.couplet).map(([k, c]) => `${c.honoured || 0}/${Object.values(c).reduce((x, y) => x + y, 0)}`).join(' · '), Object.keys(a.couplet).join(' · ')],
     ].map(([t, k, l]) => `<div class="card stat"><div class="k">${k}</div><div class="l"><strong>${t}</strong> · ${l}</div></div>`).join('');

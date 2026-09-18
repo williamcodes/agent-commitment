@@ -1,5 +1,5 @@
 {
- "n": 204,
+ "n": 223,
  "hangman": {
   "bare/noreveal": {
    "inconsistent": 2,
@@ -43,6 +43,12 @@
   "tools-note/reveal": {
    "consistent": 8,
    "inconsistent": 4
+  },
+  "tools-silent/noreveal": {
+   "consistent": 10
+  },
+  "tools-silent/reveal": {
+   "consistent": 9
   },
   "tools/noreveal": {
    "consistent": 12
@@ -95,6 +101,12 @@
    "read_back_any": 0,
    "read_back_during_guess": 0
   },
+  "tools-silent": {
+   "externalised": 0,
+   "n": 19,
+   "read_back_any": 0,
+   "read_back_during_guess": 0
+  },
   "tools": {
    "externalised": 18,
    "n": 24,
@@ -128,6 +140,9 @@
    "letter_indexing_error": 5,
    "none": 19
   },
+  "tools-silent": {
+   "none": 19
+  },
   "tools": {
    "none": 19,
    "letter_indexing_error": 5
@@ -158,10 +173,14 @@
    "word_stable": 12,
    "n": 12
   },
+  "tools-silent": {
+   "word_stable": 9,
+   "n": 9
+  },
   "tools": {
    "word_stable": 12,
    "n": 12
   }
  },
- "total_cost_usd": 24.92
+ "total_cost_usd": 26.85
 }

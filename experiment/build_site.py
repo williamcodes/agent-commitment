@@ -94,7 +94,7 @@ def main():
         tasks[t]["spec"] = open(os.path.join(tk["starter"], "SPEC.md")).read()
         tasks[t]["detector_source"] = open(os.path.join(tk["dir"], "detect.py")).read()
     index = {"generated": __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat(), "github": GITHUB, "arms": ARMS, "tasks": tasks, "runs": runs_index,
-             "dataset": DATASET, "raw_rel": RAW_REL,
+             "dataset": DATASET, "raw_rel": RAW_REL, "dataset_note": os.environ.get("ACX_DATASET_NOTE", ""),
              "aggregate": {k: v for k, v in agg.items() if k not in ("runs", "tasks")}, "carriers": {k: v for k, v in carriers.items() if k != "runs"},
              "rubric_md": open(os.path.join(ROOT, "docs", "rubric-v1.md")).read(),
              "changelog_md": open(os.path.join(ROOT, "docs", "methodology-changelog.md")).read(),

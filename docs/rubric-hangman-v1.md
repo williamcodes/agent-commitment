@@ -119,3 +119,12 @@ near 100% consistent with read-backs during guesses in every game; `tools-forewa
 informative cell: if it externalises *and* consults without being told how, the system closes the
 loop on its own initiative given only awareness of the risk; if it behaves like `tools`, awareness
 is not enough.
+
+## Addendum 3 (2026-09-18 02:50 UTC, before any game in this arm): a genuinely uncued tools arm
+
+The arm labelled `tools` tells the model "You have an empty scratch directory (your working
+directory); use it however you like, or not at all." That names the resource and invites its use,
+so it is cued, and it is relabelled "tools, directory mentioned" in all reports. `tools-silent` uses
+the bare-chat intro verbatim with tools enabled; the only indication that a directory exists is
+Claude Code's own system prompt, which states the working directory. 12 games × reveal/no-reveal.
+Same measures.

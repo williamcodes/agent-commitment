@@ -12,7 +12,7 @@ All counts are from `analysis/`; every run is linked from the site.
 **Summary.** In the coding experiment the agent's early design choice survived neutral extensions
 and a one-sentence nudge in 32 of 34 v1 temptation runs (the two exceptions moved to a
 table-driven hybrid on the parsing task), switched cleanly after decision-relevant evidence in
-33 of 33 v1 evidence runs, and never produced a mixed codebase. V2_SHORT Statements matched
+33 of 33 v1 evidence runs, and never produced a mixed codebase. (v2 pending) Statements matched
 code in most runs. Experiment 2, the direct test of the external-store hypothesis, did not support
 its strong form: the model wrote the secret word to a file in 42 of 48 tool games and read it back
 in one; games with the word on disk were no more consistent than bare-chat games (10 of 48 vs 2 of
@@ -30,13 +30,13 @@ amendments; v1 turn-end states reconstructed from snapshot bundles.
 
 | | v1 (67 runs, leaky harness) | v2 (30 runs, fixed harness) |
 |---|---|---|
-| H1 stability: temptation runs `committed` | 32/34 (2 `yielded`, both `expr`, to precedence-climbing hybrid) | fresh: V2_H1 |
-| H1 strong temptation (working drop-in supplied) | — | V2_STRONG |
-| H2 revisability: evidence runs `reconsidered` | 33/33 (29 A↔B, 4 `expr` to hybrid); `retained` 0 | fresh: V2_H2 |
-| H3 settling: any `mixed` state | 0/67; CONSISTENT as defined (no residual at T4) 63/67 | V2_H3 |
-| H4 conduct control: stated = implemented (T1 and T4) | 58/67 (5 of the 9 disagreements are `expr` runs that say "Approach A" where the detector says hybrid) | V2_H4 |
-| H5 carriers: fresh vs continuous | temptation 16/17 vs 16/17; evidence 16/16 vs 17/17 (contaminated) | V2_H5 |
-| tests passing at T4 | 67/67 | V2_TESTS |
+| H1 stability: temptation runs `committed` | 32/34 (2 `yielded`, both `expr`, to precedence-climbing hybrid) | fresh: (v2 pending) |
+| H1 strong temptation (working drop-in supplied) | — | (v2 pending) |
+| H2 revisability: evidence runs `reconsidered` | 33/33 (29 A↔B, 4 `expr` to hybrid); `retained` 0 | fresh: (v2 pending) |
+| H3 settling: any `mixed` state | 0/67; CONSISTENT as defined (no residual at T4) 63/67 | (v2 pending) |
+| H4 conduct control: stated = implemented (T1 and T4) | 58/67 (5 of the 9 disagreements are `expr` runs that say "Approach A" where the detector says hybrid) | (v2 pending) |
+| H5 carriers: fresh vs continuous | temptation 16/17 vs 16/17; evidence 16/16 vs 17/17 (contaminated) | (v2 pending) |
+| tests passing at T4 | 67/67 | (v2 pending) |
 
 Under the original detectors v1 read 34/34 committed and 29 reconsidered + 4 "reasoned retention";
 the final detectors reclassify the four `expr` evidence runs as switches to a hybrid, and reveal two
@@ -49,14 +49,14 @@ Indicators from `experiment/carriers.py` (v1; v2 fresh arm in the last column):
 
 | indicator | v1 continuous (34) | v1 fresh (33) | v2 fresh (20) |
 |---|---|---|---|
-| final code names the *final* approach in docstrings/comments | 29 | 31 | V2_C1 |
-| agent edited SPEC.md and the edit mentions an approach | 4 | 10 | V2_C2 |
-| T3/T4 message cites the existing code as a reason | 7 | 16 | V2_C3 |
-| T3/T4 message cites its own earlier reasoning | 20 | 4 | V2_C4 |
-| T4 says it cannot be sure whether the approach changed | 0 | 26 | V2_C5 |
-| tool calls touching paths outside the working directory | 1 | 22 (v1 harness left transcripts readable; one run read them) | V2_C6 |
-| auto-memory files written | 0 | 4 (all at T4) | V2_C7 |
-| explicit TodoWrite plans / commits / separate notes files | 0 | 0 | V2_C8 |
+| final code names the *final* approach in docstrings/comments | 29 | 31 | (v2 pending) |
+| agent edited SPEC.md and the edit mentions an approach | 4 | 10 | (v2 pending) |
+| T3/T4 message cites the existing code as a reason | 7 | 16 | (v2 pending) |
+| T3/T4 message cites its own earlier reasoning | 20 | 4 | (v2 pending) |
+| T4 says it cannot be sure whether the approach changed | 0 | 26 | (v2 pending) |
+| tool calls touching paths outside the working directory | 1 | 22 (v1 harness left transcripts readable; one run read them) | (v2 pending) |
+| auto-memory files written | 0 | 4 (all at T4) | (v2 pending) |
+| explicit TodoWrite plans / commits / separate notes files | 0 | 0 | (v2 pending) |
 
 Reading: in the continuous arm the agent cites its own earlier decision; in the fresh arm it reads
 the repository, finds the decision embodied in the code and usually named in a docstring or an
@@ -65,7 +65,7 @@ environment than continuous ones. No harness-managed plan or memory artefact car
 (the four v1 memory notes were written at the last turn). The carriers are: the implementation
 itself; natural-language records the agent left in files; and, in the continuous arm, the
 transcript. In v1 the fresh arm also had an unintended carrier (readable transcripts), which is why
-v2 exists. V2_CARRIER_NOTE
+v2 exists. (v2 pending)
 
 ## 3. Experiment 2 changes the picture
 
@@ -82,9 +82,9 @@ when it is not.
 ## 4. Alternative explanations, and what the v2 arms say about them
 
 - **Cost of change.** Rewriting working code is expensive; a one-sentence nudge cannot compete.
-  The strong arm removes most of that cost (a working drop-in is supplied). V2_STRONG_READING
+  The strong arm removes most of that cost (a working drop-in is supplied). (v2 pending)
 - **Instruction following / continuation prompt.** "Pick one" at T1 and, in v1, "picking up work
-  on an existing project" in the fresh arm. V2 removed the latter. V2_FRESH_READING
+  on an existing project" in the fresh arm. V2 removed the latter. (v2 pending)
 - **Prior re-derivation.** For most tasks the model has a dominant design (eventbus B 8/8, expr A
   8/8, ledger B 8/8, graph A 8/8 in v1). A fresh instance re-deriving the same preference from
   SPEC.md would look identical to one maintaining a state. Nothing in either dataset separates
@@ -98,7 +98,7 @@ when it is not.
 **Strongest positive example.** `catalog` (v1, continuous): under temptation the agent kept
 sequential ids and explained why it declined the UUID suggestion; under evidence the same task
 produced a clean switch to UUIDs in T3 with the module docstring recording the switch and its
-reason. V2_STRONG_EXAMPLE
+reason. (v2 pending)
 
 **Strongest counterexample or failure.** `expr`: under an irrelevant nudge, two runs moved to a
 table-driven hybrid (the nudge said a table would make adding operators trivial, and it did); under
@@ -117,4 +117,4 @@ asked (18 of 24 games) and then ignored it.
 - The `reasoned_retention` proxy of rubric v1 could not fail and was dropped.
 - Eight of ten detectors could not return `mixed` on a deliberately mixed implementation until
   patched; v1 was re-scored under the patched detectors (12 changes, all `expr`, all to `hybrid`).
-- V2_MEASUREMENT_NOTE
+- (v2 pending)
