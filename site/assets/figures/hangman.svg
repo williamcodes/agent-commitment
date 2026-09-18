@@ -1,59 +1,61 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1100 454' width='1100' height='454' font-family='-apple-system,Segoe UI,Helvetica,Arial,sans-serif'>
-<rect width='1100' height='454' fill='#ffffff' rx='8'/>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1100 484' width='1100' height='484' font-family='-apple-system,Segoe UI,Helvetica,Arial,sans-serif'>
+<rect width='1100' height='484' fill='#ffffff' rx='8'/>
 <text x='20' y='30' font-size='17' font-weight='700' fill='#1c1c1a'>Experiment 2: hangman as word-setter, Sonnet 5, 12 games × reveal/no-reveal per condition</text>
-<text x='20' y='52' font-size='12' fill='#6b6b66'>Per game: consistent vs failure class (post-hoc decomposition). No game switched words after revealing one.</text>
-<rect x='20' y='62' width='11' height='11' fill='#2f855a'/><text x='35' y='72' font-size='11' fill='#6b6b66'>consistent</text>
-<rect x='123' y='62' width='11' height='11' fill='#b7791f'/><text x='138' y='72' font-size='11' fill='#6b6b66'>letter-indexing error (word held)</text>
-<rect x='387' y='62' width='11' height='11' fill='#c53030'/><text x='402' y='72' font-size='11' fill='#6b6b66'>self-contradiction</text>
-<rect x='546' y='62' width='11' height='11' fill='#c53030'/><text x='561' y='72' font-size='11' fill='#6b6b66'>word switch</text>
-<rect x='656' y='62' width='11' height='11' fill='#7c3aed'/><text x='671' y='72' font-size='11' fill='#6b6b66'>invalid / length change</text>
-<text x='290' y='95' font-size='12' text-anchor='end' fill='#1c1c1a'>bare chat (tools disabled)  · reveal word stable 12/12</text>
-<rect x='300.0' y='78' width='705.8' height='26' fill='#2f855a'><title>consistent: 22</title></rect>
-<text x='652.9' y='95' font-size='11' text-anchor='middle' fill='#fff'>22</text>
-<rect x='1005.8' y='78' width='32.1' height='26' fill='#b7791f'><title>letter-indexing error (word held): 1</title></rect>
-<text x='1021.9' y='95' font-size='11' text-anchor='middle' fill='#fff'>1</text>
-<rect x='1037.9' y='78' width='32.1' height='26' fill='#7c3aed'><title>invalid / length change: 1</title></rect>
-<text x='1054.0' y='95' font-size='11' text-anchor='middle' fill='#fff'>1</text>
-<text x='1076' y='95' font-size='11' fill='#6b6b66'>n=24</text>
-<text x='290' y='131' font-size='12' text-anchor='end' fill='#1c1c1a'>tools on, directory never mentioned  · reveal word stable 9/9  · wrote file 0/19, read while playing 0/19</text>
-<rect x='300.0' y='114' width='770.0' height='26' fill='#2f855a'><title>consistent: 19</title></rect>
-<text x='685.0' y='131' font-size='11' text-anchor='middle' fill='#fff'>19</text>
-<text x='1076' y='131' font-size='11' fill='#6b6b66'>n=19</text>
-<text x='290' y='167' font-size='12' text-anchor='end' fill='#1c1c1a'>tools on, directory mentioned  · reveal word stable 12/12  · wrote file 18/24, read while playing 1/24</text>
-<rect x='300.0' y='150' width='609.6' height='26' fill='#2f855a'><title>consistent: 19</title></rect>
-<text x='604.8' y='167' font-size='11' text-anchor='middle' fill='#fff'>19</text>
-<rect x='909.6' y='150' width='160.4' height='26' fill='#b7791f'><title>letter-indexing error (word held): 5</title></rect>
-<text x='989.8' y='167' font-size='11' text-anchor='middle' fill='#fff'>5</text>
-<text x='1076' y='167' font-size='11' fill='#6b6b66'>n=24</text>
-<text x='290' y='203' font-size='12' text-anchor='end' fill='#1c1c1a'>told to write the word to a file  · reveal word stable 12/12  · wrote file 24/24, read while playing 0/24</text>
-<rect x='300.0' y='186' width='609.6' height='26' fill='#2f855a'><title>consistent: 19</title></rect>
-<text x='604.8' y='203' font-size='11' text-anchor='middle' fill='#fff'>19</text>
-<rect x='909.6' y='186' width='160.4' height='26' fill='#b7791f'><title>letter-indexing error (word held): 5</title></rect>
-<text x='989.8' y='203' font-size='11' text-anchor='middle' fill='#fff'>5</text>
-<text x='1076' y='203' font-size='11' fill='#6b6b66'>n=24</text>
-<text x='290' y='239' font-size='12' text-anchor='end' fill='#1c1c1a'>told to check every reply  · reveal word stable 12/12  · wrote file 24/24, read while playing 3/24</text>
-<rect x='300.0' y='222' width='770.0' height='26' fill='#2f855a'><title>consistent: 24</title></rect>
-<text x='685.0' y='239' font-size='11' text-anchor='middle' fill='#fff'>24</text>
-<text x='1076' y='239' font-size='11' fill='#6b6b66'>n=24</text>
-<text x='290' y='275' font-size='12' text-anchor='end' fill='#1c1c1a'>told a referee may audit its record  · reveal word stable 12/12  · wrote file 23/24, read while playing 9/24</text>
-<rect x='300.0' y='258' width='737.9' height='26' fill='#2f855a'><title>consistent: 23</title></rect>
-<text x='669.0' y='275' font-size='11' text-anchor='middle' fill='#fff'>23</text>
-<rect x='1037.9' y='258' width='32.1' height='26' fill='#b7791f'><title>letter-indexing error (word held): 1</title></rect>
-<text x='1054.0' y='275' font-size='11' text-anchor='middle' fill='#fff'>1</text>
-<text x='1076' y='275' font-size='11' fill='#6b6b66'>n=24</text>
-<text x='290' y='311' font-size='12' text-anchor='end' fill='#1c1c1a'>told how chat models fail (no remedy)  · reveal word stable 12/12  · wrote file 24/24, read while playing 5/24</text>
-<rect x='300.0' y='294' width='737.9' height='26' fill='#2f855a'><title>consistent: 23</title></rect>
-<text x='669.0' y='311' font-size='11' text-anchor='middle' fill='#fff'>23</text>
-<rect x='1037.9' y='294' width='32.1' height='26' fill='#b7791f'><title>letter-indexing error (word held): 1</title></rect>
-<text x='1054.0' y='311' font-size='11' text-anchor='middle' fill='#fff'>1</text>
-<text x='1076' y='311' font-size='11' fill='#6b6b66'>n=24</text>
-<text x='290' y='347' font-size='12' text-anchor='end' fill='#1c1c1a'>told to re-read the file every reply (ceiling)  · reveal word stable 12/12  · wrote file 24/24, read while playing 24/24</text>
-<rect x='300.0' y='330' width='449.2' height='26' fill='#2f855a'><title>consistent: 14</title></rect>
-<text x='524.6' y='347' font-size='11' text-anchor='middle' fill='#fff'>14</text>
-<rect x='749.2' y='330' width='288.8' height='26' fill='#b7791f'><title>letter-indexing error (word held): 9</title></rect>
-<text x='893.5' y='347' font-size='11' text-anchor='middle' fill='#fff'>9</text>
-<rect x='1037.9' y='330' width='32.1' height='26' fill='#c53030'><title>self-contradiction: 1</title></rect>
-<text x='1054.0' y='347' font-size='11' text-anchor='middle' fill='#fff'>1</text>
-<text x='1076' y='347' font-size='11' fill='#6b6b66'>n=24</text>
-<text x='20' y='440' font-size='11' fill='#6b6b66'>Arms 3–7 all place the word in the model's own context via its write tool call; they measure carefulness, not carrying (see report).</text>
+<text x='20' y='52' font-size='12' fill='#6b6b66'>Per game: consistent vs failure class (post-hoc decomposition). Right: reveal games with revealed word = final word; games that wrote a file; games that read it while answering guesses.</text>
+<rect x='20' y='58' width='11' height='11' fill='#2f855a'/><text x='35' y='68' font-size='11' fill='#6b6b66'>consistent</text>
+<rect x='115.0' y='58' width='11' height='11' fill='#b7791f'/><text x='130.0' y='68' font-size='11' fill='#6b6b66'>letter-indexing error (word held)</text>
+<rect x='352.6' y='58' width='11' height='11' fill='#c53030'/><text x='367.6' y='68' font-size='11' fill='#6b6b66'>self-contradiction</text>
+<rect x='497.20000000000005' y='58' width='11' height='11' fill='#c53030'/><text x='512.2' y='68' font-size='11' fill='#6b6b66'>word switch</text>
+<rect x='598.4000000000001' y='58' width='11' height='11' fill='#7c3aed'/><text x='613.4000000000001' y='68' font-size='11' fill='#6b6b66'>invalid / length change</text>
+<text x='300' y='125' font-size='12' text-anchor='end' fill='#1c1c1a'>bare chat (tools disabled)</text>
+<rect x='310.0' y='108' width='495.0' height='26' fill='#2f855a'><title>consistent: 22</title></rect>
+<text x='557.5' y='125' font-size='11' text-anchor='middle' fill='#fff'>22</text>
+<rect x='805.0' y='108' width='22.5' height='26' fill='#b7791f'><title>letter-indexing error (word held): 1</title></rect>
+<text x='816.2' y='125' font-size='11' text-anchor='middle' fill='#fff'>1</text>
+<rect x='827.5' y='108' width='22.5' height='26' fill='#7c3aed'><title>invalid / length change: 1</title></rect>
+<text x='838.8' y='125' font-size='11' text-anchor='middle' fill='#fff'>1</text>
+<text x='856' y='125' font-size='11' fill='#6b6b66'>word stable 12/12</text>
+<text x='300' y='161' font-size='12' text-anchor='end' fill='#1c1c1a'>tools on, directory never mentioned</text>
+<rect x='310.0' y='144' width='517.5' height='26' fill='#2f855a'><title>consistent: 23</title></rect>
+<text x='568.8' y='161' font-size='11' text-anchor='middle' fill='#fff'>23</text>
+<rect x='827.5' y='144' width='22.5' height='26' fill='#b7791f'><title>letter-indexing error (word held): 1</title></rect>
+<text x='838.8' y='161' font-size='11' text-anchor='middle' fill='#fff'>1</text>
+<text x='856' y='161' font-size='11' fill='#6b6b66'>word stable 12/12 · wrote 0/24 · read 0/24</text>
+<text x='300' y='197' font-size='12' text-anchor='end' fill='#1c1c1a'>tools on, directory mentioned</text>
+<rect x='310.0' y='180' width='427.5' height='26' fill='#2f855a'><title>consistent: 19</title></rect>
+<text x='523.8' y='197' font-size='11' text-anchor='middle' fill='#fff'>19</text>
+<rect x='737.5' y='180' width='112.5' height='26' fill='#b7791f'><title>letter-indexing error (word held): 5</title></rect>
+<text x='793.8' y='197' font-size='11' text-anchor='middle' fill='#fff'>5</text>
+<text x='856' y='197' font-size='11' fill='#6b6b66'>word stable 12/12 · wrote 18/24 · read 1/24</text>
+<text x='300' y='233' font-size='12' text-anchor='end' fill='#1c1c1a'>told to write the word to a file</text>
+<rect x='310.0' y='216' width='427.5' height='26' fill='#2f855a'><title>consistent: 19</title></rect>
+<text x='523.8' y='233' font-size='11' text-anchor='middle' fill='#fff'>19</text>
+<rect x='737.5' y='216' width='112.5' height='26' fill='#b7791f'><title>letter-indexing error (word held): 5</title></rect>
+<text x='793.8' y='233' font-size='11' text-anchor='middle' fill='#fff'>5</text>
+<text x='856' y='233' font-size='11' fill='#6b6b66'>word stable 12/12 · wrote 24/24 · read 0/24</text>
+<text x='300' y='269' font-size='12' text-anchor='end' fill='#1c1c1a'>told to check every reply</text>
+<rect x='310.0' y='252' width='540.0' height='26' fill='#2f855a'><title>consistent: 24</title></rect>
+<text x='580.0' y='269' font-size='11' text-anchor='middle' fill='#fff'>24</text>
+<text x='856' y='269' font-size='11' fill='#6b6b66'>word stable 12/12 · wrote 24/24 · read 3/24</text>
+<text x='300' y='305' font-size='12' text-anchor='end' fill='#1c1c1a'>told a referee may audit its record</text>
+<rect x='310.0' y='288' width='517.5' height='26' fill='#2f855a'><title>consistent: 23</title></rect>
+<text x='568.8' y='305' font-size='11' text-anchor='middle' fill='#fff'>23</text>
+<rect x='827.5' y='288' width='22.5' height='26' fill='#b7791f'><title>letter-indexing error (word held): 1</title></rect>
+<text x='838.8' y='305' font-size='11' text-anchor='middle' fill='#fff'>1</text>
+<text x='856' y='305' font-size='11' fill='#6b6b66'>word stable 12/12 · wrote 23/24 · read 9/24</text>
+<text x='300' y='341' font-size='12' text-anchor='end' fill='#1c1c1a'>told how chat models fail (no remedy)</text>
+<rect x='310.0' y='324' width='517.5' height='26' fill='#2f855a'><title>consistent: 23</title></rect>
+<text x='568.8' y='341' font-size='11' text-anchor='middle' fill='#fff'>23</text>
+<rect x='827.5' y='324' width='22.5' height='26' fill='#b7791f'><title>letter-indexing error (word held): 1</title></rect>
+<text x='838.8' y='341' font-size='11' text-anchor='middle' fill='#fff'>1</text>
+<text x='856' y='341' font-size='11' fill='#6b6b66'>word stable 12/12 · wrote 24/24 · read 5/24</text>
+<text x='300' y='377' font-size='12' text-anchor='end' fill='#1c1c1a'>told to re-read the file every reply (ceiling)</text>
+<rect x='310.0' y='360' width='315.0' height='26' fill='#2f855a'><title>consistent: 14</title></rect>
+<text x='467.5' y='377' font-size='11' text-anchor='middle' fill='#fff'>14</text>
+<rect x='625.0' y='360' width='202.5' height='26' fill='#b7791f'><title>letter-indexing error (word held): 9</title></rect>
+<text x='726.2' y='377' font-size='11' text-anchor='middle' fill='#fff'>9</text>
+<rect x='827.5' y='360' width='22.5' height='26' fill='#c53030'><title>self-contradiction: 1</title></rect>
+<text x='838.8' y='377' font-size='11' text-anchor='middle' fill='#fff'>1</text>
+<text x='856' y='377' font-size='11' fill='#6b6b66'>word stable 12/12 · wrote 24/24 · read 24/24</text>
+<text x='20' y='470' font-size='11' fill='#6b6b66'>Arms 4–8 all place the word in the model's own context via its write tool call; they measure carefulness, not carrying (see report).</text>
 </svg>

@@ -1,5 +1,5 @@
 {
- "n": 223,
+ "n": 228,
  "hangman": {
   "bare/noreveal": {
    "inconsistent": 2,
@@ -45,10 +45,11 @@
    "inconsistent": 4
   },
   "tools-silent/noreveal": {
-   "consistent": 10
+   "consistent": 11,
+   "inconsistent": 1
   },
   "tools-silent/reveal": {
-   "consistent": 9
+   "consistent": 12
   },
   "tools/noreveal": {
    "consistent": 12
@@ -103,7 +104,7 @@
   },
   "tools-silent": {
    "externalised": 0,
-   "n": 19,
+   "n": 24,
    "read_back_any": 0,
    "read_back_during_guess": 0
   },
@@ -141,7 +142,8 @@
    "none": 19
   },
   "tools-silent": {
-   "none": 19
+   "none": 23,
+   "letter_indexing_error": 1
   },
   "tools": {
    "none": 19,
@@ -174,13 +176,13 @@
    "n": 12
   },
   "tools-silent": {
-   "word_stable": 9,
-   "n": 9
+   "word_stable": 12,
+   "n": 12
   },
   "tools": {
    "word_stable": 12,
    "n": 12
   }
  },
- "total_cost_usd": 26.85
+ "total_cost_usd": 27.37
 }

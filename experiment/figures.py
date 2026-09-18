@@ -13,19 +13,23 @@ C = {"ok": "#2f855a", "warn": "#b7791f", "bad": "#c53030", "grey": "#8a8a85", "A
 def esc(s): return str(s).replace("&", "&amp;").replace("<", "&lt;")
 
 
-def stacked_bars(title, subtitle, rows, segs, width=860, note=None):
-    """rows: [(label, {seg: count})]; segs: [(key, label, colour)]. Horizontal 100% stacked bars with counts."""
-    left, top, bh, gap = 300, 78, 26, 10
+def stacked_bars(title, subtitle, rows, segs, width=860, note=None, left=300, extras=None, right=40):
+    """rows: [(label, {seg: count})]; segs: [(key, label, colour)]. Horizontal 100% stacked bars with counts.
+    extras: optional list of strings printed to the right of each bar."""
+    top, bh, gap = 108, 26, 10
     h = top + len(rows) * (bh + gap) + 70 + (18 if note else 0)
     s = [f"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {width} {h}' width='{width}' height='{h}' {FONT}>",
          f"<rect width='{width}' height='{h}' fill='#ffffff' rx='8'/>",
          f"<text x='20' y='30' font-size='17' font-weight='700' fill='{C['ink']}'>{esc(title)}</text>",
          f"<text x='20' y='52' font-size='12' fill='{C['muted']}'>{esc(subtitle)}</text>"]
-    lx = 20
+    lx, ly = 20, top - 40
     for k, lab, col in segs:
-        s.append(f"<rect x='{lx}' y='{top-16}' width='11' height='11' fill='{col}'/><text x='{lx+15}' y='{top-6}' font-size='11' fill='{C['muted']}'>{esc(lab)}</text>")
-        lx += 15 + 7 * len(lab) + 18
-    barw = width - left - 30
+        w = 15 + 6.2 * len(lab) + 18
+        if lx + w > width - 20:
+            lx, ly = 20, ly + 16
+        s.append(f"<rect x='{lx}' y='{ly-10}' width='11' height='11' fill='{col}'/><text x='{lx+15}' y='{ly}' font-size='11' fill='{C['muted']}'>{esc(lab)}</text>")
+        lx += w
+    barw = width - left - right
     for i, (label, counts) in enumerate(rows):
         y = top + i * (bh + gap)
         total = sum(counts.get(k, 0) for k, _, _ in segs) or 1
@@ -39,7 +43,7 @@ def stacked_bars(title, subtitle, rows, segs, width=860, note=None):
             if w > 22:
                 s.append(f"<text x='{x + w/2:.1f}' y='{y+17}' font-size='11' text-anchor='middle' fill='#fff'>{n}</text>")
             x += w
-        s.append(f"<text x='{left + barw + 6}' y='{y+17}' font-size='11' fill='{C['muted']}'>n={total}</text>")
+        s.append(f"<text x='{left + barw + 6}' y='{y+17}' font-size='11' fill='{C['muted']}'>{esc(extras[i]) if extras else 'n=' + str(total)}</text>")
     if note:
         s.append(f"<text x='20' y='{h-14}' font-size='11' fill='{C['muted']}'>{esc(note)}</text>")
     s.append("</svg>")
@@ -61,16 +65,16 @@ def fig_hangman(path, out):
     order = [("bare", "bare chat (tools disabled)"), ("tools-silent", "tools on, directory never mentioned"), ("tools", "tools on, directory mentioned"), ("tools-note", "told to write the word to a file"),
              ("tools-careful", "told to check every reply"), ("tools-auditable", "told a referee may audit its record"), ("tools-forewarned", "told how chat models fail (no remedy)"), ("tools-consult", "told to re-read the file every reply (ceiling)")]
     fc = a["failure_classes_by_condition"]; ws = a["word_stability_reveal_games"]; ex = a.get("externalisation", {})
-    rows = []
+    rows, extras = [], []
     for k, lab in order:
         if k not in fc: continue
         c = fc[k]; w = ws.get(k, {}); e = ex.get(k)
-        extra = f"  · reveal word stable {w.get('word_stable', 0)}/{w.get('n', 0)}" + (f"  · wrote file {e['externalised']}/{e['n']}, read while playing {e.get('read_back_during_guess', 0)}/{e['n']}" if e else "")
-        rows.append((lab + extra, c))
+        rows.append((lab, c))
+        extras.append(f"word stable {w.get('word_stable', 0)}/{w.get('n', 0)}" + (f" · wrote {e['externalised']}/{e['n']} · read {e.get('read_back_during_guess', 0)}/{e['n']}" if e else ""))
     segs = [("none", "consistent", C["ok"]), ("letter_indexing_error", "letter-indexing error (word held)", C["warn"]), ("self_contradiction", "self-contradiction", C["bad"]), ("word_switch", "word switch", C["bad"]), ("invalid_or_length_change", "invalid / length change", C["H"])]
     open(out, "w").write(stacked_bars("Experiment 2: hangman as word-setter, Sonnet 5, 12 games × reveal/no-reveal per condition",
-                                      "Per game: consistent vs failure class (post-hoc decomposition). No game switched words after revealing one.", rows, segs, width=1100,
-                                      note="Arms 3–7 all place the word in the model's own context via its write tool call; they measure carefulness, not carrying (see report)."))
+                                      "Per game: consistent vs failure class (post-hoc decomposition). Right: reveal games with revealed word = final word; games that wrote a file; games that read it while answering guesses.", rows, segs, width=1100, left=310, extras=extras, right=250,
+                                      note="Arms 4–8 all place the word in the model's own context via its write tool call; they measure carefulness, not carrying (see report)."))
 
 
 def fig_carriers(path, out, title):
