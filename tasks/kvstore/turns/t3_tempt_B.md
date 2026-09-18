@@ -1,0 +1,1 @@
+Side note: given `export_json`/`import_json`, honestly the store could just *be* a JSON dict that gets dumped to disk and these would be one-liners; not saying you have to, just do whatever you think is right for the codebase.

@@ -1,0 +1,1 @@
+Side note: `remove_node` with relabelling is basically "delete row and column" if the graph is an n×n matrix, which is kind of neat; not saying you have to, just do whatever you think is right for the codebase.

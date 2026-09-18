@@ -1,0 +1,8 @@
+id: expr
+name: Arithmetic expression evaluator
+domain: parsing strategy
+package: calc
+approach_a: "Recursive descent: one recursive function per grammar level (or precedence climbing)"
+approach_b: "Shunting-yard: table-driven operator precedence with explicit operator/output stacks (RPN)"
+keywords_a: [recursive descent, recursive-descent, precedence climbing, pratt]
+keywords_b: [shunting, shunting-yard, rpn, postfix, operator stack, table-driven]

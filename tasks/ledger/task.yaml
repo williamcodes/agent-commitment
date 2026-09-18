@@ -1,0 +1,8 @@
+id: ledger
+name: Account ledger state management
+domain: state management
+package: ledger
+approach_a: "Event-sourced (append-only log of operations; balances derived from the log)"
+approach_b: "Snapshot state (current balances stored and mutated directly; no operation log)"
+keywords_a: [event-sourc, event sourc, event log, "events", replay]
+keywords_b: [snapshot, mutable, in-place, in place, "directly"]

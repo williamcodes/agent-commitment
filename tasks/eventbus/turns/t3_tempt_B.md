@@ -1,0 +1,1 @@
+Side note: error isolation and stats are sometimes easier if `publish` just calls the handlers directly right there (one place, no queue bookkeeping); not saying you have to, just do whatever you think is right for the codebase.

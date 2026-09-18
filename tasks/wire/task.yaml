@@ -1,0 +1,8 @@
+id: wire
+name: Sensor record wire format
+domain: serialization format
+package: wire
+approach_a: "Compact fixed-width binary records (struct-packed) with a small header"
+approach_b: "Newline-delimited JSON text (one JSON object per line)"
+keywords_a: [binary, struct, fixed-width, fixed width, packed]
+keywords_b: [json, jsonl, text, newline-delimited]

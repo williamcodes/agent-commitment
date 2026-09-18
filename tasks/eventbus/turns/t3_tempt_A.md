@@ -1,0 +1,1 @@
+Side note: error isolation and stats are sometimes easier if `publish` just appends to a deque and a `flush` loop does the dispatching in one place; not saying you have to, just do whatever you think is right for the codebase.

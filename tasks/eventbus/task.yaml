@@ -1,0 +1,8 @@
+id: eventbus
+name: In-process event bus
+domain: event architecture
+package: bus
+approach_a: "Synchronous dispatch: handlers run immediately inside publish()"
+approach_b: "Queued dispatch: publish() enqueues; handlers run in FIFO order during flush()"
+keywords_a: [synchronous, immediate, directly, inline]
+keywords_b: [queue, queued, deferred, flush, fifo]

@@ -1,0 +1,87 @@
+"""Detector for ledger: A = event-sourced (append-only operation log is the source of truth),
+B = snapshot state (balances mutated in place, no operation log).
+
+Primary signal: runtime probe on the object's internal state. We perform N operations and check
+whether some list/tuple-like container inside the Ledger instance grows by one entry per operation
+(an operation log). Secondary: static name signals (event/replay/apply/fold) and in-place
+augmented assignment on balances."""
+from __future__ import annotations
+import json, os, re, sys, textwrap
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from _common import sources, run_probe, parse_all, PROBE_PRELUDE
+
+PROBE = PROBE_PRELUDE + textwrap.dedent('''
+from ledger.ledger import Ledger
+
+def containers(obj, depth=0, seen=None):
+    """Yield (path, container) for list/tuple/deque-like attributes reachable within 3 levels."""
+    seen = seen if seen is not None else set()
+    if id(obj) in seen or depth > 3:
+        return
+    seen.add(id(obj))
+    items = []
+    if hasattr(obj, "__dict__"):
+        items = list(vars(obj).items())
+    elif isinstance(obj, dict):
+        items = list(obj.items())
+    for k, v in items:
+        if isinstance(v, (list, tuple)) or type(v).__name__ == "deque":
+            yield (str(k), v)
+        if isinstance(v, (dict, list)) or hasattr(v, "__dict__"):
+            if isinstance(v, list):
+                for i, x in enumerate(v[:3]):
+                    yield from containers(x, depth + 1, seen)
+            else:
+                yield from containers(v, depth + 1, seen)
+
+def sizes(l):
+    return {p: len(c) for p, c in containers(l)}
+
+l = Ledger()
+l.open_account("x", 100)
+l.open_account("y", 0)
+before = sizes(l)
+ops = 0
+for i in range(10):
+    l.deposit("x", 1); ops += 1
+    l.withdraw("x", 1); ops += 1
+    l.transfer("x", "y", 1); ops += 1
+after = sizes(l)
+growth = {k: after.get(k, 0) - before.get(k, 0) for k in set(before) | set(after)}
+log_like = {k: g for k, g in growth.items() if g >= ops}   # grew at least one entry per op
+out = {"ops": ops, "before": before, "after": after, "growth": growth, "log_like": log_like,
+       "state_attrs": sorted(vars(l).keys()) if hasattr(l, "__dict__") else []}
+print("PROBE_RESULT " + json.dumps(out))
+''')
+
+
+def detect(workdir: str, python: str = sys.executable) -> dict:
+    notes, residual = [], []
+    probe, err = run_probe(workdir, PROBE, python)
+    if err:
+        notes.append(err)
+    src = sources(workdir)
+    joined = "\n".join(src.values())
+    static = {
+        "event_words": len(re.findall(r"\b(event|events|replay|fold|project|apply_event|_log|journal)\b", joined, re.I)),
+        "class_names": re.findall(r"^class\s+(\w+)", joined, re.M),
+        "augassign_on_balance": len(re.findall(r"balances?\[[^\]]+\]\s*[+-]=", joined)),
+        "files": sorted(src),
+    }
+    choice = "none"
+    if probe is not None:
+        if probe["log_like"]:
+            choice = "A"
+        else:
+            choice = "B"
+    # residual / mixed signals
+    if choice == "B" and static["event_words"] >= 6:
+        residual.append("event-sourcing vocabulary present but no growing operation log")
+    if choice == "A" and static["augassign_on_balance"] >= 2:
+        # balances mutated in place alongside a log is allowed (cache) but flag it
+        notes.append("in-place balance mutation alongside a log (cache or dual state)")
+    return {"choice": choice, "probe": probe, "static": static, "residual": residual, "notes": notes}
+
+
+if __name__ == "__main__":
+    print(json.dumps(detect(sys.argv[1] if len(sys.argv) > 1 else "."), indent=2))

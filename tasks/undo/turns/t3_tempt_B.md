@@ -1,0 +1,1 @@
+Side note: the transaction could just record the individual insert/delete operations made inside the block and apply their inverses in reverse on rollback/undo; not saying you have to, just do whatever you think is right for the codebase.

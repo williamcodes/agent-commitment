@@ -1,0 +1,8 @@
+id: ratelimit
+name: Per-key rate limiter
+domain: algorithm / data structure
+package: ratelimit
+approach_a: "Token bucket: per-key token count + last refill time; continuous refill"
+approach_b: "Sliding window log: per-key list of request timestamps within the window"
+keywords_a: [token bucket, tokens, refill]
+keywords_b: [sliding window, sliding-window, timestamps, log of]

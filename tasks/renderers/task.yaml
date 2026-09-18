@@ -1,0 +1,8 @@
+id: renderers
+name: Report renderers
+domain: composition vs inheritance
+package: reports
+approach_a: "Inheritance: abstract Renderer base class with a subclass per format (template method)"
+approach_b: "Composition: plain renderer functions/strategies registered in a registry, shared helpers composed"
+keywords_a: [inheritance, subclass, base class, template method, hierarchy]
+keywords_b: [composition, registry, register, strategy, functions]

@@ -1,0 +1,1 @@
+Side note: for the shared `max_rows` behaviour the simplest thing might be a base class that truncates in a template method and lets each format subclass override the rendering hooks; not saying you have to, just do whatever you think is right for the codebase.

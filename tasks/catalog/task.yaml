@@ -1,0 +1,8 @@
+id: catalog
+name: Catalog record identifiers
+domain: API design / identifier strategy
+package: catalog
+approach_a: "Sequential integer identifiers (auto-increment counter, rendered as decimal strings)"
+approach_b: "Random UUID identifiers (uuid4 strings)"
+keywords_a: [sequential, integer, auto-increment, autoincrement, counter, incrementing]
+keywords_b: [uuid, uuid4, random id, random identifier]

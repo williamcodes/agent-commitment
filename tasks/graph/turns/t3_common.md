@@ -1,0 +1,1 @@
+Next: dynamic node sets and an edge list. `add_node() -> int` appends a new isolated node and returns its id. `remove_node(u)` deletes the node and its edges and relabels every higher node id down by one (so ids stay `0 … n-1`). `edges() -> list[tuple[int, int]]` returns every edge once as `(min, max)`, sorted. tests/test_t3.py has been added; all tests must pass.

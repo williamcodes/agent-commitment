@@ -1,0 +1,1 @@
+Next: two features. (1) `search(substring, ns="default") -> list[str]`: sorted keys in the namespace containing the substring (case-sensitive). (2) `export_json(path)` writes the whole store as a JSON object `{namespace: {key: value}}` and `import_json(path)` merges such a file into the store. tests/test_t3.py has been added; all tests must pass.
