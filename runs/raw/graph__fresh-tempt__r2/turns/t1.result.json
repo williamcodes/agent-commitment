@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 36707,
+  "duration_ms": 53199,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1719,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 11802,
+      "cacheReadInputTokens": 108820,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.36515500000000006,
+      "inputTokens": 162,
+      "maxOutputTokens": 64000,
+      "outputTokens": 2637,
+      "provider": "firstParty",
+      "thinkingTokens": 294,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.0011,
+      "inputTokens": 1030,
+      "maxOutputTokens": 32000,
+      "outputTokens": 14,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 6,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "Done. `netgraph/graph.py` is implemented and `python -m pytest -q` passes all 3 tests in `tests/test_t1.py`. The file is left uncommitted since you didn't ask for a commit.\n\n**What I built:** a `Graph` class in `netgraph/graph.py:8` with a per-node set of neighbours, a running edge counter, a shared range check that raises `IndexError` for out-of-range ids, and a parent-map BFS for `shortest_path`. Duplicate edges are no-ops, self-loops count once, and `neighbors` returns a sorted list.\n\n**Verified beyond the tests:** zero-node graphs, repeated self-loops, unreachable and same-node paths, and negative or too-large ids all behave per the spec.\n\n**Approach chosen:** Approach A, adjacency sets. The spec's interface has no dense-graph or row-level operations that would benefit from a matrix, and sets give O(1) lookup plus O(degree) neighbour iteration with memory that scales with nodes plus edges instead of n\u00b2.",
+  "result_index": 0,
+  "session_id": "9478bd04-abae-4130-bb5f-204cfd36c42c",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 36,
+  "total_cost_usd": 0.36625500000000005,
+  "ttft_ms": 2082,
+  "ttft_stream_ms": 1718,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 7594,
+      "ephemeral_5m_input_tokens": 4208
+    },
+    "cache_creation_input_tokens": 11802,
+    "cache_read_input_tokens": 108820,
+    "inference_geo": "not_available",
+    "input_tokens": 162,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 524
+        },
+        "cache_creation_input_tokens": 524,
+        "cache_read_input_tokens": 21288,
+        "input_tokens": 32,
+        "output_tokens": 349,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 2637,
+    "output_tokens_details": {
+      "thinking_tokens": 294
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "e2190f9b-6d12-4c81-8f29-30bccddcb4f1"
+}

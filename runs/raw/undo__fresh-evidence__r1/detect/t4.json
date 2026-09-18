@@ -1,0 +1,30 @@
+{
+  "choice": "B",
+  "notes": [],
+  "probe": {
+    "N": 200000,
+    "attrs": [
+      "_redo",
+      "_text",
+      "_tx_starts",
+      "_undo"
+    ],
+    "big_strings": 20,
+    "edits": 20,
+    "history_chars": 4000190,
+    "ratio_to_full_snapshots": 1.0000475,
+    "string_count": 20
+  },
+  "residual": [],
+  "static": {
+    "classes_with_undo_method": [
+      "TextBuffer"
+    ],
+    "command_words": 4,
+    "files": [
+      "editor/__init__.py",
+      "editor/buffer.py"
+    ],
+    "snapshot_words": 10
+  }
+}

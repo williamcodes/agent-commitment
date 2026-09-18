@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 43067,
+  "duration_ms": 55646,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1120,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 10227,
+      "cacheReadInputTokens": 91584,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.400686,
+      "inputTokens": 130,
+      "maxOutputTokens": 64000,
+      "outputTokens": 3439,
+      "provider": "firstParty",
+      "thinkingTokens": 421,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.001131,
+      "inputTokens": 1031,
+      "maxOutputTokens": 32000,
+      "outputTokens": 20,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 5,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All seven tests pass, and my additional checks for `replace` bounds, `undo_all` followed by a full redo, and redo-clearing after `undo_all` also pass. No files under `tests/` were touched.\n\n**What changed in `editor/buffer.py`:**\n\n- **Generalized the edit record.** The internal command used to be an insert-or-delete flag with one string. It is now a replacement of `old` by `new` at `pos`. Insert is a replacement with empty `old`, delete has empty `new`, and replace uses both. Apply and invert are mirror images, so undo and redo stay unchanged.\n- **Added `replace(pos, n, s)`.** It records one command, so it is a single undo step by construction rather than a delete plus insert pair. It shares bounds checking with `delete` through a small helper and raises IndexError on the same conditions.\n- **Added `history_len()`.** Returns the size of the undo stack.\n- **Added `undo_all()`.** Calls `undo` until it returns False. Each undone step lands on the redo stack in order, so everything is redoable afterward.\n\nThe command-pattern approach from the spec is preserved. Memory still scales with edit size, not buffer size times history length. The working tree has the new buffer file, the gitignore, and the new test file untracked, as they were when I started. Nothing has been committed.",
+  "result_index": 0,
+  "session_id": "aec5bbb2-f151-4319-9ff8-0693bd890dd5",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 57,
+  "total_cost_usd": 0.401817,
+  "ttft_ms": 1790,
+  "ttft_stream_ms": 1120,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 10227,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 10227,
+    "cache_read_input_tokens": 91584,
+    "inference_geo": "not_available",
+    "input_tokens": 130,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 2299,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 2299,
+        "cache_read_input_tokens": 21483,
+        "input_tokens": 32,
+        "output_tokens": 458,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 3439,
+    "output_tokens_details": {
+      "thinking_tokens": 421
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "cd32dab0-0865-4461-a779-e280a6f6f524"
+}

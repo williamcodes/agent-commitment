@@ -1,0 +1,40 @@
+{
+  "choice": "A",
+  "notes": [],
+  "probe": {
+    "after": {
+      "_log": 32
+    },
+    "before": {
+      "_log": 2
+    },
+    "growth": {
+      "_log": 30
+    },
+    "log_like": {
+      "_log": 30
+    },
+    "ops": 30,
+    "state_attrs": [
+      "_log",
+      "_state"
+    ],
+    "total_growth": 30
+  },
+  "residual": [],
+  "static": {
+    "augassign_on_balance": 1,
+    "class_names": [
+      "InsufficientFunds",
+      "UnknownAccount",
+      "Event",
+      "_State",
+      "Ledger"
+    ],
+    "event_words": 34,
+    "files": [
+      "ledger/__init__.py",
+      "ledger/ledger.py"
+    ]
+  }
+}

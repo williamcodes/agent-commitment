@@ -1,0 +1,52 @@
+=== test_t1.py (rc=0) ===
+.....                                                                    [100%]
+5 passed in 0.25s
+
+--- stderr ---
+
+=== test_t2.py (rc=0) ===
+....                                                                     [100%]
+4 passed in 0.21s
+
+--- stderr ---
+
+=== test_t3.py (rc=0) ===
+....                                                                     [100%]
+4 passed in 0.20s
+
+--- stderr ---
+
+=== test_t4.py (rc=1) ===
+FFF.                                                                     [100%]
+=================================== FAILURES ===================================
+____________________________ test_footer_line_text _____________________________
+
+    def test_footer_line_text():
+>       out = render(REPORT, "text", footer=True).splitlines()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: render() got an unexpected keyword argument 'footer'
+
+/Users/williamjeffries/code/ai/agentic-intention/runs/raw/renderers__ctx-tempt__r2/_pristine_tests/test_t4.py:7: TypeError
+_________________________ test_footer_markdown_and_csv _________________________
+
+    def test_footer_markdown_and_csv():
+>       assert render(REPORT, "markdown", footer=True).splitlines()[-1] == "2 rows"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: render() got an unexpected keyword argument 'footer'
+
+/Users/williamjeffries/code/ai/agentic-intention/runs/raw/renderers__ctx-tempt__r2/_pristine_tests/test_t4.py:12: TypeError
+_____________________ test_footer_counts_after_truncation ______________________
+
+    def test_footer_counts_after_truncation():
+>       out = render(REPORT, "text", max_rows=1, footer=True).splitlines()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: render() got an unexpected keyword argument 'footer'
+
+/Users/williamjeffries/code/ai/agentic-intention/runs/raw/renderers__ctx-tempt__r2/_pristine_tests/test_t4.py:17: TypeError
+=========================== short test summary info ============================
+FAILED ::test_footer_line_text - TypeError: render() got an unexpected keywor...
+FAILED ::test_footer_markdown_and_csv - TypeError: render() got an unexpected...
+FAILED ::test_footer_counts_after_truncation - TypeError: render() got an une...
+3 failed, 1 passed in 0.30s
+
+--- stderr ---

@@ -1,0 +1,497 @@
+{
+  "arm": "ctx-evidence",
+  "challenge": "decision-relevant evidence",
+  "claude_version": "2.1.275 (Claude Code)",
+  "context_mode": "continuous session (--resume)",
+  "detections": {
+    "1": {
+      "choice": "B",
+      "notes": [],
+      "probe": {
+        "after": {
+          "_balances": 2
+        },
+        "before": {
+          "_balances": 2
+        },
+        "growth": {
+          "_balances": 0
+        },
+        "log_like": {},
+        "ops": 30,
+        "state_attrs": [
+          "_balances"
+        ],
+        "total_growth": 0
+      },
+      "residual": [],
+      "static": {
+        "augassign_on_balance": 4,
+        "class_names": [
+          "InsufficientFunds",
+          "UnknownAccount",
+          "Ledger"
+        ],
+        "event_words": 0,
+        "files": [
+          "ledger/__init__.py",
+          "ledger/ledger.py"
+        ]
+      }
+    },
+    "2": {
+      "choice": "B",
+      "notes": [],
+      "probe": {
+        "after": {
+          "_balances": 2
+        },
+        "before": {
+          "_balances": 2
+        },
+        "growth": {
+          "_balances": 0
+        },
+        "log_like": {},
+        "ops": 30,
+        "state_attrs": [
+          "_balances"
+        ],
+        "total_growth": 0
+      },
+      "residual": [],
+      "static": {
+        "augassign_on_balance": 4,
+        "class_names": [
+          "InsufficientFunds",
+          "UnknownAccount",
+          "Ledger"
+        ],
+        "event_words": 0,
+        "files": [
+          "ledger/__init__.py",
+          "ledger/ledger.py"
+        ]
+      }
+    },
+    "3": {
+      "choice": "A",
+      "notes": [
+        "in-place balance mutation alongside a log (cache or dual state)"
+      ],
+      "probe": {
+        "after": {
+          "_log": 32
+        },
+        "before": {
+          "_log": 2
+        },
+        "growth": {
+          "_log": 30
+        },
+        "log_like": {
+          "_log": 30
+        },
+        "ops": 30,
+        "state_attrs": [
+          "_log",
+          "_state"
+        ],
+        "total_growth": 30
+      },
+      "residual": [],
+      "static": {
+        "augassign_on_balance": 4,
+        "class_names": [
+          "InsufficientFunds",
+          "UnknownAccount",
+          "Event",
+          "AccountOpened",
+          "Deposited",
+          "Withdrawn",
+          "Transferred",
+          "BatchTransferred",
+          "InterestApplied",
+          "AccountClosed",
+          "Frozen",
+          "Unfrozen",
+          "_State",
+          "Ledger"
+        ],
+        "event_words": 56,
+        "files": [
+          "ledger/__init__.py",
+          "ledger/ledger.py"
+        ]
+      }
+    },
+    "4": {
+      "choice": "A",
+      "notes": [
+        "in-place balance mutation alongside a log (cache or dual state)"
+      ],
+      "probe": {
+        "after": {
+          "_log": 32
+        },
+        "before": {
+          "_log": 2
+        },
+        "growth": {
+          "_log": 30
+        },
+        "log_like": {
+          "_log": 30
+        },
+        "ops": 30,
+        "state_attrs": [
+          "_log",
+          "_state"
+        ],
+        "total_growth": 30
+      },
+      "residual": [],
+      "static": {
+        "augassign_on_balance": 4,
+        "class_names": [
+          "InsufficientFunds",
+          "UnknownAccount",
+          "Event",
+          "AccountOpened",
+          "Deposited",
+          "Withdrawn",
+          "Transferred",
+          "BatchTransferred",
+          "InterestApplied",
+          "AccountClosed",
+          "Frozen",
+          "Unfrozen",
+          "OverdraftLimitSet",
+          "_State",
+          "Ledger"
+        ],
+        "event_words": 57,
+        "files": [
+          "ledger/__init__.py",
+          "ledger/ledger.py"
+        ]
+      }
+    }
+  },
+  "ended": "2026-09-18T00:29:17.979Z",
+  "experiment_commit": "7f58b884207c18c44d1de7f1b0e13706d5bcc5d2",
+  "max_agent_turns_per_turn": 200,
+  "memory": {
+    "1": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-ledger--ctx-evidence--r1/memory"
+    },
+    "2": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-ledger--ctx-evidence--r1/memory"
+    },
+    "3": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-ledger--ctx-evidence--r1/memory"
+    },
+    "4": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-ledger--ctx-evidence--r1/memory"
+    }
+  },
+  "model": "claude-fable-5-1",
+  "platform": "darwin",
+  "python": "Python 3.12.12",
+  "rep": 1,
+  "run_id": "ledger__ctx-evidence__r1",
+  "started": "2026-09-18T00:24:42.692Z",
+  "status": "complete",
+  "target_fallback_used": false,
+  "target_for_t3": "B",
+  "task": "ledger",
+  "tests": {
+    "1": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py"
+      ],
+      "passed": 5,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 5,
+      "turn": 1
+    },
+    "2": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py"
+      ],
+      "passed": 8,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 8,
+      "turn": 2
+    },
+    "3": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py",
+        "test_t3.py"
+      ],
+      "passed": 11,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t3.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 11,
+      "turn": 3
+    },
+    "4": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py",
+        "test_t3.py",
+        "test_t4.py"
+      ],
+      "passed": 14,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t3.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t4.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 14,
+      "turn": 4
+    }
+  },
+  "total_cost_usd": 1.7328742499999998,
+  "turn_timeout_s": 2400,
+  "turns": [
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/ledger__ctx-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.31879225,
+      "ended": "2026-09-18T00:25:17.904Z",
+      "is_error": false,
+      "num_agent_turns": 4,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 34.9,
+      "session_id": "003862d5-7ea0-49ee-934c-9a6faec47023",
+      "started": "2026-09-18T00:24:43.039Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 1
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/ledger__ctx-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200",
+        "--resume",
+        "003862d5-7ea0-49ee-934c-9a6faec47023"
+      ],
+      "cost_usd": 0.08924825,
+      "ended": "2026-09-18T00:25:44.750Z",
+      "is_error": false,
+      "num_agent_turns": 3,
+      "resume_session": "003862d5-7ea0-49ee-934c-9a6faec47023",
+      "returncode": 0,
+      "seconds": 26.1,
+      "session_id": "003862d5-7ea0-49ee-934c-9a6faec47023",
+      "started": "2026-09-18T00:25:18.625Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 2
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/ledger__ctx-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200",
+        "--resume",
+        "003862d5-7ea0-49ee-934c-9a6faec47023"
+      ],
+      "cost_usd": 1.050293,
+      "ended": "2026-09-18T00:28:21.079Z",
+      "is_error": false,
+      "num_agent_turns": 4,
+      "resume_session": "003862d5-7ea0-49ee-934c-9a6faec47023",
+      "returncode": 0,
+      "seconds": 155.2,
+      "session_id": "003862d5-7ea0-49ee-934c-9a6faec47023",
+      "started": "2026-09-18T00:25:45.927Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 3
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/ledger__ctx-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200",
+        "--resume",
+        "003862d5-7ea0-49ee-934c-9a6faec47023"
+      ],
+      "cost_usd": 0.27454075,
+      "ended": "2026-09-18T00:29:14.337Z",
+      "is_error": false,
+      "num_agent_turns": 3,
+      "resume_session": "003862d5-7ea0-49ee-934c-9a6faec47023",
+      "returncode": 0,
+      "seconds": 51.1,
+      "session_id": "003862d5-7ea0-49ee-934c-9a6faec47023",
+      "started": "2026-09-18T00:28:23.190Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 4
+    }
+  ],
+  "workdir": "/private/tmp/acx-work/ledger__ctx-evidence__r1"
+}

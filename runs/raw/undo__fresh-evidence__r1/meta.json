@@ -1,0 +1,442 @@
+{
+  "arm": "fresh-evidence",
+  "challenge": "decision-relevant evidence",
+  "claude_version": "2.1.275 (Claude Code)",
+  "context_mode": "fresh session per turn",
+  "detections": {
+    "1": {
+      "choice": "A",
+      "notes": [],
+      "probe": {
+        "N": 200000,
+        "attrs": [
+          "_redo",
+          "_text",
+          "_undo"
+        ],
+        "big_strings": 0,
+        "edits": 20,
+        "history_chars": 1,
+        "ratio_to_full_snapshots": 2.5e-07,
+        "string_count": 1
+      },
+      "residual": [],
+      "static": {
+        "classes_with_undo_method": [
+          "_Edit",
+          "TextBuffer"
+        ],
+        "command_words": 8,
+        "files": [
+          "editor/__init__.py",
+          "editor/buffer.py"
+        ],
+        "snapshot_words": 1
+      }
+    },
+    "2": {
+      "choice": "A",
+      "notes": [],
+      "probe": {
+        "N": 200000,
+        "attrs": [
+          "_redo",
+          "_text",
+          "_undo"
+        ],
+        "big_strings": 0,
+        "edits": 20,
+        "history_chars": 1,
+        "ratio_to_full_snapshots": 2.5e-07,
+        "string_count": 2
+      },
+      "residual": [],
+      "static": {
+        "classes_with_undo_method": [
+          "_Edit",
+          "TextBuffer"
+        ],
+        "command_words": 8,
+        "files": [
+          "editor/__init__.py",
+          "editor/buffer.py"
+        ],
+        "snapshot_words": 1
+      }
+    },
+    "3": {
+      "choice": "B",
+      "notes": [],
+      "probe": {
+        "N": 200000,
+        "attrs": [
+          "_redo",
+          "_text",
+          "_tx_starts",
+          "_undo"
+        ],
+        "big_strings": 20,
+        "edits": 20,
+        "history_chars": 4000190,
+        "ratio_to_full_snapshots": 1.0000475,
+        "string_count": 20
+      },
+      "residual": [],
+      "static": {
+        "classes_with_undo_method": [
+          "TextBuffer"
+        ],
+        "command_words": 4,
+        "files": [
+          "editor/__init__.py",
+          "editor/buffer.py"
+        ],
+        "snapshot_words": 10
+      }
+    },
+    "4": {
+      "choice": "B",
+      "notes": [],
+      "probe": {
+        "N": 200000,
+        "attrs": [
+          "_redo",
+          "_text",
+          "_tx_starts",
+          "_undo"
+        ],
+        "big_strings": 20,
+        "edits": 20,
+        "history_chars": 4000190,
+        "ratio_to_full_snapshots": 1.0000475,
+        "string_count": 20
+      },
+      "residual": [],
+      "static": {
+        "classes_with_undo_method": [
+          "TextBuffer"
+        ],
+        "command_words": 4,
+        "files": [
+          "editor/__init__.py",
+          "editor/buffer.py"
+        ],
+        "snapshot_words": 10
+      }
+    }
+  },
+  "ended": "2026-09-18T00:41:24.701Z",
+  "experiment_commit": "7f58b884207c18c44d1de7f1b0e13706d5bcc5d2",
+  "max_agent_turns_per_turn": 200,
+  "memory": {
+    "1": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-undo--fresh-evidence--r1/memory",
+      "wiped": true
+    },
+    "2": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-undo--fresh-evidence--r1/memory",
+      "wiped": true
+    },
+    "3": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-undo--fresh-evidence--r1/memory",
+      "wiped": true
+    },
+    "4": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-undo--fresh-evidence--r1/memory",
+      "wiped": true
+    }
+  },
+  "model": "claude-fable-5-1",
+  "platform": "darwin",
+  "python": "Python 3.12.12",
+  "rep": 1,
+  "run_id": "undo__fresh-evidence__r1",
+  "started": "2026-09-18T00:36:20.165Z",
+  "status": "complete",
+  "target_fallback_used": false,
+  "target_for_t3": "A",
+  "task": "undo",
+  "tests": {
+    "1": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py"
+      ],
+      "passed": 4,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 4,
+          "skipped": 0,
+          "total": 4
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 4,
+      "turn": 1
+    },
+    "2": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py"
+      ],
+      "passed": 7,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 4,
+          "skipped": 0,
+          "total": 4
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 7,
+      "turn": 2
+    },
+    "3": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py",
+        "test_t3.py"
+      ],
+      "passed": 10,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 4,
+          "skipped": 0,
+          "total": 4
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t3.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 10,
+      "turn": 3
+    },
+    "4": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py",
+        "test_t3.py",
+        "test_t4.py"
+      ],
+      "passed": 13,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 4,
+          "skipped": 0,
+          "total": 4
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t3.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t4.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 13,
+      "turn": 4
+    }
+  },
+  "total_cost_usd": 2.10832775,
+  "turn_timeout_s": 2400,
+  "turns": [
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/undo__fresh-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.44468925,
+      "ended": "2026-09-18T00:37:19.701Z",
+      "is_error": false,
+      "num_agent_turns": 6,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 59.2,
+      "session_id": "9dc26a49-d452-4c07-8b25-774be2ff1555",
+      "started": "2026-09-18T00:36:20.494Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 1
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/undo__fresh-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.401817,
+      "ended": "2026-09-18T00:38:17.397Z",
+      "is_error": false,
+      "num_agent_turns": 5,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 57.0,
+      "session_id": "aec5bbb2-f151-4319-9ff8-0693bd890dd5",
+      "started": "2026-09-18T00:37:20.416Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 2
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/undo__fresh-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.7667995,
+      "ended": "2026-09-18T00:40:11.592Z",
+      "is_error": false,
+      "num_agent_turns": 5,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 112.8,
+      "session_id": "bcbf3afb-498b-4474-b864-c15709e89304",
+      "started": "2026-09-18T00:38:18.747Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 3
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/undo__fresh-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.49502199999999996,
+      "ended": "2026-09-18T00:41:20.454Z",
+      "is_error": false,
+      "num_agent_turns": 6,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 67.1,
+      "session_id": "4c94d1dc-3e6f-4190-baa6-a7e5a6d0fb15",
+      "started": "2026-09-18T00:40:13.326Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 4
+    }
+  ],
+  "workdir": "/private/tmp/acx-work/undo__fresh-evidence__r1"
+}

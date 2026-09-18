@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 106939,
+  "duration_ms": 121642,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1067,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 14379,
+      "cacheReadInputTokens": 139750,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.7543674999999999,
+      "inputTokens": 130,
+      "maxOutputTokens": 64000,
+      "outputTokens": 10204,
+      "provider": "firstParty",
+      "thinkingTokens": 1671,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 5,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All eleven tests pass.\n\n```\n11 passed in 0.06s\n```\n\n**The main change is a backend switch from SQLite to a JSON text file.** The product owner's new requirements are incompatible with SQLite: its file is binary, cannot be edited in a text editor, and produces no usable line diffs. The spec's Approach A satisfies every new requirement directly, and the stated scale of under 2,000 keys with a single process removes the reasons SQLite was originally attractive. The public interface is unchanged, so nothing calling the store needs to change.\n\n**How the file is written:**\n\n- **Format:** one JSON object shaped as `{namespace: {key: value}}`, pretty-printed with sorted keys and one entry per line. Sorted output means the same store always serialises identically, so a diff shows exactly the keys that changed. Non-ASCII text is left unescaped so \"h\u00e9llo \u2713\" appears as-is rather than as escape codes.\n- **Runtime model:** the file is parsed once on open and held in memory. Every mutation rewrites the whole file, so there is nothing to flush on close and a crash between operations loses nothing.\n- **Atomic writes:** each rewrite goes to a temporary file in the same directory and is then renamed over the data file. A crash mid-write can never leave a truncated file that a person would then have to repair by hand. The temporary file exists only during the write, so the single-file rule still holds.\n- **Hand-edit tolerance:** the loader validates the structure and raises a clear error naming the file and the JSON parse position if someone breaks it. An empty file is treated as an empty store, and namespaces left as empty objects are ignored.\n- **Migration:** a data file written by the previous SQLite version is detected by its header and converted to JSON the first time it is opened. I verified this against both earlier schemas. It costs a few lines and means nobody with an existing file loses data.\n\n**New features:**\n\n- `search` returns the sorted keys in a namespace containing the substring, case-sensitive.\n- `export_json` writes the store in the same layout as the data file, so an export is itself a valid data file. `import_json` validates the input the same way the loader does, then merges it, with imported values overwriting existing keys and untouched keys left alone.\n\n**SPEC.md** now records the text-file requirement, the size and single-process assumptions, and that Approach A is the one in use, so the constraint is visible to whoever works on this next. Nothing has been committed, since you didn't ask for that.",
+  "result_index": 0,
+  "session_id": "6f44795c-89fe-4715-9b81-70c397c235af",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 32,
+  "total_cost_usd": 0.7543674999999999,
+  "ttft_ms": 2934,
+  "ttft_stream_ms": 1067,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3759,
+      "ephemeral_5m_input_tokens": 10620
+    },
+    "cache_creation_input_tokens": 14379,
+    "cache_read_input_tokens": 139750,
+    "inference_geo": "not_available",
+    "input_tokens": 130,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 553
+        },
+        "cache_creation_input_tokens": 553,
+        "cache_read_input_tokens": 35317,
+        "input_tokens": 32,
+        "output_tokens": 808,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 10204,
+    "output_tokens_details": {
+      "thinking_tokens": 1671
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "1578ac9f-f9c2-405d-aa1c-c6aa377544e3"
+}

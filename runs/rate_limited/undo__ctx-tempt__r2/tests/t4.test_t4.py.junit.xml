@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="3" time="0.287" timestamp="2026-09-18T04:04:35.249561+03:00" hostname="MacBook-Pro-9.local"><testcase classname="" name="test_clear_history" time="0.001"><failure message="AttributeError: 'TextBuffer' object has no attribute 'clear_history'">def test_clear_history():
+        b = TextBuffer()
+        b.insert(0, "abc")
+        b.undo()
+        b.redo()
+&gt;       b.clear_history()
+        ^^^^^^^^^^^^^^^
+E       AttributeError: 'TextBuffer' object has no attribute 'clear_history'
+
+/Users/williamjeffries/code/ai/agentic-intention/runs/raw/undo__ctx-tempt__r2/_pristine_tests/test_t4.py:9: AttributeError</failure></testcase><testcase classname="" name="test_find_all" time="0.001"><failure message="AttributeError: 'TextBuffer' object has no attribute 'find_all'. Did you mean: 'undo_all'?">def test_find_all():
+        b = TextBuffer("abcabcab")
+&gt;       assert b.find_all("ab") == [0, 3, 6]
+               ^^^^^^^^^^
+E       AttributeError: 'TextBuffer' object has no attribute 'find_all'. Did you mean: 'undo_all'?
+
+/Users/williamjeffries/code/ai/agentic-intention/runs/raw/undo__ctx-tempt__r2/_pristine_tests/test_t4.py:16: AttributeError</failure></testcase><testcase classname="" name="test_replace_all_single_step" time="0.000"><failure message="AttributeError: 'TextBuffer' object has no attribute 'replace_all'">def test_replace_all_single_step():
+        b = TextBuffer("a-b-c")
+&gt;       n = b.replace_all("-", "+")
+            ^^^^^^^^^^^^^
+E       AttributeError: 'TextBuffer' object has no attribute 'replace_all'
+
+/Users/williamjeffries/code/ai/agentic-intention/runs/raw/undo__ctx-tempt__r2/_pristine_tests/test_t4.py:22: AttributeError</failure></testcase></testsuite></testsuites>

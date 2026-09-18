@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 75468,
+  "duration_ms": 87758,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 732,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 7849,
+      "cacheReadInputTokens": 129169,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.52957225,
+      "inputTokens": 130,
+      "maxOutputTokens": 64000,
+      "outputTokens": 6780,
+      "provider": "firstParty",
+      "thinkingTokens": 1651,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 5,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All ten tests pass, and the edge cases I checked by hand (nested transactions, no-op transactions, an opaque plugin-style edit) behave correctly.\n\n**I switched the undo architecture from command pattern to memento.** The plugin requirement forced this. An opaque `fn(text) -> text` has no inverse, and diffing is prohibited, so the only way to undo it is to keep the text from before it ran. Under the command pattern that would have meant a special \"snapshot command\" just for plugins, which is exactly the special case the team said they don't want. Once snapshots are needed anyway, and most edits will be plugins, keeping commands for the minority of insert/delete/replace edits buys nothing but complexity. Memento is also strictly simpler: undo and redo are now three lines each, and there is no edit type hierarchy at all.\n\nThe tradeoff is memory. History now costs buffer size times history length rather than edit size. Two things soften this. Python strings are immutable, so a snapshot is a reference until the text actually changes, and the spec already accepts this cost for Approach B. If it becomes a problem later, the natural fix is to bound history depth or store snapshots in a rope, both of which stay uniform across edit types.\n\nWhat changed in `editor/buffer.py`:\n\n- **Undo and redo stacks now hold text snapshots.** Every top-level edit pushes the previous text before changing it. The edit record dataclass is gone.\n- **Added `transaction()`.** It snapshots the text on entry and suppresses per-edit history while open. On success it pushes that one snapshot as a single step. On any exception it restores the snapshot, records nothing, and re-raises. Transactions nest: only the outermost records a step, and an inner failure rolls back just its own edits. A transaction whose net effect is no change records nothing.\n- **Added `can_undo()` and `can_redo()`.**\n- **Delete now delegates to replace** with an empty string, since they were identical under the new model.\n\nThe upcoming `apply_plugin(fn)` will be a one-liner that passes the plugin's result to the same internal setter every other edit uses, so it automatically participates in undo, redo, and transactions.",
+  "result_index": 0,
+  "session_id": "f616f90c-7b0c-4314-a04d-14f1dc8620db",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 37,
+  "total_cost_usd": 0.52957225,
+  "ttft_ms": 10399,
+  "ttft_stream_ms": 732,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 7849,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 7849,
+    "cache_read_input_tokens": 129169,
+    "inference_geo": "not_available",
+    "input_tokens": 130,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1114,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 1114,
+        "cache_read_input_tokens": 29771,
+        "input_tokens": 32,
+        "output_tokens": 711,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 6780,
+    "output_tokens_details": {
+      "thinking_tokens": 1651
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "1a6446b1-1a2c-4982-ab27-73a6cd851e4b"
+}

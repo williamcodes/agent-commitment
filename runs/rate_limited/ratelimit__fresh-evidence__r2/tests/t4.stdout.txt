@@ -1,0 +1,55 @@
+=== test_t1.py (rc=0) ===
+.....                                                                    [100%]
+5 passed in 0.19s
+
+--- stderr ---
+
+=== test_t2.py (rc=0) ===
+...                                                                      [100%]
+3 passed in 0.20s
+
+--- stderr ---
+
+=== test_t3.py (rc=0) ===
+...                                                                      [100%]
+3 passed in 0.18s
+
+--- stderr ---
+
+=== test_t4.py (rc=1) ===
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+_________________________ test_allow_n_all_or_nothing __________________________
+
+    def test_allow_n_all_or_nothing():
+        rl = RateLimiter(limit=5, window_seconds=10.0)
+>       assert rl.allow_n("k", 3, 0.0) is True
+               ^^^^^^^^^^
+E       AttributeError: 'RateLimiter' object has no attribute 'allow_n'. Did you mean: 'allow'?
+
+/Users/williamjeffries/code/ai/agentic-intention/runs/raw/ratelimit__fresh-evidence__r2/_pristine_tests/test_t4.py:6: AttributeError
+__________________ test_allow_n_more_than_limit_always_false ___________________
+
+    def test_allow_n_more_than_limit_always_false():
+        rl = RateLimiter(limit=2, window_seconds=10.0)
+>       assert rl.allow_n("k", 3, 0.0) is False
+               ^^^^^^^^^^
+E       AttributeError: 'RateLimiter' object has no attribute 'allow_n'. Did you mean: 'allow'?
+
+/Users/williamjeffries/code/ai/agentic-intention/runs/raw/ratelimit__fresh-evidence__r2/_pristine_tests/test_t4.py:14: AttributeError
+______________________ test_allow_n_recovers_after_window ______________________
+
+    def test_allow_n_recovers_after_window():
+        rl = RateLimiter(limit=2, window_seconds=10.0)
+>       assert rl.allow_n("k", 2, 0.0)
+               ^^^^^^^^^^
+E       AttributeError: 'RateLimiter' object has no attribute 'allow_n'. Did you mean: 'allow'?
+
+/Users/williamjeffries/code/ai/agentic-intention/runs/raw/ratelimit__fresh-evidence__r2/_pristine_tests/test_t4.py:20: AttributeError
+=========================== short test summary info ============================
+FAILED ::test_allow_n_all_or_nothing - AttributeError: 'RateLimiter' object h...
+FAILED ::test_allow_n_more_than_limit_always_false - AttributeError: 'RateLim...
+FAILED ::test_allow_n_recovers_after_window - AttributeError: 'RateLimiter' o...
+3 failed in 0.32s
+
+--- stderr ---

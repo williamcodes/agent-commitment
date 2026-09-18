@@ -1,0 +1,6 @@
+160eacaac18052c504d19341e77d17a222b2108a 2026-09-18T03:26:16+03:00 Initial commit: spec and tests
+
+ SPEC.md               | 38 ++++++++++++++++++++++++++++++++++++++
+ ratelimit/__init__.py |  1 +
+ tests/test_t1.py      | 35 +++++++++++++++++++++++++++++++++++
+ 3 files changed, 74 insertions(+)

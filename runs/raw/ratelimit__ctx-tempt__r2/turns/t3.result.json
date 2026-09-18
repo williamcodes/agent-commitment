@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 84247,
+  "duration_ms": 98141,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1574,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 12996,
+      "cacheReadInputTokens": 105800,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.5958825,
+      "inputTokens": 98,
+      "maxOutputTokens": 64000,
+      "outputTokens": 7243,
+      "provider": "firstParty",
+      "thinkingTokens": 2283,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 4,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All eleven tests pass, and a randomized check of fifty thousand cases confirms that waiting exactly `retry_after` always suffices, including at large timestamps with sub-millisecond windows.\n\n```\n$ python -m pytest -q\n...........                                                              [100%]\n11 passed in 0.02s\n```\n\nI kept the token bucket rather than switching to a timestamp log. The wait is available in closed form as the token deficit divided by the refill rate, so the log's extra memory buys nothing here.\n\nChanges to `ratelimit/limiter.py`:\n\n- **Added `retry_after`.** It refills the bucket for the current time and returns zero if a token is available. Otherwise it returns the deficit converted to seconds at the key's refill rate. It then checks that answer with the same arithmetic `allow` will use, and nudges it up by one floating-point ulp until the check passes. Without that step, adding a tiny wait to a large `now` can round short and the promise would break. My first version had exactly that bug in a few hundred of the random cases.\n- **Added `prune`.** Each bucket now records the time of its most recent call. Keys whose last call is at least one window old are dropped and counted. Because an idle bucket is full again after a window, a pruned key is indistinguishable from a fresh one, so pruning never changes behaviour. Per-key limit overrides survive pruning since they are configuration.\n- **Added `tracked_keys`.** Returns the sorted keys that currently hold usage state. Keys that only have a limit override and no usage are not listed.\n- **Small refactor.** The refill arithmetic moved into a pure helper that computes the token count at a given time without mutating, so `retry_after` can probe a hypothetical future without touching state.",
+  "result_index": 0,
+  "session_id": "7b41bf6c-1c9f-498d-bd2b-60333225d4e4",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 47,
+  "total_cost_usd": 0.5958825,
+  "ttft_ms": 1590,
+  "ttft_stream_ms": 1574,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5847,
+      "ephemeral_5m_input_tokens": 7149
+    },
+    "cache_creation_input_tokens": 12996,
+    "cache_read_input_tokens": 105800,
+    "inference_geo": "not_available",
+    "input_tokens": 98,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 4067
+        },
+        "cache_creation_input_tokens": 4067,
+        "cache_read_input_tokens": 30074,
+        "input_tokens": 32,
+        "output_tokens": 650,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 7243,
+    "output_tokens_details": {
+      "thinking_tokens": 2283
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "ec222b6c-f1cf-45de-963e-b9e9e7e9dbd5"
+}

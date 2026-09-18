@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 38095,
+  "duration_ms": 52575,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1029,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 10089,
+      "cacheReadInputTokens": 73654,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.37872350000000005,
+      "inputTokens": 98,
+      "maxOutputTokens": 64000,
+      "outputTokens": 3151,
+      "provider": "firstParty",
+      "thinkingTokens": 391,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.0011589999999999999,
+      "inputTokens": 1089,
+      "maxOutputTokens": 32000,
+      "outputTokens": 14,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 4,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 14 tests pass, including the three new ones in tests/test_t4.py.\n\n**What I changed** in `ledger/ledger.py`:\n- Added a per-account overdraft mapping, defaulting to 0 for every account.\n- `set_overdraft_limit(id, limit)` validates the limit as a non-negative int and rejects unknown accounts. A limit of 0 removes the entry.\n- `overdraft_limit(id)` returns the limit, or 0 if none was set. It raises `UnknownAccount` for unknown ids.\n- `withdraw` and outgoing transfers, including batch transfers, now allow the balance to fall to minus the limit. The error message reports the limit alongside the balance.\n- `balances()` returns a fresh copy of the balance dict. Mutating the returned dict does not touch the ledger, which I checked directly.\n- Closing an account also clears its overdraft entry, so a reopened id starts clean.\n\nExisting behaviour is unaffected. Interest still skips negative balances, and close still requires an exact zero balance.\n\n**State-management approach:** the codebase uses Approach B, snapshot state. The ledger holds one dict from account id to current balance and mutates it in place, alongside a frozen set and now the overdraft map. There is no operation log. Batch transfer gets atomicity by working on a scratch copy and swapping it in, not by replaying events.\n\n**Did it change during the project?** I found no evidence that it did, but I cannot fully verify this. Git has only the initial commit with the spec and tests, and the ledger source is untracked, so there is no revision history of the implementation to inspect. Within the code itself, the module docstring declares Approach B, there is no leftover log or replay machinery, and none of the earlier tests reference history, events, or time travel. Everything consistent with the record points to the project having been Approach B from the start. If an earlier session did switch approaches, that decision was not recorded anywhere I can see.",
+  "result_index": 0,
+  "session_id": "8e6bced8-3de7-4ee1-85af-10b24ab40758",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 56,
+  "total_cost_usd": 0.37988249999999996,
+  "ttft_ms": 1140,
+  "ttft_stream_ms": 1029,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 10089,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 10089,
+    "cache_read_input_tokens": 73654,
+    "inference_geo": "not_available",
+    "input_tokens": 98,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 2046,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 2046,
+        "cache_read_input_tokens": 21599,
+        "input_tokens": 32,
+        "output_tokens": 791,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 3151,
+    "output_tokens_details": {
+      "thinking_tokens": 391
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "f2dc0751-2433-4cf2-8826-90af329b644b"
+}

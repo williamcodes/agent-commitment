@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 27798,
+  "duration_ms": 41126,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1071,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 10701,
+      "cacheReadInputTokens": 86349,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.31877475,
+      "inputTokens": 130,
+      "maxOutputTokens": 64000,
+      "outputTokens": 2110,
+      "provider": "firstParty",
+      "thinkingTokens": 89,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.001049,
+      "inputTokens": 994,
+      "maxOutputTokens": 32000,
+      "outputTokens": 11,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 5,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "Done. The new file is `reports/render.py`, and `python -m pytest -q` reports 5 passed. Nothing under `tests/` was touched, and the file is left uncommitted since you didn't ask for a commit.\n\n**What the module provides**\n\n- `render(report, fmt)` looks the format up in a registry, joins the renderer's lines with newlines, and raises `UnknownFormat` with the list of valid names if the format is missing.\n- `available_formats()` returns the sorted registry keys.\n- The text and markdown renderers are plain functions registered with a small `@format_renderer(\"name\")` decorator, so adding a format is one decorated function.\n- Shared behaviour is in a few helpers that stringify the title, columns, and cells, plus a pipe-row helper used by markdown.\n\n**Approach chosen:** B, composition with a function registry. With only a title-plus-rows skeleton to share, plain helper functions cover it without forcing every format into the same header/rows/footer template, and a registry makes format discovery explicit rather than dependent on subclass introspection.",
+  "result_index": 0,
+  "session_id": "7622643c-bb4f-4157-9bf5-67599865c390",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 35,
+  "total_cost_usd": 0.31982375,
+  "ttft_ms": 1183,
+  "ttft_stream_ms": 1071,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 7550,
+      "ephemeral_5m_input_tokens": 3151
+    },
+    "cache_creation_input_tokens": 10701,
+    "cache_read_input_tokens": 86349,
+    "inference_geo": "not_available",
+    "input_tokens": 130,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 219
+        },
+        "cache_creation_input_tokens": 219,
+        "cache_read_input_tokens": 20492,
+        "input_tokens": 32,
+        "output_tokens": 348,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 2110,
+    "output_tokens_details": {
+      "thinking_tokens": 89
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "ee54b42f-93a4-4957-b97e-96de3d486bac"
+}

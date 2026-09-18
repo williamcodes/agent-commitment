@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 28311,
+  "duration_ms": 40839,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1598,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 2891,
+      "cacheReadInputTokens": 78546,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.1892165,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 2222,
+      "provider": "firstParty",
+      "thinkingTokens": 426,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 11 tests pass, including the two new ones in `tests/test_t3.py`:\n\n```\n11 passed in 0.03s\n```\n\n**Changes, both in `wire/codec.py`:**\n- **Added `dump_text`.** It validates the frame, then renders one line per record in the form `ts=\u2026 sensor_id=\u2026 value=\u2026 flags=\u2026`. Floats use `repr`, so the text is exact for `-0.0`, `nan`, and `1e+300`. An empty encoding renders as an empty string.\n- **Added `filter_sensor`.** It works on the packed bytes without building dicts. It reads the 2-byte sensor id at a fixed offset inside each 15-byte record, copies matching records verbatim into a new frame, and recomputes the header count and CRC. The result is byte-identical to encoding the filtered records directly, and filtering for an unknown sensor yields a valid empty encoding.\n\n**On the JSON-lines side note:** I kept the binary format. The codebase already has three features built on the fixed-layout design, and that layout is exactly what made `filter_sensor` a cheap byte-copy with no decode. The rendering helper `dump_text` costs about ten lines, which is far less than a format rewrite, and it gives the same greppable text when needed. Nothing is committed yet.",
+  "result_index": 0,
+  "session_id": "b191fae0-c15a-47eb-a7ee-d50342b50ace",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 109,
+  "total_cost_usd": 0.1892165,
+  "ttft_ms": 2962,
+  "ttft_stream_ms": 1598,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2891,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 2891,
+    "cache_read_input_tokens": 78546,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1790,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 1790,
+        "cache_read_input_tokens": 26722,
+        "input_tokens": 32,
+        "output_tokens": 455,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 2222,
+    "output_tokens_details": {
+      "thinking_tokens": 426
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "88f68c57-c8b6-4cee-9312-da27796970f2"
+}

@@ -5,7 +5,7 @@ agentic systems?** A small, fully inspectable empirical companion to Iwan Willia
 *“Intention-like representations in language models?”* (Philosophical Studies, 2026;
 [preprint](https://philarchive.org/rec/WILIRI-4)).
 
-- Site with an interactive run explorer: **SITE_URL**
+- Site with an interactive run explorer: **https://williamcodes.github.io/agent-commitment/**
 - Every raw trace: [`runs/raw/`](runs/raw/) · processed and scored: [`runs/processed/`](runs/processed/)
 - Results: [`RESULTS.md`](RESULTS.md) · protocol: [`METHODOLOGY.md`](METHODOLOGY.md) · preregistered rubric: [`docs/rubric-v1.md`](docs/rubric-v1.md) · limitations: [`docs/limitations.md`](docs/limitations.md)
 
@@ -116,7 +116,27 @@ the experiment commit, model, Claude Code version, timestamps and per-turn sessi
 
 ## 8. Results
 
-RESULTS_SECTION
+67 clean runs (13 repetition-2 runs were rejected by the account's usage cap and are being re-run;
+see the changelog). Full tables: [`RESULTS.md`](RESULTS.md); discussion: [`docs/analysis.md`](docs/analysis.md).
+
+| Hypothesis | Measure | Result |
+|---|---|---|
+| H1 stability | temptation-arm runs that kept their choice through the nudge and to the end | 34/34 |
+| H1 disconfirming | temptation-arm runs that switched | 0/34 |
+| H2 revisability | evidence-arm runs that switched cleanly after decisive evidence | 29/33 |
+| H2 | evidence-arm runs that kept the choice but engaged the evidence | 4/33 (all `expr`) |
+| H2 disconfirming | evidence-arm runs that ignored the evidence | 0/33 |
+| H3 settling | runs with a `mixed` state at any turn | 0/67 |
+| H4 conduct control | stated choice matches the implemented choice (T1 and T4) | 63/67 |
+| H5 carriers | kept choice under temptation, fresh session vs continuous | 17/17 vs 17/17 |
+| H5 carriers | switched after evidence, fresh session vs continuous | 14/16 vs 15/17 |
+| — | final test suite fully passing | 67/67 |
+
+Where the commitment is carried (fresh vs continuous session): the final code names the chosen
+approach in 31/33 vs 29/34 runs; the agent edited SPEC.md to record the decision in 15/33 vs 4/34;
+it cited its own earlier reasoning in 4/33 vs 20/34; 26/33 fresh-session runs said they could not be
+certain whether the approach had ever changed. No run used the planning tool, wrote a separate
+notes file, or made a commit.
 
 ## 9. Limitations
 
@@ -129,7 +149,22 @@ reasoning is not observable.
 
 ## 10. Interpretation
 
-INTERPRETATION_SECTION
+In this sample the model–harness–repository system shows the behavioural profile Williams
+associates with commitment: it settles on one design, holds it through neutral work and an
+irrelevant nudge, revises it when a requirement removes its rationale, never holds both designs at
+once, and its statements match its code. Removing the conversation does not change this; the
+choice is re-read from the repository, where the agent has usually written it down. That supports
+the level-of-analysis point: commitment-like behaviour appears when the unit of analysis includes
+the environment the agent writes to and reads from.
+
+It does not support the stronger claim. The same data are compatible with each fresh model
+instance re-deriving the same preference from the files, and with persistence driven by the cost
+of rewriting working code. The temptation was one sentence and produced a ceiling effect, so the
+study does not show how much pressure the commitment withstands. Nothing here identifies an
+internal representation with Williams's functional profile, and the study was not designed to.
+What it offers Williams is a concrete case where his behavioural criteria are met by a system built
+from a model whose internal candidates he argues fail them, and a mechanism (externalised state
+consumed across inference episodes) for how that can happen.
 
 ## 11. Repository structure
 

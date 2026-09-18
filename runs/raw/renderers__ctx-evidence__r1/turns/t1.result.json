@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 32738,
+  "duration_ms": 44964,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 2987,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 10789,
+      "cacheReadInputTokens": 66715,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.33898874999999995,
+      "inputTokens": 98,
+      "maxOutputTokens": 64000,
+      "outputTokens": 2111,
+      "provider": "firstParty",
+      "thinkingTokens": 434,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.001049,
+      "inputTokens": 994,
+      "maxOutputTokens": 32000,
+      "outputTokens": 11,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 4,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All five tests pass with `python -m pytest -q` (the project's Python 3.12 virtualenv).\n\nI implemented `reports/render.py` with a decorator-based format registry, shared helpers for cell stringification and pipe rows, and two plain renderer functions for text and markdown. The `render` function normalizes the report, dispatches through the registry, and raises `UnknownFormat` with the list of available formats for anything unregistered.\n\nI chose Approach B, composition, because with two small formats and a fixed public interface a function registry is the simplest thing that works: the shared behaviour is just cell stringification and line joining, which does not need a template-method skeleton, and adding a format is one decorated function with no base-class contract to learn.",
+  "result_index": 0,
+  "session_id": "0a043164-4266-4a26-902a-5a142190d22c",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 30,
+  "total_cost_usd": 0.3400377499999999,
+  "ttft_ms": 3530,
+  "ttft_stream_ms": 2987,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 10789,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 10789,
+    "cache_read_input_tokens": 66715,
+    "inference_geo": "not_available",
+    "input_tokens": 98,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 453,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 453,
+        "cache_read_input_tokens": 20346,
+        "input_tokens": 32,
+        "output_tokens": 236,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 2111,
+    "output_tokens_details": {
+      "thinking_tokens": 434
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "ac36d493-34af-464a-b6ca-86a31aec9d63"
+}

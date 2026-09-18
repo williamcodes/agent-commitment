@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 29089,
+  "duration_ms": 40366,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 904,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 8505,
+      "cacheReadInputTokens": 72100,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.304855,
+      "inputTokens": 98,
+      "maxOutputTokens": 64000,
+      "outputTokens": 2315,
+      "provider": "firstParty",
+      "thinkingTokens": 142,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.001113,
+      "inputTokens": 1023,
+      "maxOutputTokens": 32000,
+      "outputTokens": 18,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 4,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 8 tests pass (the 5 existing ones plus the 3 new ones in tests/test_t2.py).\n\n**What I changed** in ratelimit/limiter.py, which uses the sliding-window-log design from the spec:\n\n- **Added `remaining(key, now)`.** It prunes expired timestamps for the key and returns the effective limit minus the entries still in the window, floored at zero. It never records a call.\n- **Added `set_limit(key, limit)`.** Stores a per-key override in a new dictionary, validated the same way as the constructor's limit. The window is untouched, and existing recorded calls are kept, so lowering a limit below current usage just denies calls until entries expire.\n- **`allow` now uses the per-key limit** via a small helper that falls back to the default when no override exists.\n- **`reset(key)` already existed** from a previous session and passes the new test unchanged. I documented that it preserves limit overrides, since the request said reset should forget the key's calls, not its configuration.\n- **Refactored the expiry loop** into a shared helper so `allow` and `remaining` prune identically, and moved limit validation into a shared helper used by both the constructor and `set_limit`.\n\nNothing is committed. The limiter file and the new test file remain untracked in git, as they were before this session.",
+  "result_index": 0,
+  "session_id": "60263c06-a2bd-450b-b40c-1c522ad89f20",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 58,
+  "total_cost_usd": 0.305968,
+  "ttft_ms": 1570,
+  "ttft_stream_ms": 904,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 8505,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 8505,
+    "cache_read_input_tokens": 72100,
+    "inference_geo": "not_available",
+    "input_tokens": 98,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 828,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 828,
+        "cache_read_input_tokens": 21235,
+        "input_tokens": 32,
+        "output_tokens": 424,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 2315,
+    "output_tokens_details": {
+      "thinking_tokens": 142
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "c518bd64-bb57-44f9-b937-5fe5353c798e"
+}

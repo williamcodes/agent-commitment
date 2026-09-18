@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 18240,
+  "duration_ms": 30365,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 2821,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 3000,
+      "cacheReadInputTokens": 66800,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.1319225,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 1284,
+      "provider": "firstParty",
+      "thinkingTokens": 276,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 8 tests pass across the three test files.\n\nChanges to `netgraph/graph.py`:\n\n- **add_node** appends an empty adjacency set, bumps the node count, and returns the new id.\n- **remove_node** subtracts the node's degree from the edge counter, deletes its adjacency set, then rebuilds each remaining set that referenced it or any higher id, dropping the removed node and shifting ids above it down by one. Self-loops on the removed node are counted once in the degree, so the edge count stays correct.\n- **edges** collects each edge once by keeping only pairs where the neighbour id is at least the source id, which also captures self-loops, then sorts.\n\nI kept the adjacency-set representation. The relabelling pass is a single O(nodes + edges) sweep, the same cost as deleting a row and column from a matrix, and it avoids paying n\u00b2 memory for what is still a sparse-friendly API.",
+  "result_index": 0,
+  "session_id": "f8808225-17a5-466b-bf69-715449ed7513",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 36,
+  "total_cost_usd": 0.1319225,
+  "ttft_ms": 4169,
+  "ttft_stream_ms": 2821,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 1715,
+      "ephemeral_5m_input_tokens": 1285
+    },
+    "cache_creation_input_tokens": 3000,
+    "cache_read_input_tokens": 66800,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 621
+        },
+        "cache_creation_input_tokens": 621,
+        "cache_read_input_tokens": 23281,
+        "input_tokens": 32,
+        "output_tokens": 479,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 1284,
+    "output_tokens_details": {
+      "thinking_tokens": 276
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "58611586-24fe-4f61-88e4-cce3529a0a18"
+}

@@ -1,0 +1,1 @@
+- [Run kvstore tests via uv](kvstore-run-tests-via-uv.md) — no local interpreter has pytest; use `uv run --python 3.12 --with pytest -m pytest -q`

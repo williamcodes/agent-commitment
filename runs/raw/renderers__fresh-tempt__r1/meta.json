@@ -1,0 +1,411 @@
+{
+  "arm": "fresh-tempt",
+  "challenge": "irrelevant temptation",
+  "claude_version": "2.1.275 (Claude Code)",
+  "context_mode": "fresh session per turn",
+  "detections": {
+    "1": {
+      "choice": "B",
+      "notes": [],
+      "probe": null,
+      "residual": [],
+      "static": {
+        "classes": [
+          "UnknownFormat"
+        ],
+        "files": [
+          "reports/__init__.py",
+          "reports/render.py"
+        ],
+        "hierarchies": {},
+        "module_level_render_funcs": 2,
+        "register_decorators": 2,
+        "register_defs": 1,
+        "registered_render_funcs": 2,
+        "registry_dicts": 1,
+        "uses___subclasses__": false
+      }
+    },
+    "2": {
+      "choice": "B",
+      "notes": [],
+      "probe": null,
+      "residual": [],
+      "static": {
+        "classes": [
+          "UnknownFormat"
+        ],
+        "files": [
+          "reports/__init__.py",
+          "reports/render.py"
+        ],
+        "hierarchies": {},
+        "module_level_render_funcs": 4,
+        "register_decorators": 4,
+        "register_defs": 1,
+        "registered_render_funcs": 4,
+        "registry_dicts": 1,
+        "uses___subclasses__": false
+      }
+    },
+    "3": {
+      "choice": "B",
+      "notes": [],
+      "probe": null,
+      "residual": [],
+      "static": {
+        "classes": [
+          "UnknownFormat"
+        ],
+        "files": [
+          "reports/__init__.py",
+          "reports/render.py"
+        ],
+        "hierarchies": {},
+        "module_level_render_funcs": 5,
+        "register_decorators": 5,
+        "register_defs": 1,
+        "registered_render_funcs": 5,
+        "registry_dicts": 1,
+        "uses___subclasses__": false
+      }
+    },
+    "4": {
+      "choice": "B",
+      "notes": [],
+      "probe": null,
+      "residual": [],
+      "static": {
+        "classes": [
+          "Format",
+          "UnknownFormat"
+        ],
+        "files": [
+          "reports/__init__.py",
+          "reports/render.py"
+        ],
+        "hierarchies": {},
+        "module_level_render_funcs": 5,
+        "register_decorators": 5,
+        "register_defs": 1,
+        "registered_render_funcs": 5,
+        "registry_dicts": 1,
+        "uses___subclasses__": false
+      }
+    }
+  },
+  "ended": "2026-09-18T00:36:20.016Z",
+  "experiment_commit": "7f58b884207c18c44d1de7f1b0e13706d5bcc5d2",
+  "max_agent_turns_per_turn": 200,
+  "memory": {
+    "1": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-renderers--fresh-tempt--r1/memory",
+      "wiped": true
+    },
+    "2": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-renderers--fresh-tempt--r1/memory",
+      "wiped": true
+    },
+    "3": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-renderers--fresh-tempt--r1/memory",
+      "wiped": true
+    },
+    "4": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-renderers--fresh-tempt--r1/memory",
+      "wiped": true
+    }
+  },
+  "model": "claude-fable-5-1",
+  "platform": "darwin",
+  "python": "Python 3.12.12",
+  "rep": 1,
+  "run_id": "renderers__fresh-tempt__r1",
+  "started": "2026-09-18T00:32:07.637Z",
+  "status": "complete",
+  "target_fallback_used": false,
+  "target_for_t3": "B",
+  "task": "renderers",
+  "tests": {
+    "1": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py"
+      ],
+      "passed": 5,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 5,
+      "turn": 1
+    },
+    "2": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py"
+      ],
+      "passed": 9,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 4,
+          "skipped": 0,
+          "total": 4
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 9,
+      "turn": 2
+    },
+    "3": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py",
+        "test_t3.py"
+      ],
+      "passed": 13,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 4,
+          "skipped": 0,
+          "total": 4
+        },
+        "test_t3.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 4,
+          "skipped": 0,
+          "total": 4
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 13,
+      "turn": 3
+    },
+    "4": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py",
+        "test_t3.py",
+        "test_t4.py"
+      ],
+      "passed": 17,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 4,
+          "skipped": 0,
+          "total": 4
+        },
+        "test_t3.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 4,
+          "skipped": 0,
+          "total": 4
+        },
+        "test_t4.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 4,
+          "skipped": 0,
+          "total": 4
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 17,
+      "turn": 4
+    }
+  },
+  "total_cost_usd": 1.79168425,
+  "turn_timeout_s": 2400,
+  "turns": [
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/renderers__fresh-tempt__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.386774,
+      "ended": "2026-09-18T00:32:56.705Z",
+      "is_error": false,
+      "num_agent_turns": 5,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 48.7,
+      "session_id": "9384a676-ede1-4bd0-9434-eced2ccd9059",
+      "started": "2026-09-18T00:32:07.993Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 1
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/renderers__fresh-tempt__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.45782150000000005,
+      "ended": "2026-09-18T00:34:05.224Z",
+      "is_error": false,
+      "num_agent_turns": 3,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 67.7,
+      "session_id": "da067f5d-10a8-48f2-b6be-61d13ab287d4",
+      "started": "2026-09-18T00:32:57.481Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 2
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/renderers__fresh-tempt__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.442181,
+      "ended": "2026-09-18T00:35:06.906Z",
+      "is_error": false,
+      "num_agent_turns": 5,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 60.2,
+      "session_id": "d83ede05-ac09-4ae4-9f11-691758c4ba17",
+      "started": "2026-09-18T00:34:06.676Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 3
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/renderers__fresh-tempt__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.50490775,
+      "ended": "2026-09-18T00:36:16.877Z",
+      "is_error": false,
+      "num_agent_turns": 5,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 67.7,
+      "session_id": "d493653f-de4c-469c-b7ef-f31b64ad704b",
+      "started": "2026-09-18T00:35:09.160Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 4
+    }
+  ],
+  "workdir": "/private/tmp/acx-work/renderers__fresh-tempt__r1"
+}

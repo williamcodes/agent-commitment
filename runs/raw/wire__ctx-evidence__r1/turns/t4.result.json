@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 19506,
+  "duration_ms": 32648,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1303,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 2431,
+      "cacheReadInputTokens": 99009,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.14803224999999998,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 1480,
+      "provider": "firstParty",
+      "thinkingTokens": 119,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 14 tests pass across the four test files.\n\n**What I added.** `merge` decodes both inputs, concatenates them with the first input's records ahead of the second's, sorts by `ts` using Python's stable sort, and re-encodes. Because the sort is stable, equal timestamps keep their relative order both across inputs and within each input, and neither input needs to be pre-sorted. Both inputs go through full validation, so a corrupted input raises `CodecError` rather than producing a mixed file. I checked the tie-breaking with unsorted inputs containing ties within and across both sides.\n\n**Which wire format the codebase uses now: B, JSON lines.** UTF-8 text, one JSON object per line, no header or checksum.\n\n**Yes, it changed once.** The project started on Approach A, compact binary, which I chose in the first round because `struct` round-trips every double bit-exactly and a header with a count and CRC made truncation detection trivial. It stayed on A through the streaming and counting feature. In the third round, the product owner's update required that field technicians open the files in a plain text editor and patch records by hand with `grep` and `sed`, with UTF-8 text and exactly one record per line. A binary format cannot meet that, and the storage-size concern that justified it was gone. Nothing had been committed or shipped, so I switched the format outright rather than support both. The public API was unchanged, all earlier tests kept passing, and I recorded the update and its reasoning in a dated note in SPEC.md.\n\nNothing is committed. The working tree holds the modified SPEC.md, the new `wire/codec.py`, and the three added test files.",
+  "result_index": 0,
+  "session_id": "acfe650b-d2f7-4413-a3bf-58a4eb41d5a0",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 101,
+  "total_cost_usd": 0.14803224999999998,
+  "ttft_ms": 2081,
+  "ttft_stream_ms": 1303,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2431,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 2431,
+    "cache_read_input_tokens": 99009,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 881,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 881,
+        "cache_read_input_tokens": 33716,
+        "input_tokens": 32,
+        "output_tokens": 562,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 1480,
+    "output_tokens_details": {
+      "thinking_tokens": 119
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "090b2b2f-8680-4254-8b51-f0ddf3fcafb9"
+}

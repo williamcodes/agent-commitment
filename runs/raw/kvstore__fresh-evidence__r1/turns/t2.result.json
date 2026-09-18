@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 38304,
+  "duration_ms": 51434,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1566,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 10127,
+      "cacheReadInputTokens": 72509,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.38899724999999996,
+      "inputTokens": 98,
+      "maxOutputTokens": 64000,
+      "outputTokens": 3347,
+      "provider": "firstParty",
+      "thinkingTokens": 199,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.001114,
+      "inputTokens": 1049,
+      "maxOutputTokens": 32000,
+      "outputTokens": 13,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 4,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 8 tests pass, including the 5 pre-existing ones.\n\n**What I changed** in `kvstore/store.py` (the SQLite-backed store from the prior session):\n\n- **Schema** now has an `ns` column, and the primary key is the pair `(ns, key)`, so the same key can hold different values in different namespaces. Still one table in one file, and no side files.\n- **`set`, `get`, `delete`, `keys`** each take `ns: str = \"default\"` and filter or upsert on both namespace and key. The upsert conflict target is the composite key.\n- **New `count(ns=\"default\")`** runs a `COUNT(*)` for that namespace.\n- **New `namespaces()`** returns `SELECT DISTINCT ns ... ORDER BY ns`, so a namespace disappears from the list as soon as its last key is deleted.\n- **Legacy migration** in `__init__`: if a data file still has the old single-column table, it is rebuilt into the new shape with every existing row placed in the default namespace. I verified this with an ad-hoc script: old rows survive, new namespaces work, reopening persists, and the directory still contains only the one data file.\n\nNothing under `tests/` was touched. `store.py` was already untracked before I started, so nothing is committed.",
+  "result_index": 0,
+  "session_id": "6ca586f2-6293-4e52-831f-0078f351fd75",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 31,
+  "total_cost_usd": 0.39011125,
+  "ttft_ms": 2059,
+  "ttft_stream_ms": 1566,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 10127,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 10127,
+    "cache_read_input_tokens": 72509,
+    "inference_geo": "not_available",
+    "input_tokens": 98,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 2431,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 2431,
+        "cache_read_input_tokens": 21253,
+        "input_tokens": 32,
+        "output_tokens": 416,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 3347,
+    "output_tokens_details": {
+      "thinking_tokens": 199
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "0214299e-b6fe-42fc-8eba-ff0cda199639"
+}

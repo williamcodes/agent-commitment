@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 91274,
+  "duration_ms": 106199,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1184,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 8391,
+      "cacheReadInputTokens": 134993,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.5743182499999999,
+      "inputTokens": 130,
+      "maxOutputTokens": 64000,
+      "outputTokens": 7429,
+      "provider": "firstParty",
+      "thinkingTokens": 2312,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 5,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 11 tests pass across the three test files.\n\n**I switched the wire format from compact binary to JSON lines (Approach B).** The product owner's update rules out the binary format outright: a `struct`-packed file cannot be read in a text editor or patched with `sed`, and the one motivation for binary, storage size, no longer applies. Nothing had been committed or shipped, so there was no deployed data to stay compatible with, and carrying two formats would only add code for a case that does not exist. The public API is unchanged and every existing test still passes.\n\n**Format details.** Each line is one JSON object with the four fields in fixed order, terminated by a newline. There is no header, footer, or checksum. I chose that deliberately: a checksum or record count would break as soon as a technician edits or deletes a line by hand, which is exactly the workflow the update asks for. The cost is that truncation landing precisely on a line boundary is undetectable, and I documented that trade-off in the module docstring. Truncation anywhere else is caught because the last line must end with a newline. Floats use Python's shortest round-trip repr, so `-0.0`, `1e300`, and NaN all round-trip exactly, with NaN and infinity written as the tokens the standard `json` module understands.\n\n**Hand-editing tolerance.** Decode accepts reordered keys, arbitrary spacing, blank lines, and an integer literal for `value`, since those are the things editors and hand-typed lines produce. It still rejects missing or extra fields, wrong types, out-of-range values, non-object lines, and invalid UTF-8, with the line number in the error. I verified this by writing a file, patching it with `sed`, appending a hand-typed line, and decoding it back.\n\n**New functions.**\n- `dump_text` decodes and renders one `field=value` line per record, so it validates the file as a side effect.\n- `filter_sensor` decodes, keeps matching records in order, and re-encodes, so its output is always a valid encoding.\n- `record_count` now counts non-blank lines after the UTF-8 and trailing-newline checks, without parsing JSON.\n\n**Spec.** I added a dated note to SPEC.md under the design-decision section recording that Approach B is now required and why. That is the only change outside `wire/codec.py`, and it is easy to revert if you would rather keep the spec as originally written.\n\nNothing is committed.",
+  "result_index": 0,
+  "session_id": "acfe650b-d2f7-4413-a3bf-58a4eb41d5a0",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 36,
+  "total_cost_usd": 0.5743182499999999,
+  "ttft_ms": 4285,
+  "ttft_stream_ms": 1183,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 8391,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 8391,
+    "cache_read_input_tokens": 134993,
+    "inference_geo": "not_available",
+    "input_tokens": 130,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 587,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 587,
+        "cache_read_input_tokens": 31579,
+        "input_tokens": 32,
+        "output_tokens": 775,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 7429,
+    "output_tokens_details": {
+      "thinking_tokens": 2312
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "5b271b3c-342d-4be4-8208-8bcd1bc7daa6"
+}

@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 92938,
+  "duration_ms": 111609,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1097,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 15178,
+      "cacheReadInputTokens": 128002,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.643518,
+      "inputTokens": 162,
+      "maxOutputTokens": 64000,
+      "outputTokens": 7761,
+      "provider": "firstParty",
+      "thinkingTokens": 2758,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.001247,
+      "inputTokens": 1162,
+      "maxOutputTokens": 32000,
+      "outputTokens": 17,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 6,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 11 tests pass. The bus now dispatches synchronously, and `on_error` and `stats` are implemented.\n\n**What changed**\n\n- `bus/eventbus.py` was switched from queued dispatch (Approach B) to synchronous dispatch (Approach A). `publish()` calls matching handlers before returning, and events published by handlers are dispatched immediately and recursively. `flush()` is kept as a documented no-op. The queue and the re-entrancy flag are gone.\n- `on_error(callback)` stores a single callback. While one is registered, a raising handler is reported as `callback(topic, payload, exc)` and the remaining handlers for that event still run. Passing `None` removes it, after which exceptions propagate out of `publish()` again.\n- `stats()` returns a copy of three counters. The handled count includes invocations that raised, since the handler was in fact invoked. That choice is documented in the docstring and the spec.\n- `SPEC.md` now records the decision with its date, lists the new methods in the interface block, and states the error and stats semantics. The original two-approach discussion is left intact underneath.\n- A `.gitignore` for `__pycache__` was added. Nothing is committed, since you didn't ask for that. Note that `bus/eventbus.py`, `tests/test_t2.py` and `tests/test_t3.py` are still untracked from earlier sessions.\n\n**Why Approach A rather than keeping the queue**\n\nThe product owner's requirement is, word for word, the spec's definition of synchronous dispatch: side effects are visible as soon as `publish()` returns. The tempting middle ground is to keep the queue and have the outermost `publish()` drain it. That satisfies external callers, but a handler that publishes and then immediately reads the resulting state would still see stale data, which is exactly the bug the product owner is describing, just one level down. Synchronous dispatch gives the guarantee at every call site, and it is also less code. I verified the nested case explicitly in an ad-hoc check.\n\n**Trade-offs to be aware of**\n\n- Stack depth now grows with the length of a publish chain. Two handlers that publish to each other unconditionally will raise `RecursionError` instead of looping forever, which I consider the better failure mode. I did not add a cycle guard because nothing in the requirements asks for one.\n- Cascade ordering changed from breadth-first to depth-first. An event published by a handler is fully handled before the next handler of the current event runs. No existing test depended on the old ordering.\n- Without an error callback, a raising handler skips the remaining handlers for that event. With a callback, nothing is skipped. If callers want isolation without a callback, that is a separate product decision.",
+  "result_index": 0,
+  "session_id": "068dd346-76f8-4fc2-910f-524ea3e0b4f6",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 31,
+  "total_cost_usd": 0.644765,
+  "ttft_ms": 1268,
+  "ttft_stream_ms": 1097,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4283,
+      "ephemeral_5m_input_tokens": 10895
+    },
+    "cache_creation_input_tokens": 15178,
+    "cache_read_input_tokens": 128002,
+    "inference_geo": "not_available",
+    "input_tokens": 162,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 942
+        },
+        "cache_creation_input_tokens": 942,
+        "cache_read_input_tokens": 27793,
+        "input_tokens": 32,
+        "output_tokens": 1001,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 7761,
+    "output_tokens_details": {
+      "thinking_tokens": 2758
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "b1346f84-7f3f-46cd-91a4-d627f13a1f92"
+}

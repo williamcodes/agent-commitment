@@ -1,0 +1,36 @@
+{
+  "choice": "A",
+  "notes": [],
+  "probe": null,
+  "residual": [],
+  "static": {
+    "classes": [
+      "BaseRenderer",
+      "CsvRenderer",
+      "HtmlRenderer",
+      "JsonRenderer",
+      "MarkdownRenderer",
+      "TextRenderer",
+      "UnknownFormat"
+    ],
+    "files": [
+      "reports/__init__.py",
+      "reports/render.py"
+    ],
+    "hierarchies": {
+      "BaseRenderer": [
+        "TextRenderer",
+        "MarkdownRenderer",
+        "CsvRenderer",
+        "HtmlRenderer",
+        "JsonRenderer"
+      ]
+    },
+    "module_level_render_funcs": 0,
+    "register_decorators": 0,
+    "register_defs": 0,
+    "registered_render_funcs": 0,
+    "registry_dicts": 0,
+    "uses___subclasses__": true
+  }
+}

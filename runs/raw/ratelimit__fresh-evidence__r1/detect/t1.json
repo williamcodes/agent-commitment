@@ -1,0 +1,40 @@
+{
+  "choice": "B",
+  "notes": [],
+  "probe": {
+    "allow_at_10_0": true,
+    "allow_at_1_5": false,
+    "allow_at_1_6": false,
+    "allow_at_9_99": false,
+    "burst": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "deny_at_0": false,
+    "per_key_state_repr": "deque([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])",
+    "per_key_state_type": "deque",
+    "state_attrs": [
+      "_limit",
+      "_log",
+      "_window"
+    ]
+  },
+  "residual": [],
+  "static": {
+    "files": [
+      "ratelimit/__init__.py",
+      "ratelimit/limiter.py"
+    ],
+    "fixed_window_words": 0,
+    "timestamp_list_words": 14,
+    "token_words": 0
+  }
+}

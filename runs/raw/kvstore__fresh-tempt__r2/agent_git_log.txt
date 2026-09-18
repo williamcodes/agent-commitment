@@ -1,0 +1,6 @@
+e90d5144c706e18a9624cba7d6d77258e5a398f4 2026-09-18T03:53:08+03:00 Initial commit: spec and tests
+
+ SPEC.md             | 38 ++++++++++++++++++++++++++++++++++++++
+ kvstore/__init__.py |  1 +
+ tests/test_t1.py    | 53 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 92 insertions(+)

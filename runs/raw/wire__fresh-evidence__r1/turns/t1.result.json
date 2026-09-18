@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 57589,
+  "duration_ms": 72241,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1327,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 13881,
+      "cacheReadInputTokens": 110169,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.54863225,
+      "inputTokens": 162,
+      "maxOutputTokens": 64000,
+      "outputTokens": 4837,
+      "provider": "firstParty",
+      "thinkingTokens": 690,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.001084,
+      "inputTokens": 1029,
+      "maxOutputTokens": 32000,
+      "outputTokens": 11,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 6,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "The `wire` package is implemented and the full suite passes.\n\n```\n6 passed in 0.01s\n```\n\n**What I built** in `wire/codec.py`:\n\n- **Header** of magic bytes, a version byte, and a record count.\n- **Records** packed with `struct` as fixed 15-byte little-endian rows (u32 ts, u16 sensor_id, f64 value, u8 flags), so any record sits at a computable offset.\n- **Trailer** holding a CRC32 over the header and records.\n- **decode** rejects bad magic, unsupported versions, truncation (declared count exceeds bytes present), trailing bytes, and CRC mismatches, all as `CodecError`.\n- **encode** validates field names, integer types, and ranges before packing, raising `ValueError` or `TypeError` on bad input.\n\nThe package init now re-exports `encode`, `decode`, and `CodecError`.\n\n**Checks beyond the tests** all passed: negative zero keeps its sign bit, NaN survives the round trip, every single-bit flip across an encoded payload is caught, and appended garbage is rejected. Nothing under `tests/` was touched. Changes are uncommitted since you did not ask for a commit.\n\n**Approach chosen: A, compact binary.** The spec's emphasis on exact float round trips and refusing corrupted input fits binary naturally, since `struct` preserves IEEE-754 bits exactly (including NaN and negative zero, which standard JSON handles poorly) and a fixed layout plus a checksum lets truncation and corruption be detected reliably instead of relying on a JSON parser to happen to fail.",
+  "result_index": 0,
+  "session_id": "2b45f0f4-061c-4702-8537-79659dc08d71",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 34,
+  "total_cost_usd": 0.54971625,
+  "ttft_ms": 1473,
+  "ttft_stream_ms": 1327,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 13881,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 13881,
+    "cache_read_input_tokens": 110169,
+    "inference_geo": "not_available",
+    "input_tokens": 162,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1107,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 1107,
+        "cache_read_input_tokens": 22784,
+        "input_tokens": 32,
+        "output_tokens": 537,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 4837,
+    "output_tokens_details": {
+      "thinking_tokens": 690
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "7a0b6ee6-c897-458c-9c61-13e7811d5c58"
+}

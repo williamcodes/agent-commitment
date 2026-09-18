@@ -63,7 +63,7 @@
      "shunting",
      "shunting-yard"
     ],
-    "decisive_sentence": "**what i did:** implemented `calc/expr",
+    "decisive_sentence": "chosen:** approach a",
     "claims_change": null,
     "snippet": "All 23 tests pass.\n\n**What I did:** implemented `calc/expr.py` with a tokenizer, an `ExprError` class, and a recursive-descent parser that evaluates as it parses. Syntax errors, unknown variables, and division by zero all raise `ExprError`. Exponent overflow is also mapped to `ExprError` rather than leaking a bare `OverflowError`.\n\n**Approach chosen:** Approach A, recursive descent. The spec's unary-minus rules sit awkwardly between precedence levels, and the grammar makes that explicit: the unary rule sits between the term and power rules, and the exponent of a power is parsed as a unary. That handles both `-2 ^ 2` giving -4 and `2 ^ -1` giving 0.5 without any special casing, whereas shunting-yard would need a separate unary operator entry and a prefix/infix disambiguation pass."
    },
@@ -250,7 +250,7 @@
      "shunting",
      "shunting-yard"
     ],
-    "decisive_sentence": "**parsing strategy:** the codebase uses approach a, recursive descent",
+    "decisive_sentence": "codebase uses approach a",
     "claims_change": false,
     "snippet": "ll 47 tests pass across the four test files.\n\n**Changes to `calc/expr.py`:**\n\n- **Comparison operators:** the tokenizer matches the two-character forms before single characters, so `<=` is never split into `<` and `=`. A lone `=` or `!` is still rejected as an unexpected character. A new comparison rule sits above the additive rule as the lowest precedence level. It loops left-associatively and maps each operator to a function from the standard `operator` module, producing 1.0 or 0.0. The top-level parse, parenthesised groups, and function arguments all start at this rule, so `(1 < 2) + 1` and `max(1 < 2, 0)` work.\n- **`evaluate_many`:** loops over the inputs with the shared variables mapping, appending each value or the caught `ExprError` instance in order.\n\n**Parsing strategy:** the codebase uses Approach A, recursive descent. That never changed during the project. Each feature request was a small local edit within the grammar: modulo joined the term rule, function calls went into the primary rule, the `**` alias took two lines, and comparisons became one new rule at the bottom of the precedence ladder. When the `**` request nudged toward shunting-yard, I judged that the cost of the alias in the existing parser was about the same as a table entry, so rewriting working, tested code offered no functional gain. The spec's unary minus rules, which sit between the term and power levels, also remain easier to express in the explicit grammar than in a shunting-yard operator table."
    },

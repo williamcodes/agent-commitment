@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 12270,
+  "duration_ms": 24923,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1303,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 1441,
+      "cacheReadInputTokens": 63673,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.08924825,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 877,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 8 tests pass (5 original plus 3 new).\n\nChanges, all in `ledger/ledger.py`:\n\n- **apply_interest** iterates the balance map and adds `bal * basis_points // 10000` to each account with a positive balance. Integer floor division gives the round-down behaviour. Negative basis points raise `ValueError` via the existing amount check.\n- **close_account** verifies the account exists, raises `ValueError` if its balance is not exactly zero, and otherwise deletes it from the map. The id then raises `UnknownAccount` on later use.\n- **total_assets** returns the sum of the balance map's values.\n\nThe snapshot-state design meant no other changes were needed. Each feature is a direct read or in-place mutation of the existing dict.",
+  "result_index": 0,
+  "session_id": "003862d5-7ea0-49ee-934c-9a6faec47023",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 34,
+  "total_cost_usd": 0.08924825,
+  "ttft_ms": 1843,
+  "ttft_stream_ms": 1303,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 1441,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 1441,
+    "cache_read_input_tokens": 63673,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 547,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 547,
+        "cache_read_input_tokens": 21699,
+        "input_tokens": 32,
+        "output_tokens": 250,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 877,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "a1669f2e-6147-4cce-8567-0f2d94785482"
+}

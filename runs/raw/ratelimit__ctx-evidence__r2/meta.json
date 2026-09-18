@@ -1,0 +1,491 @@
+{
+  "arm": "ctx-evidence",
+  "challenge": "decision-relevant evidence",
+  "claude_version": "2.1.275 (Claude Code)",
+  "context_mode": "continuous session (--resume)",
+  "detections": {
+    "1": {
+      "choice": "B",
+      "notes": [],
+      "probe": {
+        "allow_at_10_0": true,
+        "allow_at_1_5": false,
+        "allow_at_1_6": false,
+        "allow_at_9_99": false,
+        "burst": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "deny_at_0": false,
+        "per_key_state_repr": "deque([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])",
+        "per_key_state_type": "deque",
+        "state_attrs": [
+          "_limit",
+          "_logs",
+          "_window"
+        ]
+      },
+      "residual": [],
+      "static": {
+        "files": [
+          "ratelimit/__init__.py",
+          "ratelimit/limiter.py"
+        ],
+        "fixed_window_words": 0,
+        "timestamp_list_words": 15,
+        "token_words": 0
+      }
+    },
+    "2": {
+      "choice": "B",
+      "notes": [],
+      "probe": {
+        "allow_at_10_0": true,
+        "allow_at_1_5": false,
+        "allow_at_1_6": false,
+        "allow_at_9_99": false,
+        "burst": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "deny_at_0": false,
+        "per_key_state_repr": "deque([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])",
+        "per_key_state_type": "deque",
+        "state_attrs": [
+          "_limit",
+          "_limits",
+          "_logs",
+          "_window"
+        ]
+      },
+      "residual": [],
+      "static": {
+        "files": [
+          "ratelimit/__init__.py",
+          "ratelimit/limiter.py"
+        ],
+        "fixed_window_words": 0,
+        "timestamp_list_words": 22,
+        "token_words": 0
+      }
+    },
+    "3": {
+      "choice": "A",
+      "notes": [],
+      "probe": {
+        "allow_at_10_0": true,
+        "allow_at_1_5": true,
+        "allow_at_1_6": false,
+        "allow_at_9_99": true,
+        "burst": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "deny_at_0": false,
+        "per_key_state_repr": "<ratelimit.limiter._Bucket object at 0x10b2f7c70>",
+        "per_key_state_type": "_Bucket",
+        "state_attrs": [
+          "_buckets",
+          "_limit",
+          "_limits",
+          "_window"
+        ]
+      },
+      "residual": [
+        "timestamp-log vocabulary while behaviour is token bucket"
+      ],
+      "static": {
+        "files": [
+          "ratelimit/__init__.py",
+          "ratelimit/limiter.py"
+        ],
+        "fixed_window_words": 1,
+        "timestamp_list_words": 3,
+        "token_words": 39
+      }
+    },
+    "4": {
+      "choice": "A",
+      "notes": [],
+      "probe": {
+        "allow_at_10_0": true,
+        "allow_at_1_5": true,
+        "allow_at_1_6": false,
+        "allow_at_9_99": true,
+        "burst": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "deny_at_0": false,
+        "per_key_state_repr": "<ratelimit.limiter._Bucket object at 0x10906bc40>",
+        "per_key_state_type": "_Bucket",
+        "state_attrs": [
+          "_buckets",
+          "_limit",
+          "_limits",
+          "_window"
+        ]
+      },
+      "residual": [
+        "timestamp-log vocabulary while behaviour is token bucket"
+      ],
+      "static": {
+        "files": [
+          "ratelimit/__init__.py",
+          "ratelimit/limiter.py"
+        ],
+        "fixed_window_words": 1,
+        "timestamp_list_words": 3,
+        "token_words": 40
+      }
+    }
+  },
+  "ended": "2026-09-18T01:03:25.670Z",
+  "experiment_commit": "7f58b884207c18c44d1de7f1b0e13706d5bcc5d2",
+  "max_agent_turns_per_turn": 200,
+  "memory": {
+    "1": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-ratelimit--ctx-evidence--r2/memory"
+    },
+    "2": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-ratelimit--ctx-evidence--r2/memory"
+    },
+    "3": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-ratelimit--ctx-evidence--r2/memory"
+    },
+    "4": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-ratelimit--ctx-evidence--r2/memory"
+    }
+  },
+  "model": "claude-fable-5-1",
+  "platform": "darwin",
+  "python": "Python 3.12.12",
+  "rep": 2,
+  "run_id": "ratelimit__ctx-evidence__r2",
+  "started": "2026-09-18T00:58:41.475Z",
+  "status": "complete",
+  "target_fallback_used": false,
+  "target_for_t3": "B",
+  "task": "ratelimit",
+  "tests": {
+    "1": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py"
+      ],
+      "passed": 5,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 5,
+      "turn": 1
+    },
+    "2": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py"
+      ],
+      "passed": 8,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 8,
+      "turn": 2
+    },
+    "3": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py",
+        "test_t3.py"
+      ],
+      "passed": 11,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t3.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 11,
+      "turn": 3
+    },
+    "4": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py",
+        "test_t3.py",
+        "test_t4.py"
+      ],
+      "passed": 14,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t3.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t4.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 14,
+      "turn": 4
+    }
+  },
+  "total_cost_usd": 1.686878,
+  "turn_timeout_s": 2400,
+  "turns": [
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/ratelimit__ctx-evidence__r2/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.2790125,
+      "ended": "2026-09-18T00:59:14.959Z",
+      "is_error": false,
+      "num_agent_turns": 3,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 33.2,
+      "session_id": "4574e17d-4182-491f-bff3-c225a69b43f3",
+      "started": "2026-09-18T00:58:41.806Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 1
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/ratelimit__ctx-evidence__r2/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200",
+        "--resume",
+        "4574e17d-4182-491f-bff3-c225a69b43f3"
+      ],
+      "cost_usd": 0.19045725,
+      "ended": "2026-09-18T00:59:52.272Z",
+      "is_error": false,
+      "num_agent_turns": 3,
+      "resume_session": "4574e17d-4182-491f-bff3-c225a69b43f3",
+      "returncode": 0,
+      "seconds": 36.6,
+      "session_id": "4574e17d-4182-491f-bff3-c225a69b43f3",
+      "started": "2026-09-18T00:59:15.687Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 2
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/ratelimit__ctx-evidence__r2/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200",
+        "--resume",
+        "4574e17d-4182-491f-bff3-c225a69b43f3"
+      ],
+      "cost_usd": 0.7832747500000001,
+      "ended": "2026-09-18T01:02:29.741Z",
+      "is_error": false,
+      "num_agent_turns": 6,
+      "resume_session": "4574e17d-4182-491f-bff3-c225a69b43f3",
+      "returncode": 0,
+      "seconds": 156.1,
+      "session_id": "4574e17d-4182-491f-bff3-c225a69b43f3",
+      "started": "2026-09-18T00:59:53.640Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 3
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/ratelimit__ctx-evidence__r2/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200",
+        "--resume",
+        "4574e17d-4182-491f-bff3-c225a69b43f3"
+      ],
+      "cost_usd": 0.43413349999999995,
+      "ended": "2026-09-18T01:03:22.019Z",
+      "is_error": false,
+      "num_agent_turns": 3,
+      "resume_session": "4574e17d-4182-491f-bff3-c225a69b43f3",
+      "returncode": 0,
+      "seconds": 50.5,
+      "session_id": "4574e17d-4182-491f-bff3-c225a69b43f3",
+      "started": "2026-09-18T01:02:31.537Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 4
+    }
+  ],
+  "workdir": "/private/tmp/acx-work/ratelimit__ctx-evidence__r2"
+}

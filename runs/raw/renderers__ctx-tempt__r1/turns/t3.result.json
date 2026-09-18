@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 23322,
+  "duration_ms": 34816,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 836,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 2522,
+      "cacheReadInputTokens": 76935,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.17088375,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 2011,
+      "provider": "firstParty",
+      "thinkingTokens": 272,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 13 tests pass across the three test files. Changes, all in `reports/render.py`:\n\n- **Added `json` renderer.** Serializes the report dict with `json.dumps`, registered like the other formats.\n- **Added `max_rows` keyword to `render`.** A new `_truncate` helper slices the rows and returns a shallow copy, leaving the caller's dict untouched. Negative values raise `ValueError`. `None` is the default and means no truncation.\n- **Threaded `max_rows` through `render_many`** so batch rendering gets the same behaviour.\n- **Factored format lookup** into a small `_lookup` helper shared by `render` and `render_many`, replacing the duplicated error construction.\n\nOn the base-class suggestion: I stayed with the registry. In this design `render` is already the one path every format goes through, so truncating there before dispatch gives the same guarantee a template method would, including for formats added later, without rewriting five working renderers into subclasses. If shared behaviour ever needs per-format customization, that would be the point to reconsider.",
+  "result_index": 0,
+  "session_id": "485f95bb-d082-433a-8c2f-d53ae2221c68",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 49,
+  "total_cost_usd": 0.17088375,
+  "ttft_ms": 1497,
+  "ttft_stream_ms": 836,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2522,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 2522,
+    "cache_read_input_tokens": 76935,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1519,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 1519,
+        "cache_read_input_tokens": 26145,
+        "input_tokens": 32,
+        "output_tokens": 401,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 2011,
+    "output_tokens_details": {
+      "thinking_tokens": 272
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "df894dc3-3f8e-48df-a80d-1888c9d1caeb"
+}

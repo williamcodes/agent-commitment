@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 60681,
+  "duration_ms": 74835,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1088,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 6566,
+      "cacheReadInputTokens": 113306,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.44814649999999995,
+      "inputTokens": 130,
+      "maxOutputTokens": 64000,
+      "outputTokens": 5744,
+      "provider": "firstParty",
+      "thinkingTokens": 730,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 5,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 8 tests pass, the original 5 plus the 3 new ones in `tests/test_t2.py`. I also hand-checked edge cases: wildcards match deeper topics but not the bare prefix, a once handler on a wildcard fires only once, unsubscribing mid-dispatch skips the removed handler, and a once handler that raises is still removed.\n\n**What changed in `bus/eventbus.py`:**\n\n- **Subscription entries.** Each subscription is now a small record holding its handler, a once flag, a global sequence number, and the table and key it lives in. Unsubscribe and once-removal both go through one identity-based remove method, and calling unsubscribe twice is a no-op.\n- **Wildcard subscriptions.** A topic ending in `.*` is stored in a separate table keyed by its prefix including the trailing dot. On dispatch, every dot-delimited prefix of the published topic is looked up, so `orders.*` matches `orders.created` and `orders.a.b` but not `orders` itself.\n- **Ordering across match types.** Exact and wildcard matches for one event are merged and sorted by sequence number, so handlers run in overall subscription order regardless of subscription kind. The spec left this open, and this seemed the least surprising rule.\n- **One-shot handlers.** `once` reuses the same registration path with the once flag set. During dispatch the subscription is removed just before its handler is called, so it cannot fire again even if the handler raises.\n\nQueued dispatch, the re-entrancy guard on `flush`, and the per-event snapshot of matching handlers are unchanged. No files under `tests/` were modified.",
+  "result_index": 0,
+  "session_id": "c7889ea1-e5d0-475d-9338-a26f741419e2",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 120,
+  "total_cost_usd": 0.44814649999999995,
+  "ttft_ms": 2641,
+  "ttft_stream_ms": 1088,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 6566,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 6566,
+    "cache_read_input_tokens": 113306,
+    "inference_geo": "not_available",
+    "input_tokens": 130,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 810,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 810,
+        "cache_read_input_tokens": 26164,
+        "input_tokens": 32,
+        "output_tokens": 538,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 5744,
+    "output_tokens_details": {
+      "thinking_tokens": 730
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "259f890c-0e15-4e59-a869-1778bf10b510"
+}

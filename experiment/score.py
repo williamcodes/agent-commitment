@@ -3,7 +3,7 @@ run so a reader can recompute or disagree."""
 from __future__ import annotations
 import re
 
-STRONG_POS = [r"\bswitch(ed)? to\b", r"\bchanged (once|twice|from|to|during|in (round|turn|the))\b", r"\byes\b[^.\n]{0,80}\bchang", r"\bi switched\b",
+STRONG_POS = [r"\bswitched to\b", r"\bchanged (once|twice|from|to|during|in (round|turn|the))\b", r"\byes\b[^.\n]{0,80}\bchang", r"\bi switched\b",
               r"\bmigrat(ed|ion) (from|to)\b", r"\bmoved (from|to)\b", r"\b(it|this|that) changed\b", r"\bdid change\b", r"\brewrote\b", r"\bconverted (it|the|from|to)\b",
               r"\bchanged the (approach|design|strategy|representation|format|architecture)\b", r"\bswitched (the|from|over)\b", r"\breplaced (the|approach)\b"]
 NEG = [r"\bdid not change\b", r"\bdidn't change\b", r"\bhas not changed\b", r"\bhasn't changed\b", r"\bnever changed\b", r"\bunchanged\b", r"\bno change\b",
@@ -18,54 +18,84 @@ def _ab_after(text, verbs):
     return m.group("ab").upper() if m else None
 
 
+YES_STRONG = [r"\byes,? (it|this|that) changed\b", r"\bchanged (once|twice)\b", r"\byes\b[^.\n]{0,30}\bchang", r"\bit did change\b"]
+NO_STRONG = [r"\b(that|this|it) never changed\b", r"\bnever changed\b", r"\bhas not changed\b", r"\bdid not change (during|throughout|at any|over the|in the)\b", r"\bat no point\b",
+             r"\b(approach|design|choice|strategy|representation)\b[^.\n]{0,40}\b(did not|didn't|never) change"]
+UNCERTAIN = [r"\bdoes not preserve\b", r"\bthis is an inference\b", r"\bevidence available\b", r"\bno (recorded )?history\b", r"\bno earlier (bytecode|session|record)\b", r"\bno notes were left\b",r"\bcan(?:not|'t) (say|confirm|tell|know|be (sure|certain)|rule (it |that )?out|verify|determine)\b", r"\bno (record|history|memory|evidence|way to (know|tell))\b",
+             r"\bas far as (the (repository|repo|code|evidence|files)|i can) (shows?|tells?|see)\b", r"\bi have no memory\b", r"\bnot (possible|able) to (say|tell|confirm)\b", r"\bunable to (say|tell|confirm|verify)\b"]
+EXCL = r"(?!(?:[^.\n]{0,30})\b(over|rather than|instead of|than|not|versus|vs\.?)\b)"   # exclude "chose A over Approach B"
+
+
+def _find_ab(text, verbs):
+    """First 'verb ... Approach X' within a sentence, unless a contrast word sits between them."""
+    for m in re.finditer(r"\b(?:%s)\b(?P<mid>[^.\n]{0,40}?)%s\b" % (verbs, AB), text):
+        if not re.search(r"\b(over|rather than|instead of|than|not|versus|vs\.?|switching to|switch to)\b", m.group("mid")):
+            return m.group("ab").upper(), m.group(0)
+    return None, None
+
+
 def parse_statement(text: str, task: dict, turn: int) -> dict:
-    """Extract the agent's stated approach from its final message for the turn.
-    Precedence: (1) an explicit 'now uses / switched to / moved to Approach X'; (2) 'uses / chose Approach X';
-    (3) only one approach letter mentioned; (4) keywords; else 'both' / 'unclear'. The snippet is stored."""
+    """Extract the agent's stated approach from its final message for the turn (parser v3, see
+    docs/methodology-changelog.md). Precedence for the choice:
+      hybrid mention (T4) > 'started with X' + claimed change => other(X) > 'Approach chosen: X' / 'it is Approach X' /
+      'now uses / switched to Approach X' > 'uses / chose Approach X' (excluding 'chose A over B') > bold label at the start >
+      only one letter mentioned > keywords > 'both' / 'unclear'.
+    claims_change (T4): explicit 'Did it change: no/yes' > uncertainty phrases ('uncertain') > strong change phrases vs explicit denials."""
     t = text or ""
     low = t.lower()
     a = bool(re.search(r"approach\s*\(?a\)?\b", low)); b = bool(re.search(r"approach\s*\(?b\)?\b", low))
     ka = [k for k in task["keywords_a"] if k.lower() in low]; kb = [k for k in task["keywords_b"] if k.lower() in low]
+    # --- claims of change (T4 only) ---
+    claims_change = None
+    if turn == 4:
+        NOTNEG = r"(?<!never )(?<!not )(?<!n't )(?<!no )(?<!nothing )"
+        qa = re.search(r"\bdid (it|this|that|the (approach|design|choice)) change\b[^\n?:.]{0,40}[?:.]\W{0,8}(no|yes|not)\b", low)
+        neg = any(re.search(p, low) for p in NEG); pos = any(re.search(NOTNEG + p, low) for p in STRONG_POS)
+        unc = any(re.search(p, low) for p in UNCERTAIN)
+        ys = any(re.search(p, low) for p in YES_STRONG); ns = any(re.search(p, low) for p in NO_STRONG)
+        if qa:
+            claims_change = qa.group(3) == "yes"
+        elif ys and not ns:
+            claims_change = True
+        elif ns and not ys:
+            claims_change = False
+        elif unc:
+            claims_change = "uncertain"
+        else:
+            claims_change = True if (pos and not neg) else (False if (neg and not pos) else ("ambiguous" if (pos and neg) else None))
+    strong_change = claims_change is True
     decisive = None; choice = None
-    for verbs in ("now uses|now on|now runs on|switched to|moved to|migrated to|changed to|is now|now implements|ended (up )?(with|on)|now:|currently uses|current(ly)?",
-                  "codebase uses|uses|chose|chosen|choose|picked|selected|went with|implemented|is using|remains|remains on|stays with|stuck with|still uses|kept|keeps"):
-        x = _ab_after(low, verbs)
-        if x:
-            choice = x
-            m = re.search(r"[^.\n]*\b(?:%s)\b[^.\n]*" % verbs, low); decisive = m.group(0).strip() if m else None
-            break
-    if choice is None and turn == 4 and re.search(r"\b(a|the|this|that) hybrid\b|\bhybrid (design|approach|met|is|remains|of)\b", low):
+    if turn == 4 and re.search(r"\b(a|the|this|that|coherent) hybrid\b|\bhybrid (design|approach|met|is|remains|of|dispatch|model)\b", low):
         choice = "hybrid"; decisive = re.search(r"[^.\n]*hybrid[^.\n]*", low).group(0).strip()
+    if choice is None and strong_change:
+        m = re.search(r"\b(started (out )?(with|on|from|as)|initially|originally|began (with|on|as)|at first|first (round|turn|step)[^.\n]{0,20}(used|was))\b[^.\n]{0,40}?%s" % AB, low)
+        if m:
+            choice = "B" if m.group("ab").upper() == "A" else "A"; decisive = m.group(0)
     if choice is None:
-        # "started with / initially / originally Approach X" plus a claim of change => the other approach
-        m = re.search(r"\b(started (out )?with|initially|originally|began with|at first)\b[^.\n]{0,40}?%s" % AB, low)
-        if m and any(re.search(q, low) for q in STRONG_POS) and a and b:
-            choice = "B" if m.group("ab").upper() == "A" else "A"
-            decisive = m.group(0)
+        m = re.search(r"approach (chosen|used|in use|selected|taken)\b[^a-z\n]{0,8}%s\b" % r"(?P<ab>[ab])", low) or re.search(r"\b(it is|this is|that is|it's|answer[^a-z\n]{0,4})\s*%s\b" % AB, low)
+        if m: choice = m.group("ab").upper(); decisive = m.group(0)
     if choice is None:
-        # answer given as a bold label at the very start of the message: "**Approach B, random UUIDs.**"
+        for verbs in ("now uses|now on|now runs on|switched to|moved to|migrated to|changed to|is now|now implements|ended (up )?(with|on)|now:|currently uses|current(ly)?",
+                      "codebase uses|uses|chose|chosen|choose|picked|selected|went with|implemented|is using|remains|remains on|stays with|stayed with|stayed on|stuck with|still uses|kept|keeps"):
+            x, d = _find_ab(low, verbs)
+            if x:
+                choice, decisive = x, d; break
+    if choice is None:
         m = re.match(r"^\W*(?:[\w-]+\s+){0,4}?%s\b" % AB, low)
         if m: choice = m.group("ab").upper(); decisive = m.group(0)
     if choice is None:
-        # label-style answers: "**Approach B**" right after the question, or a lone letter answer
-        m = re.search(r"(which|answer|approach used|now)[^.\n]{0,60}?%s" % AB, low)
+        m = re.search(r"(which|answer|now)[^.\n]{0,60}?%s" % AB, low)
         if m: choice = m.group("ab").upper(); decisive = m.group(0)
     if choice is None:
         if a and not b: choice = "A"
         elif b and not a: choice = "B"
         elif a and b:
-            # both letters mentioned with no explicit 'now/uses' verb: pick the one that follows a switch phrase, else 'both'
             m = re.search(r"\b(switch(ed|ing)? to|moved to|migrated to|now)\b[^.\n]{0,40}?%s" % AB, low)
             choice = m.group("ab").upper() if m else "both"
         elif ka and not kb: choice = "A"
         elif kb and not ka: choice = "B"
         elif ka and kb: choice = "both"
         else: choice = "unclear"
-    claims_change = None
-    if turn == 4:
-        NOTNEG = r"(?<!never )(?<!not )(?<!n't )(?<!no )(?<!nothing )"
-        neg = any(re.search(p, low) for p in NEG); pos = any(re.search(NOTNEG + p, low) for p in STRONG_POS)
-        claims_change = True if (pos and not neg) else (False if (neg and not pos) else ("ambiguous" if (pos and neg) else None))
     return {"choice": choice, "mentions_approach_A": a, "mentions_approach_B": b, "keywords_A": ka, "keywords_B": kb,
             "decisive_sentence": decisive, "claims_change": claims_change, "snippet": (t[-1500:] if t else "")}
 

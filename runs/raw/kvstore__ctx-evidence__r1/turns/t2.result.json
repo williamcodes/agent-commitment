@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 29661,
+  "duration_ms": 42485,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 978,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 3547,
+      "cacheReadInputTokens": 64851,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.22986275,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 2841,
+      "provider": "firstParty",
+      "thinkingTokens": 200,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 8 tests pass (the 5 original plus the 3 new namespace tests).\n\nWhat changed in `kvstore/store.py`:\n\n- **Schema:** the `kv` table now has a namespace column, with a composite primary key on namespace plus key, so the same key can exist independently in different namespaces. Everything still lives in the one SQLite file.\n- **Existing methods:** `set`, `get`, `delete`, and `keys` take `ns: str = \"default\"` and filter every query by namespace. The upsert in `set` conflicts on the namespace-and-key pair.\n- **New methods:** `count(ns)` runs a filtered row count, and `namespaces()` returns the sorted distinct namespaces that currently hold at least one row, so a namespace disappears once its last key is deleted.\n- **Migration:** opening a file written by the previous single-namespace schema upgrades it in one transaction, moving its rows into the default namespace. I verified this manually with an old-format file. It leaves no side files.",
+  "result_index": 0,
+  "session_id": "adb5f564-19cb-41d3-b0ca-bdcfe7638b38",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 48,
+  "total_cost_usd": 0.22986275,
+  "ttft_ms": 1510,
+  "ttft_stream_ms": 978,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3547,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 3547,
+    "cache_read_input_tokens": 64851,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 2437,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 2437,
+        "cache_read_input_tokens": 22239,
+        "input_tokens": 32,
+        "output_tokens": 326,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 2841,
+    "output_tokens_details": {
+      "thinking_tokens": 200
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "be18e5f8-b83e-4cea-9070-c014eeaaba37"
+}

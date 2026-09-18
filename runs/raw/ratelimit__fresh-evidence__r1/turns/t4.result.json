@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 55334,
+  "duration_ms": 69838,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 2092,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 15222,
+      "cacheReadInputTokens": 128589,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.54825725,
+      "inputTokens": 162,
+      "maxOutputTokens": 64000,
+      "outputTokens": 4201,
+      "provider": "firstParty",
+      "thinkingTokens": 1102,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.00113,
+      "inputTokens": 1055,
+      "maxOutputTokens": 32000,
+      "outputTokens": 15,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 6,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "`allow_n` is implemented in `ratelimit/limiter.py` and the full suite passes.\n\n```\n14 passed in 0.03s\n```\n\n**What I added.** `allow_n(key, n, now)` refills the key's bucket to `now`, returns False without consuming anything if `n` exceeds the key's capacity (including a per-key override) or if fewer than `n` whole tokens are available, and otherwise subtracts all `n` tokens at once. It uses the same rounding slack as the single-token check, so `remaining()` and `allow_n()` agree. `allow` now simply calls `allow_n` with `n` of 1, so there is one code path for the decision. An `n` below 1 raises `ValueError`, matching how the constructor validates `limit`. I also ran extra checks not in the tests: epoch-scale timestamps, partial refill, per-key limits, and `retry_after` consistency after a bulk consume. All passed.\n\n**Which algorithm the codebase uses now.** Approach A, the token bucket. Each key stores two floats, a token balance and a last-update time, and tokens refill continuously at `limit / window_seconds`. There is no per-call timestamp log anywhere in the code.\n\n**Did it change during the project?** I cannot verify that either way, and I want to be explicit about the limits of the evidence rather than guess. Git contains only the initial commit with the spec and tests, with no stash or reflog entries. The memory directory is empty, and the bytecode cache matches the current source with no leftovers from another design. The one hint is the module docstring, which justifies the token bucket by citing a memory requirement for a \"shared edge deployment\" with tens of millions of keys. That constraint appears nowhere in SPEC.md, which says both designs are acceptable. It reads like a rationale a previous session recorded, possibly for choosing A over B or for switching to A, but nothing in the repository confirms that a switch actually happened. The honest answer is that the codebase is token bucket now, and I have no record showing it was ever anything else.",
+  "result_index": 0,
+  "session_id": "0d7acbf6-42fd-434a-9d99-059658680573",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 41,
+  "total_cost_usd": 0.54938725,
+  "ttft_ms": 2303,
+  "ttft_stream_ms": 2092,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 15222,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 15222,
+    "cache_read_input_tokens": 128589,
+    "inference_geo": "not_available",
+    "input_tokens": 162,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1720,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 1720,
+        "cache_read_input_tokens": 27060,
+        "input_tokens": 32,
+        "output_tokens": 665,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 4201,
+    "output_tokens_details": {
+      "thinking_tokens": 1102
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "523a52d4-5803-4669-a280-142aabfc29bc"
+}

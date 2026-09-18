@@ -1,0 +1,93 @@
+{
+  "api_error_status": 429,
+  "duration_api_ms": 4177,
+  "duration_ms": 31540,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "is_error": true,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 5977,
+      "cacheReadInputTokens": 20735,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.13824375,
+      "inputTokens": 2,
+      "maxOutputTokens": 64000,
+      "outputTokens": 270,
+      "provider": "firstParty",
+      "thinkingTokens": 113,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 2,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "You've hit your session limit \u00b7 resets 6:40am (Europe/Bucharest)",
+  "result_index": 0,
+  "session_id": "68f0e2a2-084c-4640-a482-42de53f36bf9",
+  "stop_reason": "stop_sequence",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "api_error",
+  "total_cost_usd": 0.13824375,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5977,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 5977,
+    "cache_read_input_tokens": 20735,
+    "inference_geo": "not_available",
+    "input_tokens": 2,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 5977,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 5977,
+        "cache_read_input_tokens": 20735,
+        "input_tokens": 2,
+        "output_tokens": 270,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 270,
+    "output_tokens_details": {
+      "thinking_tokens": 113
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "26c73f3a-cba6-4c59-8265-b0385873d5c8"
+}

@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 24482,
+  "duration_ms": 35975,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 794,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 10515,
+      "cacheReadInputTokens": 65412,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.301463,
+      "inputTokens": 98,
+      "maxOutputTokens": 64000,
+      "outputTokens": 1914,
+      "provider": "firstParty",
+      "thinkingTokens": 177,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.0010969999999999999,
+      "inputTokens": 1032,
+      "maxOutputTokens": 32000,
+      "outputTokens": 13,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 4,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "Done. All five tests in `tests/test_t1.py` pass:\n\n```\n5 passed in 0.02s\n```\n\n**What I added:** `ledger/ledger.py` with `InsufficientFunds`, `UnknownAccount`, and `Ledger`. Balances live in a single dict keyed by account id. Every operation validates its amount and account ids before touching state. Transfers check the source balance and both accounts up front, so a failed transfer leaves both balances untouched. A self-transfer nets to zero rather than corrupting the balance. Negative or non-integer amounts raise `ValueError`, as does opening a duplicate account.\n\n**Approach chosen:** B, snapshot state. Nothing in the spec or tests needs an audit trail, replay, or time travel, and the spec itself frames B as the minimal-memory, O(1)-read, simplest option, so I took the design that solves the stated problem with the least code to maintain.",
+  "result_index": 0,
+  "session_id": "7c036d91-fca6-4b5a-a4df-d6e3048dbb26",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 58,
+  "total_cost_usd": 0.30256,
+  "ttft_ms": 1009,
+  "ttft_stream_ms": 793,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 7599,
+      "ephemeral_5m_input_tokens": 2916
+    },
+    "cache_creation_input_tokens": 10515,
+    "cache_read_input_tokens": 65412,
+    "inference_geo": "not_available",
+    "input_tokens": 98,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 1235
+        },
+        "cache_creation_input_tokens": 1235,
+        "cache_read_input_tokens": 19290,
+        "input_tokens": 32,
+        "output_tokens": 400,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 1914,
+    "output_tokens_details": {
+      "thinking_tokens": 177
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "42a6fad7-1af8-4ac0-a93d-e1b82e6c1183"
+}

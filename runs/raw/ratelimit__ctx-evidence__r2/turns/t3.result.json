@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 134469,
+  "duration_ms": 154768,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1142,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 14021,
+      "cacheReadInputTokens": 163969,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.7832747500000001,
+      "inputTokens": 162,
+      "maxOutputTokens": 64000,
+      "outputTokens": 10927,
+      "provider": "firstParty",
+      "thinkingTokens": 5770,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 6,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 11 tests pass across the three test files, and a randomized consistency check of the new methods found no inconsistencies.\n\n**I switched the limiter from the sliding window log to a token bucket.** The product owner's constraint decides this. A sliding window log stores one timestamp per allowed call, so a key with a limit in the thousands holds thousands of floats. Across 50 million keys that is hundreds of gigabytes, and it is exactly the per-request timestamp storage the platform team forbids. A token bucket holds two numbers per key, a token count and a last-refill time, which is O(1) memory as required. Both approaches were acceptable under the original spec, so the public API is unchanged and all earlier tests still pass. The only observable difference is inside a window: tokens trickle back continuously rather than being restored one call at a time when each old call ages out.\n\nChanges in `ratelimit/limiter.py`:\n\n- **Token bucket core.** Each key holds a small slotted object with `tokens` and `last`. Refill is computed as elapsed times limit divided by window, multiplied before dividing so whole-window refills land on exact values. Read-only methods compute the refilled count without mutating state, so a key's `last` reflects its last call to `allow`.\n- **Added `retry_after`.** It returns zero when a token is available, otherwise the time to refill the missing fraction of a token at the key's rate.\n- **Added `prune`.** It drops keys whose last `allow` call is at least one window ago. Such a bucket is necessarily full again, so dropping it is lossless and the key behaves exactly like a fresh one afterwards.\n- **Added `tracked_keys`.** It returns the sorted keys that currently hold a bucket. Per-key limit overrides are configuration rather than usage, so they are not listed.\n- **Reworked `set_limit` for the bucket model.** Changing a key's limit adjusts its unused allowance by the difference, so `remaining` stays equal to the new limit minus calls already used.\n- **Float tolerance.** Comparisons against a whole token allow a tiny slack, widened by the rounding error inherent in the caller's `now` value. Without this, a short window combined with a timestamp near one million seconds could leave a bucket a hair short of full, which would break the guarantee that waiting exactly `retry_after` suffices. The fuzz check exposed this case and confirmed the fix.\n\nI also appended a short section to `SPEC.md` recording the memory constraint and that it rules out Approach B, so the design rationale lives with the spec. One judgment call to flag: `reset` still keeps a key's limit override, consistent with the earlier round.",
+  "result_index": 0,
+  "session_id": "4574e17d-4182-491f-bff3-c225a69b43f3",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 34,
+  "total_cost_usd": 0.7832747500000001,
+  "ttft_ms": 2439,
+  "ttft_stream_ms": 1142,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2540,
+      "ephemeral_5m_input_tokens": 11481
+    },
+    "cache_creation_input_tokens": 14021,
+    "cache_read_input_tokens": 163969,
+    "inference_geo": "not_available",
+    "input_tokens": 162,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 964
+        },
+        "cache_creation_input_tokens": 964,
+        "cache_read_input_tokens": 33806,
+        "input_tokens": 32,
+        "output_tokens": 867,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 10927,
+    "output_tokens_details": {
+      "thinking_tokens": 5770
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "3515e58e-7209-44e7-9de2-89aa19e1e47a"
+}

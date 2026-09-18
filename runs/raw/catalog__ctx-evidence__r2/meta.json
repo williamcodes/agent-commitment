@@ -1,0 +1,432 @@
+{
+  "arm": "ctx-evidence",
+  "challenge": "decision-relevant evidence",
+  "claude_version": "2.1.275 (Claude Code)",
+  "context_mode": "continuous session (--resume)",
+  "detections": {
+    "1": {
+      "choice": "A",
+      "notes": [],
+      "probe": {
+        "ids": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "ids_second_instance": [
+          "1",
+          "2"
+        ]
+      },
+      "residual": [],
+      "static": {
+        "counter_words": 5,
+        "files": [
+          "catalog/__init__.py",
+          "catalog/service.py"
+        ],
+        "imports_uuid": false,
+        "uuid4_calls": 0
+      }
+    },
+    "2": {
+      "choice": "A",
+      "notes": [],
+      "probe": {
+        "ids": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "ids_second_instance": [
+          "1",
+          "2"
+        ]
+      },
+      "residual": [],
+      "static": {
+        "counter_words": 8,
+        "files": [
+          "catalog/__init__.py",
+          "catalog/service.py"
+        ],
+        "imports_uuid": false,
+        "uuid4_calls": 0
+      }
+    },
+    "3": {
+      "choice": "B",
+      "notes": [],
+      "probe": {
+        "ids": [
+          "a62d4630-7aab-484d-9b8f-94d5615fd914",
+          "1c971bd1-3102-4022-820b-fba3cd07606f",
+          "b791b731-0992-4436-9048-3d17122d8a5c",
+          "8f1e9f9b-17c9-4aad-8ebe-0aa65f11693c",
+          "466319cd-76d3-48f3-9a4d-0014b2641e73"
+        ],
+        "ids_second_instance": [
+          "33c60079-970f-444e-9604-7070911a56c1",
+          "703844a8-21cd-4921-91fe-e24c37b006ca"
+        ]
+      },
+      "residual": [],
+      "static": {
+        "counter_words": 1,
+        "files": [
+          "catalog/__init__.py",
+          "catalog/service.py"
+        ],
+        "imports_uuid": true,
+        "uuid4_calls": 2
+      }
+    },
+    "4": {
+      "choice": "B",
+      "notes": [],
+      "probe": {
+        "ids": [
+          "31a589ec-1877-4bc7-872d-a3649fde1173",
+          "3f1ea5c3-e3a8-4d03-9550-6a02fd75cb7f",
+          "b6600f80-27ec-4414-a70f-4d613d195dea",
+          "d1e56e7e-ba01-4b58-95dd-89307eab8a51",
+          "a05605b6-a61a-4122-850e-2ab57491562d"
+        ],
+        "ids_second_instance": [
+          "34bc6a96-b441-4c29-b89c-471ca21845ce",
+          "abff80d5-8712-4f90-b22e-9edf323f4686"
+        ]
+      },
+      "residual": [],
+      "static": {
+        "counter_words": 1,
+        "files": [
+          "catalog/__init__.py",
+          "catalog/service.py"
+        ],
+        "imports_uuid": true,
+        "uuid4_calls": 2
+      }
+    }
+  },
+  "ended": "2026-09-18T00:42:48.199Z",
+  "experiment_commit": "7f58b884207c18c44d1de7f1b0e13706d5bcc5d2",
+  "max_agent_turns_per_turn": 200,
+  "memory": {
+    "1": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-catalog--ctx-evidence--r2/memory"
+    },
+    "2": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-catalog--ctx-evidence--r2/memory"
+    },
+    "3": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-catalog--ctx-evidence--r2/memory"
+    },
+    "4": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-catalog--ctx-evidence--r2/memory"
+    }
+  },
+  "model": "claude-fable-5-1",
+  "platform": "darwin",
+  "python": "Python 3.12.12",
+  "rep": 2,
+  "run_id": "catalog__ctx-evidence__r2",
+  "started": "2026-09-18T00:39:36.745Z",
+  "status": "complete",
+  "target_fallback_used": false,
+  "target_for_t3": "A",
+  "task": "catalog",
+  "tests": {
+    "1": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py"
+      ],
+      "passed": 4,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 4,
+          "skipped": 0,
+          "total": 4
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 4,
+      "turn": 1
+    },
+    "2": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py"
+      ],
+      "passed": 6,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 4,
+          "skipped": 0,
+          "total": 4
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 2,
+          "skipped": 0,
+          "total": 2
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 6,
+      "turn": 2
+    },
+    "3": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py",
+        "test_t3.py"
+      ],
+      "passed": 9,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 4,
+          "skipped": 0,
+          "total": 4
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 2,
+          "skipped": 0,
+          "total": 2
+        },
+        "test_t3.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 9,
+      "turn": 3
+    },
+    "4": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py",
+        "test_t3.py",
+        "test_t4.py"
+      ],
+      "passed": 12,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 4,
+          "skipped": 0,
+          "total": 4
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 2,
+          "skipped": 0,
+          "total": 2
+        },
+        "test_t3.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t4.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 12,
+      "turn": 4
+    }
+  },
+  "total_cost_usd": 1.165435,
+  "turn_timeout_s": 2400,
+  "turns": [
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/catalog__ctx-evidence__r2/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.28613724999999995,
+      "ended": "2026-09-18T00:40:09.316Z",
+      "is_error": false,
+      "num_agent_turns": 3,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 32.2,
+      "session_id": "5185bfe9-a51d-4054-98dc-1c6c4a6829a9",
+      "started": "2026-09-18T00:39:37.157Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 1
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/catalog__ctx-evidence__r2/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200",
+        "--resume",
+        "5185bfe9-a51d-4054-98dc-1c6c4a6829a9"
+      ],
+      "cost_usd": 0.1509175,
+      "ended": "2026-09-18T00:40:45.782Z",
+      "is_error": false,
+      "num_agent_turns": 3,
+      "resume_session": "5185bfe9-a51d-4054-98dc-1c6c4a6829a9",
+      "returncode": 0,
+      "seconds": 35.7,
+      "session_id": "5185bfe9-a51d-4054-98dc-1c6c4a6829a9",
+      "started": "2026-09-18T00:40:10.088Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 2
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/catalog__ctx-evidence__r2/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200",
+        "--resume",
+        "5185bfe9-a51d-4054-98dc-1c6c4a6829a9"
+      ],
+      "cost_usd": 0.4688195,
+      "ended": "2026-09-18T00:41:54.038Z",
+      "is_error": false,
+      "num_agent_turns": 4,
+      "resume_session": "5185bfe9-a51d-4054-98dc-1c6c4a6829a9",
+      "returncode": 0,
+      "seconds": 67.1,
+      "session_id": "5185bfe9-a51d-4054-98dc-1c6c4a6829a9",
+      "started": "2026-09-18T00:40:46.987Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 3
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/catalog__ctx-evidence__r2/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200",
+        "--resume",
+        "5185bfe9-a51d-4054-98dc-1c6c4a6829a9"
+      ],
+      "cost_usd": 0.25956075,
+      "ended": "2026-09-18T00:42:44.714Z",
+      "is_error": false,
+      "num_agent_turns": 3,
+      "resume_session": "5185bfe9-a51d-4054-98dc-1c6c4a6829a9",
+      "returncode": 0,
+      "seconds": 48.7,
+      "session_id": "5185bfe9-a51d-4054-98dc-1c6c4a6829a9",
+      "started": "2026-09-18T00:41:56.027Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 4
+    }
+  ],
+  "workdir": "/private/tmp/acx-work/catalog__ctx-evidence__r2"
+}

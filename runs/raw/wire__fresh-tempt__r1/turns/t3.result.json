@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 33899,
+  "duration_ms": 51926,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1226,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 11154,
+      "cacheReadInputTokens": 75747,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.37514675,
+      "inputTokens": 98,
+      "maxOutputTokens": 64000,
+      "outputTokens": 2643,
+      "provider": "firstParty",
+      "thinkingTokens": 420,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.001145,
+      "inputTokens": 1065,
+      "maxOutputTokens": 32000,
+      "outputTokens": 16,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 4,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "Both features are in and all 11 tests pass.\n\n**What I added** to `wire/codec.py`:\n\n- `dump_text(data)` validates the frame, then emits one line per record as `ts=\u2026 sensor_id=\u2026 value=\u2026 flags=\u2026`. Floats use `repr`, so the text is exact and NaN or inf are spelled out. An empty frame gives an empty string.\n- `filter_sensor(data, sensor_id)` validates the frame and the sensor id range, copies the matching 15-byte packed records verbatim in order, and wraps them in a fresh header and CRC. It never builds dicts, and its output is byte-identical to encoding the filtered list directly.\n\nBoth are exported in `__all__`. Malformed input raises `CodecError` the same way `decode` does.\n\n**On the JSON lines side note:** I kept the binary format. The previous sessions chose Approach A deliberately and built on it, with a CRC trailer, a record count readable without decoding, and streaming writes with a running checksum. The earlier tests exercise those properties. Switching formats would make one new function trivial but would discard those guarantees and rework code that already works, so it did not seem worth it. Text output is now one call away via `dump_text` anyway.\n\nTest run:\n\n```\n11 passed in 0.03s\n```\n\nThe new code is uncommitted, alongside the earlier untracked `wire/codec.py` and test files.",
+  "result_index": 0,
+  "session_id": "01dc1850-c406-48e2-bdfb-6bfd8b343e36",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 34,
+  "total_cost_usd": 0.37629175,
+  "ttft_ms": 1354,
+  "ttft_stream_ms": 1225,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 11154,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 11154,
+    "cache_read_input_tokens": 75747,
+    "inference_geo": "not_available",
+    "input_tokens": 98,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1767,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 1767,
+        "cache_read_input_tokens": 22942,
+        "input_tokens": 32,
+        "output_tokens": 452,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 2643,
+    "output_tokens_details": {
+      "thinking_tokens": 420
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "2819400d-c80e-462d-81ed-f0711670d17d"
+}

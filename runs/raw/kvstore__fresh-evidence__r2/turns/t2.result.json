@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 37096,
+  "duration_ms": 50283,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 904,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 10416,
+      "cacheReadInputTokens": 72861,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.34976274999999996,
+      "inputTokens": 98,
+      "maxOutputTokens": 64000,
+      "outputTokens": 3388,
+      "provider": "firstParty",
+      "thinkingTokens": 200,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.001114,
+      "inputTokens": 1049,
+      "maxOutputTokens": 32000,
+      "outputTokens": 13,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 4,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 8 tests pass (5 existing, 3 new). The SPEC's public-interface section is described as fixed, so I'll leave it untouched.\n\n**What I changed** (all in `kvstore/store.py`):\n\n- **On-disk layout** is now a nested JSON object, `{namespace: {key: value}}`, still in the one data file. Files written in the old flat `{key: value}` layout are migrated into the `default` namespace on load, so existing data keeps working.\n- **`set`, `get`, `delete`, `keys`** each take a keyword argument `ns: str = \"default\"` and operate only within that namespace.\n- **New `count(ns=\"default\")`** returns the number of keys in a namespace, and **new `namespaces()`** returns the sorted names of namespaces that hold at least one key.\n- **Empty namespaces are pruned.** Deleting the last key in a namespace removes it from the document, so a namespace never lingers with zero keys and `namespaces()` stays accurate after deletes and across reopen.\n- Loading validates the nested shape and rejects non-string keys or values, as before.\n\nI also verified by hand that a legacy flat file migrates correctly and that only the single data file is ever written. Nothing was committed.",
+  "result_index": 0,
+  "session_id": "4c01fab6-b686-48b9-8246-a136ce459a7e",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 32,
+  "total_cost_usd": 0.35087674999999996,
+  "ttft_ms": 1474,
+  "ttft_stream_ms": 903,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4129,
+      "ephemeral_5m_input_tokens": 6287
+    },
+    "cache_creation_input_tokens": 10416,
+    "cache_read_input_tokens": 72861,
+    "inference_geo": "not_available",
+    "input_tokens": 98,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 2657
+        },
+        "cache_creation_input_tokens": 2657,
+        "cache_read_input_tokens": 21316,
+        "input_tokens": 32,
+        "output_tokens": 401,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 3388,
+    "output_tokens_details": {
+      "thinking_tokens": 200
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "2897bd95-fd7d-473d-811b-6a1b8cca15af"
+}

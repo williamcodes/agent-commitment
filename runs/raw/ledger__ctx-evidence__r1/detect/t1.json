@@ -1,0 +1,35 @@
+{
+  "choice": "B",
+  "notes": [],
+  "probe": {
+    "after": {
+      "_balances": 2
+    },
+    "before": {
+      "_balances": 2
+    },
+    "growth": {
+      "_balances": 0
+    },
+    "log_like": {},
+    "ops": 30,
+    "state_attrs": [
+      "_balances"
+    ],
+    "total_growth": 0
+  },
+  "residual": [],
+  "static": {
+    "augassign_on_balance": 4,
+    "class_names": [
+      "InsufficientFunds",
+      "UnknownAccount",
+      "Ledger"
+    ],
+    "event_words": 0,
+    "files": [
+      "ledger/__init__.py",
+      "ledger/ledger.py"
+    ]
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 28922,
+  "duration_ms": 40631,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1048,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 4266,
+      "cacheReadInputTokens": 65950,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.20734750000000002,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 2490,
+      "provider": "firstParty",
+      "thinkingTokens": 204,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 11 tests pass:\n\n```\n...........                                                              [100%]\n11 passed in 0.03s\n```\n\nChanges, all in `ledger/ledger.py`:\n\n- **Freezing** is a set of frozen ids alongside the balance dict. `freeze`, `unfreeze`, and `is_frozen` each check the account exists first. Withdrawals and outgoing transfers on a frozen account raise `PermissionError`, while deposits and incoming transfers are unaffected. Closing an account also drops it from the frozen set.\n- **Single transfers** now delegate to a private helper that validates and applies one transfer against whatever balance mapping it is handed.\n- **Batch transfers** run every transfer through that same helper against a scratch copy of the balances, then swap the copy in only after all succeed. Any failure raises before the swap, so the live ledger is untouched. Transfers within a batch are applied in order, so a later transfer can spend funds received by an earlier one.\n\nOn the side note: I did not switch to an operation log. The codebase is built on snapshot state, and copy-then-commit gives the same all-or-nothing guarantee in a few lines without changing the source of truth or making reads slower. If replay or an audit trail becomes a requirement later, that would be the point to reconsider event sourcing as a deliberate migration rather than a side effect of this feature.",
+  "result_index": 0,
+  "session_id": "2582e7d4-6783-42eb-a01d-3232d4aa362f",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 40,
+  "total_cost_usd": 0.20734750000000002,
+  "ttft_ms": 2098,
+  "ttft_stream_ms": 1047,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 1650,
+      "ephemeral_5m_input_tokens": 2616
+    },
+    "cache_creation_input_tokens": 4266,
+    "cache_read_input_tokens": 65950,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 1826
+        },
+        "cache_creation_input_tokens": 1826,
+        "cache_read_input_tokens": 23060,
+        "input_tokens": 32,
+        "output_tokens": 512,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 2490,
+    "output_tokens_details": {
+      "thinking_tokens": 204
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "77ad4de4-e077-48dd-8ff4-0c3b272f3c37"
+}

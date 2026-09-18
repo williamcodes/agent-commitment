@@ -1,0 +1,6 @@
+399651368586fab9a90a926790dd6e242f7e19b8 2026-09-18T04:01:56+03:00 Initial commit: spec and tests
+
+ SPEC.md             | 44 ++++++++++++++++++++++++++++++++++++++++++++
+ reports/__init__.py |  1 +
+ tests/test_t1.py    | 31 +++++++++++++++++++++++++++++++
+ 3 files changed, 76 insertions(+)

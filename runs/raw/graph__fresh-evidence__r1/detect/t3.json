@@ -1,0 +1,35 @@
+{
+  "choice": "B",
+  "notes": [],
+  "probe": {
+    "edges": 600,
+    "n": 600,
+    "state": {
+      "_edges": {
+        "bit_length": 10,
+        "kind": "int"
+      },
+      "_rows": {
+        "inner_count": 0,
+        "inner_lens": [],
+        "inner_total": 0,
+        "int_bits_max": 600,
+        "kind": "seq",
+        "len": 600
+      }
+    }
+  },
+  "residual": [],
+  "static": {
+    "adj_words": 1,
+    "files": [
+      "netgraph/__init__.py",
+      "netgraph/graph.py"
+    ],
+    "list_like_attrs": [],
+    "matrix_like_attrs": [
+      "_rows"
+    ],
+    "matrix_words": 26
+  }
+}

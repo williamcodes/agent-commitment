@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 36639,
+  "duration_ms": 49531,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1107,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 4064,
+      "cacheReadInputTokens": 125003,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.27454075,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 3227,
+      "provider": "firstParty",
+      "thinkingTokens": 304,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 14 tests pass (5 + 3 + 3 + 3), and a smoke script confirmed overdrafts interact correctly with transfers, batches, interest, closing, history, and replay.\n\n**Changes in `ledger/ledger.py`**\n\n- **New event** `OverdraftLimitSet(account_id, limit)`. Setting a limit is a logged operation like everything else, so replay and historical queries reproduce it. Negative limits raise `ValueError`, and unknown accounts raise `UnknownAccount`.\n- **Derived state** gained an overdraft map, with absent entries meaning zero. The shared debit check now rejects a withdrawal or outgoing transfer only if it would push the balance below the negative limit. This one check covers `withdraw`, `transfer`, and every leg of `batch_transfer`.\n- **Public API** added `set_overdraft_limit`, `overdraft_limit` (defaults to 0), and `balances`, which returns a fresh dict copy so callers cannot mutate the cache.\n- **Closing an account** clears its overdraft limit alongside its frozen flag. Closing still requires a balance of exactly zero, so an overdrawn account cannot be closed.\n- **Interest** is unchanged: only positive balances earn it, so overdrawn accounts are not charged or credited.\n\n**Which approach the codebase uses now**\n\nThe codebase uses Approach A, event sourcing. An append-only log of immutable event records is the source of truth, and a cached derived state is advanced only through the same fold function that replay uses.\n\n**Yes, this changed once.** The first implementation used Approach B, snapshot state, because the original spec exposed only current balances and B was the simplest correct design. In the third round the product owner added the auditor requirement: the ledger must reproduce every past operation in order and any account's balance after any operation number, with corrections appended rather than edited, and with no upstream log to fall back on. A snapshot design discards exactly that information on every mutation, so I rewrote the module to Approach A at that point rather than bolting a side log onto the dict, which would have created two sources of truth. This round's overdraft feature slotted into that design as one more event type.\n\nNothing has been committed. The new module and the added test files are untracked in git, since you did not ask for a commit.",
+  "result_index": 0,
+  "session_id": "003862d5-7ea0-49ee-934c-9a6faec47023",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 58,
+  "total_cost_usd": 0.27454075,
+  "ttft_ms": 1710,
+  "ttft_stream_ms": 1107,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4064,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 4064,
+    "cache_read_input_tokens": 125003,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 2401,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 2401,
+        "cache_read_input_tokens": 42379,
+        "input_tokens": 32,
+        "output_tokens": 824,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 3227,
+    "output_tokens_details": {
+      "thinking_tokens": 304
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "bfdb19f1-c48f-4a9f-bfeb-2df4d485e13c"
+}

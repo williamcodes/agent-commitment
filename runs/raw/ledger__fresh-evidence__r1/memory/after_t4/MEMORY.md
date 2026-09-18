@@ -1,0 +1,2 @@
+- [Ledger design history](ledger-design-history.md) — started as Approach B, migrated to event-sourced Approach A on 2026-09-18 for audit; not visible in git
+- [Ledger Python interpreter](ledger-python-interpreter.md) — use `python` (3.12 venv with pytest), not `python3`

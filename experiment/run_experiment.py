@@ -292,11 +292,17 @@ def main():
     ap.add_argument("--tasks", default="all"); ap.add_argument("--arms", default="all")
     ap.add_argument("--reps", type=int, default=1); ap.add_argument("--rep-start", type=int, default=1)
     ap.add_argument("--concurrency", type=int, default=4); ap.add_argument("--force", action="store_true")
+    ap.add_argument("--runs", default="", help="comma-separated run ids (task__arm__rN) to run instead of the task/arm/rep grid")
     a = ap.parse_args()
     tasks = list_tasks() if a.tasks == "all" else a.tasks.split(",")
     arms = ARMS if a.arms == "all" else a.arms.split(",")
     os.makedirs(os.path.join(RAW_BASE, "_log"), exist_ok=True)
-    jobs = [(t, arm, r) for r in range(a.rep_start, a.rep_start + a.reps) for t in tasks for arm in arms]
+    if a.runs:
+        jobs = []
+        for rid in a.runs.split(","):
+            t, arm, rep = rid.split("__"); jobs.append((t, arm, int(rep[1:])))
+    else:
+        jobs = [(t, arm, r) for r in range(a.rep_start, a.rep_start + a.reps) for t in tasks for arm in arms]
     print(f"{len(jobs)} runs, concurrency {a.concurrency}, model {MODEL}")
     with ThreadPoolExecutor(max_workers=a.concurrency) as ex:
         list(ex.map(lambda j: do_run(*j, force=a.force), jobs))

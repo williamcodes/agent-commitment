@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 98309,
+  "duration_ms": 235176,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 858,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 16913,
+      "cacheReadInputTokens": 205492,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.7811130000000002,
+      "inputTokens": 258,
+      "maxOutputTokens": 64000,
+      "outputTokens": 7778,
+      "provider": "firstParty",
+      "thinkingTokens": 3119,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.00118,
+      "inputTokens": 1105,
+      "maxOutputTokens": 32000,
+      "outputTokens": 15,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 10,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "Done. All 11 tests pass, including the three new ones in `tests/test_t3.py`.\n\n**What I added** to `ratelimit/limiter.py`, keeping the existing sliding-window-log design:\n\n- `retry_after(key, now)` returns 0.0 when a call would be allowed, and otherwise the time until the gating log entry expires. It records nothing and creates no state for unseen keys. If `set_limit` lowered a key's limit below its current usage, it correctly waits for enough entries to expire, not just the oldest one.\n- `prune(now)` drops every key whose recorded calls have all expired, since such a key already behaves like a fresh key. It returns the count removed and preserves per-key limit overrides, matching how `reset` already treats them.\n- `tracked_keys()` returns the sorted keys that currently hold call state.\n\n**Why I kept the log rather than switching to a token bucket.** The existing `remaining`, `set_limit`, and `reset` methods and the earlier tests all pin down the log's exact expiry semantics. With the log, `retry_after` is exact and provably consistent with `allow`, whereas a token bucket would change when calls are allowed and would have made the algorithm change the riskier part of the task.\n\n**One bug I caught and fixed along the way.** The first version guarded the \"waiting exactly that long suffices\" guarantee against float rounding by nudging the wait by its own ulp. For large timestamps that nudge is too small to change `now + wait`, so the loop never terminated. It now steps by the ulp of the sum. A randomized check of 20,000 cases across timestamps up to a billion and windows down to a millisecond confirmed the guarantee holds and the guard never loops more than twice.\n\n**Note on the repo state.** The limiter and the tests from earlier sessions are still untracked, so nothing from prior work has been committed yet. I left the working tree uncommitted since you did not ask for a commit.",
+  "result_index": 0,
+  "session_id": "a364a592-f3d6-449e-9e7e-e9b7199f8df2",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 31,
+  "total_cost_usd": 0.7822930000000001,
+  "ttft_ms": 1014,
+  "ttft_stream_ms": 858,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 16913,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 16913,
+    "cache_read_input_tokens": 205492,
+    "inference_geo": "not_available",
+    "input_tokens": 258,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 988,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 988,
+        "cache_read_input_tokens": 29483,
+        "input_tokens": 32,
+        "output_tokens": 690,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 7778,
+    "output_tokens_details": {
+      "thinking_tokens": 3119
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "3daa64b4-c4e2-4a62-8d5e-96e3b41978b7"
+}

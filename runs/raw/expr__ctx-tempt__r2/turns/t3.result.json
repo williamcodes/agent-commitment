@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 50082,
+  "duration_ms": 62702,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1116,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 9520,
+      "cacheReadInputTokens": 80298,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.411412,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 4753,
+      "provider": "firstParty",
+      "thinkingTokens": 462,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All three test files pass, 44 tests total.\n\n```\n$ python -m pytest -q\n44 passed in 0.06s\n```\n\n**Changes in `calc/expr.py`:**\n\n- **Constants** live in a small table holding pi and e. Identifier lookup checks the caller's variables first, then the constants, so a caller-supplied `pi` shadows the built-in.\n- **Double-star alias** is handled in the tokenizer. The regex matches `**` before single-character operators and rewrites it to `^` through an alias table, so the parser only ever sees one exponent operator. Mixing the two spellings in one expression works, and `2 *** 3` is rejected.\n- **Error positions** required threading offsets through the whole pipeline. Tokens are now a named tuple of kind, value, and start offset, and the end-of-input token sits at the length of the text. Every error raise site passes a position: unexpected tokens and unbalanced parentheses use the token's start, unknown variables use the identifier's start, invalid characters use the character's offset, and end-of-input errors use the text length.\n- **Runtime errors** also carry positions, since the spec says every error must. Division and modulo by zero point at the operator, and unknown function, wrong arity, and negative square root all point at the function name.\n- **Error class** now takes an optional position argument, exposes it as an attribute alongside the plain message, and appends the offset when converted to a string.\n\nOn the side note about shunting-yard: I kept the recursive-descent parser. The `**` alias was also a one-line change here, since the tokenizer normalises it before the grammar sees it. The position feature was the larger change, and it is equally necessary under either strategy because it lives in the tokenizer and error sites rather than in the precedence logic. A rewrite would have carried real risk for no gain on this feature set.",
+  "result_index": 0,
+  "session_id": "bff28c08-4863-46c4-bff7-8052a265ac13",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 34,
+  "total_cost_usd": 0.411412,
+  "ttft_ms": 1923,
+  "ttft_stream_ms": 1116,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4537,
+      "ephemeral_5m_input_tokens": 4983
+    },
+    "cache_creation_input_tokens": 9520,
+    "cache_read_input_tokens": 80298,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 4448
+        },
+        "cache_creation_input_tokens": 4448,
+        "cache_read_input_tokens": 28635,
+        "input_tokens": 32,
+        "output_tokens": 714,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 4753,
+    "output_tokens_details": {
+      "thinking_tokens": 462
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "2c9283af-d18c-49ad-a551-ef59642a6e37"
+}

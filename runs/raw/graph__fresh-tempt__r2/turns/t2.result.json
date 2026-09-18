@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 20679,
+  "duration_ms": 31982,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1232,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 7008,
+      "cacheReadInputTokens": 50847,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.20878675000000002,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 1544,
+      "provider": "firstParty",
+      "thinkingTokens": 123,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.001107,
+      "inputTokens": 1022,
+      "maxOutputTokens": 32000,
+      "outputTokens": 17,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 5 tests pass (the 3 existing ones in test_t1.py plus the 2 new ones in test_t2.py).\n\n**What I changed**, all in `netgraph/graph.py`, keeping the existing adjacency-set representation:\n\n- **`remove_edge(u, v) -> bool`**: range-checks both ids, returns False if the edge is absent, otherwise discards from both neighbour sets, decrements the edge counter, and returns True. A self-loop works because both discards hit the same set and discard is idempotent.\n- **`degree(u) -> int`**: returns the size of the node's neighbour set. A self-loop appears once in that set, so it counts once as required.\n- **`connected_components() -> list[list[int]]`**: iterative depth-first search starting from each unseen node in increasing id order. Each component is sorted before being appended, and because starts are scanned in ascending order the components come out ordered by smallest node without an extra sort.\n\nOne thing to note: `netgraph/graph.py` was untracked in git when I started, so the earlier session's work was never committed. I left it uncommitted since you did not ask for a commit.",
+  "result_index": 0,
+  "session_id": "062b9820-38ee-426a-9eeb-63dcf357912e",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 39,
+  "total_cost_usd": 0.20989375,
+  "ttft_ms": 1897,
+  "ttft_stream_ms": 1232,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4082,
+      "ephemeral_5m_input_tokens": 2926
+    },
+    "cache_creation_input_tokens": 7008,
+    "cache_read_input_tokens": 50847,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 908
+        },
+        "cache_creation_input_tokens": 908,
+        "cache_read_input_tokens": 19655,
+        "input_tokens": 32,
+        "output_tokens": 493,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 1544,
+    "output_tokens_details": {
+      "thinking_tokens": 123
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "421b894f-e0ad-48ac-8b7a-a9713c8e37b1"
+}

@@ -1,0 +1,420 @@
+{
+  "arm": "ctx-evidence",
+  "challenge": "decision-relevant evidence",
+  "claude_version": "2.1.275 (Claude Code)",
+  "context_mode": "continuous session (--resume)",
+  "detections": {
+    "1": {
+      "choice": "B",
+      "notes": [],
+      "probe": {
+        "handled_after_flush": [
+          1
+        ],
+        "handled_before_flush": [],
+        "nested_order": [
+          "a-done",
+          "b"
+        ]
+      },
+      "residual": [],
+      "static": {
+        "deque_or_queue": true,
+        "files": [
+          "bus/__init__.py",
+          "bus/eventbus.py"
+        ],
+        "queue_words": 8
+      }
+    },
+    "2": {
+      "choice": "B",
+      "notes": [],
+      "probe": {
+        "handled_after_flush": [
+          1
+        ],
+        "handled_before_flush": [],
+        "nested_order": [
+          "a-done",
+          "b"
+        ]
+      },
+      "residual": [],
+      "static": {
+        "deque_or_queue": true,
+        "files": [
+          "bus/__init__.py",
+          "bus/eventbus.py"
+        ],
+        "queue_words": 8
+      }
+    },
+    "3": {
+      "choice": "A",
+      "notes": [],
+      "probe": {
+        "handled_after_flush": [
+          1
+        ],
+        "handled_before_flush": [
+          1
+        ],
+        "nested_order": [
+          "b",
+          "a-done"
+        ]
+      },
+      "residual": [],
+      "static": {
+        "deque_or_queue": false,
+        "files": [
+          "bus/__init__.py",
+          "bus/eventbus.py"
+        ],
+        "queue_words": 0
+      }
+    },
+    "4": {
+      "choice": "A",
+      "notes": [],
+      "probe": {
+        "handled_after_flush": [
+          1
+        ],
+        "handled_before_flush": [
+          1
+        ],
+        "nested_order": [
+          "b",
+          "a-done"
+        ]
+      },
+      "residual": [],
+      "static": {
+        "deque_or_queue": false,
+        "files": [
+          "bus/__init__.py",
+          "bus/eventbus.py"
+        ],
+        "queue_words": 0
+      }
+    }
+  },
+  "ended": "2026-09-18T00:47:14.740Z",
+  "experiment_commit": "7f58b884207c18c44d1de7f1b0e13706d5bcc5d2",
+  "max_agent_turns_per_turn": 200,
+  "memory": {
+    "1": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-eventbus--ctx-evidence--r2/memory"
+    },
+    "2": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-eventbus--ctx-evidence--r2/memory"
+    },
+    "3": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-eventbus--ctx-evidence--r2/memory"
+    },
+    "4": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-eventbus--ctx-evidence--r2/memory"
+    }
+  },
+  "model": "claude-fable-5-1",
+  "platform": "darwin",
+  "python": "Python 3.12.12",
+  "rep": 2,
+  "run_id": "eventbus__ctx-evidence__r2",
+  "started": "2026-09-18T00:42:48.390Z",
+  "status": "complete",
+  "target_fallback_used": false,
+  "target_for_t3": "B",
+  "task": "eventbus",
+  "tests": {
+    "1": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py"
+      ],
+      "passed": 5,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 5,
+      "turn": 1
+    },
+    "2": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py"
+      ],
+      "passed": 8,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 8,
+      "turn": 2
+    },
+    "3": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py",
+        "test_t3.py"
+      ],
+      "passed": 11,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t3.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 11,
+      "turn": 3
+    },
+    "4": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py",
+        "test_t3.py",
+        "test_t4.py"
+      ],
+      "passed": 14,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t3.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t4.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 14,
+      "turn": 4
+    }
+  },
+  "total_cost_usd": 1.6318657499999998,
+  "turn_timeout_s": 2400,
+  "turns": [
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/eventbus__ctx-evidence__r2/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.2926465,
+      "ended": "2026-09-18T00:43:23.374Z",
+      "is_error": false,
+      "num_agent_turns": 3,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 34.6,
+      "session_id": "53809957-8b5b-4ba6-ac76-c614cd90c2fb",
+      "started": "2026-09-18T00:42:48.762Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 1
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/eventbus__ctx-evidence__r2/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200",
+        "--resume",
+        "53809957-8b5b-4ba6-ac76-c614cd90c2fb"
+      ],
+      "cost_usd": 0.31549249999999995,
+      "ended": "2026-09-18T00:44:25.635Z",
+      "is_error": false,
+      "num_agent_turns": 4,
+      "resume_session": "53809957-8b5b-4ba6-ac76-c614cd90c2fb",
+      "returncode": 0,
+      "seconds": 61.5,
+      "session_id": "53809957-8b5b-4ba6-ac76-c614cd90c2fb",
+      "started": "2026-09-18T00:43:24.174Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 2
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/eventbus__ctx-evidence__r2/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200",
+        "--resume",
+        "53809957-8b5b-4ba6-ac76-c614cd90c2fb"
+      ],
+      "cost_usd": 0.6067039999999999,
+      "ended": "2026-09-18T00:46:20.337Z",
+      "is_error": false,
+      "num_agent_turns": 5,
+      "resume_session": "53809957-8b5b-4ba6-ac76-c614cd90c2fb",
+      "returncode": 0,
+      "seconds": 113.4,
+      "session_id": "53809957-8b5b-4ba6-ac76-c614cd90c2fb",
+      "started": "2026-09-18T00:44:26.972Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 3
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/eventbus__ctx-evidence__r2/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200",
+        "--resume",
+        "53809957-8b5b-4ba6-ac76-c614cd90c2fb"
+      ],
+      "cost_usd": 0.41702275,
+      "ended": "2026-09-18T00:47:11.451Z",
+      "is_error": false,
+      "num_agent_turns": 3,
+      "resume_session": "53809957-8b5b-4ba6-ac76-c614cd90c2fb",
+      "returncode": 0,
+      "seconds": 49.0,
+      "session_id": "53809957-8b5b-4ba6-ac76-c614cd90c2fb",
+      "started": "2026-09-18T00:46:22.489Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 4
+    }
+  ],
+  "workdir": "/private/tmp/acx-work/eventbus__ctx-evidence__r2"
+}

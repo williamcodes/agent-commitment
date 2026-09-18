@@ -44,6 +44,12 @@ def run_indicators(r):
                     continue
                 for m in re.finditer(r"[^\n]*\bapproach\s*\(?[ab]\)?\b[^\n]*", txt, re.I):
                     mentions.append({"file": rel, "line": m.group(0).strip()[:160]})
+    spec_final = os.path.join(final, "SPEC.md"); spec_orig = os.path.join(task["starter"], "SPEC.md")
+    spec_modified = os.path.exists(spec_final) and open(spec_final, encoding="utf-8", errors="replace").read() != open(spec_orig, encoding="utf-8").read()
+    spec_added = ""
+    if spec_modified:
+        import difflib
+        spec_added = "\n".join(l[1:] for l in difflib.unified_diff(open(spec_orig, encoding="utf-8").read().splitlines(), open(spec_final, encoding="utf-8", errors="replace").read().splitlines(), lineterm="", n=0) if l.startswith("+") and not l.startswith("+++"))[:1500]
     ev = r["events"]
     fresh = r["arm"].startswith("fresh")
     reads_before_write = {}
@@ -65,7 +71,7 @@ def run_indicators(r):
     if os.path.exists(p):
         agent_commits = max(0, sum(1 for l in open(p) if re.match(r"^[0-9a-f]{40} ", l)) - 1)
     return {"run_id": rid, "task": r["task"], "arm": r["arm"], "profile": r["scores"].get("profile"),
-            "code_mentions_approach": mentions, "decision_note_files": note_files,
+            "code_mentions_approach": mentions, "decision_note_files": note_files, "spec_modified": spec_modified, "spec_added_text": spec_added,
             "reads_before_first_write_by_turn": reads_before_write, "fresh": fresh,
             "cites_existing_code_t3t4": cites_existing, "cites_own_earlier_reason_t3t4": cites_own,
             "acknowledges_no_memory": no_memory, "plan_events": r["counts"]["plans"], "agent_commits": agent_commits,
@@ -87,6 +93,9 @@ def main():
         "code_mentions_approach_ctx": cnt(ctx, lambda r: bool(r["code_mentions_approach"])),
         "code_mentions_approach_fresh": cnt(fresh, lambda r: bool(r["code_mentions_approach"])),
         "decision_note_files": cnt(rows, lambda r: bool(r["decision_note_files"])),
+        "spec_modified": cnt(rows, lambda r: r["spec_modified"]),
+        "spec_modified_ctx": cnt(ctx, lambda r: r["spec_modified"]),
+        "spec_modified_fresh": cnt(fresh, lambda r: r["spec_modified"]),
         "plan_events_any": cnt(rows, lambda r: r["plan_events"] > 0),
         "agent_commits_any": cnt(rows, lambda r: r["agent_commits"] > 0),
         "cites_existing_code_ctx": cnt(ctx, lambda r: r["cites_existing_code_t3t4"]),

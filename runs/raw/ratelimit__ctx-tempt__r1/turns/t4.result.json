@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 18504,
+  "duration_ms": 31181,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1526,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 1931,
+      "cacheReadInputTokens": 82163,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.12872075,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 1378,
+      "provider": "firstParty",
+      "thinkingTokens": 212,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 14 tests pass.\n\nChanges in `ratelimit/limiter.py`:\n\n- **`allow_n(key, n, now)`** refills the bucket, then subtracts `n` tokens only if at least `n` are available. Otherwise it stores the refilled state and returns False without consuming anything.\n- **`n` above the key's limit** returns False immediately and leaves the bucket untouched, since such a request can never succeed. `n` below 1 raises `ValueError`.\n- **`allow`** now delegates to `allow_n` with `n` of 1, so both share a single code path.\n\n**Which algorithm:** the codebase uses Approach A, the token bucket, and it has used it from the first commit. Each key holds a float token count and a last-refill timestamp, with per-key limit overrides in a separate map.\n\n**Did it change:** no. I considered Approach B when you noted that `retry_after` is trivial with a timestamp log. I stayed with the token bucket because the wait derives directly from the token deficit and refill rate, which keeps it O(1) and avoids storing a list per key. The one cost was floating-point care: the first `retry_after` guard checked the wait in isolation and failed a fuzz test, so I rewrote it to reuse the exact refill path that `allow` computes. That fix made the \"waiting exactly that long suffices\" guarantee hold by construction.",
+  "result_index": 0,
+  "session_id": "c23f472c-a330-4965-900d-28dc3a8184ee",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 219,
+  "total_cost_usd": 0.12872075,
+  "ttft_ms": 2840,
+  "ttft_stream_ms": 1525,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 1931,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 1931,
+    "cache_read_input_tokens": 82163,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 866,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 866,
+        "cache_read_input_tokens": 27906,
+        "input_tokens": 32,
+        "output_tokens": 447,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 1378,
+    "output_tokens_details": {
+      "thinking_tokens": 212
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "89499d28-43d6-493e-a2f8-7d08980a4f65"
+}

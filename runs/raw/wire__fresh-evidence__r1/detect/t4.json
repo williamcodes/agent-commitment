@@ -1,0 +1,25 @@
+{
+  "choice": "B",
+  "notes": [],
+  "probe": {
+    "json_lines": 4,
+    "len1": 61,
+    "len2": 123,
+    "len4": 246,
+    "lines": 4,
+    "per_record_delta_constant": false,
+    "printable_ratio": 1.0,
+    "utf8": true
+  },
+  "residual": [],
+  "static": {
+    "files": [
+      "wire/__init__.py",
+      "wire/codec.py"
+    ],
+    "imports_json": true,
+    "imports_struct": false,
+    "json_calls": 2,
+    "struct_pack_calls": 0
+  }
+}

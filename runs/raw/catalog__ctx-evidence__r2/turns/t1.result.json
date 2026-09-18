@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 19621,
+  "duration_ms": 30644,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 891,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 10044,
+      "cacheReadInputTokens": 46589,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.28508724999999996,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 1438,
+      "provider": "firstParty",
+      "thinkingTokens": 146,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.00105,
+      "inputTokens": 990,
+      "maxOutputTokens": 32000,
+      "outputTokens": 12,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "Implemented `catalog/service.py`. All 4 tests pass.\n\n**What's in the package**\n\n- `NotFound` exception and a `Catalog` class backed by an insertion-ordered dict, so `list()` returns records in creation order for free.\n- `get`, `update`, and `list` return copies of the stored dicts so callers can't mutate internal state.\n- `update` validates field names before touching the record and raises `ValueError` listing the offending fields. Unknown-field checks happen before the existence check, so a bad field on a missing id reports the more actionable error.\n- `delete` on a missing id raises `NotFound`, and deleted ids are never reused.\n\n**Approach chosen:** Approach A, sequential integers. The spec is a single in-memory, per-process catalog with no distributed generation or client-side id creation, so UUIDs would buy nothing here while sequential ids are shorter, sortable, and easier to read in tests and logs.",
+  "result_index": 0,
+  "session_id": "5185bfe9-a51d-4054-98dc-1c6c4a6829a9",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 33,
+  "total_cost_usd": 0.28613724999999995,
+  "ttft_ms": 1433,
+  "ttft_stream_ms": 891,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 10044,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 10044,
+    "cache_read_input_tokens": 46589,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1032,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 1032,
+        "cache_read_input_tokens": 19022,
+        "input_tokens": 32,
+        "output_tokens": 307,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 1438,
+    "output_tokens_details": {
+      "thinking_tokens": 146
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "dc1ab3fc-e5ae-487c-9e03-c6af200dc3f2"
+}

@@ -1,0 +1,474 @@
+{
+  "arm": "fresh-evidence",
+  "challenge": "decision-relevant evidence",
+  "claude_version": "2.1.275 (Claude Code)",
+  "context_mode": "fresh session per turn",
+  "detections": {
+    "1": {
+      "choice": "A",
+      "notes": [],
+      "probe": {
+        "edges": 600,
+        "n": 600,
+        "state": {
+          "_adj": {
+            "inner_count": 600,
+            "inner_lens": [
+              2,
+              2,
+              2,
+              2,
+              2
+            ],
+            "inner_total": 1200,
+            "int_bits_max": 0,
+            "kind": "seq",
+            "len": 600
+          },
+          "_edge_count": {
+            "bit_length": 10,
+            "kind": "int"
+          }
+        }
+      },
+      "residual": [],
+      "static": {
+        "adj_words": 11,
+        "files": [
+          "netgraph/__init__.py",
+          "netgraph/graph.py"
+        ],
+        "list_like_attrs": [
+          "_adj"
+        ],
+        "matrix_like_attrs": [],
+        "matrix_words": 0
+      }
+    },
+    "2": {
+      "choice": "A",
+      "notes": [],
+      "probe": {
+        "edges": 600,
+        "n": 600,
+        "state": {
+          "_adj": {
+            "inner_count": 600,
+            "inner_lens": [
+              2,
+              2,
+              2,
+              2,
+              2
+            ],
+            "inner_total": 1200,
+            "int_bits_max": 0,
+            "kind": "seq",
+            "len": 600
+          },
+          "_edge_count": {
+            "bit_length": 10,
+            "kind": "int"
+          }
+        }
+      },
+      "residual": [],
+      "static": {
+        "adj_words": 18,
+        "files": [
+          "netgraph/__init__.py",
+          "netgraph/graph.py"
+        ],
+        "list_like_attrs": [
+          "_adj"
+        ],
+        "matrix_like_attrs": [],
+        "matrix_words": 0
+      }
+    },
+    "3": {
+      "choice": "B",
+      "notes": [],
+      "probe": {
+        "edges": 600,
+        "n": 600,
+        "state": {
+          "_edge_count": {
+            "bit_length": 10,
+            "kind": "int"
+          },
+          "_rows": {
+            "inner_count": 0,
+            "inner_lens": [],
+            "inner_total": 0,
+            "int_bits_max": 600,
+            "kind": "seq",
+            "len": 600
+          }
+        }
+      },
+      "residual": [],
+      "static": {
+        "adj_words": 2,
+        "files": [
+          "netgraph/__init__.py",
+          "netgraph/graph.py"
+        ],
+        "list_like_attrs": [],
+        "matrix_like_attrs": [
+          "_rows"
+        ],
+        "matrix_words": 27
+      }
+    },
+    "4": {
+      "choice": "B",
+      "notes": [],
+      "probe": {
+        "edges": 600,
+        "n": 600,
+        "state": {
+          "_edge_count": {
+            "bit_length": 10,
+            "kind": "int"
+          },
+          "_rows": {
+            "inner_count": 0,
+            "inner_lens": [],
+            "inner_total": 0,
+            "int_bits_max": 600,
+            "kind": "seq",
+            "len": 600
+          }
+        }
+      },
+      "residual": [],
+      "static": {
+        "adj_words": 2,
+        "files": [
+          "netgraph/__init__.py",
+          "netgraph/graph.py"
+        ],
+        "list_like_attrs": [],
+        "matrix_like_attrs": [
+          "_rows"
+        ],
+        "matrix_words": 34
+      }
+    }
+  },
+  "ended": "2026-09-18T00:59:10.937Z",
+  "experiment_commit": "7f58b884207c18c44d1de7f1b0e13706d5bcc5d2",
+  "max_agent_turns_per_turn": 200,
+  "memory": {
+    "1": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-graph--fresh-evidence--r2/memory",
+      "wiped": true
+    },
+    "2": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-graph--fresh-evidence--r2/memory",
+      "wiped": true
+    },
+    "3": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-graph--fresh-evidence--r2/memory",
+      "wiped": true
+    },
+    "4": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-graph--fresh-evidence--r2/memory",
+      "wiped": true
+    }
+  },
+  "model": "claude-fable-5-1",
+  "platform": "darwin",
+  "python": "Python 3.12.12",
+  "rep": 2,
+  "run_id": "graph__fresh-evidence__r2",
+  "started": "2026-09-18T00:50:55.457Z",
+  "status": "complete",
+  "target_fallback_used": false,
+  "target_for_t3": "A",
+  "task": "graph",
+  "tests": {
+    "1": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py"
+      ],
+      "passed": 3,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 3,
+      "turn": 1
+    },
+    "2": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py"
+      ],
+      "passed": 5,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 2,
+          "skipped": 0,
+          "total": 2
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 5,
+      "turn": 2
+    },
+    "3": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py",
+        "test_t3.py"
+      ],
+      "passed": 8,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 2,
+          "skipped": 0,
+          "total": 2
+        },
+        "test_t3.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 8,
+      "turn": 3
+    },
+    "4": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py",
+        "test_t3.py",
+        "test_t4.py"
+      ],
+      "passed": 11,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 2,
+          "skipped": 0,
+          "total": 2
+        },
+        "test_t3.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t4.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 11,
+      "turn": 4
+    }
+  },
+  "total_cost_usd": 2.6023484999999997,
+  "turn_timeout_s": 2400,
+  "turns": [
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/graph__fresh-evidence__r2/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.31019299999999994,
+      "ended": "2026-09-18T00:51:36.350Z",
+      "is_error": false,
+      "num_agent_turns": 4,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 40.5,
+      "session_id": "0d6877bf-176a-452e-a9c5-3b1076b2233a",
+      "started": "2026-09-18T00:50:55.820Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 1
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/graph__fresh-evidence__r2/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.19895475,
+      "ended": "2026-09-18T00:52:09.127Z",
+      "is_error": false,
+      "num_agent_turns": 3,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 30.9,
+      "session_id": "6f0b3df4-250c-47a8-a20d-c8a595d405ee",
+      "started": "2026-09-18T00:51:38.270Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 2
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/graph__fresh-evidence__r2/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 1.5051664999999999,
+      "ended": "2026-09-18T00:57:14.416Z",
+      "is_error": false,
+      "num_agent_turns": 11,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 303.9,
+      "session_id": "66da4f8e-48a8-4df6-9fec-8fccef56cb26",
+      "started": "2026-09-18T00:52:10.507Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 3
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/graph__fresh-evidence__r2/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.58803425,
+      "ended": "2026-09-18T00:59:07.368Z",
+      "is_error": false,
+      "num_agent_turns": 9,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 110.9,
+      "session_id": "629905c1-2540-4016-9cd0-72146791d9cc",
+      "started": "2026-09-18T00:57:16.469Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 4
+    }
+  ],
+  "workdir": "/private/tmp/acx-work/graph__fresh-evidence__r2"
+}

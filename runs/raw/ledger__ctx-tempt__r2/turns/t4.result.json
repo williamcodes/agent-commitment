@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 22759,
+  "duration_ms": 35209,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 912,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 5261,
+      "cacheReadInputTokens": 73997,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.21125675000000002,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 2023,
+      "provider": "firstParty",
+      "thinkingTokens": 121,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 14 tests pass:\n\n```\n..............                                                           [100%]\n14 passed in 0.03s\n```\n\nChanges, all in `ledger/ledger.py`:\n\n- **Overdraft limits** live in a per-account dict that defaults to zero. `set_overdraft_limit` validates the limit as a non-negative int, and `overdraft_limit` reads it back. Closing an account drops its entry.\n- **Funds checks** for withdrawals and outgoing transfers now go through one shared helper that allows the balance to fall to minus the limit but no further. Batch transfers get the same rule since they use the same transfer helper.\n- **`balances`** returns a fresh dict copy, so callers cannot mutate the ledger's internal state through it.\n\nThe codebase uses Approach B, snapshot state. The ledger holds the current balance of each account in a dict and mutates it in place, with frozen ids and overdraft limits kept in small side structures. No operation log exists.\n\nThis never changed during the project. I chose B at the start because the interface only ever exposes current balances and nothing required an audit trail or replay. The one point where a log was suggested was batch transfers, where you floated recording operations and truncating to roll back. I stayed with B there and used copy-then-commit on the balance dict instead, which gives the same all-or-nothing guarantee without changing the source of truth. Every later feature, including overdrafts, was a direct operation on that dict, so the design held up without any migration.",
+  "result_index": 0,
+  "session_id": "2582e7d4-6783-42eb-a01d-3232d4aa362f",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 64,
+  "total_cost_usd": 0.21125675000000002,
+  "ttft_ms": 1489,
+  "ttft_stream_ms": 912,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3358,
+      "ephemeral_5m_input_tokens": 1903
+    },
+    "cache_creation_input_tokens": 5261,
+    "cache_read_input_tokens": 73997,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 1432
+        },
+        "cache_creation_input_tokens": 1432,
+        "cache_read_input_tokens": 26099,
+        "input_tokens": 32,
+        "output_tokens": 504,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 2023,
+    "output_tokens_details": {
+      "thinking_tokens": 121
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "29a8a9ea-6f7e-494b-9d66-4c47c47d3fd8"
+}

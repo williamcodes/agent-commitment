@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 44658,
+  "duration_ms": 62387,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 848,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 10500,
+      "cacheReadInputTokens": 94626,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.4225565,
+      "inputTokens": 130,
+      "maxOutputTokens": 64000,
+      "outputTokens": 3752,
+      "provider": "firstParty",
+      "thinkingTokens": 1111,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.001141,
+      "inputTokens": 1066,
+      "maxOutputTokens": 32000,
+      "outputTokens": 15,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 5,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 9 tests pass. The project uses the composition approach from the spec, so the new formats are plain registered functions and nothing else needed restructuring.\n\nChanges in `reports/render.py`:\n\n- **Added the csv format.** It writes the column header row then one row per data row using the standard library csv module, so cells containing commas or quotes are quoted correctly. There is no title line.\n- **Added the html format.** It emits the h1 title, the table open tag, a header row of th cells, one td row per data row, and the table close tag, each on its own line. Cell text and the title are HTML-escaped.\n- **Added render_many.** It resolves the format once, so an unknown format raises `UnknownFormat` before any report is rendered, then returns a list of rendered strings.\n- **Extracted a shared lookup helper** used by both `render` and `render_many` for the registry lookup and error message.\n- **Changed the document helper for text and markdown.** It previously always appended a trailing newline. The new `render_many` test expects `\"B\\n\\n1\"` with no trailing newline, while the existing empty-rows test still needs the blank line preserved. Joining header and body with a literal double newline satisfies both.\n\nNothing was committed. The existing tests in `tests/test_t1.py` were not touched, and `tests/test_t2.py` remains as it was added.",
+  "result_index": 0,
+  "session_id": "9e1bc660-3b0c-4c15-9530-1a7fad84642c",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 47,
+  "total_cost_usd": 0.4236975,
+  "ttft_ms": 1444,
+  "ttft_stream_ms": 848,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 10500,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 10500,
+    "cache_read_input_tokens": 94626,
+    "inference_geo": "not_available",
+    "input_tokens": 130,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 884,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 884,
+        "cache_read_input_tokens": 23172,
+        "input_tokens": 32,
+        "output_tokens": 433,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 3752,
+    "output_tokens_details": {
+      "thinking_tokens": 1111
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "1d809f55-f6b9-49e7-b654-df2e7bae0bc4"
+}

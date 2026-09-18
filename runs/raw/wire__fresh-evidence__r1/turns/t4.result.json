@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 69187,
+  "duration_ms": 102810,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1134,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 20958,
+      "cacheReadInputTokens": 212366,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.6002415000000001,
+      "inputTokens": 226,
+      "maxOutputTokens": 64000,
+      "outputTokens": 5037,
+      "provider": "firstParty",
+      "thinkingTokens": 1257,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.001121,
+      "inputTokens": 1051,
+      "maxOutputTokens": 32000,
+      "outputTokens": 14,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 8,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "`merge` is implemented and all 14 tests pass, including the three new ones in tests/test_t4.py.\n\n**What I changed**\n\n- `wire/codec.py:213` adds `merge(a, b)`. It validates both inputs the same way `decode` does, concatenates the records with those from `a` first, and sorts by `ts` with a stable sort. Because the input to the sort already has `a`'s records ahead of `b`'s, equal timestamps keep `a` first. Neither input needs to be pre-sorted.\n- `wire/__init__.py` exports `merge`.\n- SPEC.md lists `merge` in the public interface.\n\n**Extra checks beyond the tests.** Unsorted inputs sort correctly and keep stable order among ties within and across inputs. Truncated, non-UTF-8, and missing-field inputs raise `CodecError`. Merging two empty encodings yields zero bytes, and a `b` consisting only of a BOM and a CRLF blank line merges identically to an empty `b`.\n\n**Which wire format the codebase uses now: B, JSON lines, without a header line.** The module docstring, the spec's decision section, and the implementation all agree. Each record is one JSON object per line with keys in schema order, no header, count, or checksum.\n\n**Did it change during the project?** The repository does not preserve a definitive answer, so this is an inference. Git has only the initial commit, the codec file has never been committed, no earlier bytecode survives, and no notes were left in memory. The evidence that a switch happened is in the spec diff against that initial commit. The original spec said both approaches were acceptable and to pick one. The current spec says the product owner's field requirement \"rules out binary\" and that \"the storage concern that favoured it is gone.\" That wording only makes sense if binary had been chosen earlier for its compactness and was then abandoned. The reason for the change was the new product-owner requirement that technicians must open files in a text editor and patch records with `grep` and `sed`, together with the statement that compactness no longer matters. That requirement is what also drove the decision to omit a header, since any count or checksum would be invalidated by hand edits. File timestamps suggest the rewrite landed shortly before the merge task was added, but nothing on disk shows the earlier binary code itself.",
+  "result_index": 0,
+  "session_id": "fc39820b-9cb0-41ba-885a-4d92895e0cef",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 78,
+  "total_cost_usd": 0.6013625,
+  "ttft_ms": 1375,
+  "ttft_stream_ms": 1134,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4142,
+      "ephemeral_5m_input_tokens": 16816
+    },
+    "cache_creation_input_tokens": 20958,
+    "cache_read_input_tokens": 212366,
+    "inference_geo": "not_available",
+    "input_tokens": 226,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 419
+        },
+        "cache_creation_input_tokens": 419,
+        "cache_read_input_tokens": 34094,
+        "input_tokens": 32,
+        "output_tokens": 743,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 5037,
+    "output_tokens_details": {
+      "thinking_tokens": 1257
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "fabb6679-fcb9-4391-93bf-b43439fc2b2c"
+}
