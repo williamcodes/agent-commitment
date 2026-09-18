@@ -1,0 +1,6 @@
+6e7bc89f63ac89b41a93f854d805b6785d6b9f0d 2026-09-18T03:11:43+03:00 Initial commit: spec and tests
+
+ SPEC.md             | 38 ++++++++++++++++++++++++++++++++++++++
+ catalog/__init__.py |  1 +
+ tests/test_t1.py    | 37 +++++++++++++++++++++++++++++++++++++
+ 3 files changed, 76 insertions(+)

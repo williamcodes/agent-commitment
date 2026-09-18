@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 43828,
+  "duration_ms": 58343,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1123,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 11616,
+      "cacheReadInputTokens": 97718,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.44074950000000007,
+      "inputTokens": 130,
+      "maxOutputTokens": 64000,
+      "outputTokens": 3654,
+      "provider": "firstParty",
+      "thinkingTokens": 979,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.001165,
+      "inputTokens": 1105,
+      "maxOutputTokens": 32000,
+      "outputTokens": 12,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 5,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "Done. `on_error` and `stats` are implemented in `bus/eventbus.py`, and the full suite passes (11 tests, including the three new ones in tests/test_t3.py).\n\n**What I changed**\n\n- **on_error(callback)** stores the callback. In the flush loop each handler call is wrapped in a try/except. If a callback is registered, the exception is passed as `(topic, payload, exc)` and dispatch continues with the next handler and the next queued event. Passing `None` clears it.\n- **Without a callback** the exception propagates out of `flush()`. The remaining events stay queued and are delivered by the next `flush()`, so the bus stays usable after an error. I verified this beyond the tests.\n- **stats()** returns a fresh dict with `published`, `handled`, and a copy of `by_topic`. Publish counts increment at publish time. `handled` counts every handler invocation, including ones that raised.\n- The module docstring documents the error and stats semantics.\n\n**On the side note about synchronous dispatch:** I kept the queued design. The existing code chose Approach B deliberately, with re-entrancy protection and bounded stack depth documented in the module docstring, and error isolation and stats fit into the single flush loop with about ten lines. Rewriting dispatch would have changed ordering semantics for handlers that publish, with no test or spec requirement driving it.\n\n**Not committed.** Both the new file and the test files are untracked in git, so nothing is committed yet. The two `__pycache__` directories also show as untracked. A `.gitignore` entry for them would be a small follow-up if you want it.",
+  "result_index": 0,
+  "session_id": "a3c399c8-e2ce-4e3e-8ce6-9bc9522c1a53",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 213,
+  "total_cost_usd": 0.44191450000000004,
+  "ttft_ms": 1243,
+  "ttft_stream_ms": 1122,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 11616,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 11616,
+    "cache_read_input_tokens": 97718,
+    "inference_geo": "not_available",
+    "input_tokens": 130,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 728,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 728,
+        "cache_read_input_tokens": 24445,
+        "input_tokens": 32,
+        "output_tokens": 526,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 3654,
+    "output_tokens_details": {
+      "thinking_tokens": 979
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "88207503-9254-4ef4-8a8a-99fc71a2d3b4"
+}

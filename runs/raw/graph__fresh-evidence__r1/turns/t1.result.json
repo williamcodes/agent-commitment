@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 21985,
+  "duration_ms": 33365,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 846,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 10570,
+      "cacheReadInputTokens": 46914,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.3148885,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 1822,
+      "provider": "firstParty",
+      "thinkingTokens": 163,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.0011,
+      "inputTokens": 1030,
+      "maxOutputTokens": 32000,
+      "outputTokens": 14,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All three tests pass.\n\nI implemented `netgraph/graph.py` with Approach A, adjacency sets. It fits the spec's expectations: the interface is edge-and-neighbour oriented, memory stays proportional to nodes plus edges, and the `neighbors` and BFS operations only touch a node's actual degree rather than a full n-wide row.\n\nDetails worth knowing:\n\n- **Edges** are stored symmetrically in both endpoints' sets. A self-loop lands in one set, and the edge counter increments once per new edge, so duplicates and self-loops count as the spec requires.\n- **Out-of-range ids** raise `IndexError` on every method that takes a node. Non-integer ids raise `TypeError`.\n- **shortest_path** is a plain BFS with a parent map, returning `[u]` when the endpoints match and `None` when unreachable.\n\nTest output:\n\n```\n3 passed in 0.03s\n```\n\nThe change is uncommitted in the working tree. It has not been committed since you did not ask for that.",
+  "result_index": 0,
+  "session_id": "8f1b2485-45dc-45d5-9469-bd7fb7fdc93e",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 43,
+  "total_cost_usd": 0.3159885,
+  "ttft_ms": 1002,
+  "ttft_stream_ms": 846,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 10570,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 10570,
+    "cache_read_input_tokens": 46914,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1279,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 1279,
+        "cache_read_input_tokens": 19301,
+        "input_tokens": 32,
+        "output_tokens": 335,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 1822,
+    "output_tokens_details": {
+      "thinking_tokens": 163
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "bae27419-1e7f-426a-97f8-a6df1cff46e9"
+}

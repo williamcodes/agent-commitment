@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 47561,
+  "duration_ms": 60528,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1084,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 11659,
+      "cacheReadInputTokens": 101749,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.48759725,
+      "inputTokens": 98,
+      "maxOutputTokens": 64000,
+      "outputTokens": 4560,
+      "provider": "firstParty",
+      "thinkingTokens": 868,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 4,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 44 tests pass across the three test files. Every error path now reports a position, which I spot-checked beyond what the tests cover.\n\n**Changes to `calc/expr.py`:**\n\n- **Error positions:** `ExprError` now takes a message and a 0-based offset, exposed as `.position` and included in the string form. Every raise site supplies one. Unexpected tokens use the token start, unknown variables and function errors use the identifier start, end of input uses the text length, and division or modulo by zero uses the start of the right operand. Errors raised inside a built-in such as the negative sqrt check get the call site's position filled in by the caller.\n- **Constants:** a module-level table holds `pi` and `e`. Identifier lookup checks the caller's variables first, so they shadow the constants as required.\n- **`**` alias:** the tokenizer matches the two-character operator before single characters, and the power rule accepts either spelling. Both forms share the same right-associative path, so `2 ** 3 ^ 2` mixes freely.\n\nOn the side note: I kept recursive descent. The alias cost two lines here, which is about the same as a table entry would be, and switching parsers would have meant rewriting working, tested code for no functional gain. The precedence-sensitive unary minus rules from the original spec also remain easier to express in the explicit grammar than in a shunting-yard operator table.",
+  "result_index": 0,
+  "session_id": "199563e6-db17-4cdb-b022-c8558a07a89f",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 54,
+  "total_cost_usd": 0.48759725,
+  "ttft_ms": 1921,
+  "ttft_stream_ms": 1084,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 11659,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 11659,
+    "cache_read_input_tokens": 101749,
+    "inference_geo": "not_available",
+    "input_tokens": 98,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 7456,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 7456,
+        "cache_read_input_tokens": 28155,
+        "input_tokens": 32,
+        "output_tokens": 446,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 4560,
+    "output_tokens_details": {
+      "thinking_tokens": 868
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "fe2e8887-3061-440a-a528-9cbaec4427e7"
+}

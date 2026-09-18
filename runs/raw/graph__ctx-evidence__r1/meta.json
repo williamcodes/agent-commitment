@@ -1,0 +1,504 @@
+{
+  "arm": "ctx-evidence",
+  "challenge": "decision-relevant evidence",
+  "claude_version": "2.1.275 (Claude Code)",
+  "context_mode": "continuous session (--resume)",
+  "detections": {
+    "1": {
+      "choice": "A",
+      "notes": [],
+      "probe": {
+        "edges": 600,
+        "n": 600,
+        "state": {
+          "_adj": {
+            "inner_count": 600,
+            "inner_lens": [
+              2,
+              2,
+              2,
+              2,
+              2
+            ],
+            "inner_total": 1200,
+            "int_bits_max": 0,
+            "kind": "seq",
+            "len": 600
+          },
+          "_edges": {
+            "bit_length": 10,
+            "kind": "int"
+          },
+          "_n": {
+            "bit_length": 10,
+            "kind": "int"
+          }
+        }
+      },
+      "residual": [],
+      "static": {
+        "adj_words": 8,
+        "files": [
+          "netgraph/__init__.py",
+          "netgraph/graph.py"
+        ],
+        "list_like_attrs": [
+          "_adj"
+        ],
+        "matrix_like_attrs": [],
+        "matrix_words": 0
+      }
+    },
+    "2": {
+      "choice": "A",
+      "notes": [],
+      "probe": {
+        "edges": 600,
+        "n": 600,
+        "state": {
+          "_adj": {
+            "inner_count": 600,
+            "inner_lens": [
+              2,
+              2,
+              2,
+              2,
+              2
+            ],
+            "inner_total": 1200,
+            "int_bits_max": 0,
+            "kind": "seq",
+            "len": 600
+          },
+          "_edges": {
+            "bit_length": 10,
+            "kind": "int"
+          },
+          "_n": {
+            "bit_length": 10,
+            "kind": "int"
+          }
+        }
+      },
+      "residual": [],
+      "static": {
+        "adj_words": 13,
+        "files": [
+          "netgraph/__init__.py",
+          "netgraph/graph.py"
+        ],
+        "list_like_attrs": [
+          "_adj"
+        ],
+        "matrix_like_attrs": [],
+        "matrix_words": 0
+      }
+    },
+    "3": {
+      "choice": "B",
+      "notes": [],
+      "probe": {
+        "edges": 600,
+        "n": 600,
+        "state": {
+          "_edges": {
+            "bit_length": 10,
+            "kind": "int"
+          },
+          "_n": {
+            "bit_length": 10,
+            "kind": "int"
+          },
+          "_rows": {
+            "inner_count": 600,
+            "inner_lens": [
+              600,
+              600,
+              600,
+              600,
+              600
+            ],
+            "inner_total": 360000,
+            "int_bits_max": 0,
+            "kind": "seq",
+            "len": 600
+          }
+        }
+      },
+      "residual": [],
+      "static": {
+        "adj_words": 1,
+        "files": [
+          "netgraph/__init__.py",
+          "netgraph/graph.py"
+        ],
+        "list_like_attrs": [],
+        "matrix_like_attrs": [
+          "_rows"
+        ],
+        "matrix_words": 26
+      }
+    },
+    "4": {
+      "choice": "B",
+      "notes": [],
+      "probe": {
+        "edges": 600,
+        "n": 600,
+        "state": {
+          "_edges": {
+            "bit_length": 10,
+            "kind": "int"
+          },
+          "_n": {
+            "bit_length": 10,
+            "kind": "int"
+          },
+          "_rows": {
+            "inner_count": 600,
+            "inner_lens": [
+              600,
+              600,
+              600,
+              600,
+              600
+            ],
+            "inner_total": 360000,
+            "int_bits_max": 0,
+            "kind": "seq",
+            "len": 600
+          }
+        }
+      },
+      "residual": [],
+      "static": {
+        "adj_words": 1,
+        "files": [
+          "netgraph/__init__.py",
+          "netgraph/graph.py"
+        ],
+        "list_like_attrs": [],
+        "matrix_like_attrs": [
+          "_rows"
+        ],
+        "matrix_words": 34
+      }
+    }
+  },
+  "ended": "2026-09-18T00:21:37.152Z",
+  "experiment_commit": "f606a07d138f0a99da7b2dc449bd255aaad34705",
+  "max_agent_turns_per_turn": 200,
+  "memory": {
+    "1": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-graph--ctx-evidence--r1/memory"
+    },
+    "2": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-graph--ctx-evidence--r1/memory"
+    },
+    "3": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-graph--ctx-evidence--r1/memory"
+    },
+    "4": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-graph--ctx-evidence--r1/memory"
+    }
+  },
+  "model": "claude-fable-5-1",
+  "platform": "darwin",
+  "python": "Python 3.12.12",
+  "rep": 1,
+  "run_id": "graph__ctx-evidence__r1",
+  "started": "2026-09-18T00:18:57.512Z",
+  "status": "complete",
+  "target_fallback_used": false,
+  "target_for_t3": "A",
+  "task": "graph",
+  "tests": {
+    "1": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py"
+      ],
+      "passed": 3,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 3,
+      "turn": 1
+    },
+    "2": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py"
+      ],
+      "passed": 5,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 2,
+          "skipped": 0,
+          "total": 2
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 5,
+      "turn": 2
+    },
+    "3": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py",
+        "test_t3.py"
+      ],
+      "passed": 8,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 2,
+          "skipped": 0,
+          "total": 2
+        },
+        "test_t3.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 8,
+      "turn": 3
+    },
+    "4": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py",
+        "test_t2.py",
+        "test_t3.py",
+        "test_t4.py"
+      ],
+      "passed": 11,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t2.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 2,
+          "skipped": 0,
+          "total": 2
+        },
+        "test_t3.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        },
+        "test_t4.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 3,
+          "skipped": 0,
+          "total": 3
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 11,
+      "turn": 4
+    }
+  },
+  "total_cost_usd": 0.82626425,
+  "turn_timeout_s": 2400,
+  "turns": [
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/graph__ctx-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.28999725000000004,
+      "ended": "2026-09-18T00:19:29.168Z",
+      "is_error": false,
+      "num_agent_turns": 3,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 31.3,
+      "session_id": "3a0f18c0-780f-4e59-9257-2205d014ad6f",
+      "started": "2026-09-18T00:18:57.828Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 1
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/graph__ctx-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200",
+        "--resume",
+        "3a0f18c0-780f-4e59-9257-2205d014ad6f"
+      ],
+      "cost_usd": 0.110259,
+      "ended": "2026-09-18T00:19:59.999Z",
+      "is_error": false,
+      "num_agent_turns": 3,
+      "resume_session": "3a0f18c0-780f-4e59-9257-2205d014ad6f",
+      "returncode": 0,
+      "seconds": 29.9,
+      "session_id": "3a0f18c0-780f-4e59-9257-2205d014ad6f",
+      "started": "2026-09-18T00:19:30.071Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 2
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/graph__ctx-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200",
+        "--resume",
+        "3a0f18c0-780f-4e59-9257-2205d014ad6f"
+      ],
+      "cost_usd": 0.2534455,
+      "ended": "2026-09-18T00:20:53.589Z",
+      "is_error": false,
+      "num_agent_turns": 3,
+      "resume_session": "3a0f18c0-780f-4e59-9257-2205d014ad6f",
+      "returncode": 0,
+      "seconds": 52.4,
+      "session_id": "3a0f18c0-780f-4e59-9257-2205d014ad6f",
+      "started": "2026-09-18T00:20:01.230Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 3
+    },
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/graph__ctx-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200",
+        "--resume",
+        "3a0f18c0-780f-4e59-9257-2205d014ad6f"
+      ],
+      "cost_usd": 0.1725625,
+      "ended": "2026-09-18T00:21:33.803Z",
+      "is_error": false,
+      "num_agent_turns": 3,
+      "resume_session": "3a0f18c0-780f-4e59-9257-2205d014ad6f",
+      "returncode": 0,
+      "seconds": 38.5,
+      "session_id": "3a0f18c0-780f-4e59-9257-2205d014ad6f",
+      "started": "2026-09-18T00:20:55.343Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 4
+    }
+  ],
+  "workdir": "/private/tmp/acx-work/graph__ctx-evidence__r1"
+}

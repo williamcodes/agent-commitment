@@ -12,7 +12,8 @@ const ACX = {
   strip(D, opts = {}) {
     const d = (D || []).slice(0, 4); while (d.length < 4) d.push(null);
     const segs = d.map((x, i) => { const cls = [x ?? 'null']; if (i === 2) cls.push('chal'); if (i > 0 && d[i] !== d[i-1]) cls.push('sw'); return `<span class="seg ${cls.join(' ')}" title="after T${i+1}: ${x ?? '—'}${i===2?' (challenge turn)':''}"></span>`; }).join('');
-    return `<span class="strip" aria-label="detected approach after turns 1 to 4: ${d.join(', ')}"><span class="lab ${d[0]??'null'}">${d[0]??'?'}</span>${segs}<span class="lab ${d[3]??'null'}">${d[3]??'?'}</span></span>`;
+    const short = x => x === 'A' || x === 'B' ? x : x === 'hybrid' ? 'H' : x === 'mixed' ? 'M' : x ? 'o' : '?';
+    return `<span class="strip" aria-label="detected approach after turns 1 to 4: ${d.join(', ')}"><span class="lab ${d[0]??'null'}" title="${d[0]??'—'}">${short(d[0])}</span>${segs}<span class="lab ${d[3]??'null'}" title="${d[3]??'—'}">${short(d[3])}</span></span>`;
   },
   fmtTs(ts) { if (!ts) return ''; try { return new Date(ts).toISOString().slice(11, 23); } catch { return ts; } },
   nav(active) {

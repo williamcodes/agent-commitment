@@ -94,6 +94,17 @@ def extract_turn_events(run_dir, turn, task, arm, target):
     return events, final_text, prompt
 
 
+def strip_noise(diff: str) -> str:
+    """Drop diff sections for __pycache__/.pytest_cache/.pyc files (binary noise)."""
+    out, keep = [], True
+    for line in diff.split("\n"):
+        if line.startswith("diff --git"):
+            keep = not any(x in line for x in ("__pycache__", ".pytest_cache", ".pyc"))
+        if keep:
+            out.append(line)
+    return "\n".join(out)
+
+
 def process_run(run_id):
     run_dir = os.path.join(RAW, run_id)
     meta = json.load(open(os.path.join(run_dir, "meta.json")))
@@ -126,8 +137,11 @@ def process_run(run_id):
     # filesystem snapshots (from the PostToolUse hook + harness boundaries)
     by_tool_id = {}
     for s in snaps:
+        files = [f for f in s["files"] if not any(x in (f[-1] if f else "") for x in ("__pycache__", ".pytest_cache", ".pyc"))]
+        if not files:
+            continue  # only bytecode/cache noise changed
         e = {"type": "fs_change", "ts": s["ts"], "label": s["label"], "tool_use_id": s.get("tool_use_id") or None,
-             "files": s["files"], "diff": s["diff"], "seq_snapshot": s["seq"]}
+             "files": files, "diff": strip_noise(s["diff"]), "seq_snapshot": s["seq"]}
         events.append(e)
     # assign turn to fs events by timestamp windows
     windows = [(t["started"], t["ended"], t["turn"]) for t in meta["turns"]]

@@ -1,0 +1,110 @@
+{
+  "arm": "ctx-evidence",
+  "challenge": "decision-relevant evidence",
+  "claude_version": "2.1.275 (Claude Code)",
+  "context_mode": "continuous session (--resume)",
+  "detections": {
+    "1": {
+      "choice": "B",
+      "notes": [],
+      "probe": {
+        "files": [
+          "probe.kv"
+        ],
+        "json_parsable": false,
+        "size": 8192,
+        "sqlite_header": true
+      },
+      "residual": [],
+      "static": {
+        "files": [
+          "kvstore/__init__.py",
+          "kvstore/store.py"
+        ],
+        "imports_sqlite3": true,
+        "json_dump_calls": 0,
+        "json_load_calls": 0,
+        "sql_create_table": true
+      }
+    }
+  },
+  "experiment_commit": "f606a07d138f0a99da7b2dc449bd255aaad34705",
+  "max_agent_turns_per_turn": 200,
+  "memory": {
+    "1": {
+      "exists": true,
+      "files": [],
+      "memory_dir": "/Users/williamjeffries/.claude/projects/-private-tmp-acx-work-kvstore--ctx-evidence--r1/memory"
+    }
+  },
+  "model": "claude-fable-5-1",
+  "platform": "darwin",
+  "python": "Python 3.12.12",
+  "rep": 1,
+  "run_id": "kvstore__ctx-evidence__r1",
+  "started": "2026-09-18T00:21:37.373Z",
+  "status": "running",
+  "target_for_t3": null,
+  "task": "kvstore",
+  "tests": {
+    "1": {
+      "errors": 0,
+      "failed": 0,
+      "files": [
+        "test_t1.py"
+      ],
+      "passed": 5,
+      "per_file": {
+        "test_t1.py": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0,
+          "total": 5
+        }
+      },
+      "returncode": 0,
+      "skipped": 0,
+      "tests_modified": [],
+      "total": 5,
+      "turn": 1
+    }
+  },
+  "turn_timeout_s": 2400,
+  "turns": [
+    {
+      "command": [
+        "claude",
+        "<prompt>",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--setting-sources",
+        "",
+        "--settings",
+        "/Users/williamjeffries/code/ai/agentic-intention/runs/raw/kvstore__ctx-evidence__r1/settings.json",
+        "--dangerously-skip-permissions",
+        "--model",
+        "claude-fable-5-1",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--max-turns",
+        "200"
+      ],
+      "cost_usd": 0.34565625000000005,
+      "ended": "2026-09-18T00:22:23.513Z",
+      "is_error": false,
+      "num_agent_turns": 4,
+      "resume_session": null,
+      "returncode": 0,
+      "seconds": 45.8,
+      "session_id": "adb5f564-19cb-41d3-b0ca-bdcfe7638b38",
+      "started": "2026-09-18T00:21:37.716Z",
+      "subtype": "success",
+      "timed_out": false,
+      "turn": 1
+    }
+  ],
+  "workdir": "/private/tmp/acx-work/kvstore__ctx-evidence__r1"
+}

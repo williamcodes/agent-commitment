@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 24210,
+  "duration_ms": 36069,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1467,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 10487,
+      "cacheReadInputTokens": 66253,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.31458325000000004,
+      "inputTokens": 98,
+      "maxOutputTokens": 64000,
+      "outputTokens": 1746,
+      "provider": "firstParty",
+      "thinkingTokens": 146,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.0010609999999999999,
+      "inputTokens": 991,
+      "maxOutputTokens": 32000,
+      "outputTokens": 14,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 4,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All three tests pass.\n\n**Approach chosen:** Approach A, adjacency sets. Every method in the fixed interface is neighbour-oriented (sorted neighbour lists, BFS over neighbours, an edge counter), so a per-node set gives O(1) edge lookup and O(degree) iteration without the n\u00b2 memory an adjacency matrix would need, which matters most for the sparse graphs the tests exercise.\n\nImplementation is in `netgraph/graph.py`:\n- Edges are stored in both endpoint sets, with a self-loop stored once as a node being its own neighbour, so the edge counter increments once per distinct edge.\n- Out-of-range ids raise IndexError via a shared bounds check on every public method that takes a node.\n- Shortest path is a BFS that records parents and reconstructs the path when the target is first discovered, returning `[u]` for `u == v` and None when unreachable.\n\n```\npython -m pytest -q\n3 passed in 0.02s\n```",
+  "result_index": 0,
+  "session_id": "719ac66f-bc70-40d3-894f-f4ac12a65082",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 38,
+  "total_cost_usd": 0.31564425000000007,
+  "ttft_ms": 1637,
+  "ttft_stream_ms": 1467,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 10487,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 10487,
+    "cache_read_input_tokens": 66253,
+    "inference_geo": "not_available",
+    "input_tokens": 98,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 982,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 982,
+        "cache_read_input_tokens": 19515,
+        "input_tokens": 32,
+        "output_tokens": 322,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 1746,
+    "output_tokens_details": {
+      "thinking_tokens": 146
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "6407bddb-53dd-48b9-9607-cfedf8680175"
+}

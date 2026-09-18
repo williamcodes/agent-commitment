@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 50301,
+  "duration_ms": 66801,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 998,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 13228,
+      "cacheReadInputTokens": 131642,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.5047605,
+      "inputTokens": 194,
+      "maxOutputTokens": 64000,
+      "outputTokens": 4107,
+      "provider": "firstParty",
+      "thinkingTokens": 678,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.001084,
+      "inputTokens": 1029,
+      "maxOutputTokens": 32000,
+      "outputTokens": 11,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 7,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "Done. The `bus` package is implemented and the full suite passes.\n\n**What I did**\n- Wrote `bus/eventbus.py` with the `EventBus` class from SPEC.md. The package previously contained only a docstring in `__init__.py`.\n- Ran the tests with the Python 3.12 venv on PATH, which is the only interpreter here with pytest installed.\n\n```\npython -m pytest -q\n5 passed in 0.02s\n```\n\n**Approach chosen**\nI chose Approach B, queued dispatch. It makes the `flush` contract meaningful rather than a no-op, keeps stack depth bounded for long publish chains, and avoids re-entrancy hazards when handlers publish, subscribe, or unsubscribe mid-dispatch.\n\n**Design details worth knowing**\n- Handlers are snapshotted per event, so unsubscribing inside a handler does not skip other handlers for the event in flight.\n- Each `subscribe` call returns an idempotent unsubscribe that removes only that registration, so the same callable can be subscribed twice.\n- Calling `flush` from inside a handler is a no-op. The outer flush already drains the queue, preserving the \"handled after the current event finishes\" ordering.\n- A handler exception propagates out of `flush` but resets the flushing flag, so the bus stays usable.\n\nI also verified deep chains of 100k events, mid-dispatch unsubscribe, re-entrant flush, double unsubscribe, and handler exceptions with an ad hoc script. Nothing is committed. The working tree has the new file plus untracked `__pycache__` directories, which you may want to add to a `.gitignore`.",
+  "result_index": 0,
+  "session_id": "abe0d83d-5a38-44c7-8c28-649591f54872",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 41,
+  "total_cost_usd": 0.5058445,
+  "ttft_ms": 1152,
+  "ttft_stream_ms": 998,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 13228,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 13228,
+    "cache_read_input_tokens": 131642,
+    "inference_geo": "not_available",
+    "input_tokens": 194,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1174,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 1174,
+        "cache_read_input_tokens": 22064,
+        "input_tokens": 32,
+        "output_tokens": 545,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 4107,
+    "output_tokens_details": {
+      "thinking_tokens": 678
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "34243876-ae1e-48f2-97d9-888fb832fd7c"
+}

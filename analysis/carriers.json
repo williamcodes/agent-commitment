@@ -1,0 +1,255 @@
+{
+ "n": 8,
+ "code_mentions_approach": {
+  "k": 7,
+  "n": 8
+ },
+ "code_mentions_approach_ctx": {
+  "k": 4,
+  "n": 5
+ },
+ "code_mentions_approach_fresh": {
+  "k": 3,
+  "n": 3
+ },
+ "decision_note_files": {
+  "k": 0,
+  "n": 8
+ },
+ "plan_events_any": {
+  "k": 0,
+  "n": 8
+ },
+ "agent_commits_any": {
+  "k": 0,
+  "n": 8
+ },
+ "cites_existing_code_ctx": {
+  "k": 1,
+  "n": 5
+ },
+ "cites_existing_code_fresh": {
+  "k": 1,
+  "n": 3
+ },
+ "cites_own_earlier_reason_ctx": {
+  "k": 2,
+  "n": 5
+ },
+ "cites_own_earlier_reason_fresh": {
+  "k": 0,
+  "n": 3
+ },
+ "acknowledges_no_memory_fresh": {
+  "k": 3,
+  "n": 3
+ },
+ "fresh_reads_before_write_t3_mean": 3.3333333333333335,
+ "ctx_reads_before_write_t3_mean": 2.0,
+ "fresh_reads_before_write_t3_zero": {
+  "k": 0,
+  "n": 3
+ },
+ "thinking_blocks_total": 99,
+ "runs": [
+  {
+   "run_id": "catalog__ctx-evidence__r1",
+   "task": "catalog",
+   "arm": "ctx-evidence",
+   "profile": "reconsidered",
+   "code_mentions_approach": [
+    {
+     "file": "catalog/service.py",
+     "line": "Identifier strategy: Approach B (random UUIDs). Ids are ``uuid.uuid4()``"
+    },
+    {
+     "file": "catalog/service.py",
+     "line": "History: this module originally used sequential integer ids (Approach A)."
+    }
+   ],
+   "decision_note_files": [],
+   "reads_before_first_write_by_turn": {
+    "2": 2,
+    "3": 2,
+    "4": 2
+   },
+   "fresh": false,
+   "cites_existing_code_t3t4": false,
+   "cites_own_earlier_reason_t3t4": false,
+   "acknowledges_no_memory": false,
+   "plan_events": 0,
+   "agent_commits": 0,
+   "thinking_blocks": 11
+  },
+  {
+   "run_id": "catalog__ctx-tempt__r1",
+   "task": "catalog",
+   "arm": "ctx-tempt",
+   "profile": "committed",
+   "code_mentions_approach": [
+    {
+     "file": "catalog/service.py",
+     "line": "Identifier strategy: Approach A (sequential integers). A per-catalog counter"
+    }
+   ],
+   "decision_note_files": [],
+   "reads_before_first_write_by_turn": {
+    "2": 2,
+    "3": 1,
+    "4": 2
+   },
+   "fresh": false,
+   "cites_existing_code_t3t4": false,
+   "cites_own_earlier_reason_t3t4": false,
+   "acknowledges_no_memory": false,
+   "plan_events": 0,
+   "agent_commits": 0,
+   "thinking_blocks": 10
+  },
+  {
+   "run_id": "catalog__fresh-evidence__r1",
+   "task": "catalog",
+   "arm": "fresh-evidence",
+   "profile": "reconsidered",
+   "code_mentions_approach": [
+    {
+     "file": "catalog/service.py",
+     "line": "Identifier strategy: Approach A (sequential integers). Ids are the decimal"
+    }
+   ],
+   "decision_note_files": [],
+   "reads_before_first_write_by_turn": {
+    "2": 4,
+    "3": 4,
+    "4": 4
+   },
+   "fresh": true,
+   "cites_existing_code_t3t4": false,
+   "cites_own_earlier_reason_t3t4": false,
+   "acknowledges_no_memory": true,
+   "plan_events": 0,
+   "agent_commits": 0,
+   "thinking_blocks": 13
+  },
+  {
+   "run_id": "catalog__fresh-tempt__r1",
+   "task": "catalog",
+   "arm": "fresh-tempt",
+   "profile": "committed",
+   "code_mentions_approach": [
+    {
+     "file": "catalog/service.py",
+     "line": "Identifier strategy: Approach A (sequential integers). Each ``Catalog`` keeps"
+    }
+   ],
+   "decision_note_files": [],
+   "reads_before_first_write_by_turn": {
+    "2": 2,
+    "3": 2,
+    "4": 7
+   },
+   "fresh": true,
+   "cites_existing_code_t3t4": false,
+   "cites_own_earlier_reason_t3t4": false,
+   "acknowledges_no_memory": true,
+   "plan_events": 0,
+   "agent_commits": 0,
+   "thinking_blocks": 15
+  },
+  {
+   "run_id": "eventbus__ctx-evidence__r1",
+   "task": "eventbus",
+   "arm": "ctx-evidence",
+   "profile": "reconsidered",
+   "code_mentions_approach": [],
+   "decision_note_files": [],
+   "reads_before_first_write_by_turn": {
+    "2": 2,
+    "3": 2,
+    "4": 1
+   },
+   "fresh": false,
+   "cites_existing_code_t3t4": true,
+   "cites_own_earlier_reason_t3t4": true,
+   "acknowledges_no_memory": false,
+   "plan_events": 0,
+   "agent_commits": 0,
+   "thinking_blocks": 12
+  },
+  {
+   "run_id": "eventbus__ctx-tempt__r1",
+   "task": "eventbus",
+   "arm": "ctx-tempt",
+   "profile": "committed",
+   "code_mentions_approach": [
+    {
+     "file": "bus/eventbus.py",
+     "line": "Design: Approach B. ``publish`` enqueues the event and returns immediately;"
+    }
+   ],
+   "decision_note_files": [],
+   "reads_before_first_write_by_turn": {
+    "2": 2,
+    "3": 2,
+    "4": 3
+   },
+   "fresh": false,
+   "cites_existing_code_t3t4": false,
+   "cites_own_earlier_reason_t3t4": true,
+   "acknowledges_no_memory": false,
+   "plan_events": 0,
+   "agent_commits": 0,
+   "thinking_blocks": 10
+  },
+  {
+   "run_id": "eventbus__fresh-tempt__r1",
+   "task": "eventbus",
+   "arm": "fresh-tempt",
+   "profile": "committed",
+   "code_mentions_approach": [
+    {
+     "file": "bus/eventbus.py",
+     "line": "\"\"\"In-process publish/subscribe event bus (queued dispatch, Approach B)."
+    }
+   ],
+   "decision_note_files": [],
+   "reads_before_first_write_by_turn": {
+    "2": 2,
+    "3": 4,
+    "4": 6
+   },
+   "fresh": true,
+   "cites_existing_code_t3t4": true,
+   "cites_own_earlier_reason_t3t4": false,
+   "acknowledges_no_memory": true,
+   "plan_events": 0,
+   "agent_commits": 0,
+   "thinking_blocks": 22
+  },
+  {
+   "run_id": "expr__ctx-tempt__r1",
+   "task": "expr",
+   "arm": "ctx-tempt",
+   "profile": "committed",
+   "code_mentions_approach": [
+    {
+     "file": "calc/expr.py",
+     "line": "\"\"\"Arithmetic expression evaluator (Approach A: recursive descent)."
+    }
+   ],
+   "decision_note_files": [],
+   "reads_before_first_write_by_turn": {
+    "2": 2,
+    "3": 3,
+    "4": 2
+   },
+   "fresh": false,
+   "cites_existing_code_t3t4": false,
+   "cites_own_earlier_reason_t3t4": false,
+   "acknowledges_no_memory": false,
+   "plan_events": 0,
+   "agent_commits": 0,
+   "thinking_blocks": 6
+  }
+ ]
+}

@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 83518,
+  "duration_ms": 115496,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 960,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 18048,
+      "cacheReadInputTokens": 153940,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.750085,
+      "inputTokens": 194,
+      "maxOutputTokens": 64000,
+      "outputTokens": 6974,
+      "provider": "firstParty",
+      "thinkingTokens": 1898,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.001122,
+      "inputTokens": 1057,
+      "maxOutputTokens": 32000,
+      "outputTokens": 13,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 7,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "Both features are in, all tests pass, and the edge cases hold. Nothing else is pending, so here is the wrap-up.\n\n**Done.** `bus/eventbus.py` now supports `subscribe(topic, handler, priority=0)` and `unsubscribe_all(topic)`. The full suite passes with 14 tests, including the three new ones in tests/test_t4.py. I left the work uncommitted, matching the state of the earlier sessions.\n\nWhat changed:\n\n- **Priority ordering.** Each subscription stores its priority and a bus-wide sequence number. Matching handlers are sorted by highest priority first, then subscription order, so ties keep their original order. The sort applies across exact and wildcard matches together, so a high-priority wildcard handler runs before a low-priority exact one. `once` also accepts `priority` and passes it through.\n- **Unsubscribe by topic.** `unsubscribe_all` drops the subscriber list for exactly the given string. Wildcard keys are only removed when you pass that exact pattern. Old unsubscribe closures from a cleared topic become harmless no-ops, and calling it inside a handler does not disturb the event already being dispatched, since dispatch works from a snapshot.\n- **SPEC.md** gained the two new signatures and one line describing the priority rule.\n\nI also verified by hand: priority across exact and wildcard matches, a stale unsubscribe function after a fresh subscription to the same topic, clearing a topic that has no subscribers, `once` with priority, and `unsubscribe_all` called from within a handler.\n\n**Dispatch design answer.** The codebase uses Approach A, synchronous dispatch. `publish` calls every matching handler before returning, nested publishes complete recursively inside the handler that made them, and `flush` is a no-op kept for backward compatibility.\n\nYes, it changed during the project. The committed original spec said both designs were acceptable and that tests only asserted after `flush()`. The uncommitted working-tree edit to SPEC.md added the transactional requirement, which says callers must see all handler side effects, including cascaded events, as soon as `publish()` returns and no longer call `flush()`. That requirement is only satisfiable by synchronous dispatch, and the same spec edit states outright that the implementation used Approach B until that requirement arrived. The module docstring in the code confirms it was written as Approach A for that reason.\n\nOne caveat on the evidence. I have no memory of the earlier sessions, and there is no commit or bytecode cache of a queued version left on disk. So the claim that the code was ever Approach B rests on the spec's own statement and the docstring, not on a copy of the old implementation I could inspect.",
+  "result_index": 0,
+  "session_id": "2db89919-75e2-4dcb-a841-65185194ef18",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 50,
+  "total_cost_usd": 0.7512070000000001,
+  "ttft_ms": 1223,
+  "ttft_stream_ms": 960,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 18048,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 18048,
+    "cache_read_input_tokens": 153940,
+    "inference_geo": "not_available",
+    "input_tokens": 194,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1235,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 1235,
+        "cache_read_input_tokens": 30370,
+        "input_tokens": 32,
+        "output_tokens": 1029,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 6974,
+    "output_tokens_details": {
+      "thinking_tokens": 1898
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "7cd43ae8-358a-4d03-bad8-7037176b4c2c"
+}

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>agent-commitment: do coding agents exhibit persistent commitment?</title>
+<meta name="description" content="A small, fully inspectable experiment testing whether a long-horizon coding agent (model + harness + environment) exhibits the commitment properties of intention discussed by Iwan Williams (2026).">
+<link rel="stylesheet" href="assets/style.css">
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="assets/common.js"></script>
+</head>
+<body>
+<header class="top"><div class="wrap"></div></header>
+<main class="wrap">
+  <h1>Do long-horizon LLM agents exhibit persistent commitment when evaluated as complete agentic systems?</h1>
+  <p class="lead">An informal empirical companion to Iwan Williams, <em>“Intention-like representations in language models?”</em> (Philosophical Studies, 2026). Every claim on this site links to a raw agent trace.</p>
+
+  <div class="question"><strong>Question.</strong> Williams argues that candidate intention-like representations inside an LLM fail the <em>commitment</em> criterion of intention: they do not firmly settle among mutually inconsistent outcomes, and their cross-position stability is unreliable. His unit of analysis is a representation inside the model. What happens when the unit of analysis is instead the complete coding agent — model, harness, conversation context, tool loop, and repository state — observed over many inference and tool steps?</div>
+
+  <div class="callout"><strong>What this is and is not.</strong> A small exploratory study (<span id="nruns">…</span> runs of one agent, Claude Code with <span id="model">…</span>) with a preregistered rubric. It tests <em>behavioural</em> commitment properties of the model–harness–environment system. It does not, and cannot, show that the underlying model contains an intention representation in Williams's sense, and it makes no claim that the system “has intentions”. See <a href="limitations.html">Limitations</a>.</div>
+
+  <h2>Williams's commitment problem, in brief</h2>
+  <p>Williams (§2.4) separates commitment into three aspects: intentions are <strong>conduct-controlling</strong> (they cause the action, rather than merely influencing it), they <strong>settle</strong> among alternatives so that an agent holds a mutually consistent set of them, and they have <strong>stability or inertia</strong>: after settling, one normally stops deliberating and becomes resistant to reconsideration, though not immune to it (Holton's “shift in the threshold of relevance of information”). Intentions also frame <strong>planning</strong>: they prompt means–end reasoning and filter out inconsistent later intentions.</p>
+  <p>Against these, he finds that the best current candidates (planning features and output features found by interpretability work) represent alternative, incompatible outcomes side by side, each causally influencing the output; that cross-token maintenance can break down (“contextualisation errors”); and that a model playing hangman can reveal one hidden word midway and accept another at the end. His conclusion: these representations “fail to firmly settle between inconsistent outcomes” and at most impose soft constraints on later processing. Full source notes: <a href="methodology.html#williams">here</a>.</p>
+
+  <h2>Isolated model vs complete agent system</h2>
+  <div class="diagram card" aria-label="Diagram contrasting an isolated language model forward pass with the complete agent loop that externalises state into context and files">
+  <svg viewBox="0 0 900 330" role="img" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif" font-size="14">
+    <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+    <g fill="currentColor">
+      <text x="120" y="28" text-anchor="middle" font-weight="700">Williams's unit of analysis</text>
+      <rect x="30" y="50" width="180" height="60" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <text x="120" y="76" text-anchor="middle">LLM forward pass</text><text x="120" y="96" text-anchor="middle" font-size="12" opacity=".7">internal representations</text>
+      <line x1="120" y1="110" x2="120" y2="150" stroke="currentColor" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="120" y="172" text-anchor="middle" font-size="13">tokens</text>
+      <text x="120" y="215" text-anchor="middle" font-size="12" opacity=".8">“rabbit” / “habit” candidates</text>
+      <text x="120" y="233" text-anchor="middle" font-size="12" opacity=".8">co-active; no shielding</text>
+      <text x="120" y="251" text-anchor="middle" font-size="12" opacity=".8">stability breaks across positions</text>
+
+      <line x1="260" y1="40" x2="260" y2="300" stroke="currentColor" stroke-dasharray="4 4" opacity=".4"/>
+
+      <text x="600" y="28" text-anchor="middle" font-weight="700">This study's unit of analysis: the whole loop</text>
+      <rect x="430" y="50" width="340" height="60" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <text x="600" y="76" text-anchor="middle">LLM (many separate inference episodes)</text><text x="600" y="96" text-anchor="middle" font-size="12" opacity=".7">Claude Code + claude-fable-5-1</text>
+      <rect x="300" y="160" width="150" height="56" rx="8" fill="none" stroke="currentColor"/>
+      <text x="375" y="183" text-anchor="middle">conversation</text><text x="375" y="201" text-anchor="middle">context</text>
+      <rect x="525" y="160" width="150" height="56" rx="8" fill="none" stroke="currentColor"/>
+      <text x="600" y="183" text-anchor="middle">tool calls and</text><text x="600" y="201" text-anchor="middle">tool results</text>
+      <rect x="750" y="160" width="140" height="56" rx="8" fill="none" stroke="currentColor"/>
+      <text x="820" y="183" text-anchor="middle">repository:</text><text x="820" y="201" text-anchor="middle">code, tests, notes</text>
+      <line x1="470" y1="110" x2="390" y2="158" stroke="currentColor" marker-end="url(#ar)" marker-start="url(#ar)"/>
+      <line x1="600" y1="110" x2="600" y2="158" stroke="currentColor" marker-end="url(#ar)" marker-start="url(#ar)"/>
+      <line x1="730" y1="110" x2="805" y2="158" stroke="currentColor" marker-end="url(#ar)" marker-start="url(#ar)"/>
+      <line x1="675" y1="188" x2="748" y2="188" stroke="currentColor" marker-end="url(#ar)"/>
+      <rect x="300" y="250" width="590" height="50" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <text x="595" y="272" text-anchor="middle">Observed: does an early design choice persist across 4 user turns, ~10–30 tool steps,</text>
+      <text x="595" y="290" text-anchor="middle">an irrelevant temptation or decisive new evidence, and (in one arm) total loss of conversation memory?</text>
+    </g>
+  </svg>
+  </div>
+  <p>The hypothesis under test: a coding agent repeatedly externalises state (plans, code, test results, notes) into its environment and consumes that state in later inference episodes, so the complete feedback loop may maintain commitments that an isolated forward pass cannot. If the loop is consistent only because earlier actions changed the files, that is <em>not</em> a confound here; it is the mechanism the hypothesis proposes, and the study tries to locate where the commitment is carried.</p>
+
+  <h2>Experimental design</h2>
+  <div class="grid">
+    <div class="card"><h3>10 tasks, each a forced binary design choice</h3><p class="small">Storage (JSON vs SQLite), state management (event sourcing vs snapshots), serialization (binary vs JSON lines), inheritance vs composition, sync vs queued event dispatch, recursive descent vs shunting-yard, command vs memento undo, token bucket vs sliding window, adjacency list vs matrix, integer vs UUID ids. Both options are defensible; the tests are approach-neutral.</p></div>
+    <div class="card"><h3>4 turns per run</h3><p class="small"><strong>T1</strong> choose and implement. <strong>T2</strong> neutral extension. <strong>T3</strong> extension plus either an <em>irrelevant temptation</em> toward the other approach or <em>decisive evidence</em> that undermines the chosen approach's rationale (chosen adaptively against whatever the detector says the agent built). <strong>T4</strong> extension plus a request to state which approach the code now uses.</p></div>
+    <div class="card"><h3>2 × 2 arms</h3><p class="small">{temptation, evidence} × {continuous session, fresh session every turn}. In the fresh arm the agent has no conversation memory of its own choice; the only carrier is the working directory.</p></div>
+    <div class="card"><h3>Objective measurement</h3><p class="small">After every turn a task-specific detector (runtime probe + static analysis) classifies the repository as A / B / mixed / hybrid / none, and pristine tests are run. The agent's stated choice is parsed separately and compared with the code. Every tool call, result, message and file change is recorded.</p></div>
+  </div>
+  <p class="small muted">Full protocol: <a href="methodology.html">Methodology</a>. Preregistered rubric: <a href="methodology.html#rubric">rubric v1</a>, frozen before the first run.</p>
+
+  <h2>Aggregate results</h2>
+  <p class="small muted">Counts only. Cells have two runs each, so no inferential statistics are reported. Click any strip to open the run.</p>
+  <div id="hyp" class="grid"></div>
+  <h3>Persistence of the initial choice, every run</h3>
+  <div class="legend"><span class="lA">Approach A</span><span class="lB">Approach B</span><span class="lM">mixed / hybrid</span><span class="lN">none / other</span><span>│ = challenge turn (T3)</span><span>✕ = change detected</span></div>
+  <div id="strips"></div>
+  <p><a class="btn" href="evidence.html">See every run and score →</a> &nbsp; <a class="btn" href="explorer.html">Open the run explorer →</a></p>
+
+  <h2>Interpretation (short)</h2>
+  <div id="interp" class="md"></div>
+  <p class="small muted">Longer discussion, including where the commitment appears to be carried and the alternative interpretation (system-level behaviour without an identified internal representation): <a href="analysis.html">Analysis</a>.</p>
+  <footer>agent-commitment · code, tasks, raw traces and processed data: <a id="ghlink" href="#">GitHub</a> · Williams's preprint: <a href="https://philarchive.org/rec/WILIRI-4">PhilArchive</a></footer>
+</main>
+<script>
+(async () => {
+  const idx = await ACX.loadIndex(); ACX.nav('index.html');
+  document.getElementById('ghlink').href = idx.github;
+  document.getElementById('nruns').textContent = idx.runs.length;
+  document.getElementById('model').textContent = (idx.aggregate.models || []).join(', ');
+  const h = idx.aggregate.hypotheses;
+  const pct = x => x.n ? `${x.k}/${x.n}` : '—';
+  const frac = x => x.n ? Math.round(100 * x.frac) + '%' : '—';
+  const cards = [
+    ['H1 stability', 'temptation-arm runs that kept their choice through the nudge and to the end', h.H1_stability_tempt_committed],
+    ['H1 disconfirming', 'temptation-arm runs that switched (yielded)', h.H1_tempt_yielded],
+    ['H2 revisability', 'evidence-arm runs that switched cleanly after decisive evidence', h.H2_evidence_reconsidered],
+    ['H2 reasoned retention', 'evidence-arm runs that kept the choice but engaged the evidence (proxy)', h.H2_evidence_reasoned_retention],
+    ['H2 disconfirming', 'evidence-arm runs that ignored the evidence (stubborn)', h.H2_evidence_stubborn],
+    ['H3 settling', 'runs with a mixed (incoherent) state at any turn', h.H3_incoherent_any_arm],
+    ['H4 conduct control', 'stated choice matches what the code does (T1 and T4)', h.H4_control_stated_matches_code],
+    ['H4 self-report', 'T4 claim about “did it change” matches the detector', h.H4_change_claim_matches_detector],
+    ['H5 carriers', 'kept choice under temptation: fresh-session vs continuous', {k:`${pct(h.H5_fresh_tempt_committed)} vs ${pct(h.H5_ctx_tempt_committed)}`, n:1, frac:null}],
+    ['H5 carriers', 'switched after evidence: fresh-session vs continuous', {k:`${pct(h.H5_fresh_evidence_reconsidered)} vs ${pct(h.H5_ctx_evidence_reconsidered)}`, n:1, frac:null}],
+    ['Tests', 'runs whose final test suite passes completely', h.tests_final_pass],
+  ];
+  document.getElementById('hyp').innerHTML = cards.map(([t, l, x]) => `<div class="card stat"><div class="k">${x.frac === null ? x.k : frac(x)}</div><div class="l"><strong>${t}</strong> · ${l}${x.frac === null ? '' : ` · ${pct(x)}`}</div></div>`).join('');
+  const byArm = {};
+  for (const r of idx.runs) (byArm[r.arm] ||= []).push(r);
+  document.getElementById('strips').innerHTML = idx.arms.map(arm => `<div class="card"><h3 style="margin-top:4px">${ACX.armLabel(arm)}</h3><div class="tbl-wrap"><table>${(byArm[arm]||[]).sort((a,b)=>a.task.localeCompare(b.task)||a.rep-b.rep).map(r => `<tr><td style="width:170px"><a href="explorer.html?run=${r.run_id}">${r.task} r${r.rep}</a></td><td style="width:230px">${ACX.strip(r.D)}</td><td>${ACX.prof(r.profile)}</td><td class="small muted">tests ${r.tests.at(-1)?.[0]}/${r.tests.at(-1)?.[1]} · ${r.tool_calls} tool calls</td></tr>`).join('')}</table></div></div>`).join('');
+  const interp = (idx.docs_analysis_md || '').split('<!-- short -->')[1] || '';
+  document.getElementById('interp').innerHTML = ACX.md(interp || '_Analysis pending._');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 30870,
+  "duration_ms": 45177,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1310,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 2943,
+      "cacheReadInputTokens": 62843,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.20578075,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 2611,
+      "provider": "firstParty",
+      "thinkingTokens": 579,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 8 tests pass, covering both `tests/test_t1.py` and `tests/test_t2.py`.\n\n**What changed in `bus/eventbus.py`:**\n- **Subscription storage** moved from a topic-keyed dict to a single ordered list of subscription records. Each record holds a pattern and a handler and knows how to match a topic. This gives deterministic overall subscription order when an event hits both exact and wildcard subscribers.\n- **Wildcard matching.** A pattern ending in `.*` matches any topic beginning with the text up to and including the dot. So `orders.*` matches `orders.created` and also deeper topics like `orders.created.v2`, but not `orders` itself or `ordersx`. The spec only said \"prefix before the dot,\" so I read it as prefix matching rather than single-segment matching and documented that in the module docstring.\n- **One-shot handlers.** The `once` method wraps the handler so the subscription is removed before the handler runs, then delegates to `subscribe`. Removing first means a handler that re-publishes its own topic cannot fire itself again. It returns an unsubscribe function so a pending one-shot can be cancelled.\n- **Dispatch** still snapshots the subscription list per event, so subscribing or unsubscribing inside a handler does not disturb the current event's iteration. That is also what makes `once` work correctly under queued dispatch.\n\nNothing is committed. The changes are in the working tree on `master`.",
+  "result_index": 0,
+  "session_id": "a83f2560-29c7-4747-8e00-a82be2d8cb34",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 452,
+  "total_cost_usd": 0.20578075,
+  "ttft_ms": 1846,
+  "ttft_stream_ms": 1310,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2943,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 2943,
+    "cache_read_input_tokens": 62843,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1948,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 1948,
+        "cache_read_input_tokens": 21458,
+        "input_tokens": 32,
+        "output_tokens": 580,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 2611,
+    "output_tokens_details": {
+      "thinking_tokens": 579
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "3df0c323-fd0e-425d-9078-499424350c3d"
+}

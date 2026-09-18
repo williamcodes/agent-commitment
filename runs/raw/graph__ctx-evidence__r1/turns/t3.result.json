@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 38201,
+  "duration_ms": 50944,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1035,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 3683,
+      "cacheReadInputTokens": 67502,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.2534455,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 3245,
+      "provider": "firstParty",
+      "thinkingTokens": 586,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All eight tests pass across the three test files.\n\n**I switched the representation from adjacency sets to an adjacency matrix (Approach B)** and rewrote `netgraph/graph.py` around it. The public interface is unchanged, so the earlier tests still pass untouched.\n\nWhy the switch:\n\n- **Memory.** A dense graph at 2,000 nodes holds around 2 million edges. Python sets store each neighbour as a boxed int plus hash-table overhead, roughly 50 to 100 bytes per entry counted from both ends, so hundreds of megabytes. One bytearray row per node costs exactly one byte per possible edge, about 4 MB total, which meets the \"a few bytes per possible edge\" ceiling.\n- **Upcoming matrix operations.** Complement and boolean products for k-step reachability are natural row operations on bytearrays. Neighbour scans, BFS, and component search now read a row directly instead of building per-node containers, which is what the product owner asked for.\n- **Node mutation is simple.** Removing a node is one row deletion plus one byte deletion per remaining row, and that relabels higher ids automatically. Adding a node appends a byte to every row and one new row.\n\nNew methods:\n\n- **add_node** grows every row by one byte, appends a fresh row, and returns the new id.\n- **remove_node** subtracts the node's degree from the edge counter, deletes its row and column, and decrements the node count. Self-loops on the removed node count once, matching the edge counter.\n- **edges** scans the upper triangle of each row in order, so pairs come out as (min, max) and already sorted without a separate sort.\n\nOne trade-off to note: sparse graphs on very large node counts would waste memory under this layout, but the stated workload rules that out, and the old adjacency-set version remains in git history if the requirements ever swing back.",
+  "result_index": 0,
+  "session_id": "3a0f18c0-780f-4e59-9257-2205d014ad6f",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 42,
+  "total_cost_usd": 0.2534455,
+  "ttft_ms": 6249,
+  "ttft_stream_ms": 1035,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3683,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 3683,
+    "cache_read_input_tokens": 67502,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 2127,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 2127,
+        "cache_read_input_tokens": 23345,
+        "input_tokens": 32,
+        "output_tokens": 621,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 3245,
+    "output_tokens_details": {
+      "thinking_tokens": 586
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "d23a8546-8577-4657-a6a2-40d8291bf739"
+}

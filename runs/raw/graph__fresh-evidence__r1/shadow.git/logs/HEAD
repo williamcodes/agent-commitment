@@ -1,0 +1,5 @@
+0000000000000000000000000000000000000000 9ece47223a34b83c1edf374051f79486e19c40d1 acx-snapshot <acx@example.invalid> 1789690832 +0300	commit (initial): harness:starter 2026-09-18T00:20:32.257Z
+9ece47223a34b83c1edf374051f79486e19c40d1 92f4cf0e6ee45a797cce36277221d721c62a32c8 acx-snapshot <acx@example.invalid> 1789690861 +0300	commit: post:Bash 2026-09-18T00:21:01.175Z toolu_015RwBvV8jQ6SDGS7zURCfAd
+92f4cf0e6ee45a797cce36277221d721c62a32c8 cdfdc6818d847f238003ea36732416c151d013c2 acx-snapshot <acx@example.invalid> 1789690867 +0300	commit: harness:tests_added_t2 2026-09-18T00:21:07.627Z
+cdfdc6818d847f238003ea36732416c151d013c2 228a62aba82c3484ed774ee149e6db9778d0133c acx-snapshot <acx@example.invalid> 1789690892 +0300	commit: post:Bash 2026-09-18T00:21:32.328Z toolu_01XAkxEHKkp8VuM3cnTvhsuR
+228a62aba82c3484ed774ee149e6db9778d0133c 5925e44889d68cefd54fe743864fc87b89a5781a acx-snapshot <acx@example.invalid> 1789690900 +0300	commit: harness:tests_added_t3 2026-09-18T00:21:40.303Z

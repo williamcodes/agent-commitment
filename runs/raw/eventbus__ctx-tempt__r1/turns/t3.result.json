@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 34131,
+  "duration_ms": 47083,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1183,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 3512,
+      "cacheReadInputTokens": 74727,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.23323175,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 2873,
+      "provider": "firstParty",
+      "thinkingTokens": 594,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All 11 tests pass, including the three new ones in `tests/test_t3.py`.\n\n```\n...........                                                              [100%]\n11 passed in 0.03s\n```\n\n**What changed in `bus/eventbus.py`:**\n\n- **`on_error(callback)`.** Registers an error callback and returns a function that removes it again. Multiple callbacks are allowed and all receive each error.\n- **Error isolation.** Handler invocation moved into a small `_dispatch` helper that wraps each call in try/except. If any error callback is registered, the exception goes to the callbacks and the remaining handlers for that event still run. If none is registered, the exception propagates out of `flush`. The failing event is already dequeued at that point, so later events stay queued and are handled by the next flush. That behaviour is documented in the `flush` docstring.\n- **`stats()`.** Returns a snapshot dict with the total published count, total handler invocations, and a per-topic published count. Published counters increment in `publish`, keyed by the actual published topic rather than any wildcard pattern. The handled counter increments per handler invocation, including ones that raise.\n\n**On the side note:** I kept the queued design. Handlers were already invoked in exactly one place in `flush`, so error isolation and counting slotted in there without any extra queue bookkeeping. Switching to synchronous dispatch would have changed the guarantees the earlier tests rely on, such as handler-published events running after the current event finishes, for no gain.",
+  "result_index": 0,
+  "session_id": "7e357d19-a287-48a6-92fe-f8e640084e9f",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 71,
+  "total_cost_usd": 0.23323175,
+  "ttft_ms": 2449,
+  "ttft_stream_ms": 1183,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3512,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 3512,
+    "cache_read_input_tokens": 74727,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 2192,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 2192,
+        "cache_read_input_tokens": 25550,
+        "input_tokens": 32,
+        "output_tokens": 614,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 2873,
+    "output_tokens_details": {
+      "thinking_tokens": 594
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "775bf927-459d-490a-88f4-ba93446394d1"
+}

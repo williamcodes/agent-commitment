@@ -1,0 +1,97 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 21370,
+  "duration_ms": 35485,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 1291,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 2199,
+      "cacheReadInputTokens": 76746,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.1469765,
+      "inputTokens": 66,
+      "maxOutputTokens": 64000,
+      "outputTokens": 1663,
+      "provider": "firstParty",
+      "thinkingTokens": 96,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 3,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "All eleven tests pass across the four test files.\n\nChanges, all in `netgraph/graph.py`:\n- **is_bipartite** runs a breadth-first 2-colouring from every uncoloured node and returns False on the first edge whose endpoints share a colour. A self-loop fails immediately, since it forms an odd cycle of length one.\n- **subgraph** builds a mapping from the given ids to their positions, creates a fresh Graph of that size, and copies each induced edge once. Duplicate ids in the input raise ValueError, and out-of-range ids raise IndexError as elsewhere.\n- **common_neighbors** intersects the two adjacency sets and sorts the result.\n\n```\npython -m pytest -q\n11 passed in 0.03s\n```\n\nI also checked self-loops in both new methods and the duplicate-id path of subgraph. All behaved as intended.\n\n**Representation:** the codebase uses Approach A, adjacency lists, implemented as one Python set of neighbours per node. This has not changed at any point in the project. I chose it at the start because every operation in the interface is neighbour-oriented, and none of the later features gave a reason to switch. The matrix idea you raised for remove_node would cost the same O(nodes + edges) for relabelling as the set version does, while adding n\u00b2 memory. The last three features are also natural on sets: 2-colouring iterates neighbours, subgraph copies induced edges by looking up each neighbour, and common_neighbors is a set intersection.",
+  "result_index": 0,
+  "session_id": "719ac66f-bc70-40d3-894f-f4ac12a65082",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 38,
+  "total_cost_usd": 0.1469765,
+  "ttft_ms": 1819,
+  "ttft_stream_ms": 1291,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2199,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 2199,
+    "cache_read_input_tokens": 76746,
+    "inference_geo": "not_available",
+    "input_tokens": 66,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1103,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 1103,
+        "cache_read_input_tokens": 26126,
+        "input_tokens": 32,
+        "output_tokens": 486,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 1663,
+    "output_tokens_details": {
+      "thinking_tokens": 96
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "4c360f9e-9660-4172-9b6e-9441ea29a0dd"
+}

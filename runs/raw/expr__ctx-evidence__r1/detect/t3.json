@@ -1,0 +1,28 @@
+{
+  "choice": "A",
+  "notes": [
+    "precedence table present (precedence climbing is still recursive -> A)"
+  ],
+  "probe": null,
+  "residual": [],
+  "static": {
+    "files": [
+      "calc/__init__.py",
+      "calc/expr.py"
+    ],
+    "parse_like_functions": [
+      "_apply_binary",
+      "_expr",
+      "_power",
+      "_primary",
+      "parse"
+    ],
+    "precedence_table_literals": 1,
+    "recursive_parse_functions": [
+      "_expr"
+    ],
+    "shunting_words": 0,
+    "stack_words": 4,
+    "while_pop_loops": 0
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "api_error_status": null,
+  "duration_api_ms": 32448,
+  "duration_ms": 45154,
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "fast_mode_state": "off",
+  "first_content_frame_ms": 952,
+  "is_error": false,
+  "modelUsage": {
+    "claude-fable-5-1": {
+      "cacheCreationInputTokens": 9264,
+      "cacheReadInputTokens": 74219,
+      "canonicalModel": "claude-fable-5-1",
+      "contextWindow": 1000000,
+      "costBasis": "list",
+      "costUSD": 0.33936475,
+      "inputTokens": 98,
+      "maxOutputTokens": 64000,
+      "outputTokens": 2691,
+      "provider": "firstParty",
+      "thinkingTokens": 635,
+      "webSearchRequests": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "cacheCreationInputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "contextWindow": 200000,
+      "costBasis": "list",
+      "costUSD": 0.001126,
+      "inputTokens": 1036,
+      "maxOutputTokens": 32000,
+      "outputTokens": 18,
+      "provider": "firstParty",
+      "thinkingTokens": 0,
+      "webSearchRequests": 0
+    }
+  },
+  "num_turns": 4,
+  "permission_denials": [],
+  "queued_turn_count": 0,
+  "result": "Edge cases behave correctly: the once handler fired only for the first matching event, an unsubscribed once handler never fired, handlers ran in overall subscription order, and the bare topic `orders` did not match `orders.*`.\n\n**Changes made, all in `bus/eventbus.py`:**\n\n- **Wildcard matching.** Added a `_matches` helper: a subscription pattern matches a topic if it is equal, or if the pattern ends in `.*` and the topic starts with the pattern minus the trailing `*` (so `orders.*` matches `orders.created` and also deeper topics like `orders.a.b`, but not `orders` itself).\n- **Handler lookup.** Added `_handlers_for`, which collects entries from every matching subscription list and sorts them by subscription id, so exact and wildcard subscribers both receive the event in overall subscription order. `flush` now uses this instead of a direct dict lookup. It still returns a fresh list, so subscribe or unsubscribe inside a handler cannot affect delivery of the current event.\n- **`once(topic, handler)`.** Wraps the handler, unsubscribes itself on first invocation, then calls the real handler. A `fired` guard makes it safe even if the wrapper were somehow invoked twice. It returns the unsubscribe function like `subscribe` does, and works with wildcard topics.\n- **Module docstring** updated to describe both features.\n\nTest results: 8 passed (5 in test_t1.py, 3 in test_t2.py). No files under `tests/` were touched, and nothing was committed.",
+  "result_index": 0,
+  "session_id": "4ae4a59b-60c2-4867-8581-d66deafcdd95",
+  "stop_reason": "end_turn",
+  "subagent_stats": {
+    "by_type": {},
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "system": 0,
+      "user": 0
+    },
+    "max_depth": 0,
+    "refused": {
+      "budget": 0,
+      "concurrency_limit": 0,
+      "depth_limit": 0
+    },
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "spawned": 0,
+    "spawned_by_subagents": 0,
+    "started_in_background": 0
+  },
+  "subtype": "success",
+  "terminal_reason": "completed",
+  "time_to_request_ms": 49,
+  "total_cost_usd": 0.34049075,
+  "ttft_ms": 1685,
+  "ttft_stream_ms": 952,
+  "type": "result",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9264,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 9264,
+    "cache_read_input_tokens": 74219,
+    "inference_geo": "not_available",
+    "input_tokens": 98,
+    "iterations": [
+      {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 563,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 563,
+        "cache_read_input_tokens": 22258,
+        "input_tokens": 32,
+        "output_tokens": 516,
+        "type": "message"
+      }
+    ],
+    "output_tokens": 2691,
+    "output_tokens_details": {
+      "thinking_tokens": 635
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+  },
+  "uuid": "16241d93-59b5-46d6-8306-3fed93640643"
+}
